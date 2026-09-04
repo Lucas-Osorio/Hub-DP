@@ -519,8 +519,14 @@ header h1{
 
 /* Conteúdo */
 main{
+  width:calc(100% - 48px);
   max-width:1240px !important;
-  padding:28px clamp(22px,4vw,48px) 126px !important;
+  margin:26px auto 92px !important;
+  padding:30px clamp(24px,4vw,48px) 34px !important;
+  background:#fff !important;
+  border:1px solid #E2E8F0 !important;
+  border-radius:18px !important;
+  box-shadow:0 4px 18px rgba(15,64,131,.055) !important;
 }
 
 /* Upload como card principal */
@@ -854,7 +860,10 @@ button.export:disabled{
     font-size:9.5px !important;
   }
   main{
-    padding:20px 16px 128px !important;
+    width:calc(100% - 24px);
+    margin:14px auto 110px !important;
+    padding:20px 16px 24px !important;
+    border-radius:14px !important;
   }
   #dropzone,
   #dropzone-templates{
