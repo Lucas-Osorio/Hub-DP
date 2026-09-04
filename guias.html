@@ -154,13 +154,16 @@
   .passo-head-texto{flex:1;min-width:0;}
   .passo-titulo{display:block;font-size:14px;font-weight:800;color:var(--azul-escuro-2);}
   .passo-responsavel{display:block;font-size:11.5px;font-weight:700;color:var(--azul-medio);margin-top:2px;}
-  .passo-corpo{padding:14px 18px 16px;font-size:13.5px;line-height:1.6;}
-  .passo-corpo ul{margin:0 0 10px;padding-left:20px;}
-  .passo-corpo ul:last-child{margin-bottom:0;}
-  .passo-corpo li{margin-bottom:6px;}
-  .passo-corpo li:last-child{margin-bottom:0;}
-  .passo-corpo ul ul{margin-top:6px;margin-bottom:6px;}
-  .passo-corpo strong{color:var(--texto);}
+  .passo-corpo,.ocorrencia-corpo{padding:14px 18px 16px;font-size:13.5px;line-height:1.6;}
+  .passo-corpo ul,.ocorrencia-corpo ul{margin:0 0 10px;padding-left:20px;}
+  .passo-corpo ul:last-child,.ocorrencia-corpo ul:last-child{margin-bottom:0;}
+  .passo-corpo li,.ocorrencia-corpo li{margin-bottom:6px;}
+  .passo-corpo li:last-child,.ocorrencia-corpo li:last-child{margin-bottom:0;}
+  .passo-corpo ul ul,.ocorrencia-corpo ul ul{margin-top:6px;margin-bottom:6px;}
+  .passo-corpo strong,.ocorrencia-corpo strong{color:var(--texto);}
+  .ocorrencia-corpo p{margin:0 0 10px;}
+  .ocorrencia-corpo p:last-child{margin-bottom:0;}
+  .ocorrencia-corpo p.como{margin:12px 0 8px;font-weight:800;color:var(--azul-escuro-2);}
 
   .caixa{display:flex;gap:10px;padding:11px 14px;border-radius:var(--raio-sm);margin:10px 0;font-size:12.5px;line-height:1.55;}
   .caixa-icone{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#fff;}
@@ -168,6 +171,8 @@
   .caixa-atencao .caixa-icone{background:var(--amarelo);color:#5C3D00;}
   .caixa-pendencia{background:var(--vermelho-bg);border:1px solid var(--vermelho-borda);color:#7A2323;}
   .caixa-pendencia .caixa-icone{background:var(--vermelho);}
+  .caixa-exemplo{background:var(--verde-bg);border:1px solid var(--verde-borda);color:#2E4B0C;}
+  .caixa-exemplo .caixa-icone{background:var(--verde);}
   .caixa em{font-style:italic;}
 
   .passo-figura{margin:12px 0;padding:0;}
@@ -188,6 +193,10 @@
   }
   .lightbox.aberto{display:flex;}
   .lightbox img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+
+  .ocorrencia{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);margin-bottom:14px;box-shadow:var(--sombra-sm);overflow:hidden;}
+  .ocorrencia-head{padding:14px 18px;background:var(--amarelo-bg);border-bottom:1px solid var(--amarelo-borda);}
+  .ocorrencia-titulo{font-size:14px;font-weight:800;color:#8A5A00;}
 
   .duvidas-card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:16px 18px;box-shadow:var(--sombra-sm);font-size:13.5px;line-height:1.6;}
   .duvidas-card .contato{margin-top:8px;font-weight:700;color:var(--azul-escuro-2);}
@@ -542,6 +551,1024 @@ const GUIAS = [
       },
     ],
   },
+  {
+    categoria: 'Contrato de Experiência',
+    guias: [
+      {
+        id: 'contrato-experiencia',
+        titulo: 'Contrato de Experiência — Emissão, Controle e Renovação',
+        subtitulo: 'Emissão, assinatura, arquivamento e controle de prazos dos contratos de experiência, da admissão até a conversão ou o desligamento.',
+        identificacao: [
+          ['Processo', 'Contrato de Experiência — Emissão, Controle e Renovação'],
+          ['Responsável principal', 'Departamento Pessoal'],
+          ['Quem mais participa', 'Contabilidade (terceirizada), Assistente Administrativo, Gestor de Filial'],
+          ['Quando acontece', 'Na admissão de cada colaborador e a cada vencimento de fase'],
+          ['Sistemas utilizados', 'Domínio Web, eSocial, OneDrive, Trello'],
+          ['Documentos relacionados', 'Contrato de Experiência, Aditivo de Prorrogação, Planilha de Controle de Vencimentos'],
+        ],
+        objetivo: 'Este guia orienta todos os setores envolvidos na emissão, assinatura, arquivamento e controle dos contratos de experiência dos colaboradores admitidos, desde o primeiro dia de trabalho até a conversão para contrato indeterminado ou o desligamento, garantindo conformidade com a CLT, rastreabilidade documental e controle centralizado de prazos pelo Departamento Pessoal.',
+        conceitos: [
+          ['Contrato de Experiência', 'Modalidade de contrato por prazo determinado prevista na CLT, com duração máxima de 90 dias. Permite à empresa avaliar o colaborador antes de efetivá-lo.'],
+          ['Período de Experiência', 'Prazo durante o qual vigora o contrato de experiência. Pode ser estruturado em duas fases (ex.: 30 dias + 60 dias), desde que o total não ultrapasse 90 dias (CLT, Art. 445).'],
+          ['Prorrogação', 'Extensão do contrato de experiência por mais um período. Só pode ser realizada uma única vez (CLT, Art. 451). O documento correspondente é o Aditivo de Prorrogação.'],
+          ['Aditivo de Prorrogação', 'Documento emitido pela Contabilidade no Domínio Web para formalizar a extensão do contrato de experiência. Deve ser assinado pelo colaborador antes do vencimento da fase atual.'],
+          ['Conversão para Contrato Indeterminado', 'Ocorre automaticamente ao término do período de experiência, caso o colaborador não seja desligado. Não requer assinatura — o vínculo passa a ser por prazo indeterminado (CLT, Art. 452).'],
+          ['Conversão por Vencimento Indevido', 'Se o contrato vencer sem que haja prorrogação assinada ou desligamento processado, ele se converte automaticamente em contrato por prazo indeterminado, eliminando a proteção financeira da experiência.'],
+          ['S-2206 (eSocial)', 'Evento do eSocial utilizado para registrar a prorrogação do contrato de experiência. Deve ser enviado pela Contabilidade antes do vencimento da fase em vigor.'],
+          ['Planilha de Controle de Vencimentos', 'Documento interno do Departamento Pessoal que registra nome, filial, data de admissão, duração de cada fase, data de vencimento e status de cada colaborador em período de experiência.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['📎 Documento', 'Referência a um formulário ou documento de apoio.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou padronizado antes da execução.'],
+        ],
+        quemFazOQue: [
+          ['Departamento Pessoal', 'Coordena todo o fluxo, encaminha documentos, monitora vencimentos, arquiva no OneDrive e aciona os demais setores dentro do prazo.', 'Durante todo o processo'],
+          ['Contabilidade (terceirizada)', 'Emite o contrato e o aditivo de prorrogação no Domínio Web e registra a alteração no eSocial (evento S-2206).', 'Na admissão e em cada prorrogação'],
+          ['Assistente Administrativo', 'Coleta a assinatura do colaborador no documento e devolve o arquivo digitalizado ao Departamento Pessoal.', 'Na admissão e em cada prorrogação'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Gerar o Contrato', responsavel: 'Contabilidade', html: `
+            <ul>
+              <li>A admissão de um novo colaborador é o gatilho que inicia este processo. Ao registrar a admissão no <strong>Domínio Web</strong>, a Contabilidade gera o contrato de experiência com os dados do colaborador, o cargo, a data de admissão e a duração da primeira fase <strong>(30d)</strong>.</li>
+              <li>O contrato gerado é encaminhado ao Departamento Pessoal para dar continuidade ao fluxo de assinatura.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Esta etapa é executada pela Exacta Contabilidade e está descrita apenas para contextualizar o início do processo. O detalhamento operacional desta etapa está fora do escopo deste guia.</span></div>
+          `},
+          { numero: 2, titulo: 'Receber e Encaminhar o Contrato', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Receba o contrato de experiência enviado pela Contabilidade.</li>
+              <li>Verifique se os dados do documento estão corretos: nome completo, CPF, cargo, data de admissão e duração da primeira fase.</li>
+              <li>Encaminhe o documento ao Assistente Administrativo da filial correspondente, informando o prazo para devolução assinada <strong>(1 a 2 dias)</strong>.</li>
+              <li>Oriente o Auxiliar que a assinatura deve ser coletada no dia da admissão ou, no máximo, no primeiro dia de trabalho do colaborador.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O contato entre Contabilidade e Assistente Administrativo não deve ocorrer diretamente neste processo. O Departamento Pessoal é o ponto de passagem obrigatório em todas as etapas — essa centralização garante o controle de prazos e o arquivamento correto.</span></div>
+          `},
+          { numero: 3, titulo: 'Coletar Assinatura', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Receba o contrato encaminhado pelo Departamento Pessoal.</li>
+              <li>Apresente o documento ao colaborador no dia da admissão e informe que se trata do contrato de experiência, com a duração e as condições da primeira fase.</li>
+              <li>Solicite a assinatura do colaborador no campo correspondente.</li>
+              <li>Digitalize o documento assinado — escaneie ou fotografe com qualidade legível em todos os campos.</li>
+              <li>Envie o documento digitalizado <strong>(.pdf)</strong> ao Departamento Pessoal pelo canal definido.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Não encaminhe o documento diretamente à Contabilidade. Toda devolução é feita exclusivamente ao Departamento Pessoal, sem exceção.</span></div>
+          `},
+          { numero: 4, titulo: 'Arquivar e Registrar Vencimento', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Salve o contrato assinado no <strong>OneDrive</strong>, na pasta do colaborador:
+                <ul><li>DP → DEPARTAMENTO PESSOAL → ADMISSÃO → «Filial» → «Colaborador»</li></ul>
+              </li>
+              <li>Registre as informações do colaborador na Planilha de Controle de Vencimentos: nome, filial, data de admissão, duração da 1ª fase e data de vencimento.</li>
+              <li>Configure o lembrete de vencimento no quadro <strong>Trello</strong>, com antecedência mínima de <strong>7 dias úteis</strong> antes da data limite da primeira fase.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O controle de vencimentos é responsabilidade exclusiva do Departamento Pessoal. Vencimento não monitorado pode resultar em conversão automática para contrato indeterminado, com impacto direto nas verbas rescisórias em caso de desligamento futuro.</span></div>
+          `},
+          { numero: 5, titulo: 'Monitorar Vencimentos', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Verifique o quadro <strong>Trello</strong> <strong>DP ↔ Filiais</strong> ao menos uma vez por semana.</li>
+              <li>Identifique os contratos que vencerão nos próximos 7 dias úteis.</li>
+              <li>Avalie a situação de cada colaborador e defina se haverá renovação do contrato ou desligamento.</li>
+              <li>Caso a decisão seja de desligamento, inicie o processo de desligamento imediatamente, garantindo que seja concluído antes do vencimento.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A decisão e o registro devem ocorrer com tempo suficiente para concluir todos os trâmites antes do vencimento. O aditivo precisa estar assinado e o eSocial atualizado antes que a data expire — não aguarde o prazo limite.</span></div>
+          `},
+          { numero: 6, titulo: 'Emitir o Aditivo de Prorrogação', responsavel: 'Departamento Pessoal / Contabilidade', html: `
+            <ul>
+              <li>Solicite à Contabilidade a emissão do Aditivo de Prorrogação no <strong>Domínio Web</strong>, informando: nome completo do colaborador, filial, data de admissão e duração da prorrogação.</li>
+              <li>Certifique-se de que a duração respeita o limite legal: o total do período de experiência não pode ultrapassar 90 dias (ex.: 30 dias na 1ª fase + 60 dias de prorrogação).</li>
+              <li>Receba o aditivo gerado e encaminhe ao Assistente Administrativo da filial, com prazo explícito para devolução assinada.</li>
+              <li>Confirme com a Contabilidade o envio do evento <strong>S-2206</strong> ao eSocial antes do vencimento da fase atual.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A prorrogação só pode ser realizada uma única vez (CLT, Art. 451). Caso já tenha havido uma prorrogação anterior, não é possível prorrogar novamente — a única opção é a conversão ou o desligamento.</span></div>
+          `},
+          { numero: 7, titulo: 'Coletar Assinatura do Aditivo', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Receba o Aditivo de Prorrogação encaminhado pelo Departamento Pessoal.</li>
+              <li>Apresente o documento ao colaborador e informe que se trata da prorrogação do contrato de experiência, com a nova duração.</li>
+              <li>Solicite a assinatura do colaborador no campo correspondente.</li>
+              <li>Digitalize o documento assinado e envie ao Departamento Pessoal dentro do prazo informado.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O prazo para devolução deve ser rigorosamente respeitado. A assinatura do aditivo precisa retornar ao Departamento Pessoal antes do vencimento da fase atual. Atrasos colocam o processo em risco legal.</span></div>
+          `},
+          { numero: 8, titulo: 'Arquivar Aditivo e Atualizar Controle', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Salve o Aditivo de Prorrogação assinado na mesma pasta do colaborador utilizada no Passo 4.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Este é o último prazo do processo. Ao vencimento final, o colaborador será efetivado automaticamente ou deverá ser desligado. Não há possibilidade de nova prorrogação.</span></div>
+          `},
+          { numero: 9, titulo: 'Registrar o Encerramento', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Ao término do período de experiência, atualize a Planilha de Controle com o status final do colaborador.</li>
+              <li>Se o colaborador foi mantido: registre o status como <strong>"Convertido — Contrato Indeterminado"</strong>. A conversão ocorre automaticamente por força de lei — não há documento a ser assinado.</li>
+              <li>Se o colaborador foi desligado: registre o status como <strong>"Desligado"</strong> e certifique-se de que o processo de desligamento foi concluído antes do vencimento.</li>
+              <li>Notifique a Contabilidade sobre o encerramento para que os registros no sistema sejam atualizados.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Documentar o processo de desligamento dentro do período de experiência no Guia de Desligamento de Colaboradores.</span></div>
+          `},
+        ],
+        ocorrencias: [
+          { titulo: 'Ocorrência 1 — Contrato vencido sem renovação nem desligamento', html: `
+            <p>Ocorre quando a data de vencimento da fase atual é atingida sem que o aditivo tenha sido assinado, o desligamento tenha sido processado ou o eSocial tenha sido atualizado. O contrato se converte automaticamente em indeterminado (CLT, Art. 452), eliminando a proteção financeira do período de experiência.</p>
+            <p class="como">Como proceder:</p>
+            <ul>
+              <li>Identifique imediatamente a data do vencimento e o tempo transcorrido desde então.</li>
+              <li>Consulte o Setor Jurídico para orientação sobre os efeitos trabalhistas da conversão automática no caso concreto.</li>
+              <li>Notifique a Contabilidade para regularizar o registro no sistema e no eSocial.</li>
+              <li>Registre a ocorrência na Planilha de Controle com data, motivo e providências tomadas.</li>
+              <li>Identifique a falha no monitoramento que permitiu o atraso e corrija o processo para os demais colaboradores.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Após a conversão automática, o colaborador passa a ter todos os direitos de um contrato por prazo indeterminado. O desligamento posterior exigirá pagamento de aviso prévio, multa de 40% do FGTS e demais verbas rescisórias completas.</span></div>
+          `},
+          { titulo: 'Ocorrência 2 — Colaborador recusa assinar o contrato ou o aditivo', html: `
+            <p>Ocorre quando o colaborador, na presença do Assistente Administrativo, se recusa a assinar o contrato de experiência ou o aditivo de prorrogação no prazo estabelecido.</p>
+            <p class="como">Como proceder:</p>
+            <ul>
+              <li>Comunique imediatamente o Departamento Pessoal sobre a recusa, informando data, hora e contexto.</li>
+              <li>Preserve o documento original — não descarte nem altere o arquivo.</li>
+              <li>Acione o Setor Jurídico para orientação sobre como formalizar a recusa e os próximos passos.</li>
+              <li>Registre a ocorrência com duas testemunhas, se possível, documentando que o colaborador se recusou a assinar.</li>
+              <li>Aguarde orientação jurídica antes de tomar qualquer medida adicional.</li>
+            </ul>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+    ],
+  },
+  {
+    categoria: 'Controle de Ponto',
+    guias: [
+      {
+        id: 'controle-ponto',
+        titulo: 'Controle de Ponto',
+        subtitulo: 'Conferência e fechamento da folha de ponto, da geração do relatório no Sólides até a análise de ocorrências e o envio para a folha de pagamento.',
+        identificacao: [
+          ['Processo', 'Controle de Ponto'],
+          ['Responsável principal', 'Assistente Administrativo'],
+          ['Quem mais participa', 'Departamento Pessoal, Colaboradores'],
+          ['Quando acontece', 'Semanalmente (recomendado), quinzenalmente ou mensalmente — fechamento obrigatório até o dia 26 de cada mês'],
+          ['Sistemas utilizados', 'Sólides, Ferramenta de Análise de Pontos (HTML), Domínio'],
+          ['Documentos relacionados', 'Relatório de Folha de Ponto (.xlsx ou .zip)'],
+        ],
+        objetivo: 'Este guia orienta os Assistentes Administrativos de cada filial na execução correta do processo de conferência e fechamento da folha de ponto, desde a geração do relatório no Sólides até a análise de ocorrências e correção de registros, garantindo que a folha esteja 100% fidedigna até o dia 26 de cada mês para o correto cálculo da folha de pagamento.',
+        conceitos: [
+          ['Sólides', 'Plataforma de gestão de ponto utilizada pelos colaboradores para registro eletrônico da jornada de trabalho.'],
+          ['Período de Apuração', 'Intervalo de datas considerado para o fechamento da folha. Na empresa, vai do dia 26 do mês anterior ao dia 25 do mês corrente.'],
+          ['Folha de Ponto', 'Relatório que consolida todos os registros de ponto do período — entradas, saídas, faltas, horas extras e banco de horas.'],
+          ['Relatório Compactado', 'Tipo de exportação do Sólides que gera o arquivo Excel com os dados consolidados de ponto, utilizado para análise e alimentação do Domínio.'],
+          ['Ferramenta de Análise de Pontos', 'Aplicação HTML disponível no Drive da empresa que identifica automaticamente ocorrências na folha de ponto exportada do Sólides.'],
+          ['Ocorrência', 'Qualquer evento fora do padrão identificado na folha de ponto: falta não justificada, ponto em aberto, registro duplicado, entre outros.'],
+          ['Domínio', 'Sistema de gestão utilizado pela contabilidade terceirizada para cálculo e processamento da folha de pagamento, alimentado pelo relatório do Sólides.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['✓ Sem ocorrências', 'Colaborador sem pendências no período analisado.'],
+          ['⚠ Ocorrência', 'Colaborador com pendência que exige correção no Sólides.'],
+          ['📎 Anexo', 'Referência a documento de apoio disponível na pasta de Anexos.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou documentado.'],
+        ],
+        quemFazOQue: [
+          ['Assistente Administrativo', 'Gera o relatório no Sólides, analisa ocorrências pela Ferramenta de Análise de Pontos e realiza as correções necessárias para garantir o fechamento correto da folha.', 'Semanalmente (recomendado), quinzenalmente ou mensalmente — fechamento obrigatório até o dia 26.'],
+          ['Colaboradores (motoristas, coletores, encarregados, assistentes)', 'Registram o ponto diariamente pelo aplicativo Sólides e, quando solicitado, lançam registros em atraso para aprovação.', 'Diariamente.'],
+          ['Departamento Pessoal', 'Coordena o processo, orienta os Assistentes Administrativos, acompanha o cumprimento do prazo de fechamento, exporta o relatório do Sólides e envia à Contabilidade.', 'Conforme necessidade e no acompanhamento do fechamento mensal.'],
+          ['Contabilidade (terceirizada)', 'Importa o relatório para o Domínio e realiza o cálculo da folha de pagamento.', 'Após o fechamento, a partir do dia 26.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Gerar o Relatório de Folha de Ponto', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Acesse o sistema <strong>Sólides</strong> e navegue até <strong>Ponto → Relatórios → Folha de Ponto</strong>.</li>
+              <li>Selecione a filial correspondente no campo «Selecionar filial».</li>
+              <li>«Status do colaborador» deve estar definido como <strong>Todos</strong>.</li>
+              <li>Certifique-se de que o campo «Tipo de relatório» está definido como <strong>EXCEL</strong> — este formato é obrigatório.</li>
+              <li>Verifique se a opção «Apenas colaboradores que registram ponto» está marcada.</li>
+              <li>Defina o período de apuração nos campos «Data Início» e «Data Fim»:
+                <ul>
+                  <li>Para fechamento mensal: do dia <strong>26 do mês anterior</strong> ao dia <strong>25 do mês corrente</strong>.</li>
+                  <li>Para fechamento semanal ou quinzenal: defina o intervalo relativo ao período que será conferido.</li>
+                </ul>
+              </li>
+              <li>Clique em <strong>Relatório Compactado</strong>.</li>
+              <li>Aguarde o processamento do relatório pelo sistema.</li>
+              <li>Clique no ícone de <strong>download</strong> para salvar o arquivo no dispositivo.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O tipo de relatório deve ser obrigatoriamente EXCEL. Outros formatos não são compatíveis com a Ferramenta de Análise de Pontos e não alimentam corretamente o Domínio.</span></div>
+          `},
+          { numero: 2, titulo: 'Analisar Ocorrências pela Ferramenta de Análise de Pontos', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Acesse a <strong>Ferramenta de Análise de Pontos</strong>, disponível no <strong>Drive da empresa</strong> na pasta <strong>Alimentação Temporária</strong>.</li>
+              <li>Arraste o arquivo Excel baixado para a área indicada na ferramenta, ou clique na caixa de seleção para localizá-lo no dispositivo.</li>
+              <li>Clique em <strong>Analisar Pontos</strong> para iniciar o processamento.</li>
+              <li>Verifique o resultado exibido para cada colaborador listado:
+                <ul>
+                  <li>Colaboradores com o status <strong>✓ Sem ocorrências</strong> estão com o ponto em dia — nenhuma ação necessária.</li>
+                  <li>Colaboradores com ocorrência identificada (ex.: 1× Falta, Ponto em aberto) exigem correção no Sólides.</li>
+                </ul>
+              </li>
+              <li>Para cada colaborador com ocorrência, clique na <strong>seta de expansão</strong> para visualizar o detalhamento dia a dia: data, dia da semana, registros, horas trabalhadas, previsto, saldo e tipo da ocorrência detectada.</li>
+              <li>Registre os colaboradores e dias que precisam de correção antes de retornar ao Sólides.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>A pasta de armazenamento permanente da Ferramenta de Análise de Pontos no Drive será reorganizada e documentada em versão futura deste guia. Por ora, utilizar a pasta Alimentação Temporária.</span></div>
+          `},
+          { numero: 3, titulo: 'Corrigir as Ocorrências no Sólides', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Acesse o sistema <strong>Sólides</strong> e localize o colaborador com ocorrência identificada.</li>
+              <li>Navegue até o dia correspondente à ocorrência detectada na ferramenta.</li>
+              <li>Realize a correção adequada conforme o tipo de ocorrência:
+                <ul>
+                  <li><strong>Ponto em aberto ou não batido:</strong> realize o ajuste manual do registro.</li>
+                  <li><strong>Registro duplicado:</strong> remova o lançamento incorreto.</li>
+                  <li><strong>Falta não justificada:</strong> registre a falta ou vincule o atestado recebido.</li>
+                  <li><strong>Ponto em atraso:</strong> oriente o colaborador a realizar o lançamento pelo aplicativo Sólides para que o assistente possa aprovar.</li>
+                </ul>
+              </li>
+              <li>Repita o processo para todos os colaboradores com ocorrências identificadas.</li>
+              <li>Após todas as correções, gere novamente o relatório conforme o Passo 1 e reanalise na ferramenta para confirmar que não há mais ocorrências pendentes.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>O passo a passo detalhado de cada tipo de correção dentro do Sólides (ajuste manual, aprovação de ponto em atraso, registro de atestado) será documentado em versão futura deste guia.</span></div>
+          `},
+          { numero: 4, titulo: 'Confirmar o Fechamento da Folha até o Dia 26', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Garanta que, até o <strong>dia 26 de cada mês</strong>, todos os colaboradores da filial estejam com o ponto 100% correto e sem ocorrências pendentes.</li>
+              <li>Realize conferências periódicas — preferencialmente toda <strong>segunda-feira</strong> — para distribuir a carga de trabalho e evitar acúmulo de pendências no prazo final.</li>
+              <li>Certifique-se de que o relatório final exportado do Sólides reflete fielmente a rotina do período antes de encerrar o fechamento.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O prazo de fechamento do dia 26 é fixo e improrrogável. O relatório exportado do Sólides alimenta diretamente o Domínio para o cálculo da folha de pagamento. Inconsistências no ponto impactam diretamente o pagamento dos colaboradores.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+    ],
+  },
+  {
+    categoria: 'Férias',
+    guias: [
+      {
+        id: 'ferias',
+        titulo: 'Lançamento de Férias',
+        subtitulo: 'Programação, aprovação e cálculo de férias no Sólides e no Portal Onvio, da solicitação da filial ao pagamento pelo Financeiro.',
+        identificacao: [
+          ['Processo', 'Lançamento de Férias'],
+          ['Responsável principal', 'Auxiliares e Analistas de DP'],
+          ['Quem mais participa', 'Responsáveis de Filial, Gestores de Unidade, Financeiro, Contabilidade'],
+          ['Quando acontece', 'Conforme demanda'],
+          ['Sistemas utilizados', 'Sólides, Onvio (Portal Cliente)'],
+        ],
+        objetivo: 'Este guia orienta os responsáveis de filial e o Departamento Pessoal a realizarem o lançamento e o controle das férias na plataforma Sólides e no Portal Onvio, garantindo o registro correto das informações e evitando perda de dados ao longo do processo.',
+        conceitos: [
+          ['Sólides', 'Plataforma usada para programação e controle de férias dos colaboradores.'],
+          ['Período trabalhado', 'Intervalo de 12 meses que gera o direito às férias. Cada colaborador pode ter períodos diferentes.'],
+          ['Venda de férias', 'Opção em que o colaborador converte até 1/3 dos dias de férias (máx. 10 dias) em pagamento, em vez de descanso.'],
+          ['Venda no início', 'Os dias vendidos são descontados do começo das férias. O descanso começa após esses dias.'],
+          ['Venda no final', 'Os dias vendidos são descontados do final das férias, antecipando o retorno ao trabalho.'],
+          ['Onvio', 'Portal Cliente utilizado pela Contabilidade para o registro oficial do cálculo de férias de cada colaborador.'],
+          ['Fracionamento de férias', 'Divisão do período de férias em até três parcelas, sendo obrigatório que uma delas tenha, no mínimo, 14 dias e as demais, no mínimo, 5 dias cada.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['☐ / ☑', 'Caixa de seleção — ☐ desmarcada / ☑ marcada.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['Ex.', 'Exemplo prático de aplicação da etapa descrita.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou documentado.'],
+        ],
+        quemFazOQue: [
+          ['Responsável de Filial', 'Solicita e programa as férias no sistema.', 'Conforme demanda'],
+          ['Auxiliar / Analista de DP', 'Revisa e aprova a solicitação.', 'Após solicitação da filial'],
+          ['Gerente Operacional', 'Alinha e programa as férias anualmente junto ao Assistente Administrativo e monitora prazos para evitar férias em dobro.', 'Anualmente e conforme demanda'],
+          ['Assistente Administrativo da Unidade', 'Alinha a programação anual de férias com o Gerente Operacional, solicita remanejamentos e o cálculo de férias no Portal Onvio.', 'Após a aprovação no Sólides'],
+          ['Financeiro', 'Processa o pagamento das férias com base nas informações enviadas pelo DP.', 'Até 10 dias antes do vencimento'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Acessar o Sistema', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Acesse o sistema <strong>Sólides</strong> pelo navegador ou aplicativo, utilizando seu login e senha.</li>
+              <li>No menu lateral esquerdo, navegue até <strong>Férias → Visão Geral</strong>.</li>
+              <li>Utilize o filtro/aba «Férias a vencer» para localizar rapidamente os colaboradores com período aquisitivo próximo do vencimento.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image2.webp', 'Menu lateral do Sólides — acesso a Férias → Visão Geral.')}
+            <ul>
+              <li>O Dashboard exibirá um resumo das férias dos colaboradores sob sua responsabilidade.</li>
+            </ul>
+          `},
+          { numero: 2, titulo: 'Iniciar a Programação das Férias', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>No canto superior direito, clique em <strong>+ Programar Férias</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image3.webp', 'Botão + Programar Férias no Dashboard.')}
+            <ul>
+              <li>Use os filtros «Colaborador», «Filial» ou «Local de Trabalho» para localizar o colaborador desejado.</li>
+              <li>Clique em <strong>Programar</strong> ao lado do nome do colaborador.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image4.webp', 'Tela de programação com filtro de colaborador e botão Programar.')}
+          `},
+          { numero: 3, titulo: 'Preencher os Dados da Solicitação', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Na tela de solicitação, preencha os campos obrigatórios:
+                <ul>
+                  <li>«Período trabalhado»: selecione o intervalo que origina o direito às férias.</li>
+                  <li>«Data de início»: informe o primeiro dia de férias do colaborador.</li>
+                  <li>«Quantidade de dias»: informe o total de dias de férias.</li>
+                </ul>
+              </li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image5.webp', 'Tela Nova Solicitação com os campos de período, data e quantidade de dias.')}
+            <ul>
+              <li>Caso o colaborador queira vender parte das férias, marque <strong>☑ Vender alguns dias?</strong> e preencha:
+                <ul>
+                  <li>«Número de dias a serem vendidos»: limite de até 10 dias.</li>
+                  <li>Selecione se a venda será no <strong>início</strong> ou no <strong>final</strong> do período.</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="caixa caixa-exemplo"><span class="caixa-icone">Ex</span><span>Solicitação original: 30 dias de férias. Dias vendidos: 10 dias ao final do período. Nesse caso: o colaborador gozará 20 dias de férias; as férias iniciarão na data solicitada; o retorno ao trabalho ocorrerá 10 dias antes do fim do período originalmente previsto.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A venda de férias está limitada a 1/3 do total de dias (máximo de 10 dias). A posição da venda (início ou final) altera diretamente a data de afastamento e retorno — preencha com atenção.</span></div>
+            <ul><li>Clique em <strong>+ Programar</strong> para concluir a solicitação.</li></ul>
+          `},
+          { numero: 4, titulo: 'Aprovação da Solicitação', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Acesse o <strong>Sólides</strong> e navegue até <strong>Férias → Visão Geral</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image6.webp', 'Submenu Férias — Visão Geral, Afastamento e Configurações.')}
+            <ul>
+              <li>No Dashboard, clique na aba <strong>Pendentes</strong> na parte superior da tela.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image7.webp', 'Aba Pendentes na tela de Visão Geral de Férias.')}
+            <ul>
+              <li>Localize a solicitação enviada pela filial, revise os dados e aprove.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Verifique se o período trabalhado, a data de início e a quantidade de dias estão corretos antes de aprovar. Uma aprovação incorreta exige cancelamento e reenvio pela filial.</span></div>
+          `},
+          { numero: 5, titulo: 'Solicitar o Cálculo de Férias no Portal Onvio', responsavel: 'Assistente Administrativo', html: `
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Este passo deve ser feito depois do Passo 4 (solicitação lançada no Sólides), mas não é necessário aguardar a aprovação dessa solicitação para iniciar a solicitação no Onvio.</span></div>
+            <ul>
+              <li>Após lançar a solicitação no Sólides (Passo 4), acesse também o <strong>Portal Cliente da Onvio</strong> — sistema utilizado pela Contabilidade para apurar oficialmente os valores devidos ao colaborador — e registre o pedido de cálculo de férias correspondente.</li>
+              <li>Acesse o portal utilizando as credenciais cadastradas para a sua unidade.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image9.webp', 'Tela inicial do Portal do Cliente Onvio.')}
+            <ul>
+              <li>Informe seu «E-mail» e, em seguida, sua «Senha» para concluir o login na plataforma.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image10.webp', 'Campo de E-mail para login no Portal do Cliente.')}
+            ${imgGuia('assets/guias/ferias/image11.webp', 'Campo de Senha para login no Portal do Cliente.')}
+            <ul>
+              <li>Clique na aba <strong>Portal do Cliente</strong> para acessar o ambiente de solicitações.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image12.webp', 'Abas do portal — Início, Documentos e Portal do Cliente.')}
+            <ul>
+              <li>Selecione o ícone <strong>Cálculo de Férias</strong> no menu principal do portal.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image13.webp', 'Cartões do Portal do Cliente, incluindo o ícone Cálculo de Férias.')}
+            <ul>
+              <li>Clique em <strong>+ Adicionar</strong> para abrir uma nova solicitação de cálculo.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image14.webp', 'Barra de ações da tela Solicitações de Cálculo de Férias, com o botão Adicionar.')}
+            <ul>
+              <li>Selecione, no campo «Empregado», o colaborador desejado e preencha as informações solicitadas na tela:
+                <ul>
+                  <li>«Data de início de gozo»: informe a data em que as férias terão início.</li>
+                  <li>«Dias de gozo»: informe a quantidade de dias de descanso.</li>
+                  <li>«Pagar abono pecuniário»: selecione, se aplicável, caso o colaborador opte por vender parte das férias.</li>
+                  <li>«Adiantar 1ª parcela do 13º»: selecione, se aplicável, caso haja adiantamento do 13º salário.</li>
+                </ul>
+              </li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image15.webp', 'Formulário de nova solicitação — Empregado, datas, dias de gozo e opções de abono/13º.')}
+            <ul>
+              <li>Preencha os campos «Assunto» e «Descrição» conforme o padrão abaixo, garantindo que a Contabilidade identifique rapidamente o colaborador e a natureza da solicitação.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image16.webp', 'Campos Assunto e Descrição da solicitação.')}
+            <div class="caixa caixa-exemplo"><span class="caixa-icone">Ex</span><span>Assunto: nome completo do colaborador. Descrição: "Solicito o cálculo de férias do funcionário «Nome completo do colaborador»".</span></div>
+            <ul>
+              <li>No canto superior direito, clique em <strong>Adicionar</strong> para confirmar o envio. Antes de concluir, revise novamente todas as informações preenchidas.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image17.webp', 'Botões Adicionar e Cancelar para confirmar o envio.')}
+            ${imgGuia('assets/guias/ferias/image18.webp', 'Tela de Solicitações de Cálculo de Férias após o envio.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Caso ocorra qualquer mudança no cronograma já enviado, entre em contato com o Departamento Pessoal central e solicite o cancelamento da solicitação. Após o cancelamento, ajuste a programação tanto no Sólides quanto na solicitação da Onvio.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O cadastro no Onvio é feito por unidade, e o acesso à plataforma é restrito ao administrativo responsável pelo contrato daquela unidade.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Envie a solicitação de cálculo com, no mínimo, 10 dias de antecedência do vencimento das férias, garantindo tempo hábil para o Financeiro processar o pagamento.</span></div>
+          `},
+          { numero: 6, titulo: 'Programar as Férias Anualmente', responsavel: 'Gerente Operacional / Assistente Administrativo', html: `
+            <ul>
+              <li>Realize a programação anual das férias em alinhamento entre o Gerente Operacional e o Assistente Administrativo responsável pela unidade, definindo em conjunto as datas de toda a equipe uma vez por ano, obrigatoriamente durante a primeira quinzena de janeiro.</li>
+              <li>Até o <strong>dia 15 de janeiro</strong>, encaminhe a planilha de programação ao Departamento Pessoal, pelo e-mail <strong>dp01@gestamg.com.br</strong>, para acompanhamento.</li>
+              <li>Registre a mesma programação, no mesmo momento, no Sólides e na Onvio, evitando divergência de datas entre os dois sistemas.</li>
+              <li>A cada bimestre, revise junto às áreas envolvidas se a programação permanece válida, verificando possíveis desligamentos, alterações de data ou afastamentos do colaborador que exijam ajuste no cronograma.</li>
+            </ul>
+          `},
+          { numero: 7, titulo: 'Solicitar o Remanejamento de Férias', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Solicite qualquer remanejamento de férias com, no mínimo, <strong>30 dias</strong> de antecedência, evitando impacto nos fluxos das demais áreas envolvidas.</li>
+              <li>Atualize a nova data no Sólides e na Onvio.</li>
+              <li>Justifique o motivo do remanejamento por e-mail ao Departamento Pessoal.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Por determinação legal, as férias podem ser fracionadas em até três períodos, desde que um deles tenha, no mínimo, 14 dias corridos e os demais, no mínimo, 5 dias cada. Além disso, as férias não podem iniciar às sextas-feiras nem nos dois dias que antecedem feriado ou DSR — a única exceção é iniciar na quinta-feira, desde que sexta-feira e sábado não sejam feriados.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O Gerente Operacional deve monitorar o vencimento do período aquisitivo de cada colaborador para evitar férias em dobro, situação que gera penalidade financeira para a empresa.</span></div>
+          `},
+          { numero: 8, titulo: 'Conferir e Encaminhar as Férias ao Financeiro', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Acompanhe todas as solicitações e requisições de férias recebidas, avaliando se as informações estão de acordo com o que foi programado.</li>
+              <li>Confira valores, datas e demais dados antes de enviar as informações à Contabilidade e ao Financeiro, apontando e corrigindo qualquer inconsistência encontrada.</li>
+              <li>Encaminhe as férias ao Financeiro por e-mail, sinalizando claramente qualquer particularidade que impacte o pagamento — como desconto de pensão alimentícia.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Quando houver desconto de pensão alimentícia, destaque essa informação no corpo do e-mail ao Financeiro, em negrito, na cor vermelha, com os dizeres: "FÉRIAS DO COLABORADOR [NOME] COM DESCONTO DE PENSÃO ALIMENTÍCIA."</span></div>
+          `},
+          { numero: 9, titulo: 'Conferir a Solicitação no Domínio Web', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Acesse o portal do Domínio Web pelo link <strong>www.dominioweb.com.br</strong>, e clique em Entrar.</li>
+              <li>Faça login com seu e-mail e senha de acesso.</li>
+              <li>Acesse o módulo Folha e, caso solicitado, informe usuário e senha adicionais no campo «Conectar em: Contábil».</li>
+              <li>Selecione a empresa e o período (competência) que deseja conferir.</li>
+              <li>Acesse a tela de solicitações, pelo ícone identificado na barra superior, para verificar se a solicitação de férias está corretamente registrada.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Não está claro, na fonte original, o que exatamente deve ser validado na tela de solicitações do Domínio Web, nem se esta conferência é obrigatória para todo pedido de férias ou apenas para casos específicos — confirmar com quem já executa esse passo e detalhar em versão futura deste guia.</span></div>
+          `},
+        ],
+        ocorrencias: [
+          { titulo: 'Ocorrência 1 — Saldo de Férias com Erro', html: `
+            <p>O saldo de férias é calculado com base na data de admissão e nos eventos de afastamento e gozo registrados. Quando o saldo aparece incorreto, é necessário reprocessar para forçar uma nova contagem.</p>
+            <p class="como">Como resolver:</p>
+            <ul>
+              <li>Acesse <strong>Cadastros gerais → Colaboradores</strong>.</li>
+              <li>Clique no ícone de <strong>edição (lápis)</strong> ao lado do colaborador.</li>
+              <li>Altere a <strong>data de admissão</strong> para o dia anterior à data atual e salve.</li>
+            </ul>
+            ${imgGuia('assets/guias/ferias/image8.webp', 'Campo Data de Admissão em Dados Contratuais do colaborador.')}
+            <div class="caixa caixa-exemplo"><span class="caixa-icone">Ex</span><span>Data de admissão original: 05/05/2025. Altere temporariamente para 04/05/2025 (dia anterior) e salve. Em seguida, retorne para a data original — 05/05/2025 — e salve novamente.</span></div>
+            <ul>
+              <li>Depois, retorne à <strong>data correta original</strong> e salve.</li>
+              <li>Verifique novamente o saldo.</li>
+            </ul>
+          `},
+          { titulo: 'Ocorrência 2 — Programação com Início Retroativo (Colaborador já Iniciou as Férias)', html: `
+            <p>Essa situação ocorre quando o colaborador já iniciou o período de férias antes de a programação ter sido lançada no sistema — por exemplo, em casos de urgência ou atraso no fluxo interno.</p>
+            <p class="como">Como proceder:</p>
+            <ul>
+              <li>Informe o Departamento Pessoal sobre o início retroativo das férias, já que apenas esse setor tem permissão para realizar esse tipo de lançamento no sistema.</li>
+              <li>Aguarde a confirmação do Departamento Pessoal antes de considerar a programação concluída, garantindo que os dados fiquem corretamente registrados.</li>
+            </ul>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+    ],
+  },
+  {
+    categoria: 'Afastamentos',
+    guias: [
+      {
+        id: 'afastamentos',
+        titulo: 'Lançamento de Afastamentos (Atestados)',
+        subtitulo: 'Lançamento de atestados médicos no Sólides e encaminhamento da documentação à Contabilidade, com monitoramento no fechamento da folha.',
+        identificacao: [
+          ['Processo', 'Lançamento de Afastamentos (Atestados)'],
+          ['Responsável principal', 'Auxiliar / Gestor da Unidade'],
+          ['Quem mais participa', 'Departamento Pessoal, Contabilidade (terceirizada)'],
+          ['Quando acontece', 'Conforme ocorrência — sempre que houver atestado médico ou outro afastamento a lançar'],
+          ['Sistemas utilizados', 'Sólides, Onvio (Portal Cliente), Domínio Web'],
+        ],
+        objetivo: 'Este guia orienta o Auxiliar ou Gestor da Unidade no lançamento correto dos afastamentos — principalmente atestados médicos — no Sólides, e no encaminhamento da documentação à Contabilidade, garantindo que o Departamento Pessoal consiga monitorar os casos e evitar erros no cálculo da folha de pagamento.',
+        conceitos: [
+          ['Afastamento', 'Qualquer ausência do colaborador registrada no sistema — atestado médico, licença, cárcere, entre outros. Cada tipo é identificado por um campo específico no lançamento.'],
+          ['Atestado Médico', 'Documento emitido por profissional de saúde que justifica a ausência do colaborador por período determinado.'],
+          ['Apropriação de Horas', 'Tela do Sólides que consolida os lançamentos de afastamento de cada colaborador, usada para conferir se o registro ficou correto.'],
+          ['Relação de Afastamento — Por Período', 'Relatório do Domínio Web usado pelo Analista de DP para acompanhar, no fechamento da folha, os afastamentos lançados no período — incluindo atestados inferiores a 15 dias e colaboradores que permanecem afastados pelo INSS.'],
+          ['INSS (auxílio-doença)', 'A partir de determinado prazo de afastamento contínuo por atestado médico, a responsabilidade pelo pagamento passa a ser do INSS, e não mais da empresa.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou padronizado antes da execução plena da etapa.'],
+        ],
+        quemFazOQue: [
+          ['Auxiliar / Gestor da Unidade', 'Lança o afastamento no Sólides, confere o registro e encaminha o atestado à Contabilidade pelo Onvio.', 'Conforme ocorrência'],
+          ['Departamento Pessoal (Analista de DP)', 'Monitora as solicitações enviadas pelas unidades e o relatório do Domínio Web para conferir os atestados na folha.', 'No fechamento da folha'],
+          ['Contabilidade (terceirizada)', 'Lança o atestado na folha de pagamento a partir da solicitação recebida pelo Onvio.', 'Após o recebimento da solicitação'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Lançar o Afastamento no Sólides', responsavel: 'Auxiliar / Gestor da Unidade', html: `
+            <ul>
+              <li>Acesse o <strong>Sólides</strong> e navegue até <strong>Ponto → Controle de Ponto → Afastamento → Lançamento de afastamento</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image1.webp', 'Tela de Afastamentos no Sólides, com o botão Lançar afastamento.')}
+            <ul>
+              <li>Escolha o funcionário e, no campo «Tipo de afastamento», selecione o tipo correspondente (ex.: atestado médico).</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image2.webp', 'Campos Colaborador, Tipo Afastamento e Motivo eSocial.')}
+            <ul>
+              <li>Observe o tempo de afastamento e lance se foi em horas, dias etc., preenchendo o campo «Quantidade de dias».</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image4.webp', 'Campos Subtipo, Tempo ausente e Data de início.')}
+            <ul>
+              <li>Anexe o arquivo do comprovante de afastamento (atestado médico).</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image5.webp', 'Campo de observação e área para anexar o comprovante.')}
+          `},
+          { numero: 2, titulo: 'Conferir o Lançamento', responsavel: 'Auxiliar / Gestor da Unidade', html: `
+            <ul>
+              <li>Acesse <strong>Ponto → Colaborador → Apropriação de Horas</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image6.webp', 'Tela de Apropriação de Horas dos Colaboradores.')}
+            <ul><li>Localize o funcionário e confirme se o lançamento ficou correto.</li></ul>
+          `},
+          { numero: 3, titulo: 'Encaminhar o Atestado à Contabilidade', responsavel: 'Auxiliar / Gestor da Unidade', html: `
+            <ul>
+              <li>Acesse o <strong>Portal do Cliente</strong> da <strong>Onvio</strong> e navegue até <strong>Solicitação Geral → Adicionar</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image7.webp', 'Cartão Solicitação Geral no Portal do Cliente Onvio.')}
+            <ul>
+              <li>Selecione o departamento <strong>Pessoal</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image8.webp', 'Campo Departamento e início dos campos Assunto/Descrição.')}
+            <ul>
+              <li>Preencha os campos «Assunto» e «Descrição» conforme o padrão: assunto <strong>SEGUE ATESTADOS PARA LANÇAMENTO</strong>; na descrição, <strong>Segue os atestados da semana</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image9.webp', 'Campo Expectativa de conclusão e área para anexar o(s) atestado(s).')}
+            <ul>
+              <li>Anexe o(s) atestado(s) e clique em <strong>Adicionar</strong> para que a solicitação chegue à Contabilidade.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image10.webp', 'Botões Adicionar e Cancelar para confirmar o envio.')}
+          `},
+          { numero: 4, titulo: 'Monitorar os Atestados', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Monitore as solicitações enviadas pelas unidades para conferir os atestados na folha de pagamento.</li>
+              <li>Acesse o <strong>Domínio Web</strong> e navegue até <strong>Relatórios → Gerenciador de Relatórios → Diversos</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image11.webp', 'Menu Relatórios do Domínio Web.')}
+            <ul>
+              <li>Selecione o relatório <strong>Relação de Afastamento — Por Período</strong> e preencha as informações da competência de fechamento da folha.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image12.webp', 'Gerenciador de Relatórios com Relação de Afastamentos — Por Período selecionado.')}
+            <ul>
+              <li>O relatório mostra os funcionários com lançamento de atestado inferior a 15 dias e os que permanecem afastados pelo INSS.</li>
+            </ul>
+            ${imgGuia('assets/guias/afastamentos/image13.webp', 'Resultado do Relatório de Afastamentos.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O fechamento de ponto ocorre do dia 26 ao dia 25 de cada mês, para apuração de horas extras, noturnas, faltas e atestados. O cálculo da folha, porém, é do dia 1 ao dia 30 — confira os dois períodos ao revisar o relatório.</span></div>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Este guia documenta o fluxo de lançamento de atestados médicos, conforme descrito na fonte original. Outros tipos de afastamento (licenças, faltas justificadas etc.) podem ter particularidades próprias ainda não detalhadas — atualizar este guia conforme forem mapeados.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+      {
+        id: 'carcere',
+        titulo: 'Lançamento de Cárcere',
+        subtitulo: 'Registro do afastamento por cárcere no Sólides e encaminhamento da documentação à Contabilidade, evitando pagamento indevido durante a detenção.',
+        identificacao: [
+          ['Processo', 'Lançamento de Cárcere'],
+          ['Responsável principal', 'Assistente Administrativo da Filial'],
+          ['Quem mais participa', 'Departamento Pessoal, Contabilidade (terceirizada)'],
+          ['Quando acontece', 'Conforme ocorrência — quando um colaborador é preso durante o vínculo empregatício'],
+          ['Sistemas utilizados', 'Sólides, Onvio (Portal Cliente), Domínio Web'],
+        ],
+        objetivo: 'Este guia orienta o Assistente Administrativo da filial e o Departamento Pessoal no registro correto do afastamento por cárcere no Sólides e no encaminhamento da documentação à Contabilidade, garantindo que o colaborador não receba pagamento indevido durante o período de detenção.',
+        conceitos: [
+          ['Cárcere', 'Afastamento do colaborador em razão de prisão durante a vigência do contrato de trabalho, registrado no Sólides como tipo de afastamento específico.'],
+          ['Apropriação de Horas', 'Tela do Sólides que consolida os lançamentos de afastamento de cada colaborador, usada para conferir se o registro ficou correto.'],
+          ['Relação de Afastamento — Por Período', 'Relatório do Domínio Web usado pelo Analista de DP para acompanhar, no fechamento da folha, os colaboradores com afastamento lançado, incluindo os casos de cárcere.'],
+          ['Pagamento Indevido', 'Risco de a empresa continuar pagando salário integral a um colaborador afastado sem que o lançamento correto tenha sido feito no sistema.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou padronizado antes da execução plena da etapa.'],
+        ],
+        quemFazOQue: [
+          ['Assistente Administrativo da Filial', 'Toma conhecimento da prisão do colaborador, lança o afastamento no Sólides e encaminha a documentação à Contabilidade pelo Onvio.', 'No momento em que toma conhecimento da ocorrência'],
+          ['Departamento Pessoal (Analista de DP)', 'Monitora o relatório do Domínio Web para acompanhar os colaboradores em cárcere e evitar pagamento indevido.', 'Mensalmente, no fechamento da folha'],
+          ['Contabilidade (terceirizada)', 'Lança o afastamento na folha de pagamento a partir da solicitação recebida pelo Onvio.', 'Após o recebimento da solicitação'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Identificar a Ocorrência e Reunir a Documentação', responsavel: 'Assistente Administrativo da Filial', html: `
+            <ul>
+              <li>Ao tomar conhecimento de que um colaborador está em cárcere, reúna a documentação disponível que comprove a situação.</li>
+              <li>Esse documento que comprova o cárcere do funcionário é uma sentença judicial ou comunicado de prisão. Este documento deverá ser enviado ao DP.</li>
+              <li>Comunique o Departamento Pessoal sobre a ocorrência assim que possível.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Ainda não há um documento padrão definido para comprovar o cárcere perante o DP e a Contabilidade (ex.: boletim de ocorrência, comunicado da família). Até que isso seja padronizado, reúna o que estiver disponível e alinhe com o Departamento Pessoal.</span></div>
+          `},
+          { numero: 2, titulo: 'Lançar o Afastamento no Sólides', responsavel: 'Assistente Administrativo da Filial', html: `
+            <ul>
+              <li>Acesse o <strong>Sólides</strong> e navegue até <strong>Ponto → Afastamento → Lançamento de afastamento</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/carcere/image1.webp', 'Tela de Afastamentos no Sólides, com o botão Lançar afastamento.')}
+            <ul>
+              <li>Selecione o colaborador e, no campo «Tipo de afastamento», selecione <strong>outros motivos de afastamento</strong>.</li>
+              <li>Informe o período do afastamento — dias, ou o tempo já conhecido da detenção.</li>
+              <li>Na opção Motivo eSocial selecione a opção <strong>Cárcere</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/carcere/image4.webp', 'Campos Colaborador, Tipo Afastamento e Motivo eSocial.')}
+            <ul>
+              <li>Anexe o documento comprobatório reunido no Passo 1.</li>
+            </ul>
+            ${imgGuia('assets/guias/carcere/image6.webp', 'Campo de observação e área para anexar o comprovante.')}
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Confirmar o nome exato do tipo de afastamento cadastrado no Sólides para casos de cárcere, caso não seja literalmente "Cárcere".</span></div>
+          `},
+          { numero: 3, titulo: 'Conferir o Lançamento', responsavel: 'Assistente Administrativo da Filial', html: `
+            <ul>
+              <li>Acesse <strong>Ponto → Colaborador → Apropriação de Horas</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/carcere/image7.webp', 'Tela de Apropriação de Horas dos Colaboradores.')}
+            <ul><li>Localize o colaborador e confirme que o lançamento de cárcere aparece corretamente no período informado.</li></ul>
+          `},
+          { numero: 4, titulo: 'Encaminhar a Documentação à Contabilidade', responsavel: 'Assistente Administrativo da Filial', html: `
+            <ul>
+              <li>Acesse o <strong>Portal do Cliente</strong> da <strong>Onvio</strong> e navegue até <strong>Solicitação Geral → Adicionar</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/carcere/image8.webp', 'Cartão Solicitação Geral no Portal do Cliente Onvio.')}
+            <ul><li>Selecione o departamento <strong>Pessoal</strong>.</li></ul>
+            ${imgGuia('assets/guias/carcere/image9.webp', 'Campo Departamento e início dos campos Assunto/Descrição.')}
+            <ul>
+              <li>Preencha os campos «Assunto» e «Descrição» conforme o padrão: assunto <strong>SEGUE CÁRCERE PARA LANÇAMENTO</strong>; na descrição, informe o nome completo do colaborador e o período do afastamento.</li>
+            </ul>
+            ${imgGuia('assets/guias/carcere/image10.webp', 'Campo Expectativa de conclusão e área para anexar o documento comprobatório.')}
+            <ul><li>Anexe o documento comprobatório e clique em <strong>Adicionar</strong> para enviar a solicitação.</li></ul>
+            ${imgGuia('assets/guias/carcere/image11.webp', 'Botões Adicionar e Cancelar para confirmar o envio.')}
+          `},
+          { numero: 5, titulo: 'Monitorar os Casos de Cárcere', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>No fechamento mensal, acesse o <strong>Domínio Web</strong> e navegue até <strong>Relatórios → Gerenciador de Relatórios → Diversos</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/carcere/image12.webp', 'Menu Relatórios do Domínio Web.')}
+            <ul><li>Selecione o relatório <strong>Relação de Afastamento — Por Período</strong> e preencha a competência do fechamento.</li></ul>
+            ${imgGuia('assets/guias/carcere/image13.webp', 'Gerenciador de Relatórios com Relação de Afastamentos — Por Período selecionado.')}
+            <ul><li>Verifique, entre os afastamentos listados, os colaboradores que permanecem em cárcere.</li></ul>
+            ${imgGuia('assets/guias/carcere/image14.webp', 'Relatório de afastamentos mostrando um caso de Cárcere na coluna Motivo do Afastamento.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O acompanhamento mensal é fundamental para evitar pagamento indevido a colaboradores afastados por cárcere. O fechamento de ponto ocorre do dia 26 ao dia 25, mas o cálculo da folha é do dia 1 ao dia 30 — confira os dois períodos ao revisar o relatório.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+    ],
+  },
+  {
+    categoria: 'Rescisão e Desligamento',
+    guias: [
+      {
+        id: 'rescisao-dispensa',
+        titulo: 'Rescisão por Dispensa da Empresa',
+        subtitulo: 'Fluxo completo de desligamento por iniciativa da empresa, da comunicação da dispensa ao pagamento das verbas rescisórias e encerramento dos benefícios.',
+        identificacao: [
+          ['Processo', 'Rescisão por Dispensa da Empresa'],
+          ['Responsável principal', 'Analista de DP'],
+          ['Quem mais participa', 'Assistente Administrativo da filial, Gestor da Área, Contabilidade (terceirizada), Financeiro, TI (Vantec), Clínica de Medicina do Trabalho'],
+          ['Quando acontece', 'Sempre que a empresa decide dispensar um colaborador, com aviso prévio trabalhado ou indenizado'],
+          ['Sistemas utilizados', 'Onvio Portal do Cliente, Sólides, e-mail'],
+          ['Documentos relacionados', 'Termo de Rescisão, Termo de Quitação, Ficha de Registro, Termo de Encerramento do Plano de Saúde Unimed, Requerimento de Seguro-Desemprego, ASO Demissional'],
+        ],
+        objetivo: 'Este guia orienta os Assistentes Administrativos e o Analista de DP na execução completa do processo de rescisão por dispensa da empresa, desde a comunicação da decisão pelo Gestor da Área até o pagamento das verbas rescisórias e o encerramento dos benefícios, garantindo o cumprimento do prazo legal de 10 dias corridos para quitação.',
+        conceitos: [
+          ['Aviso Prévio Trabalhado', 'O colaborador continua trabalhando durante o período de aviso. A contagem do prazo de pagamento das verbas começa no último dia do período de aviso.'],
+          ['Aviso Prévio Indenizado', 'O colaborador é dispensado imediatamente e recebe o valor do aviso em dinheiro. A contagem do prazo de pagamento das verbas começa na data de emissão do aviso no Onvio — não na data em que o colaborador assina.'],
+          ['Onvio Portal do Cliente', 'Plataforma usada para solicitar à Contabilidade terceirizada o aviso prévio de rescisão e, em seguida, o cálculo das verbas rescisórias.'],
+          ['Verbas Rescisórias', 'Valores devidos ao colaborador na rescisão — saldo de salário, férias, 13º proporcional, aviso prévio, entre outros — calculados pela Contabilidade.'],
+          ['ASO Demissional', 'Atestado de Saúde Ocupacional obrigatório no desligamento, realizado pela clínica de medicina do trabalho e enviado à Contabilidade para lançamento no sistema.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['i Exemplo', 'Ilustração prática de uma regra ou cálculo do processo.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou documentado.'],
+        ],
+        quemFazOQue: [
+          ['Gestor da Área', 'Comunica ao Assistente Administrativo o motivo da dispensa e o tipo de aviso prévio (trabalhado ou indenizado).', 'No momento da decisão de dispensa.'],
+          ['Assistente Administrativo da Filial', 'Solicita o aviso prévio no Onvio, fecha o ponto no Sólides, recolhe os itens da empresa e agenda o exame demissional e a assinatura da documentação.', 'Da comunicação da dispensa até a assinatura da documentação.'],
+          ['Analista de DP', 'Acompanha o cálculo das verbas junto à Contabilidade, envia a documentação para assinatura, verifica e encerra os benefícios e encaminha ao Financeiro.', 'Durante todo o processo, a partir da abertura da solicitação.'],
+          ['Contabilidade (terceirizada)', 'Responde a solicitação do aviso prévio e elabora o cálculo das verbas rescisórias.', 'Em até 1 dia (aviso) e até 48 horas (cálculo) após cada solicitação.'],
+          ['Financeiro', 'Realiza o pagamento das verbas rescisórias.', 'Após receber a documentação do Analista de DP, respeitando o prazo de 10 dias corridos.'],
+          ['TI (Vantec)', 'Encerra os acessos do colaborador a sistemas e plataformas.', 'Após a solicitação da unidade.'],
+          ['Clínica de Medicina do Trabalho', 'Realiza o exame demissional (ASO Demissional).', 'Conforme agendamento feito pela unidade.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Comunicar a Decisão de Dispensa', responsavel: 'Gestor da Área', html: `
+            <ul><li>Comunique ao <strong>Assistente Administrativo</strong> o motivo da dispensa e o tipo de aviso prévio: <strong>trabalhado</strong> ou <strong>indenizado</strong>.</li></ul>
+          `},
+          { numero: 2, titulo: 'Solicitar o Aviso Prévio no Onvio', responsavel: 'Assistente Administrativo', html: `
+            <ul><li>Acesse <strong>Onvio Portal do Cliente</strong> e navegue até <strong>Aviso Prévio de Rescisão → Adicionar</strong>.</li></ul>
+            ${imgGuia('assets/guias/rescisao-dispensa/image1.webp', 'Cartão Aviso Prévio de Rescisão no Portal do Cliente Onvio.')}
+            <ul><li>Selecione o colaborador e informe o motivo da rescisão e a data do aviso.</li></ul>
+            ${imgGuia('assets/guias/rescisao-dispensa/image2.webp', 'Tela de Solicitações de Aviso Prévio de Rescisão, com o botão Adicionar.')}
+            ${imgGuia('assets/guias/rescisao-dispensa/image4.webp', 'Formulário — Empregado, Motivo de rescisão, Concedido por e Data do aviso.')}
+            <ul>
+              <li>No campo «Assunto», escreva: <strong>"DEMISSÃO DO FUNCIONÁRIO [nome]"</strong>.</li>
+              <li>No campo «Descrição», escreva: <strong>"SOLICITO O AVISO DO FUNCIONÁRIO [nome]"</strong>.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A data do aviso — e não a data em que o colaborador assina — determina a contagem do prazo de pagamento das verbas. No aviso indenizado, a contagem começa na data de emissão do aviso; no aviso trabalhado, começa no último dia do período de aviso.</span></div>
+            <div class="caixa caixa-exemplo"><span class="caixa-icone">i</span><span>Se o aviso indenizado foi emitido no dia 07 e o colaborador assinou apenas no dia 08, a contagem do prazo começa no dia 07 — a data de assinatura não altera o prazo.</span></div>
+          `},
+          { numero: 3, titulo: 'Baixar o Aviso Respondido pela Contabilidade', responsavel: 'Assistente Administrativo', html: `
+            <ul><li>Assim que o status da solicitação mudar para <strong>Respondido</strong>, clique nela e acesse <strong>Trâmites</strong>.</li></ul>
+            ${imgGuia('assets/guias/rescisao-dispensa/image5.webp', 'Status Respondido de uma solicitação.')}
+            <ul><li>Baixe o arquivo do aviso prévio disponibilizado pela Contabilidade.</li></ul>
+            ${imgGuia('assets/guias/rescisao-dispensa/image6.webp', 'Aba Trâmites com os arquivos enviados pela Contabilidade.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A resposta da Contabilidade ao aviso prévio deve ocorrer dentro do mesmo dia da solicitação.</span></div>
+          `},
+          { numero: 4, titulo: 'Colher a Assinatura do Aviso e Fechar o Ponto', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Colha a assinatura do colaborador no aviso baixado.</li>
+              <li>No <strong>Sólides</strong>, acesse <strong>Ponto → Relatório de Ponto → Folha de Ponto</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/rescisao-dispensa/image7.webp', 'Tela de geração da Folha de Ponto no Sólides.')}
+            <ul>
+              <li>Preencha os dados do colaborador e da filial, e o período de conferência — a data final deve ser igual à <strong>data de demissão</strong>.</li>
+              <li>Sempre que possível, colha também a assinatura do ponto no mesmo momento do fechamento.</li>
+            </ul>
+          `},
+          { numero: 5, titulo: 'Enviar o Ponto Fechado à Contabilidade', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Volte ao <strong>Onvio Portal do Cliente</strong> e localize a solicitação do aviso com status <strong>Respondido</strong>.</li>
+              <li>Acesse <strong>Trâmites</strong> e anexe o ponto fechado clicando no ícone de clipe.</li>
+            </ul>
+            ${imgGuia('assets/guias/rescisao-dispensa/image8.webp', 'Campo Descrição, ícone de clipe para anexar e status Aguardando resposta.')}
+            <ul>
+              <li>Altere o status da solicitação para <strong>Aguardando Resposta</strong>.</li>
+              <li>No campo «Descrição», escreva: <strong>"SEGUE O PONTO FECHADO DO FUNCIONÁRIO"</strong>.</li>
+            </ul>
+          `},
+          { numero: 6, titulo: 'Recolher Itens e Agendar o Exame Demissional', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Recolha uniforme, celular/computador, chave de veículo e crachá/EPI do colaborador.</li>
+              <li>Entre em contato com a clínica de medicina do trabalho e agende o exame demissional.</li>
+              <li>Agende dia e horário para o colaborador assinar a documentação rescisória.</li>
+              <li>Solicite ao suporte de TI (<strong>Vantec</strong>) o encerramento dos acessos do colaborador a sistemas e plataformas.</li>
+            </ul>
+          `},
+          { numero: 7, titulo: 'Acompanhar o Cálculo das Verbas Rescisórias', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Acompanhe junto à Contabilidade a elaboração do cálculo das verbas rescisórias, que deve retornar em até <strong>48 horas</strong>.</li>
+              <li>Confira os cálculos recebidos e encaminhe a documentação ao Financeiro pelo e-mail <strong>fin01@gestamg.com.br</strong>, para pagamento.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A empresa tem 10 dias corridos, a partir da data de referência do aviso, para quitar as verbas rescisórias. O envio da documentação ao Financeiro deve ocorrer com, no mínimo, 2 dias úteis de antecedência da data de vencimento.</span></div>
+          `},
+          { numero: 8, titulo: 'Enviar a Documentação para Assinatura', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Termo de Rescisão</li>
+              <li>Termo de Quitação</li>
+              <li>Ficha de Registro, com a data de saída preenchida</li>
+              <li>Termo de Encerramento do Plano de Saúde Unimed</li>
+              <li>Requerimento de Seguro-Desemprego</li>
+              <li>Reforce a assinatura da Folha de Ponto e do Aviso Prévio, caso ainda não tenham sido assinados.</li>
+            </ul>
+          `},
+          { numero: 9, titulo: 'Encerrar os Benefícios do Colaborador', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Encerre o cadastro do colaborador no <strong>Sólides</strong>.</li>
+              <li>PASI (seguro de vida)</li>
+              <li>Vale-Transporte</li>
+              <li>Alimentação</li>
+              <li>Plano de Saúde Unimed</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Os passos detalhados de encerramento de cada benefício (sistema ou portal usado em cada caso) não estavam documentados na fonte original — confirmar com os respectivos fornecedores/Contabilidade e detalhar em versão futura deste guia.</span></div>
+          `},
+          { numero: 10, titulo: 'Arquivar a Documentação e Enviar o ASO Demissional', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Após a assinatura de toda a documentação, solicite o arquivamento.</li>
+              <li>Envie o ASO Demissional à Contabilidade para lançamento no sistema.</li>
+            </ul>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+      {
+        id: 'rescisao-pedido',
+        titulo: 'Rescisão por Pedido de Demissão',
+        subtitulo: 'Fluxo de desligamento por iniciativa do colaborador, do recebimento do pedido ao pagamento das verbas rescisórias e encerramento dos benefícios.',
+        identificacao: [
+          ['Processo', 'Rescisão por Pedido de Demissão'],
+          ['Responsável principal', 'Analista de DP'],
+          ['Quem mais participa', 'Assistente Administrativo da filial, Contabilidade (terceirizada), Financeiro, TI (Vantec), Clínica de Medicina do Trabalho, Colaborador'],
+          ['Quando acontece', 'Sempre que o colaborador solicita, por iniciativa própria, o encerramento do contrato de trabalho'],
+          ['Sistemas utilizados', 'Onvio Portal do Cliente, Sólides, e-mail'],
+          ['Documentos relacionados', 'Pedido de Demissão (redigido pelo colaborador), Termo de Rescisão, Termo de Quitação, Ficha de Registro, Termo de Encerramento do Plano de Saúde Unimed, ASO Demissional'],
+        ],
+        objetivo: 'Este guia orienta os Assistentes Administrativos e o Analista de DP na execução do processo de rescisão quando a iniciativa é do colaborador (pedido de demissão), desde o recebimento do pedido até o pagamento das verbas rescisórias e o encerramento dos benefícios.',
+        conceitos: [
+          ['Pedido de Demissão', 'Comunicação formal, redigida de próprio punho pelo colaborador, informando sua decisão de encerrar o contrato de trabalho. Modelo de referência disponível no Passo 1 deste guia.'],
+          ['Onvio Portal do Cliente — Cálculo de Rescisão', 'Fluxo específico usado para solicitar à Contabilidade o cálculo das verbas devidas quando não há aviso prévio da empresa, como no pedido de demissão.'],
+          ['Verbas Rescisórias', 'Valores devidos ao colaborador — saldo de salário, férias proporcionais, entre outros — calculados pela Contabilidade a partir da data do pedido de demissão.'],
+          ['ASO Demissional', 'Atestado de Saúde Ocupacional obrigatório no desligamento, enviado à Contabilidade para lançamento no sistema.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou documentado.'],
+        ],
+        quemFazOQue: [
+          ['Colaborador', 'Redige e entrega o pedido de demissão por escrito.', 'No momento da decisão de sair da empresa.'],
+          ['Assistente Administrativo da Filial', 'Confere e fecha o ponto, solicita o cálculo da rescisão no Onvio, recolhe os itens da empresa e agenda o exame demissional e a assinatura da documentação.', 'A partir do recebimento do pedido de demissão.'],
+          ['Analista de DP', 'Acompanha o cálculo das verbas junto à Contabilidade, envia a documentação para assinatura e verifica e encerra os benefícios.', 'Durante todo o processo.'],
+          ['Contabilidade (terceirizada)', 'Elabora o cálculo das verbas rescisórias.', 'Em até 48 horas após a solicitação.'],
+          ['Financeiro', 'Realiza o pagamento das verbas rescisórias.', 'Após receber a documentação, respeitando o prazo de 10 dias corridos.'],
+          ['TI (Vantec)', 'Encerra os acessos do colaborador a sistemas e plataformas.', 'Ao encerrar os benefícios do colaborador.'],
+          ['Clínica de Medicina do Trabalho', 'Realiza o exame demissional.', 'Conforme agendamento feito pela unidade.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Receber o Pedido de Demissão', responsavel: 'Assistente Administrativo', html: `
+            <ul><li>Receba o pedido de demissão redigido de próprio punho pelo colaborador, conforme o modelo de referência abaixo.</li></ul>
+            <div class="objetivo-texto" style="margin-top:10px;">
+              <p style="margin:0 0 8px;"><strong>MODELO DE REFERÊNCIA — PEDIDO DE DEMISSÃO</strong></p>
+              <p style="margin:0 0 8px;"><em>[Cidade - UF], [Dia] de [Mês] de [Ano]</em></p>
+              <p style="margin:0 0 4px;"><em>À [Nome da Empresa]</em></p>
+              <p style="margin:0 0 8px;"><em>A/C [Nome do Gestor ou do setor de Recursos Humanos]</em></p>
+              <p style="margin:0 0 8px;"><em>Prezado(a) Senhor(a),</em></p>
+              <p style="margin:0 0 8px;"><em>Eu, [Seu Nome Completo], portador(a) do CPF nº [Seu CPF], venho por meio desta comunicar formalmente meu pedido de demissão do cargo de [Seu Cargo Atual], ocupado nesta empresa desde [Data de Admissão].</em></p>
+              <p style="margin:0;"><em>Solicito a dispensa do cumprimento do aviso prévio e o encerramento imediato do meu contrato de trabalho a partir desta data.</em></p>
+            </div>
+          `},
+          { numero: 2, titulo: 'Conferir e Fechar o Ponto', responsavel: 'Assistente Administrativo', html: `
+            <ul><li>No <strong>Sólides</strong>, acesse <strong>Ponto → Relatório de Ponto → Folha de Ponto</strong>.</li></ul>
+            ${imgGuia('assets/guias/rescisao-pedido/image1.webp', 'Tela de geração da Folha de Ponto no Sólides.')}
+            <ul>
+              <li>Preencha os dados do colaborador e da filial, e o período de conferência — a data final deve ser igual à <strong>data do pedido de demissão</strong>.</li>
+              <li>Gere o documento do ponto e, sempre que possível, já colha a assinatura do colaborador.</li>
+            </ul>
+          `},
+          { numero: 3, titulo: 'Solicitar o Cálculo da Rescisão no Onvio', responsavel: 'Assistente Administrativo', html: `
+            <ul><li>Acesse <strong>Onvio Portal do Cliente</strong> e navegue até <strong>Cálculo de Rescisão → Adicionar</strong>.</li></ul>
+            ${imgGuia('assets/guias/rescisao-pedido/image2.webp', 'Cartão Cálculo de Rescisão no Portal do Cliente Onvio.')}
+            ${imgGuia('assets/guias/rescisao-pedido/image4.webp', 'Tela de Solicitações de Cálculo de Rescisão, com o botão Adicionar.')}
+            <ul><li>Localize o colaborador e preencha o motivo da rescisão.</li></ul>
+            ${imgGuia('assets/guias/rescisao-pedido/image5.webp', 'Formulário — Empregado, Data de demissão, Motivo da rescisão e Tipo do aviso prévio.')}
+            <ul>
+              <li>No campo «Assunto», escreva: <strong>"PEDIDO DE DEMISSÃO [nome do colaborador]"</strong>.</li>
+              <li>No campo «Descrição», escreva: <strong>"SOLICITO O CÁLCULO DO FUNCIONÁRIO [nome do colaborador]"</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/rescisao-pedido/image6.webp', 'Campos Assunto, Descrição e área para anexar arquivos.')}
+            <ul><li>Anexe o ponto fechado e o pedido de demissão, e adicione a solicitação.</li></ul>
+            ${imgGuia('assets/guias/rescisao-pedido/image7.webp', 'Formulário completo com os botões Adicionar e Cancelar.')}
+          `},
+          { numero: 4, titulo: 'Recolher Itens e Agendar o Exame Demissional', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Recolha uniforme, celular/computador, chave de veículo e crachá/EPI do colaborador.</li>
+              <li>Entre em contato com a clínica de medicina do trabalho e agende o exame demissional.</li>
+              <li>Agende dia e horário para o colaborador assinar a documentação rescisória.</li>
+            </ul>
+          `},
+          { numero: 5, titulo: 'Acompanhar o Cálculo das Verbas Rescisórias', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Acompanhe junto à Contabilidade a elaboração do cálculo, que deve retornar em até <strong>48 horas</strong>.</li>
+              <li>Confira os cálculos recebidos e encaminhe a documentação ao Financeiro pelo e-mail <strong>fin01@gestamg.com.br</strong>, para pagamento.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A empresa tem 10 dias corridos, a partir da data do pedido de demissão, para quitar as verbas rescisórias. O envio da documentação ao Financeiro deve ocorrer com, no mínimo, 2 dias úteis de antecedência da data de vencimento.</span></div>
+          `},
+          { numero: 6, titulo: 'Enviar a Documentação para Assinatura', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Termo de Rescisão</li>
+              <li>Termo de Quitação</li>
+              <li>Ficha de Registro, com a data de saída preenchida</li>
+              <li>Termo de Encerramento do Plano de Saúde Unimed</li>
+            </ul>
+          `},
+          { numero: 7, titulo: 'Encerrar os Benefícios do Colaborador', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Encerre o cadastro do colaborador no <strong>Sólides</strong>.</li>
+              <li>PASI (seguro de vida)</li>
+              <li>Vale-Transporte</li>
+              <li>Alimentação</li>
+              <li>Plano de Saúde Unimed</li>
+              <li>Solicite ao suporte de TI (<strong>Vantec</strong>) o encerramento dos acessos do colaborador a sistemas e plataformas.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Os passos detalhados de encerramento de cada benefício (sistema ou portal usado em cada caso) não estavam documentados na fonte original — confirmar com os respectivos fornecedores/Contabilidade e detalhar em versão futura deste guia.</span></div>
+          `},
+          { numero: 8, titulo: 'Arquivar a Documentação e Enviar o ASO Demissional', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Após a assinatura de toda a documentação, solicite o arquivamento.</li>
+              <li>Envie o ASO Demissional à Contabilidade para lançamento no sistema.</li>
+            </ul>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+    ],
+  },
+  {
+    categoria: 'Segurança e Conduta',
+    guias: [
+      {
+        id: 'bafometro',
+        titulo: 'Teste de Bafômetro em Motoristas',
+        subtitulo: 'Sorteio semanal, aplicação do teste, registro fotográfico e arquivamento das evidências, com o fluxo para casos de resultado positivo ou recusa.',
+        identificacao: [
+          ['Processo', 'Teste de Bafômetro em Motoristas'],
+          ['Responsável principal', 'Departamento Pessoal'],
+          ['Quem mais participa', 'Assistentes Administrativos, Segurança do Trabalho, Setor Jurídico'],
+          ['Quando acontece', 'Três vezes por semana, em cada filial'],
+          ['Sistemas utilizados', 'Sorteio_Bafometro.html, OneDrive, WhatsApp (grupo exclusivo por filial)'],
+          ['Documentos relacionados', 'Política Interna de Bafômetro, Ficha de Registro, Termo de Ciência'],
+        ],
+        objetivo: 'Este guia orienta todos os envolvidos na execução correta e padronizada do programa de teste de bafômetro em motoristas, desde o sorteio semanal realizado pelo Departamento Pessoal até o arquivamento das evidências no OneDrive, garantindo rastreabilidade, confidencialidade e conformidade com a Política Interna.',
+        conceitos: [
+          ['Bafômetro', 'Equipamento utilizado para medir a concentração de álcool no ar expirado. O resultado é expresso em mg/L (miligramas por litro de ar).'],
+          ['Sorteio', 'Seleção aleatória dos motoristas realizada pelo Departamento Pessoal via sistema, sem interferência do Assistente Administrativo da filial.'],
+          ['Ficha de Registro', 'Documento preenchido pelo Assistente Administrativo no dia do teste, contendo dados do motorista, resultado e assinaturas.'],
+          ['Evidência Fotográfica', 'Foto da ficha preenchida ao lado do bafômetro, tirada pelo Assistente Administrativo imediatamente após o teste.'],
+          ['Grupo Exclusivo', 'Grupo de WhatsApp criado por filial, exclusivamente para envio das evidências ao Departamento Pessoal.'],
+          ['Escala Progressiva', 'Medidas disciplinares aplicadas em ordem crescente conforme reincidência: advertência, suspensão e justa causa.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema ou de pastas.'],
+          ['📎 Documento', 'Referência a um formulário ou documento de apoio.'],
+          ['🔒 Confidencial', 'Informação ou etapa que exige sigilo obrigatório.'],
+        ],
+        quemFazOQue: [
+          ['Departamento Pessoal', 'Mantém a base de motoristas, realiza o sorteio, comunica às filiais e arquiva todas as evidências no OneDrive.', 'Conforme necessidade'],
+          ['Assistente Administrativo', 'Convoca os motoristas sorteados, aplica o teste, preenche a ficha e envia as evidências ao DP.', 'No dia do teste'],
+          ['Segurança do Trabalho', 'Orienta sobre o uso correto do equipamento e mantém os bafômetros calibrados.', 'Conforme necessidade'],
+          ['Setor Jurídico', 'Assessora em casos de resultado positivo, recusa ou necessidade de ação disciplinar.', 'Em casos de ocorrência'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Atualizar a Base de Motoristas', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Mensalmente, atualize a planilha de motoristas ativos por filial.</li>
+              <li>Inclua novos admitidos e altere o status de demitidos ou afastados para <strong>Inativo/Afastado</strong>.</li>
+              <li>Garanta que apenas motoristas com status <strong>Ativo</strong> participem do sorteio.</li>
+              <li>Salve a planilha atualizada no <strong>OneDrive</strong>, na pasta de controle do programa de bafômetro.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A base desatualizada pode resultar no sorteio de motoristas indisponíveis ou ausentes. A atualização mensal é obrigatória.</span></div>
+          `},
+          { numero: 2, titulo: 'Realizar o Sorteio Semanal', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Abra o sistema de sorteio <strong>Sorteio_Bafometro.html</strong> no navegador.</li>
+              <li>Selecione a «Semana de referência» e a «Filial» desejada.</li>
+              <li>Clique em <strong>Realizar Sorteio</strong> para gerar os 3 motoristas aleatórios por filial.</li>
+              <li>Repita o sorteio para todas as filiais ativas.</li>
+              <li>Clique em <strong>Gerar PDF</strong> e salve o comunicado gerado.</li>
+              <li>Envie o PDF no grupo geral de comunicados, informando a semana de referência.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O sorteio deve ser feito exclusivamente pelo Departamento Pessoal. O Assistente Administrativo da filial não tem nenhuma influência sobre a seleção dos motoristas. Após o sorteio, o responsável pela filial define o melhor dia para aplicação dentro da semana de referência.</span></div>
+          `},
+          { numero: 3, titulo: 'Convocar os Motoristas Sorteados', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Ao receber o comunicado semanal, identifique os 3 motoristas da sua filial.</li>
+              <li>Convoque cada motorista individualmente e de forma discreta, informando o dia e horário do teste.</li>
+              <li>Oriente que o teste deve ser realizado antes do início da jornada de trabalho.</li>
+              <li>Em caso de motorista ausente com justificativa, comunique imediatamente ao Departamento Pessoal.</li>
+            </ul>
+          `},
+          { numero: 4, titulo: 'Aplicar o Teste', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Realize o teste em local reservado, sem a presença de outros colaboradores.</li>
+              <li>Solicite ao motorista que sopre no equipamento conforme instrução do fabricante.</li>
+              <li>Aguarde o resultado aparecer no display do equipamento.</li>
+              <li>Preencha a Ficha de Registro com: filial, nome completo, CPF, data, horário, número de série do equipamento, resultado e medição em mg/L.</li>
+              <li>Solicite a assinatura do motorista na ficha, confirmando sua participação no procedimento.</li>
+              <li>Assine a ficha como aplicador.</li>
+              <li>Em caso de suspeita de embriaguez, o responsável pode aplicar o teste independentemente do sorteio, a qualquer momento durante a jornada. Registre o motivo na ficha.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Em caso de recusa em assinar ou realizar o teste, registre a ocorrência na ficha e comunique imediatamente o Departamento Pessoal.</span></div>
+          `},
+          { numero: 5, titulo: 'Registrar a Evidência Fotográfica', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Após preencher e assinar a ficha, posicione o bafômetro sobre a área pontilhada indicada.</li>
+              <li>Fotografe a ficha junto ao equipamento — resultado visível no display, sem mostrar o rosto do motorista.</li>
+              <li>Envie a foto pelo grupo exclusivo de bafômetro da filial (ex.: «Bafômetro — Filial XXXXX»).</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>É proibido o envio da foto em outros grupos ou canais que não o grupo exclusivo da filial com o Departamento Pessoal.</span></div>
+          `},
+          { numero: 6, titulo: 'Arquivar as Evidências', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Ao receber a foto, salve imediatamente no <strong>OneDrive</strong> seguindo o caminho:
+                <ul><li>DP → BAFÔMETRO → «Nome da Filial» → «Ano» → «Mês» → «Data»</li></ul>
+              </li>
+              <li>Nomeie o arquivo no padrão <strong>AAAA-MM-DD NomeMotorista</strong> (ex.: «2026-05-20 Nome Colaborador»).</li>
+              <li>Confirme o recebimento para o Assistente Administrativo pelo grupo exclusivo.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Todos os resultados devem ser arquivados — negativos, positivos e recusas. A ausência de registros pode comprometer o processo em caso de questionamento trabalhista.</span></div>
+          `},
+        ],
+        ocorrencias: [
+          { titulo: 'Ocorrência 1 — Resultado Positivo ou Recusa', html: `
+            <p>Ocorre quando o resultado do teste indica presença de álcool acima do limite ou quando o motorista se recusa a realizar ou assinar o teste. A recusa equivale disciplinarmente a um resultado positivo.</p>
+            <p class="como">Como proceder:</p>
+            <ul>
+              <li>Acione imediatamente o Gestor da Filial e o Setor Jurídico.</li>
+              <li>Registre a ocorrência formalmente no prontuário do colaborador.</li>
+              <li>Aplique a medida disciplinar conforme a escala progressiva definida na Política Interna:
+                <ul>
+                  <li><strong>1ª ocorrência</strong> → advertência</li>
+                  <li><strong>2ª ocorrência</strong> → suspensão</li>
+                  <li><strong>3ª ocorrência</strong> → justa causa</li>
+                </ul>
+              </li>
+              <li>Encaminhe ao médico do trabalho na 1ª e na 2ª ocorrência.</li>
+              <li>Garanta sigilo absoluto — nenhum colega deve ser informado sobre o resultado.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A recusa ao teste equivale disciplinarmente a resultado positivo, conforme previsto na Política Interna e no Termo de Ciência assinado pelo colaborador.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+    ],
+  },
 ];
 
 // Figura com legenda dentro de um passo — usada pelas capturas de tela
@@ -620,13 +1647,9 @@ function renderIndice() {
   document.getElementById('main').innerHTML = `
     <div class="indice-intro">
       <h2>Guias de Processo</h2>
-      <p>Rotinas operacionais do Departamento Pessoal, documentadas passo a passo. Este é um piloto — apenas o guia de Admissão está disponível por enquanto, pra validar o formato antes de trazer os demais.</p>
+      <p>Rotinas operacionais do Departamento Pessoal, documentadas passo a passo — da admissão ao desligamento.</p>
     </div>
     ${grupos}
-    <div class="categoria-grupo">
-      <p class="categoria-titulo">Em breve</p>
-      <div class="categoria-em-breve">Férias, Controle de Ponto, Afastamentos, Contrato de Experiência, Rescisão e demais guias entram aqui conforme forem migrados.</div>
-    </div>
   `;
 }
 
@@ -651,9 +1674,16 @@ function renderGuia(id) {
     </div>
   `).join('');
 
-  const anexoLinhas = g.anexo.linhas.map(item => `
+  const anexoLinhas = g.anexo ? g.anexo.linhas.map(item => `
     <tr><td>${item}</td><td class="check">☐</td><td class="check">☐</td></tr>
-  `).join('');
+  `).join('') : '';
+
+  const ocorrenciasHtml = g.ocorrencias ? g.ocorrencias.map(o => `
+    <div class="ocorrencia">
+      <div class="ocorrencia-head"><span class="ocorrencia-titulo">${o.titulo}</span></div>
+      <div class="ocorrencia-corpo">${o.html}</div>
+    </div>
+  `).join('') : '';
 
   document.getElementById('main').innerHTML = `
     <button class="guia-voltar" onclick="renderIndice()" type="button">← Voltar aos guias</button>
@@ -694,6 +1724,13 @@ function renderGuia(id) {
       ${passosHtml}
     </div>
 
+    ${g.ocorrencias ? `
+    <div class="secao">
+      <p class="secao-titulo">🔧 Ocorrências e Soluções</p>
+      ${ocorrenciasHtml}
+    </div>
+    ` : ''}
+
     <div class="secao">
       <p class="secao-titulo">❓ Dúvidas ou Problemas?</p>
       <div class="duvidas-card">
@@ -702,6 +1739,7 @@ function renderGuia(id) {
       </div>
     </div>
 
+    ${g.anexo ? `
     <div class="secao">
       <p class="secao-titulo">📎 ${g.anexo.titulo}</p>
       <div class="anexo-card">
@@ -712,6 +1750,7 @@ function renderGuia(id) {
         </table>
       </div>
     </div>
+    ` : ''}
   `;
 
   window.scrollTo(0, 0);
