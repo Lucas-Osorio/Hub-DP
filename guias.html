@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materiais de Apoio · Guias de Processo — GestaMG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul-escuro:#0F4083;
+    --azul-escuro-2:#0A2E5C;
+    --azul-medio:#2E75B6;
+    --azul-claro:#EBF4FD;
+    --azul-borda:#9CC2EC;
+    --amarelo:#F4B942;
+    --amarelo-bg:#FEF3E2;
+    --amarelo-borda:#F5CD8A;
+    --amarelo-texto:#8A5A00;
+    --vermelho:#A32D2D;
+    --vermelho-bg:#FCEBEB;
+    --vermelho-borda:#F0A5A5;
+    --verde:#3B6D11;
+    --verde-bg:#EAF3DE;
+    --verde-borda:#B9D89A;
+    --cinza-50:#F9F8F6;
+    --cinza-100:#F1EFEA;
+    --cinza-200:#E3E0D8;
+    --cinza-400:#9B9990;
+    --cinza-600:#5F5E5A;
+    --cinza-900:#1E1E1C;
+    --texto:#26282D;
+    --texto-suave:#6B6A65;
+    --borda:#E3E0D8;
+    --bg:#F1EFEA;
+    --raio:12px;
+    --raio-sm:8px;
+    --sombra-sm:0 1px 3px rgba(30,30,28,.07);
+    --sombra-md:0 3px 12px rgba(15,64,131,.10);
+    --sombra-lg:0 10px 30px rgba(15,64,131,.16);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Manrope','Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--texto);-webkit-font-smoothing:antialiased;}
+
+  header{
+    min-height:68px;
+    padding:0 clamp(24px,4vw,48px);
+    display:flex;align-items:center;gap:12px;
+    background:#fff;color:var(--azul-escuro-2);
+    border-bottom:1px solid var(--cinza-200);
+    box-shadow:0 1px 2px rgba(30,30,28,.04);
+    position:relative;
+  }
+  header h1{
+    margin:0;
+    font-family:'Manrope','Segoe UI',Arial,sans-serif;
+    font-size:18px;font-weight:700;line-height:1.25;
+    letter-spacing:-.015em;text-transform:none;color:var(--azul-escuro-2);
+  }
+  header .sub{font-size:12.5px;color:var(--texto-suave);font-weight:600;}
+  #busca-wrap{margin-left:auto;position:relative;display:none;}
+  #busca-wrap.ativo{display:block;}
+  #busca{
+    width:260px;padding:8px 12px 8px 34px;border-radius:var(--raio-sm);
+    border:1.5px solid var(--borda);font-family:inherit;font-size:13px;
+    background:var(--cinza-50) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%236B6A65" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>') no-repeat 10px center;
+  }
+  #busca:focus{outline:none;border-color:var(--azul-medio);background-color:#fff;}
+
+  main{max-width:980px;margin:0 auto;padding:26px clamp(16px,4vw,48px) 100px;}
+
+  /* ===== Índice de guias ===== */
+  .indice-intro{margin:0 0 22px;}
+  .indice-intro h2{margin:0 0 6px;font-size:20px;font-weight:800;color:var(--azul-escuro-2);}
+  .indice-intro p{margin:0;font-size:13.5px;color:var(--texto-suave);line-height:1.55;max-width:620px;}
+
+  .categoria-grupo{margin:0 0 28px;}
+  .categoria-titulo{
+    font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--azul-medio);margin:0 0 10px;
+  }
+  .guia-lista{display:flex;flex-direction:column;gap:10px;}
+  .guia-card{
+    display:flex;align-items:center;gap:14px;
+    background:#fff;border:1px solid var(--borda);border-radius:var(--raio);
+    padding:16px 18px;box-shadow:var(--sombra-sm);
+    cursor:pointer;text-align:left;font-family:inherit;
+    transition:box-shadow .15s ease,border-color .15s ease,transform .1s ease;
+  }
+  .guia-card:hover{box-shadow:var(--sombra-md);border-color:var(--azul-borda);}
+  .guia-card:active{transform:scale(.997);}
+  .guia-card-icon{
+    flex:0 0 auto;width:42px;height:42px;border-radius:10px;
+    background:var(--azul-claro);color:var(--azul-escuro);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .guia-card-corpo{flex:1;min-width:0;}
+  .guia-card-titulo{display:block;font-size:14.5px;font-weight:700;color:var(--texto);margin-bottom:2px;}
+  .guia-card-sub{display:block;font-size:12.5px;color:var(--texto-suave);line-height:1.4;}
+  .guia-card-seta{flex:0 0 auto;color:var(--cinza-400);}
+
+  .categoria-em-breve{
+    background:var(--cinza-50);border:1px dashed var(--borda);border-radius:var(--raio);
+    padding:14px 18px;font-size:12.5px;color:var(--texto-suave);
+  }
+
+  /* ===== Página do guia ===== */
+  .guia-voltar{
+    display:inline-flex;align-items:center;gap:6px;
+    background:none;border:0;color:var(--azul-medio);font-weight:700;font-size:13px;
+    font-family:inherit;cursor:pointer;padding:6px 0;margin-bottom:14px;
+  }
+  .guia-voltar:hover{text-decoration:underline;}
+
+  .guia-header{
+    background:var(--azul-escuro);color:#fff;border-radius:var(--raio);
+    padding:22px 26px;margin-bottom:22px;
+    box-shadow:var(--sombra-md);
+  }
+  .guia-header .tag{
+    display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    background:rgba(255,255,255,.14);padding:3px 9px;border-radius:6px;margin-bottom:9px;
+  }
+  .guia-header h1{margin:0 0 6px;font-size:21px;font-weight:800;letter-spacing:-.01em;}
+  .guia-header p{margin:0;font-size:13px;color:rgba(255,255,255,.82);line-height:1.5;max-width:640px;}
+
+  .secao{margin:0 0 26px;}
+  .secao-titulo{
+    display:flex;align-items:center;gap:8px;
+    font-size:14.5px;font-weight:800;color:var(--azul-escuro-2);
+    margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--azul-claro);
+  }
+
+  table.tabela-guia{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border-radius:var(--raio-sm);overflow:hidden;box-shadow:var(--sombra-sm);}
+  table.tabela-guia th{
+    background:var(--azul-escuro);color:#fff;text-align:left;
+    font-size:11px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;
+    padding:9px 12px;
+  }
+  table.tabela-guia td{padding:9px 12px;border-top:1px solid var(--cinza-100);vertical-align:top;line-height:1.5;}
+  table.tabela-guia tr:nth-child(even) td{background:var(--cinza-50);}
+  table.tabela-id td.rotulo{width:220px;font-weight:700;color:var(--azul-escuro-2);background:var(--azul-claro)!important;}
+
+  .objetivo-texto{font-size:13.5px;line-height:1.65;color:var(--texto);background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:16px 18px;box-shadow:var(--sombra-sm);}
+
+  .passo{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);margin-bottom:14px;box-shadow:var(--sombra-sm);overflow:hidden;}
+  .passo-head{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--azul-claro);border-bottom:1px solid var(--azul-borda);}
+  .passo-numero{
+    flex:0 0 auto;width:30px;height:30px;border-radius:50%;
+    background:var(--azul-medio);color:#fff;font-weight:800;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .passo-head-texto{flex:1;min-width:0;}
+  .passo-titulo{display:block;font-size:14px;font-weight:800;color:var(--azul-escuro-2);}
+  .passo-responsavel{display:block;font-size:11.5px;font-weight:700;color:var(--azul-medio);margin-top:2px;}
+  .passo-corpo{padding:14px 18px 16px;font-size:13.5px;line-height:1.6;}
+  .passo-corpo ul{margin:0 0 10px;padding-left:20px;}
+  .passo-corpo ul:last-child{margin-bottom:0;}
+  .passo-corpo li{margin-bottom:6px;}
+  .passo-corpo li:last-child{margin-bottom:0;}
+  .passo-corpo ul ul{margin-top:6px;margin-bottom:6px;}
+  .passo-corpo strong{color:var(--texto);}
+
+  .caixa{display:flex;gap:10px;padding:11px 14px;border-radius:var(--raio-sm);margin:10px 0;font-size:12.5px;line-height:1.55;}
+  .caixa-icone{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#fff;}
+  .caixa-atencao{background:var(--amarelo-bg);border:1px solid var(--amarelo-borda);color:var(--amarelo-texto);}
+  .caixa-atencao .caixa-icone{background:var(--amarelo);color:#5C3D00;}
+  .caixa-pendencia{background:var(--vermelho-bg);border:1px solid var(--vermelho-borda);color:#7A2323;}
+  .caixa-pendencia .caixa-icone{background:var(--vermelho);}
+  .caixa em{font-style:italic;}
+
+  .duvidas-card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:16px 18px;box-shadow:var(--sombra-sm);font-size:13.5px;line-height:1.6;}
+  .duvidas-card .contato{margin-top:8px;font-weight:700;color:var(--azul-escuro-2);}
+
+  .anexo-card{background:var(--cinza-50);border:1px dashed var(--azul-borda);border-radius:var(--raio);padding:16px 18px;}
+  .anexo-card h3{margin:0 0 4px;font-size:13.5px;font-weight:800;color:var(--azul-escuro-2);}
+  .anexo-card p.desc{margin:0 0 12px;font-size:12.5px;color:var(--texto-suave);}
+  table.tabela-checklist td.check{text-align:center;width:60px;color:var(--cinza-400);font-size:15px;}
+
+  .sem-resultado{padding:40px 10px;text-align:center;color:var(--texto-suave);font-size:13.5px;}
+
+  @media (max-width:640px){
+    #busca-wrap.ativo{display:none;}
+    table.tabela-id td.rotulo{width:150px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="header-titulo">Materiais de Apoio</h1>
+  <span class="sub" id="header-sub">· Guias de Processo do DP</span>
+  <div id="busca-wrap">
+    <input type="search" id="busca" placeholder="Buscar por processo ou palavra-chave...">
+  </div>
+</header>
+
+<main id="main">
+  <!-- preenchido via JS -->
+</main>
+
+<script>
+// ============================================================
+// GUIAS — cada categoria agrupa um ou mais Guias de Processo.
+// Pra adicionar um novo guia: acrescente um objeto dentro de
+// "guias" (nova categoria) ou dentro de uma categoria existente.
+// Cada guia segue as 8 seções padrão do Guia de Processo Gestamg.
+// ============================================================
+const GUIAS = [
+  {
+    categoria: 'Admissão de Colaboradores',
+    guias: [
+      {
+        id: 'admissao-colaboradores',
+        titulo: 'Admissão de Colaboradores',
+        subtitulo: 'Requisição e admissão de colaboradores — do alinhamento da vaga com o RH até a liberação do colaborador para o trabalho.',
+        identificacao: [
+          ['Processo', 'Requisição e Admissão de Colaboradores'],
+          ['Responsável principal', 'Departamento Pessoal'],
+          ['Quem mais participa', 'Gestor da Área, Diretoria, RH (recrutamento externo), Contabilidade, Financeiro, Assistente Administrativo, Segurança do Trabalho (Suprema), TI'],
+          ['Quando acontece', 'Conforme abertura de vaga — nova posição, substituição ou aumento de quadro'],
+          ['Sistemas utilizados', 'Domínio, Praxio, eSocial, Hub de Ferramentas DP, Sólides Ponto, Sólides Benefícios, Site Turin, Site Odontoprev, Site Unimed, Site Totalpass, OneDrive'],
+          ['Documentos relacionados', 'Requisição de Admissão, Ficha de Admissão, ASO, Termo de Vale-Transporte'],
+        ],
+        objetivo: 'Este guia orienta os setores envolvidos na execução correta e sequencial do processo de requisição e admissão de colaboradores — da abertura da vaga, com o alinhamento ao RH, até a liberação do colaborador para o trabalho. Cobre a aprovação da contratação, o agendamento do exame admissional, o registro no eSocial, a inclusão de benefícios e o cadastro no controle de ponto. O objetivo é garantir conformidade legal, organização documental e uma boa experiência de chegada para o novo colaborador.',
+        conceitos: [
+          ['ASO', 'Atestado de Saúde Ocupacional. Documento emitido pelo médico do trabalho após o exame admissional, atestando que o candidato está apto para exercer a função.'],
+          ['PGR / PCMSO', 'Programas de Segurança e Medicina do Trabalho que definem riscos, exames ocupacionais e EPIs obrigatórios para cada cargo.'],
+          ['eSocial', 'Sistema do Governo Federal para envio unificado de informações trabalhistas e previdenciárias. A admissão deve ser enviada antes do início das atividades do colaborador.'],
+          ['Domínio', 'Sistema de gestão utilizado pelo DP e pela Contabilidade para registro e processamento das informações trabalhistas dos colaboradores.'],
+          ['Centro de Custo', 'Classificação que define se a vaga será alocada na unidade (filial) ou no espaço administrativo da matriz (Gestamg).'],
+          ['Ficha de Admissão', 'Documento padrão preenchido pelo Departamento Pessoal com os dados pessoais, contratuais e funcionais do novo colaborador.'],
+          ['Período de Experiência', 'Primeiros 90 dias do contrato de trabalho, divididos em dois ciclos de 45 dias. Ao final, o gestor deve validar a continuidade ou rescisão do contrato.'],
+          ['Conta Salário', 'Conta bancária aberta exclusivamente para recebimento de salário, sem cobrança de tarifas para o colaborador.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['! Atenção', 'Alerta sobre prazo crítico, risco legal ou configuração obrigatória.'],
+          ['📎 Anexo', 'Referência a documento de apoio disponível na pasta de Anexos.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou padronizado antes da execução plena da etapa.'],
+        ],
+        quemFazOQue: [
+          ['Gestor da Área', 'Solicita a abertura da vaga, alinha o perfil com o RH, aprova a contratação do candidato final e valida a continuidade ou rescisão ao final do período de experiência.', 'Na abertura da vaga, na aprovação da contratação e ao final do período de experiência.'],
+          ['Diretoria', 'Aprova, junto ao Gestor da Área, a abertura da vaga e a contratação do candidato final indicado pelo RH.', 'Na abertura da vaga e na aprovação da contratação.'],
+          ['RH (recrutamento externo)', 'Conduz a divulgação da vaga, a triagem de candidatos e as entrevistas, entregando os candidatos finais aprovados para decisão.', 'Durante a fase de recrutamento e seleção.'],
+          ['Analista de DP / Departamento Pessoal', 'Coordena todo o processo: valida a requisição, os programas de segurança e a infraestrutura, inclui benefícios, conduz a integração e acompanha o período de experiência.', 'Durante todo o processo.'],
+          ['Assistente Administrativo', 'Agenda o exame admissional, tria a documentação, comunica o candidato, recolhe assinaturas e realiza a recepção do novo colaborador.', 'Antes da admissão e na data de admissão.'],
+          ['Contabilidade', 'Registra a admissão no Domínio, gera os documentos admissionais e realiza o envio ao eSocial.', 'De 1 dia antes até a data de admissão.'],
+          ['Financeiro', 'Abre a conta salário do colaborador e encaminha os dados ao DP.', 'Na data de admissão.'],
+          ['Segurança do Trabalho (Suprema)', 'Inclui as informações de admissão no eSocial referentes aos programas legais (PGR, PCMSO e demais).', 'Na data de admissão.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Solicitar a Abertura da Vaga e Alinhar com o RH', responsavel: 'Gestor da Área', html: `
+            <ul>
+              <li>Solicite a abertura da vaga junto ao <strong>Analista de DP</strong>, indicando o motivo: <strong>nova vaga</strong>, <strong>substituição</strong> ou <strong>aumento de quadro</strong>.</li>
+              <li>Defina o <strong>centro de custo</strong> — unidade (filial) ou espaço administrativo da Gestamg — e os benefícios aplicáveis.</li>
+              <li>Alinhe com o <strong>RH</strong> (empresa parceira responsável pelo recrutamento e seleção) o perfil da vaga: cargo, requisitos e características desejadas do candidato.</li>
+              <li>Aguarde a aprovação do Gestor da Área e/ou da Diretoria antes de avançar para as demais etapas.</li>
+              <li>A partir do alinhamento, o <strong>RH</strong> conduz a divulgação, a triagem e as entrevistas, entregando os candidatos finais para decisão.</li>
+              <li>Enquanto o RH conduz a seleção, avance em paralelo com a validação dos programas de segurança (Passo 2) e a organização da infraestrutura (Passo 3) para a função.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>As admissões devem respeitar o período de fechamento da folha. Admita, no máximo, até o dia 20 de cada mês.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Para motoristas e coletores, a vaga costuma ser preenchida por indicação nas próprias filiais — nesses casos, a etapa de alinhamento com o RH normalmente não se aplica.</span></div>
+          `},
+          { numero: 2, titulo: 'Validar os Programas de Segurança do Trabalho', responsavel: 'Analista de DP', html: `
+            <ul>
+              <li>Verifique se o cargo está contemplado nos Programas de Segurança (<strong>PGR</strong>, <strong>PCMSO</strong> e demais programas aplicáveis).</li>
+              <li>Se não estiver, solicite à empresa responsável o prazo para liberação do adendo do programa.</li>
+              <li>Verifique a necessidade de exames ocupacionais específicos para a função.</li>
+              <li>Identifique quais EPIs serão obrigatórios para o cargo.</li>
+              <li>Confirme se há treinamento obrigatório antes do início das atividades.</li>
+              <li>Confirme a necessidade de integração do colaborador após a admissão.</li>
+            </ul>
+          `},
+          { numero: 3, titulo: 'Providenciar Infraestrutura e Recursos', responsavel: 'Analista de DP / Assistente Administrativo', html: `
+            <ul>
+              <li>Verifique a necessidade de disponibilizar, conforme o cargo:
+                <ul>
+                  <li>Mesa e cadeira, computador ou notebook, monitor, telefone ou ramal.</li>
+                  <li>E-mail corporativo e acessos aos sistemas, incluindo <strong>TI Vantec</strong>.</li>
+                  <li>Uniforme e EPIs obrigatórios.</li>
+                  <li>Materiais de escritório (canetas, caderno, grampeador etc.) e equipamentos específicos do cargo.</li>
+                </ul>
+              </li>
+            </ul>
+          `},
+          { numero: 4, titulo: 'Aprovar a Contratação', responsavel: 'Gestor da Área / Diretoria', html: `
+            <ul>
+              <li>Confirme que o <strong>RH</strong> apresentou o candidato final aprovado para a vaga.</li>
+              <li>Confirme que todas as validações anteriores — segurança do trabalho e infraestrutura — foram concluídas.</li>
+              <li>Confirme que todos os recursos necessários estarão disponíveis na data de início do colaborador.</li>
+              <li>Autorize formalmente o início do processo de admissão.</li>
+            </ul>
+          `},
+          { numero: 5, titulo: 'Liberar para Admissão', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Confirme a conclusão das seguintes condições antes de encerrar a requisição:
+                <ul>
+                  <li>Candidato final aprovado pelo Gestor da Área e/ou Diretoria.</li>
+                  <li>Documentação do candidato solicitada.</li>
+                  <li>Exame admissional agendado e data de admissão confirmada.</li>
+                </ul>
+              </li>
+              <li>Consulte o checklist completo no <strong>Anexo A</strong>, ao final deste guia, para conferir todos os itens antes de liberar a admissão.</li>
+              <li>Encerre a requisição e libere-a para contratação, dando início ao fluxo de admissão a partir do Passo 6.</li>
+            </ul>
+          `},
+          { numero: 6, titulo: 'Agendar o Exame Admissional', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Após o encerramento da requisição e a aprovação do candidato, agende o exame admissional com a clínica parceira, confirmando data, horário e local.</li>
+              <li>Comunique ao candidato a data, o horário e o local do exame, informando eventual preparo necessário.</li>
+              <li>Pergunte se o colaborador precisará de <strong>Vale-Transporte</strong> e comunique por e-mail ao Analista de DP (dp01@gestamg.co.br).</li>
+              <li>Solicite ao candidato a documentação necessária para a admissão.</li>
+              <li>Após o exame, encaminhe ao Departamento Pessoal por e-mail:
+                <ul>
+                  <li>O <strong>ASO</strong> com o resultado do exame.</li>
+                  <li>As informações de pagamento do exame (boleto, extrato mensal, TED ou outro formato, conforme a clínica e a filial).</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O pagamento do exame varia conforme a cidade e a filial — cobrança avulsa ou mensal, por boleto ou TED. Encaminhe as informações de pagamento ao DP assim que disponíveis, mesmo em data diferente do ASO.</span></div>
+          `},
+          { numero: 7, titulo: 'Triar e Direcionar os Documentos', responsavel: 'Assistente Administrativo', html: `
+            <ul>
+              <li>Ao receber os documentos do novo colaborador, confira se o e-mail contém:
+                <ul>
+                  <li>A <strong>Ficha de Admissão</strong> devidamente preenchida.</li>
+                  <li>O <strong>ASO</strong> com resultado <strong>Apto</strong>.</li>
+                  <li>Informações complementares: e-mail pessoal, contato, cargo, salário, data de admissão e unidade de atuação.</li>
+                </ul>
+              </li>
+              <li>Verifique a documentação pessoal obrigatória do colaborador:
+                <ul>
+                  <li>RG, CPF, comprovante de residência atualizado, título de eleitor e certidão de casamento (quando aplicável).</li>
+                  <li>Certificado de reservista (homens) e CNH, caso o cargo exija conduzir veículos.</li>
+                  <li>Dados bancários — cópia do cartão, caso seja Banco do Brasil — e número do PIS/PASEP/NIT.</li>
+                  <li>Carteira de vacinação (obrigatória para coletores) e foto 3x4.</li>
+                  <li>Em caso de filhos: CPF dos dependentes, carteira de vacinação dos filhos menores e comprovante escolar.</li>
+                  <li>Preencher com o e-mail e contato pessoal do funcionário.</li>
+                </ul>
+              </li>
+              <li>Com os documentos confirmados, abra a solicitação no portal do cliente solicitando a admissão.</li>
+              <li>Envie a solicitação à Contabilidade com, no mínimo, <strong>48 horas de antecedência</strong> da data de admissão do colaborador.</li>
+              <li>Verifique o documento de cobrança do exame (boleto, extrato ou comprovante de TED) e encaminhe ao Financeiro para quitação.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Não encaminhe a documentação para a Contabilidade sem certificar que todos os itens estão presentes. Documentos incompletos atrasam a admissão.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Prazo: o envio da documentação completa para a Contabilidade deve ocorrer com, no mínimo, 48 horas de antecedência da data de admissão do colaborador. Esse prazo é necessário para que a Contabilidade consiga registrar a admissão e enviar ao eSocial a tempo.</span></div>
+          `},
+          { numero: 8, titulo: 'Registrar a Admissão no Sistema e Enviar ao eSocial', responsavel: 'Administrativo / Contabilidade / Analista de DP', html: `
+            <ul>
+              <li>Acesse o portal do cliente e navegue até <strong>Cadastro Empregado → Adicionar</strong>, seguindo o passo a passo da admissão.</li>
+              <li>Preencha o cadastro do funcionário com letras maiúsculas e sem acento e cedilha (ç).</li>
+              <li>Não esqueça de preencher o e-mail e telefone do funcionário no cadastro. Caso tenha dúvidas de como preencher, informe esses dados na descrição da solicitação.</li>
+              <li>Ao final, anexe a documentação recebida e clique em <strong>Salvar e Enviar para o Escritório</strong>.</li>
+              <li>Acompanhe a solicitação e a liberação dos documentos junto ao Analista de DP, que deverá assinar os documentos com o certificado da empresa.</li>
+              <li>Garanta que a liberação e os documentos admissionais sejam devolvidos ao Departamento Pessoal com, no mínimo, <strong>24 horas de antecedência</strong> da data de admissão.</li>
+              <li>Gere os documentos admissionais que necessitam de assinatura do colaborador.</li>
+              <li>Salve os documentos no <strong>OneDrive</strong>, na pasta da unidade correspondente, nomeando a subpasta com o nome do colaborador:
+                <ul>
+                  <li>DP → DEPARTAMENTO PESSOAL → ADMISSÃO → «Filial» → «Nome do Colaborador»</li>
+                </ul>
+              </li>
+              <li>Envie os documentos por e-mail aos Assistentes Administrativos e ao DP, solicitando a coleta de assinaturas e a devolução ao DP.</li>
+              <li>No assunto do e-mail, utilize <strong>SEGUE ADMISSÃO DO FUNCIONÁRIO...</strong>; no corpo, oriente sobre as assinaturas e peça a confirmação do registro do ponto.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: padronizar quais documentos devem constar no e-mail de encaminhamento para assinatura (ex.: Contrato de Trabalho, Ficha de Admissão, Termo de Vale-Transporte).</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O registro no Domínio deve ser concluído até 1 dia antes da admissão. O envio ao eSocial deve ocorrer até o final do expediente da data de admissão. O DP cobra o retorno dos documentos assinados.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Prazo: a Contabilidade deve devolver a admissão processada — liberação e documentos — ao Departamento Pessoal com, no mínimo, 24 horas de antecedência da data de admissão, garantindo tempo hábil para a coleta de assinaturas antes do primeiro dia do colaborador.</span></div>
+          `},
+          { numero: 9, titulo: 'Enviar a Ficha de Registro à Segurança do Trabalho', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Envie o relatório de admitidos com nome completo, data de nascimento, CPF e matrícula.</li>
+              <li>Envie a ficha de registro do novo colaborador à equipe de Segurança do Trabalho (<strong>Suprema</strong>), responsável pelos programas legais, para inclusão das informações no eSocial.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: confirmar e documentar o canal oficial de envio das informações à Suprema (grupo de WhatsApp correto ou outro canal formal).</span></div>
+          `},
+          { numero: 10, titulo: 'Integrar e Recepcionar o Novo Colaborador', responsavel: 'Departamento Pessoal / Assistente Administrativo', html: `
+            <ul>
+              <li>Confeccione o card de boas-vindas no <strong>Canva</strong> — modelo disponível no Drive, na pasta Identidade Visual.</li>
+              <li>Envie o card ao Assistente Administrativo da unidade até um dia antes da admissão.</li>
+              <li>Envie o card apenas ao responsável pela filial — Assistente Administrativo nas filiais ou Gerente na matriz.</li>
+              <li>Esse responsável conduz a interação de boas-vindas com a equipe na data de admissão.</li>
+              <li>Quando a contratação for feita internamente, elabore o cronograma de integração da semana de admissão, confirmando horários com Frotas, Compras, Financeiro, DP e RH Reserva, e envie por e-mail a todos os participantes com antecedência, com cópia para a Gerente Administrativo.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Quando a contratação for feita através do R&S da Rheserva, a própria Rheserva planeja e acompanha ativamente a integração do colaborador. Nesse caso, o Departamento Pessoal deve apenas acompanhar o processo, sem assumir a elaboração do cronograma.</span></div>
+            <ul>
+              <li>Ministre o treinamento de integração na data de admissão, seguindo o padrão de integração definido para o tipo de contratação do colaborador (administrativo ou operacional — motorista, coletor etc.).</li>
+              <li>Realize o treinamento via <strong>Google Meet</strong> ou presencialmente, conforme disponibilidade.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Padronizar, em documento próprio dentro desta mesma pasta (guia, política interna ou informativo), a rotina de integração específica para cada tipo de contratação — administrativo, motorista, coletor e demais funções operacionais.</span></div>
+          `},
+          { numero: 11, titulo: 'Incluir Benefícios', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li><strong>Vale-Transporte:</strong> se o colaborador optar pelo benefício, cadastre-o no <strong>Domínio</strong> (verba de desconto) e no site da <strong>Turin</strong>.
+                <ul>
+                  <li>A Turin atende apenas Congonhas; nas demais cidades, verifique a empresa responsável pelas linhas de transporte.</li>
+                  <li>Solicite o cartão e garanta a recarga mensal.</li>
+                </ul>
+              </li>
+              <li><strong>Plano Odontológico (Odontoprev):</strong> cadastre no site da <strong>Odontoprev</strong> os colaboradores administrativos da Gestamg e do SR Transporte com direito ao benefício, até o <strong>dia 25 de cada mês</strong>.
+                <ul>
+                  <li>Não há desconto para o titular. Ao incluir dependente, aplica-se desconto em folha de R$ 25,17 por dependente.</li>
+                </ul>
+              </li>
+              <li><strong>Plano de Saúde (Unimed):</strong> para cargos administrativos com plano coparticipativo, envie o formulário preenchido até o <strong>dia 25 de cada mês</strong>.
+                <ul>
+                  <li>Envie via WhatsApp à Unimed — contato Vivian, Comercial de Vendas: 31 98786-7738.</li>
+                </ul>
+              </li>
+              <li><strong>Totalpass:</strong> o colaborador solicita ao DP a inclusão na base de dados.
+                <ul>
+                  <li>Cadastre-o no site Totalpass (hr.totalpass.com), em Atualizar Base → Incluir Novo Colaborador — o login exige confirmação por e-mail a cada acesso.</li>
+                  <li>Oriente o colaborador a baixar o aplicativo Totalpass para validar a inclusão, até o dia 25 de cada mês.</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Todos os cadastros de benefícios (Odontoprev, Unimed e Totalpass) devem ser realizados no dia 25 de cada mês, sem exceção.</span></div>
+          `},
+          { numero: 12, titulo: 'Abrir a Conta Salário', responsavel: 'Financeiro', html: `
+            <ul>
+              <li>Gere o arquivo de abertura de conta no <strong>Domínio Web</strong>: acesse Relatórios → Gerenciador de Relatórios → Diversos, clique em + e selecione Abertura de Conta → Banco do Brasil.</li>
+              <li>Preencha as informações da empresa e do novo colaborador.</li>
+              <li>Envie o arquivo por e-mail ao Financeiro (fin01@gestamg.com.br).</li>
+              <li>No assunto do e-mail, utilize <strong>SEGUE ARQUIVO PARA ABERTURA DE CONTA</strong>; no corpo, descreva nome da empresa, nome do funcionário e data de admissão.</li>
+              <li>O Financeiro abre a conta salário do colaborador no banco parceiro, com base nos dados enviados pelo DP.</li>
+              <li>Após a confirmação, repasse a informação ao Auxiliar da unidade e à Contabilidade, para cadastro no Domínio.</li>
+              <li>No assunto do e-mail, utilize <strong>CONTA E NOME DO FUNCIONÁRIO</strong>; no corpo, inclua os dados da empresa, o nome completo e os dados bancários.</li>
+              <li>O Assistente Administrativo comunica o colaborador presencialmente, repassando os dados da conta e orientando-o a validá-la no banco.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: criar modelo padrão de e-mail de comunicação dos dados da conta salário ao colaborador.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Essa etapa deve ser concluída até o dia 23 de cada mês, para garantir o pagamento do salário no prazo.</span></div>
+          `},
+          { numero: 13, titulo: 'Cadastrar no Sólides Ponto e no Sólides Benefícios', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Utilize a ferramenta <strong>Cadastro / Fichas</strong> do Hub de Ferramentas DP para gerar as planilhas de importação.</li>
+              <li>Envie a(s) Ficha(s) de Admissão do(s) colaborador(es), exportada(s) do Domínio em .xls ou .xlsx — é possível enviar várias de uma vez.</li>
+              <li>Confira os dados extraídos automaticamente em cada card. Campo com fundo amarelo veio vazio da ficha — não é erro, é sinal de "confira aqui".</li>
+              <li>Preencha e-mail e celular do colaborador — obrigatórios, pois a ficha do Domínio nunca traz e-mail. Sem e-mail próprio, marque a opção de usar o e-mail do DP.</li>
+              <li>Gere as planilhas de Ponto e Benefícios — pelos botões individuais ou por "Gerar as 3 planilhas" (inclui também a planilha de EPI).</li>
+              <li>No site do Sólides Ponto, no menu lateral, clique em Cadastros Gerais → Colaboradores.</li>
+              <li>Na lista de colaboradores, clique em Ações em lote e, em seguida, em Admitir Colaboradores.</li>
+              <li>Clique em Escolher arquivo e selecione a planilha de Ponto gerada. Escolha a «Escala» do(s) colaborador(es) e clique em Processar.</li>
+              <li>Confira os dados processados e clique em Admitir para concluir o cadastro.</li>
+              <li>Faça login na plataforma portal-beneficios.solides.com.br/login.</li>
+              <li>No menu lateral, clique em Colaboradores.</li>
+              <li>No canto superior direito, clique em Cadastrar colaborador.</li>
+              <li>Clique em Importar planilha.</li>
+              <li>Clique em Selecionar arquivos e suba o arquivo de Benefícios gerado pela ferramenta.</li>
+              <li>Clique em Enviar planilha.</li>
+              <li>Novamente no canto superior direito, clique em Importações de colaboradores.</li>
+              <li>Localize a importação — sempre a primeira da lista — e clique no ícone para ver os detalhes.</li>
+              <li>Se a mensagem exibida for "sucesso", a importação foi realizada corretamente.</li>
+              <li>Após o cadastro, informe ao colaborador o código PIN de acesso à plataforma de ponto e oriente a baixar o aplicativo.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O cartão de benefícios precisa estar em posse do colaborador antes do primeiro pagamento, no 5º dia útil de cada mês.</span></div>
+          `},
+          { numero: 14, titulo: 'Monitorar o Vencimento do Período de Experiência', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Acompanhe, junto ao Gestor da Área, o vencimento do período de experiência de cada colaborador, para validação da continuidade ou rescisão dentro do prazo.</li>
+              <li>Gere mensalmente o relatório de acompanhamento no Domínio Web: navegue até Relatórios → Outros → Avisos de Vencimentos, selecione as empresas e confirme em OK.</li>
+              <li>O sistema gera automaticamente o relatório com todos os vencimentos do mês informado.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Este passo é uma rotina mensal e contínua do Departamento Pessoal, independente da data de admissão de um colaborador específico. Deve ser executado todo mês para acompanhar todos os colaboradores em período de experiência — não é uma ação sequencial aos passos anteriores deste guia.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+        anexo: {
+          titulo: 'Anexo A — Checklist da Requisição',
+          descricao: 'Use este checklist para conferir, antes de liberar a admissão (Passo 5), se todos os itens da requisição foram atendidos.',
+          linhas: [
+            'Candidato final aprovado pelo Gestor da Área e/ou Diretoria',
+            'Cargo contemplado nos Programas de Segurança',
+            'Programas de segurança atualizados',
+            'Exames ocupacionais definidos',
+            'EPIs definidos',
+            'Materiais de escritório solicitados',
+            'Equipamentos de TI solicitados',
+            'Acessos aos sistemas solicitados',
+            'Uniforme solicitado (quando aplicável)',
+            'Liberação do Departamento Pessoal para contratação',
+          ],
+        },
+      },
+    ],
+  },
+];
+
+const ICONE_GUIA = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>`;
+const ICONE_SETA = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>`;
+
+function achaGuia(id) {
+  for (const cat of GUIAS) {
+    const g = cat.guias.find(x => x.id === id);
+    if (g) return g;
+  }
+  return null;
+}
+
+function tabela2col(linhas, cabecalhos) {
+  const th = cabecalhos ? `<tr><th>${cabecalhos[0]}</th><th>${cabecalhos[1]}</th></tr>` : '';
+  const tr = linhas.map(([a, b]) => `<tr><td><strong>${a}</strong></td><td>${b}</td></tr>`).join('');
+  return `<table class="tabela-guia">${th}${tr}</table>`;
+}
+
+function tabelaId(linhas) {
+  const tr = linhas.map(([a, b]) => `<tr><td class="rotulo">${a}</td><td>${b}</td></tr>`).join('');
+  return `<table class="tabela-guia table-id">${tr}</table>`;
+}
+
+function tabelaQuemFaz(linhas) {
+  const th = `<tr><th>Responsável / Setor</th><th>Papel no processo</th><th>Quando atua</th></tr>`;
+  const tr = linhas.map(([r, p, q]) => `<tr><td><strong>${r}</strong></td><td>${p}</td><td>${q}</td></tr>`).join('');
+  return `<table class="tabela-guia">${th}${tr}</table>`;
+}
+
+function renderIndice() {
+  document.getElementById('header-titulo').textContent = 'Materiais de Apoio';
+  document.getElementById('header-sub').textContent = '· Guias de Processo do DP';
+  document.getElementById('busca-wrap').classList.remove('ativo');
+
+  const grupos = GUIAS.map(cat => {
+    const cards = cat.guias.map(g => `
+      <button class="guia-card" data-id="${g.id}" onclick="abrirGuia('${g.id}')" type="button">
+        <span class="guia-card-icon">${ICONE_GUIA}</span>
+        <span class="guia-card-corpo">
+          <span class="guia-card-titulo">${g.titulo}</span>
+          <span class="guia-card-sub">${g.subtitulo}</span>
+        </span>
+        <span class="guia-card-seta">${ICONE_SETA}</span>
+      </button>
+    `).join('');
+    return `
+      <div class="categoria-grupo">
+        <p class="categoria-titulo">${cat.categoria}</p>
+        <div class="guia-lista">${cards}</div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('main').innerHTML = `
+    <div class="indice-intro">
+      <h2>Guias de Processo</h2>
+      <p>Rotinas operacionais do Departamento Pessoal, documentadas passo a passo. Este é um piloto — apenas o guia de Admissão está disponível por enquanto, pra validar o formato antes de trazer os demais.</p>
+    </div>
+    ${grupos}
+    <div class="categoria-grupo">
+      <p class="categoria-titulo">Em breve</p>
+      <div class="categoria-em-breve">Férias, Controle de Ponto, Afastamentos, Contrato de Experiência, Rescisão e demais guias entram aqui conforme forem migrados.</div>
+    </div>
+  `;
+}
+
+function renderGuia(id) {
+  const g = achaGuia(id);
+  if (!g) { renderIndice(); return; }
+
+  document.getElementById('header-titulo').textContent = g.titulo;
+  document.getElementById('header-sub').textContent = '· Guia de Processo';
+  document.getElementById('busca-wrap').classList.remove('ativo');
+
+  const passosHtml = g.passos.map(p => `
+    <div class="passo">
+      <div class="passo-head">
+        <span class="passo-numero">${p.numero}</span>
+        <span class="passo-head-texto">
+          <span class="passo-titulo">${p.titulo}</span>
+          <span class="passo-responsavel">Responsável: ${p.responsavel}</span>
+        </span>
+      </div>
+      <div class="passo-corpo">${p.html}</div>
+    </div>
+  `).join('');
+
+  const anexoLinhas = g.anexo.linhas.map(item => `
+    <tr><td>${item}</td><td class="check">☐</td><td class="check">☐</td></tr>
+  `).join('');
+
+  document.getElementById('main').innerHTML = `
+    <button class="guia-voltar" onclick="renderIndice()" type="button">← Voltar aos guias</button>
+
+    <div class="guia-header">
+      <span class="tag">Guia de Processo · Departamento Pessoal</span>
+      <h1>${g.titulo}</h1>
+      <p>${g.subtitulo}</p>
+    </div>
+
+    <div class="secao">
+      <p class="secao-titulo">🔎 Identificação</p>
+      ${tabelaId(g.identificacao)}
+    </div>
+
+    <div class="secao">
+      <p class="secao-titulo">🎯 Objetivo</p>
+      <div class="objetivo-texto">${g.objetivo}</div>
+    </div>
+
+    <div class="secao">
+      <p class="secao-titulo">📖 Conceitos Importantes</p>
+      ${tabela2col(g.conceitos, ['Termo', 'Definição'])}
+    </div>
+
+    <div class="secao">
+      <p class="secao-titulo">🔣 Simbologia Utilizada neste Guia</p>
+      ${tabela2col(g.simbologia, ['Símbolo', 'Significado'])}
+    </div>
+
+    <div class="secao">
+      <p class="secao-titulo">👥 Quem Faz o Quê</p>
+      ${tabelaQuemFaz(g.quemFazOQue)}
+    </div>
+
+    <div class="secao">
+      <p class="secao-titulo">📋 Passo a Passo</p>
+      ${passosHtml}
+    </div>
+
+    <div class="secao">
+      <p class="secao-titulo">❓ Dúvidas ou Problemas?</p>
+      <div class="duvidas-card">
+        <p style="margin:0;">${g.duvidas}</p>
+        <p class="contato">E-mail / ramal: a definir</p>
+      </div>
+    </div>
+
+    <div class="secao">
+      <p class="secao-titulo">📎 ${g.anexo.titulo}</p>
+      <div class="anexo-card">
+        <p class="desc">${g.anexo.descricao}</p>
+        <table class="tabela-guia tabela-checklist">
+          <tr><th>Item</th><th>Sim</th><th>Não</th></tr>
+          ${anexoLinhas}
+        </table>
+      </div>
+    </div>
+  `;
+
+  window.scrollTo(0, 0);
+}
+
+function abrirGuia(id) {
+  renderGuia(id);
+  history.replaceState(null, '', '#' + id);
+}
+
+// Busca simples: filtra os cards do índice por título/subtítulo/categoria.
+document.addEventListener('input', (e) => {
+  if (e.target.id !== 'busca') return;
+  const termo = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.categoria-grupo').forEach(grupo => {
+    let algumVisivel = false;
+    grupo.querySelectorAll('.guia-card').forEach(card => {
+      const texto = card.textContent.toLowerCase();
+      const visivel = !termo || texto.includes(termo);
+      card.style.display = visivel ? '' : 'none';
+      if (visivel) algumVisivel = true;
+    });
+    if (grupo.querySelector('.guia-lista')) {
+      grupo.style.display = algumVisivel ? '' : 'none';
+    }
+  });
+});
+
+// Inicialização: se a URL já tem #id-do-guia, abre direto nele.
+const hashInicial = location.hash.replace('#', '');
+if (hashInicial && achaGuia(hashInicial)) {
+  renderGuia(hashInicial);
+} else {
+  renderIndice();
+}
+</script>
+</body>
+</html>
