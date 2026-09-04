@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Extrator de Fichas → Planilhas de Importação — Gestamg</title>
+<title>Extrator de Fichas → Planilhas de Importação — GestaMG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -435,12 +435,457 @@ button.export:disabled{border:1px solid #E2E6EB !important;background:#F3F5F7 !i
 }
 
 /* === /GESTAMG DESIGN SYSTEM V2 === */
+
+/* === GESTAMG CADASTRO / EXTRATOR V3 === */
+:root{
+  --gesta-navy:#0A2E5C;
+  --gesta-blue:#0F4083;
+  --gesta-blue-2:#2E75B6;
+  --gesta-bg:#F5F7FA;
+  --gesta-border:#E2E8F0;
+  --gesta-text:#202833;
+  --gesta-muted:#667385;
+}
+
+body{
+  background:var(--gesta-bg) !important;
+  color:var(--gesta-text) !important;
+}
+
+/* Cabeçalho alinhado ao Hub */
+header{
+  min-height:78px !important;
+  padding:0 clamp(24px,4vw,54px) !important;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  background:#fff !important;
+  border-bottom:1px solid var(--gesta-border) !important;
+  box-shadow:0 1px 2px rgba(16,24,40,.03) !important;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.page-heading{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.page-eyebrow{
+  display:block;
+  margin-bottom:3px;
+  font-size:9px;
+  line-height:1.2;
+  font-weight:800;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:#718096;
+}
+header h1{
+  margin:0 !important;
+  font-size:18px !important;
+  line-height:1.2 !important;
+  font-weight:800 !important;
+  letter-spacing:-.025em !important;
+  color:var(--gesta-navy) !important;
+}
+#trello-status{
+  margin-left:auto !important;
+  flex:0 0 auto;
+}
+#trello-status button,
+#trello-status .conectado{
+  min-height:38px !important;
+  padding:8px 12px !important;
+  border-radius:9px !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+  box-shadow:none !important;
+}
+#trello-status button{
+  background:#fff !important;
+  color:var(--gesta-blue) !important;
+  border:1px solid #C9D9E9 !important;
+}
+#trello-status button:hover{
+  background:#F3F8FD !important;
+  border-color:#9DBDDB !important;
+}
+#trello-status .conectado{
+  background:#F3F8EF !important;
+  border-color:#C9DDB4 !important;
+}
+
+/* Conteúdo */
+main{
+  max-width:1240px !important;
+  padding:28px clamp(22px,4vw,48px) 126px !important;
+}
+
+/* Upload como card principal */
+#dropzone,
+#dropzone-templates{
+  position:relative;
+  padding:34px 28px !important;
+  border:1.5px dashed #C2CEDB !important;
+  border-radius:16px !important;
+  background:#fff !important;
+  box-shadow:0 1px 2px rgba(16,24,40,.035) !important;
+}
+#dropzone:hover,
+#dropzone-templates:hover,
+#dropzone.dragover,
+#dropzone-templates.dragover{
+  border-color:#7FAAD1 !important;
+  background:#FBFDFF !important;
+  box-shadow:0 7px 20px rgba(15,64,131,.06) !important;
+}
+#dropzone > svg,
+#dropzone-templates > svg{
+  width:44px !important;
+  height:44px !important;
+  padding:10px;
+  margin-bottom:13px !important;
+  border-radius:12px;
+  background:#EEF6FD;
+  color:var(--gesta-blue);
+  stroke:var(--gesta-blue) !important;
+}
+#dropzone .titulo,
+#dropzone-templates .titulo{
+  font-size:14px !important;
+  font-weight:800 !important;
+  letter-spacing:-.01em;
+  color:#24364D !important;
+}
+#dropzone .sub,
+#dropzone-templates .sub{
+  max-width:680px !important;
+  margin-top:5px !important;
+  font-size:11.5px !important;
+  line-height:1.6 !important;
+  color:#778395 !important;
+}
+.format-badges{
+  margin-top:15px !important;
+  gap:7px !important;
+}
+.fmt-badge{
+  padding:5px 10px !important;
+  border:1px solid #DFE6ED !important;
+  border-radius:999px !important;
+  background:#F9FBFC !important;
+  color:#6C7888 !important;
+  font-size:9.5px !important;
+  font-weight:800 !important;
+}
+.fmt-badge.destaque{
+  background:#EEF6FD !important;
+  border-color:#C7DEF5 !important;
+  color:var(--gesta-blue) !important;
+}
+
+/* Linha de status */
+#status-line{
+  min-height:38px;
+  margin:6px 2px 12px !important;
+  padding:0 2px;
+  font-size:11.5px !important;
+}
+#status-line strong{
+  color:var(--gesta-blue) !important;
+  font-weight:800;
+}
+#limpar-tudo{
+  min-height:34px !important;
+  padding:6px 11px !important;
+  border-radius:8px !important;
+  border:1px solid #DCE3EA !important;
+  background:#fff !important;
+  color:#687588 !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+}
+#limpar-tudo:hover{
+  border-color:#E4BABA !important;
+  background:#FFF8F8 !important;
+  color:#A32D2D !important;
+}
+
+#empty-state{
+  padding:42px 22px !important;
+  border:1px dashed #CBD5E0 !important;
+  border-radius:14px !important;
+  background:#FAFBFC !important;
+  color:#8490A0 !important;
+  font-size:12px !important;
+}
+
+/* Cards dos colaboradores */
+.colab-card{
+  margin-bottom:12px !important;
+  overflow:hidden;
+  border:1px solid var(--gesta-border) !important;
+  border-radius:14px !important;
+  background:#fff !important;
+  box-shadow:0 1px 2px rgba(16,24,40,.035) !important;
+  transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease !important;
+}
+.colab-card:hover{
+  transform:translateY(-1px);
+  border-color:#D5DFEA !important;
+  box-shadow:0 7px 20px rgba(15,64,131,.065) !important;
+}
+.colab-card .colab-head{
+  min-height:64px;
+  padding:12px 16px !important;
+  gap:12px !important;
+}
+.colab-card .colab-head:hover{
+  background:#FAFBFC !important;
+}
+.colab-card .colab-head .avatar{
+  width:40px !important;
+  height:40px !important;
+  border-radius:11px !important;
+  background:var(--gesta-blue) !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+}
+.colab-card .colab-head .info .nome{
+  font-size:13.5px !important;
+  font-weight:800 !important;
+  letter-spacing:-.01em;
+  color:#263445 !important;
+}
+.colab-card .colab-head .info .sub{
+  margin-top:2px !important;
+  font-size:10.5px !important;
+  color:#7C8898 !important;
+}
+.colab-card .colab-head .btn-remove{
+  width:32px !important;
+  height:32px !important;
+  padding:0 !important;
+  display:grid !important;
+  place-items:center;
+  border-radius:8px !important;
+}
+.colab-body{
+  padding:22px !important;
+  border-top:1px solid #E8EDF2 !important;
+}
+
+/* Destaques e seções internas */
+.campo-destaque{
+  padding:14px 15px !important;
+  margin-bottom:18px !important;
+  gap:12px !important;
+  border:1px solid #EED18F !important;
+  border-radius:11px !important;
+  background:#FFF9EF !important;
+  box-shadow:none !important;
+}
+.campo-destaque.ok{
+  background:#F4F9EF !important;
+  border-color:#CADDB6 !important;
+}
+.campo-destaque .obrigatorio-tag{
+  padding:2px 7px !important;
+  border-radius:999px !important;
+  font-size:8px !important;
+  letter-spacing:.04em;
+}
+.grupo-title{
+  margin:21px 0 11px !important;
+  padding-bottom:8px !important;
+  border-bottom:1px solid #E7ECF1 !important;
+  font-size:9.5px !important;
+  font-weight:800 !important;
+  letter-spacing:.075em !important;
+  color:var(--gesta-blue) !important;
+}
+.grid{
+  gap:14px 16px !important;
+}
+.field{
+  gap:6px !important;
+}
+.field label,
+.campo-destaque label{
+  font-size:10px !important;
+  font-weight:700 !important;
+  color:#5E6A79 !important;
+}
+.field input,
+.field select,
+.campo-destaque input,
+.campo-destaque select{
+  min-height:42px !important;
+  padding:9px 11px !important;
+  border:1px solid #D8E0E8 !important;
+  border-radius:9px !important;
+  background:#fff !important;
+  color:#263445 !important;
+  font-size:12px !important;
+  box-shadow:0 1px 2px rgba(16,24,40,.02) !important;
+}
+.field input:hover,
+.field select:hover,
+.campo-destaque input:hover,
+.campo-destaque select:hover{
+  border-color:#C4D0DC !important;
+}
+.field input:focus,
+.field select:focus,
+.campo-destaque input:focus,
+.campo-destaque select:focus{
+  outline:none !important;
+  border-color:var(--gesta-blue-2) !important;
+  box-shadow:0 0 0 3px rgba(46,117,182,.11) !important;
+}
+.field input.vazio,
+.field select.vazio{
+  background:#FFF9EF !important;
+  border-color:#EBCB87 !important;
+}
+
+.badge-ok,
+.colab-card .colab-head .badge-ok,
+.badge-warn,
+.colab-card .colab-head .badge-warn{
+  padding:4px 8px !important;
+  border-radius:999px !important;
+  font-size:9px !important;
+  font-weight:800 !important;
+  box-shadow:none !important;
+}
+
+.beneficio-row{
+  gap:8px !important;
+}
+.beneficio-chip{
+  min-height:38px !important;
+  padding:8px 11px !important;
+  border:1px solid #DDE4EC !important;
+  border-radius:9px !important;
+  background:#fff !important;
+  color:#475569 !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+}
+.beneficio-chip:hover{
+  border-color:#AFCBE8 !important;
+  background:#F5FAFE !important;
+}
+
+/* Barra fixa de ações */
+footer.actionbar{
+  min-height:66px;
+  padding:11px clamp(22px,4vw,48px) !important;
+  gap:10px !important;
+  background:rgba(255,255,255,.96) !important;
+  backdrop-filter:blur(10px);
+  border-top:1px solid #E1E7EE !important;
+  box-shadow:0 -5px 18px rgba(16,24,40,.055) !important;
+}
+footer.actionbar .grupo{
+  gap:8px !important;
+}
+button.export{
+  min-height:40px !important;
+  padding:9px 14px !important;
+  border-radius:9px !important;
+  font-size:10.5px !important;
+  font-weight:800 !important;
+  box-shadow:none !important;
+}
+button.export.ponto,
+button.export.epi,
+button.export.beneficios{
+  background:#fff !important;
+  color:var(--gesta-blue) !important;
+  border:1px solid #C8D8E8 !important;
+}
+button.export.ponto:hover:not(:disabled),
+button.export.epi:hover:not(:disabled),
+button.export.beneficios:hover:not(:disabled){
+  background:#F4F9FE !important;
+  border-color:#8CB1D3 !important;
+}
+button.export.tudo{
+  background:var(--gesta-blue) !important;
+  color:#fff !important;
+  border:1px solid var(--gesta-blue) !important;
+  box-shadow:0 2px 5px rgba(15,64,131,.14) !important;
+}
+button.export.tudo:hover:not(:disabled){
+  background:#0A356D !important;
+  border-color:#0A356D !important;
+}
+button.export:disabled{
+  background:#F3F5F7 !important;
+  border-color:#E2E6EB !important;
+  color:#A2AAB4 !important;
+}
+#contador{
+  font-size:10.5px !important;
+  color:#7A8696 !important;
+}
+.footer-note{
+  margin-top:16px !important;
+  font-size:10px !important;
+  color:#8994A2 !important;
+}
+
+@media(max-width:760px){
+  header{
+    min-height:72px !important;
+    padding:10px 16px !important;
+    gap:12px;
+  }
+  .page-eyebrow{font-size:8px;}
+  header h1{font-size:15px !important;}
+  #trello-status button,
+  #trello-status .conectado{
+    min-height:34px !important;
+    padding:7px 9px !important;
+    font-size:9.5px !important;
+  }
+  main{
+    padding:20px 16px 128px !important;
+  }
+  #dropzone,
+  #dropzone-templates{
+    padding:28px 18px !important;
+  }
+  .colab-body{
+    padding:17px !important;
+  }
+  footer.actionbar{
+    padding:10px 16px !important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .colab-card,
+  button,
+  input,
+  select{
+    transition:none !important;
+  }
+}
+/* === /GESTAMG CADASTRO / EXTRATOR V3 === */
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Extrator de Fichas de Empregado</h1>
+  <div class="page-heading">
+    <span class="page-eyebrow">Cadastro / Fichas</span>
+    <h1>Extrator de Fichas de Empregado</h1>
+  </div>
   <div id="trello-status">
     <span id="trello-desconectado">
       <button id="btn-conectar-trello" onclick="conectarTrello()" type="button">
