@@ -385,15 +385,25 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
   min-height:80px;
   width:100%;
   padding:0 16px;
+  margin:0;
   border:0;
-  background:transparent;
+  border-radius:0;
+  appearance:none;
+  -webkit-appearance:none;
+  background-color:var(--azul-escuro) !important;
+  background-image:none !important;
+  box-shadow:none;
   color:inherit;
   cursor:pointer;
   text-align:left;
-  transition:background .16s ease;
+  transition:background-color .16s ease;
 }
-.hub-brand:hover{background:rgba(255,255,255,.055);}
-.hub-brand.active{background:rgba(255,255,255,.075);}
+.hub-brand:hover,
+.hub-brand:active,
+.hub-brand.active{
+  background-color:var(--azul-escuro) !important;
+  background-image:none !important;
+}
 .hub-brand.active::before{
   content:"";
   position:absolute;
