@@ -519,14 +519,36 @@ header h1{
 
 /* Conteúdo */
 main{
-  width:calc(100% - 48px);
+  width:100%;
   max-width:1240px !important;
-  margin:26px auto 92px !important;
-  padding:30px clamp(24px,4vw,48px) 34px !important;
-  background:#fff !important;
-  border:1px solid #E2E8F0 !important;
-  border-radius:18px !important;
-  box-shadow:0 4px 18px rgba(15,64,131,.055) !important;
+  margin:0 auto !important;
+  padding:28px clamp(22px,4vw,48px) 126px !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+/* Painel externo no mesmo padrão visual da tela de Ponto */
+.extrator-upload-panel{
+  margin:8px 0 22px;
+  padding:24px;
+  background:#fff;
+  border:1px solid #DCE4ED;
+  border-radius:17px;
+  box-shadow:0 2px 8px rgba(15,64,131,.055);
+}
+.extrator-upload-panel #dropzone{
+  margin-bottom:16px !important;
+}
+.extrator-upload-panel #empty-state{
+  margin-top:0 !important;
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1.5px dashed #C2CEDB !important;
+  background:#FBFCFE !important;
 }
 
 /* Upload como card principal */
@@ -860,10 +882,14 @@ button.export:disabled{
     font-size:9.5px !important;
   }
   main{
-    width:calc(100% - 24px);
-    margin:14px auto 110px !important;
-    padding:20px 16px 24px !important;
-    border-radius:14px !important;
+    width:100%;
+    margin:0 auto !important;
+    padding:20px 16px 128px !important;
+  }
+  .extrator-upload-panel{
+    padding:14px;
+    margin:0 0 18px;
+    border-radius:14px;
   }
   #dropzone,
   #dropzone-templates{
@@ -910,24 +936,26 @@ button.export:disabled{
 </header>
 
 <main>
-  <div id="dropzone" onclick="document.getElementById('file-input').click()">
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--azul-medio)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
-    <div class="titulo">1) Clique ou arraste as Fichas de Empregado aqui</div>
-    <div class="sub">O .xls exportado direto do Domínio já é aceito — a ferramenta corrige sozinha problemas comuns de exportação · pode soltar várias de uma vez para processar em lote</div>
-    <div class="format-badges">
-      <span class="fmt-badge">.XLS</span>
-      <span class="fmt-badge">.XLSX</span>
-      <span class="fmt-badge destaque">vários arquivos de uma vez</span>
+  <section class="extrator-upload-panel" aria-label="Envio de fichas">
+    <div id="dropzone" onclick="document.getElementById('file-input').click()">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--azul-medio)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
+      <div class="titulo">1) Clique ou arraste as Fichas de Empregado aqui</div>
+      <div class="sub">O .xls exportado direto do Domínio já é aceito — a ferramenta corrige sozinha problemas comuns de exportação · pode soltar várias de uma vez para processar em lote</div>
+      <div class="format-badges">
+        <span class="fmt-badge">.XLS</span>
+        <span class="fmt-badge">.XLSX</span>
+        <span class="fmt-badge destaque">vários arquivos de uma vez</span>
+      </div>
     </div>
-  </div>
-  <input type="file" id="file-input" accept=".xls,.xlsx" multiple>
+    <input type="file" id="file-input" accept=".xls,.xlsx" multiple>
 
-  <div id="status-line" style="display:none;">
-    <span><strong id="contagem-label">0</strong> colaborador(es) carregado(s)</span>
-    <button id="limpar-tudo" onclick="limparTudo()">Remover todos</button>
-  </div>
+    <div id="status-line" style="display:none;">
+      <span><strong id="contagem-label">0</strong> colaborador(es) carregado(s)</span>
+      <button id="limpar-tudo" onclick="limparTudo()">Remover todos</button>
+    </div>
 
-  <div id="empty-state">Nenhuma ficha carregada ainda. Envie um ou mais arquivos acima para começar.</div>
+    <div id="empty-state">Nenhuma ficha carregada ainda. Envie um ou mais arquivos acima para começar.</div>
+  </section>
 
   <div id="employees-container"></div>
 
