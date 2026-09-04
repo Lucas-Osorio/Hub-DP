@@ -170,6 +170,25 @@
   .caixa-pendencia .caixa-icone{background:var(--vermelho);}
   .caixa em{font-style:italic;}
 
+  .passo-figura{margin:12px 0;padding:0;}
+  .passo-figura img{
+    display:block;width:100%;max-width:640px;height:auto;
+    border:1px solid var(--borda);border-radius:var(--raio-sm);
+    box-shadow:var(--sombra-sm);
+    cursor:zoom-in;
+  }
+  .passo-figura figcaption{
+    margin-top:6px;font-size:11.5px;font-style:italic;color:var(--texto-suave);
+    max-width:640px;
+  }
+  .lightbox{
+    display:none;position:fixed;inset:0;background:rgba(15,20,30,.82);
+    z-index:200;align-items:center;justify-content:center;padding:24px;
+    cursor:zoom-out;
+  }
+  .lightbox.aberto{display:flex;}
+  .lightbox img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+
   .duvidas-card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:16px 18px;box-shadow:var(--sombra-sm);font-size:13.5px;line-height:1.6;}
   .duvidas-card .contato{margin-top:8px;font-weight:700;color:var(--azul-escuro-2);}
 
@@ -199,6 +218,10 @@
 <main id="main">
   <!-- preenchido via JS -->
 </main>
+
+<div class="lightbox" id="lightbox" onclick="fecharLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <script>
 // ============================================================
@@ -355,6 +378,13 @@ const GUIAS = [
               <li>Preencha o cadastro do funcionário com letras maiúsculas e sem acento e cedilha (ç).</li>
               <li>Não esqueça de preencher o e-mail e telefone do funcionário no cadastro. Caso tenha dúvidas de como preencher, informe esses dados na descrição da solicitação.</li>
               <li>Ao final, anexe a documentação recebida e clique em <strong>Salvar e Enviar para o Escritório</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image1.webp', 'Etapa 1 — cadastro de empregado no portal do cliente.')}
+            ${imgGuia('assets/guias/admissao-colaboradores/image2.webp', 'Etapa 2 — preenchimento dos dados admissionais.')}
+            ${imgGuia('assets/guias/admissao-colaboradores/image3.webp', 'Etapa 3 — sequência do cadastro no portal do cliente.')}
+            ${imgGuia('assets/guias/admissao-colaboradores/image4.webp', 'Etapa 4 — finalização do cadastro admissional.')}
+            ${imgGuia('assets/guias/admissao-colaboradores/image5.webp', 'Etapa 5 — envio da solicitação ao escritório de contabilidade.')}
+            <ul>
               <li>Acompanhe a solicitação e a liberação dos documentos junto ao Analista de DP, que deverá assinar os documentos com o certificado da empresa.</li>
               <li>Garanta que a liberação e os documentos admissionais sejam devolvidos ao Departamento Pessoal com, no mínimo, <strong>24 horas de antecedência</strong> da data de admissão.</li>
               <li>Gere os documentos admissionais que necessitam de assinatura do colaborador.</li>
@@ -423,6 +453,10 @@ const GUIAS = [
             <ul>
               <li>Gere o arquivo de abertura de conta no <strong>Domínio Web</strong>: acesse Relatórios → Gerenciador de Relatórios → Diversos, clique em + e selecione Abertura de Conta → Banco do Brasil.</li>
               <li>Preencha as informações da empresa e do novo colaborador.</li>
+            </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image9.webp', 'Gerenciador de relatórios — Domínio Web.')}
+            ${imgGuia('assets/guias/admissao-colaboradores/image10.webp', 'Formulário de abertura de conta salário — Banco do Brasil.')}
+            <ul>
               <li>Envie o arquivo por e-mail ao Financeiro (fin01@gestamg.com.br).</li>
               <li>No assunto do e-mail, utilize <strong>SEGUE ARQUIVO PARA ABERTURA DE CONTA</strong>; no corpo, descreva nome da empresa, nome do funcionário e data de admissão.</li>
               <li>O Financeiro abre a conta salário do colaborador no banco parceiro, com base nos dados enviados pelo DP.</li>
@@ -441,20 +475,39 @@ const GUIAS = [
               <li>Preencha e-mail e celular do colaborador — obrigatórios, pois a ficha do Domínio nunca traz e-mail. Sem e-mail próprio, marque a opção de usar o e-mail do DP.</li>
               <li>Gere as planilhas de Ponto e Benefícios — pelos botões individuais ou por "Gerar as 3 planilhas" (inclui também a planilha de EPI).</li>
               <li>No site do Sólides Ponto, no menu lateral, clique em Cadastros Gerais → Colaboradores.</li>
+            </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image11.webp', 'Menu lateral — Cadastros Gerais → Colaboradores.')}
+            <ul>
               <li>Na lista de colaboradores, clique em Ações em lote e, em seguida, em Admitir Colaboradores.</li>
+            </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image12.webp', 'Tela de Colaboradores — botão Ações em lote.')}
+            <ul>
               <li>Clique em Escolher arquivo e selecione a planilha de Ponto gerada. Escolha a «Escala» do(s) colaborador(es) e clique em Processar.</li>
               <li>Confira os dados processados e clique em Admitir para concluir o cadastro.</li>
+            </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image13.webp', 'Tela de Admitir Colaboradores — importação da planilha e confirmação.')}
+            <ul>
               <li>Faça login na plataforma portal-beneficios.solides.com.br/login.</li>
               <li>No menu lateral, clique em Colaboradores.</li>
               <li>No canto superior direito, clique em Cadastrar colaborador.</li>
               <li>Clique em Importar planilha.</li>
+            </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image15.webp', 'Opções de cadastro — Importar planilha ou Cadastrar individualmente.')}
+            <ul>
               <li>Clique em Selecionar arquivos e suba o arquivo de Benefícios gerado pela ferramenta.</li>
               <li>Clique em Enviar planilha.</li>
+            </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image16.webp', 'Tela de importação da planilha de Benefícios.')}
+            <ul>
               <li>Novamente no canto superior direito, clique em Importações de colaboradores.</li>
               <li>Localize a importação — sempre a primeira da lista — e clique no ícone para ver os detalhes.</li>
               <li>Se a mensagem exibida for "sucesso", a importação foi realizada corretamente.</li>
+            </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image18.webp', 'Mensagem de confirmação da importação.')}
+            <ul>
               <li>Após o cadastro, informe ao colaborador o código PIN de acesso à plataforma de ponto e oriente a baixar o aplicativo.</li>
             </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image19.webp', 'Aplicativo Sólides Ponto — usado pelo colaborador para registrar o ponto.')}
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O cartão de benefícios precisa estar em posse do colaborador antes do primeiro pagamento, no 5º dia útil de cada mês.</span></div>
           `},
           { numero: 14, titulo: 'Monitorar o Vencimento do Período de Experiência', responsavel: 'Departamento Pessoal', html: `
@@ -463,6 +516,9 @@ const GUIAS = [
               <li>Gere mensalmente o relatório de acompanhamento no Domínio Web: navegue até Relatórios → Outros → Avisos de Vencimentos, selecione as empresas e confirme em OK.</li>
               <li>O sistema gera automaticamente o relatório com todos os vencimentos do mês informado.</li>
             </ul>
+            ${imgGuia('assets/guias/admissao-colaboradores/image6.webp', 'Geração do relatório de avisos de vencimento no Domínio Web.')}
+            ${imgGuia('assets/guias/admissao-colaboradores/image7.webp', 'Seleção das empresas para o relatório de vencimentos.')}
+            ${imgGuia('assets/guias/admissao-colaboradores/image8.webp', 'Relatório consolidado de vencimentos do período.')}
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Este passo é uma rotina mensal e contínua do Departamento Pessoal, independente da data de admissão de um colaborador específico. Deve ser executado todo mês para acompanhar todos os colaboradores em período de experiência — não é uma ação sequencial aos passos anteriores deste guia.</span></div>
           `},
         ],
@@ -487,6 +543,27 @@ const GUIAS = [
     ],
   },
 ];
+
+// Figura com legenda dentro de um passo — usada pelas capturas de tela
+// dos sistemas. Imagens ficam em assets/guias/<id-do-guia>/, já
+// otimizadas (redimensionadas pro tamanho real de exibição + WebP
+// qualidade 92 — sem perda perceptível, ~88% menor que o print cru do
+// Word). Clique na imagem abre em tamanho maior (lightbox).
+function imgGuia(caminho, legenda) {
+  return `<figure class="passo-figura"><img src="${caminho}" alt="${legenda}" loading="lazy" onclick="abrirLightbox(this.src, this.alt)"><figcaption>${legenda}</figcaption></figure>`;
+}
+
+function abrirLightbox(src, alt) {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  img.alt = alt;
+  lb.classList.add('aberto');
+}
+
+function fecharLightbox() {
+  document.getElementById('lightbox').classList.remove('aberto');
+}
 
 const ICONE_GUIA = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>`;
 const ICONE_SETA = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>`;
