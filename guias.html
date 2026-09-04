@@ -550,7 +550,7 @@ const GUIAS = [
 // qualidade 92 — sem perda perceptível, ~88% menor que o print cru do
 // Word). Clique na imagem abre em tamanho maior (lightbox).
 function imgGuia(caminho, legenda) {
-  return `<figure class="passo-figura"><img src="${caminho}" alt="${legenda}" loading="lazy" onclick="abrirLightbox(this.src, this.alt)"><figcaption>${legenda}</figcaption></figure>`;
+  return `<figure class="passo-figura"><img src="${caminho}" alt="${legenda}" onclick="abrirLightbox(this.src, this.alt)"><figcaption>${legenda}</figcaption></figure>`;
 }
 
 function abrirLightbox(src, alt) {
