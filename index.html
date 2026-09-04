@@ -987,7 +987,12 @@ function hubCarregarAba(tab) {
   const iframe = document.getElementById('iframe-' + tab);
   const loading = document.getElementById('loading-' + tab);
   iframe.addEventListener('load', () => { loading.style.display = 'none'; }, { once: true });
-  iframe.src = HUB_FERRAMENTAS[tab];
+  const src = HUB_FERRAMENTAS[tab];
+  // Arquivos reais (não data:) levam um parâmetro de versão pra evitar que o
+  // navegador sirva uma cópia antiga em cache depois de uma atualização —
+  // cada carregamento da aba busca o arquivo (e os assets que ele referencia
+  // via caminho relativo) direto do servidor.
+  iframe.src = src.startsWith('data:') ? src : src + (src.includes('?') ? '&' : '?') + 'v=' + Date.now();
   hubCarregadas[tab] = true;
 }
 
