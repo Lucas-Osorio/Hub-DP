@@ -1779,6 +1779,14 @@ document.addEventListener('input', (e) => {
   });
 });
 
+// Chamado pelo Hub (index.html) quando o usuário clica de novo no ícone
+// "Materiais de Apoio" no menu lateral, mesmo já estando dentro de um guia —
+// funciona como um botão "voltar ao início do módulo".
+window.hubResetView = function () {
+  history.replaceState(null, '', location.pathname + location.search);
+  renderIndice();
+};
+
 // Inicialização: se a URL já tem #id-do-guia, abre direto nele.
 const hashInicial = location.hash.replace('#', '');
 if (hashInicial && achaGuia(hashInicial)) {

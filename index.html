@@ -1005,7 +1005,20 @@ function hubTrocarAba(tab) {
     if (tab === 'home') brand.setAttribute('aria-current', 'page');
     else brand.removeAttribute('aria-current');
   }
+  // Se a aba já estava carregada (não é o primeiro clique), pede pra ferramenta
+  // voltar à sua tela inicial — assim clicar de novo no ícone do menu lateral
+  // funciona como um "voltar ao início do módulo", mesmo se o usuário estiver
+  // navegado fundo dentro da ferramenta (ex.: lendo um guia específico).
+  const jaEstavaCarregada = hubCarregadas[tab] === true;
   hubCarregarAba(tab);
+  if (jaEstavaCarregada) {
+    const iframe = document.getElementById('iframe-' + tab);
+    try {
+      if (iframe && iframe.contentWindow && typeof iframe.contentWindow.hubResetView === 'function') {
+        iframe.contentWindow.hubResetView();
+      }
+    } catch (e) { /* iframe não pronto ou cross-origin — ignora */ }
+  }
 }
 
 function hubAlternarMenu() {
