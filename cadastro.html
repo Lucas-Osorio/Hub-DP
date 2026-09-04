@@ -1105,8 +1105,15 @@ function criarCardsExperiencia(colab){
     'Data de admissão: ' + paraDataTexto(d.data_admissao),
   ].join('\n');
   vencimentos.forEach(v => {
+    const dd = String(v.data.getDate()).padStart(2, '0');
+    const mm = String(v.data.getMonth() + 1).padStart(2, '0');
+    const yyyy = v.data.getFullYear();
+    const partesTitulo = [(d.nome || 'Colaborador').toUpperCase()];
+    if(d.cargo) partesTitulo.push(d.cargo.toUpperCase());
+    partesTitulo.push(v.dias + ' DIAS');
+    const tituloCard = partesTitulo.join(' - ') + '\nDIA: ' + dd + '/' + mm + '/' + yyyy;
     Trello.post('cards', {
-      name: 'Vencimento experiência ' + v.dias + ' dias — ' + (d.nome || 'Colaborador'),
+      name: tituloCard,
       idList: idList,
       due: v.data.toISOString(),
       desc: descricaoBase,
