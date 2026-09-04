@@ -371,12 +371,11 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
 
 /* ============================================================
    GESTAMG — SIDEBAR CORPORATIVA V2
+   Template novo mantendo a cor original
    ============================================================ */
 
 :root{
-  --hub-side-900:#082B57;
-  --hub-side-800:#0A356B;
-  --hub-side-700:#0F4083;
+  --hub-side-bg:var(--azul-escuro);
   --hub-side-text:#FFFFFF;
   --hub-side-muted:rgba(226,238,251,.66);
   --hub-side-active:#F5F7FA;
@@ -390,16 +389,16 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
 
 .hub-sidebar{
   width:var(--hub-sidebar-closed);
-  background:linear-gradient(180deg,var(--hub-side-700) 0%,var(--hub-side-800) 48%,var(--hub-side-900) 100%);
+  background:var(--hub-side-bg);
   border-right:0;
-  box-shadow:4px 0 18px rgba(8,43,87,.08);
+  box-shadow:4px 0 18px rgba(10,46,92,.10);
   overflow:visible;
   transition:width .28s var(--hub-side-ease),box-shadow .28s ease;
 }
 
 .hub-sidebar.open{
   width:var(--hub-sidebar-open);
-  box-shadow:7px 0 24px rgba(8,43,87,.10);
+  box-shadow:7px 0 24px rgba(10,46,92,.13);
 }
 
 .hub-content{
@@ -419,7 +418,7 @@ body.sidebar-open .hub-content{
   display:flex;
   align-items:center;
   gap:13px;
-  border-bottom:1px solid rgba(255,255,255,.075);
+  border-bottom:1px solid rgba(255,255,255,.08);
   overflow:hidden;
 }
 
@@ -468,7 +467,7 @@ body.sidebar-open .hub-content{
   min-height:0;
   display:flex;
   flex-direction:column;
-  gap:5px;
+  gap:6px;
   padding:14px 0 10px;
   background:transparent;
   border:0;
@@ -518,7 +517,7 @@ body.sidebar-open .hub-content{
   color:currentColor;
   background:rgba(255,255,255,.035);
   opacity:.88;
-  transition:background .16s ease,color .16s ease,opacity .16s ease,transform .18s ease;
+  transition:background .16s ease,color .16s ease,opacity .16s ease;
 }
 
 .hub-tab:hover > svg{
@@ -560,13 +559,14 @@ body.sidebar-open .hub-content{
   color:var(--hub-side-muted);
 }
 
+/* item ativo integrado ao conteúdo */
 .hub-sidebar.open .hub-tab.active{
-  width:calc(100% - 12px);
-  margin-left:12px;
+  width:calc(100% - 10px);
+  margin-left:10px;
   margin-right:0;
-  padding-left:10px;
-  padding-right:16px;
-  border-radius:15px 0 0 15px;
+  padding-left:12px;
+  padding-right:18px;
+  border-radius:18px 0 0 18px;
   background:var(--hub-side-active);
   color:var(--hub-side-active-text);
   box-shadow:none;
@@ -578,10 +578,9 @@ body.sidebar-open .hub-content{
 }
 
 .hub-sidebar.open .hub-tab.active > svg{
-  color:#0F4083;
-  background:#E7F1FB;
+  color:var(--azul-medio);
+  background:#EAF3FC;
   opacity:1;
-  transform:none;
 }
 
 .hub-sidebar.open .hub-tab.active .hub-tab-title{
@@ -592,6 +591,7 @@ body.sidebar-open .hub-content{
   color:var(--hub-side-active-muted);
 }
 
+/* curvas côncavas no encontro com a área principal */
 .hub-sidebar.open .hub-tab.active::before{
   content:"";
   display:block;
@@ -628,9 +628,10 @@ body.sidebar-open .hub-content{
 }
 
 .hub-sidebar.open .hub-tab[data-tab="ajuda"].active{
-  border-radius:15px 0 0 15px;
+  border-radius:18px 0 0 18px;
 }
 
+/* menu recolhido */
 .hub-sidebar:not(.open) .hub-tab{
   width:56px;
   height:52px;
@@ -648,15 +649,15 @@ body.sidebar-open .hub-content{
 }
 
 .hub-sidebar:not(.open) .hub-tab.active{
-  background:#FFFFFF;
-  color:#0F4083;
+  background:rgba(255,255,255,.14);
+  color:#fff;
   border-radius:13px;
-  box-shadow:0 3px 9px rgba(4,32,69,.12);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
 }
 
 .hub-sidebar:not(.open) .hub-tab.active > svg{
-  color:#0F4083;
-  background:#EAF3FC;
+  color:#fff;
+  background:rgba(255,255,255,.07);
   opacity:1;
 }
 
@@ -664,6 +665,7 @@ body.sidebar-open .hub-content{
   content:none;
 }
 
+/* tooltip apenas no estado recolhido */
 .hub-sidebar:not(.open) .hub-tab::after{
   content:attr(data-tooltip);
   position:absolute;
@@ -696,7 +698,7 @@ body.sidebar-open .hub-content{
 
 .hub-sidebar-footer{
   padding:10px 11px 13px;
-  border-top:1px solid rgba(255,255,255,.075);
+  border-top:1px solid rgba(255,255,255,.08);
 }
 
 .hub-toggle{
@@ -751,7 +753,7 @@ body.sidebar-open .hub-content{
 
   .hub-sidebar.open{
     width:232px;
-    box-shadow:12px 0 30px rgba(8,43,87,.20);
+    box-shadow:12px 0 30px rgba(10,46,92,.20);
   }
 
   .hub-content,
@@ -760,7 +762,7 @@ body.sidebar-open .hub-content{
   }
 
   .hub-sidebar.open .hub-tab.active{
-    width:calc(100% - 12px);
+    width:calc(100% - 10px);
   }
 }
 
