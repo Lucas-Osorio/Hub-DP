@@ -772,7 +772,7 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
 
   <nav class="hub-tabs" aria-label="Ferramentas">
     <div class="hub-nav-label" aria-hidden="true">Ferramentas</div>
-    <button class="hub-tab" data-tab="cadastro" data-tooltip="Cadastro / Fichas" onclick="hubTrocarAba('cadastro')" type="button">
+    <button class="hub-tab" data-tab="cadastro" data-tooltip="Cadastro / Fichas" onclick="window.open('https://lucas-osorio.github.io/Hub-DP/cadastro.html', '_blank', 'noopener')" type="button">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       <span class="hub-tab-copy"><span class="hub-tab-title">Cadastro / Fichas</span><span class="hub-tab-sub">Admissão e importações</span></span>
     </button>
@@ -833,7 +833,7 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
           </div>
 
           <div class="hub-home-cards">
-            <button class="hub-home-card" onclick="hubTrocarAba('cadastro')" type="button">
+            <button class="hub-home-card" onclick="window.open('https://lucas-osorio.github.io/Hub-DP/cadastro.html', '_blank', 'noopener')" type="button">
               <span class="hub-home-card-top">
                 <span class="hub-home-card-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -877,21 +877,6 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
     </div>
   </div>
 
-  <div class="hub-pane" id="pane-cadastro">
-    <div class="hub-launch-wrap">
-      <div class="hub-launch-card">
-        <div class="hub-launch-icon">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h2>Cadastro / Fichas</h2>
-        <p>Essa ferramenta roda numa página própria — é o que permite a criação automática dos cards de vencimento de experiência no Trello. Abre em uma nova aba.</p>
-        <a class="hub-launch-btn" href="https://lucas-osorio.github.io/Hub-DP/cadastro.html" target="_blank" rel="noopener">
-          Abrir Ficha de Admissão
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
 
   <div class="hub-pane" id="pane-dias">
     <div class="hub-loading" id="loading-dias"><div class="hub-spinner"></div>Carregando ferramenta de dias trabalhados...</div>
