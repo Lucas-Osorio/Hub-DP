@@ -369,65 +369,382 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
 
 /* === /GESTAMG DESIGN SYSTEM V2 === */
 
-/* === HUB HOME (pagina inicial / menu principal) === */
-.hub-brand{
-  border: 0;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  transition: background .15s ease;
+/* === HUB HOME + MENU V3 === */
+
+/* Menu lateral: mantém a identidade atual, mas melhora hierarquia e acabamento */
+.hub-sidebar{
+  border-right:1px solid rgba(255,255,255,.08);
+  box-shadow:6px 0 24px rgba(10,46,92,.12);
 }
-.hub-brand:hover{
-  background: rgba(255,255,255,.06);
+.hub-sidebar.open{
+  box-shadow:10px 0 30px rgba(10,46,92,.15);
+}
+.hub-brand{
+  position:relative;
+  height:80px;
+  min-height:80px;
+  width:100%;
+  padding:0 16px;
+  border:0;
+  background:transparent;
+  color:inherit;
+  cursor:pointer;
+  text-align:left;
+  transition:background .16s ease;
+}
+.hub-brand:hover{background:rgba(255,255,255,.055);}
+.hub-brand.active{background:rgba(255,255,255,.075);}
+.hub-brand.active::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:19px;
+  bottom:19px;
+  width:3px;
+  border-radius:0 4px 4px 0;
+  background:#8CC6F3;
+}
+.hub-brand:focus-visible,
+.hub-tab:focus-visible,
+.hub-toggle:focus-visible{
+  outline:2px solid rgba(255,255,255,.92);
+  outline-offset:-3px;
+}
+.hub-brand img{
+  width:39px;
+  height:45px;
+  flex-basis:39px;
+}
+.hub-brand-copy strong{
+  font-size:14px;
+  letter-spacing:-.01em;
+}
+.hub-brand-copy span{
+  margin-top:3px;
+  font-size:10px;
+  color:rgba(211,229,246,.78);
+}
+.hub-tabs{
+  gap:7px;
+  padding:16px 10px 11px;
+}
+.hub-nav-label{
+  height:18px;
+  padding:0 12px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  white-space:nowrap;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:rgba(205,225,244,.48);
+  opacity:0;
+  transform:translateX(-4px);
+  transition:opacity .14s ease,transform .18s ease;
+}
+.hub-sidebar.open .hub-nav-label{
+  opacity:1;
+  transform:translateX(0);
+  transition-delay:.05s;
+}
+.hub-tab{
+  min-height:49px;
+  padding:9px 13px;
+  border-radius:10px;
+  color:rgba(255,255,255,.70);
+}
+.hub-tab:hover{
+  background:rgba(255,255,255,.075);
+  color:#fff;
+}
+.hub-tab.active{
+  background:rgba(255,255,255,.125);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.055);
+}
+.hub-tab.active::before{
+  top:10px;
+  bottom:10px;
+  background:#8CC6F3;
+}
+.hub-tab-title{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:-.005em;
+}
+.hub-tab-sub{
+  margin-top:3px;
+  font-size:10px;
+  color:rgba(211,229,246,.66);
+}
+.hub-tab[data-tab="ajuda"]{
+  padding-top:13px;
+  min-height:55px;
+  border-top-color:rgba(255,255,255,.08);
+}
+.hub-sidebar-footer{
+  padding:10px 10px 13px;
+  border-top-color:rgba(255,255,255,.08);
+}
+.hub-toggle{
+  height:41px;
+  border-radius:10px;
+  background:rgba(255,255,255,.045);
+}
+.hub-toggle:hover{background:rgba(255,255,255,.09);}
+
+/* Home */
+#pane-home{
+  overflow:hidden;
+  background:#F5F7FA;
 }
 .hub-home-wrap{
-  width: 100%; height: 100%; overflow-y: auto;
-  display: flex; flex-direction: column; align-items: center;
-  padding: 48px 32px 64px; text-align: center;
+  width:100%;
+  height:100%;
+  overflow-y:auto;
+  padding:clamp(24px,3vw,42px) clamp(20px,3.6vw,54px) 54px;
+}
+.hub-home{
+  width:min(1240px,100%);
+  margin:0 auto;
 }
 .hub-home-hero{
-  max-width: 820px; width: 100%; height: auto; margin-bottom: 28px;
+  min-height:390px;
+  display:grid;
+  grid-template-columns:minmax(330px,.82fr) minmax(470px,1.18fr);
+  align-items:center;
+  gap:clamp(20px,3vw,48px);
+  padding:clamp(28px,3.7vw,52px);
+  background:#fff;
+  border:1px solid #E3E8EF;
+  border-radius:22px;
+  overflow:hidden;
+}
+.hub-home-copy{
+  position:relative;
+  z-index:1;
+  text-align:left;
+}
+.hub-home-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:18px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#356B9F;
+}
+.hub-home-eyebrow::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#2E75B6;
+  box-shadow:0 0 0 4px #EBF4FD;
 }
 .hub-home-title{
-  font-family: 'Manrope','Segoe UI',Arial,sans-serif;
-  font-size: 28px; font-weight: 800; letter-spacing: -.02em;
-  color: #0A2E5C; margin-bottom: 10px;
+  margin:0;
+  font-family:'Manrope','Segoe UI',Arial,sans-serif;
+  font-size:clamp(36px,4.2vw,58px);
+  line-height:1.02;
+  font-weight:800;
+  letter-spacing:-.05em;
+  color:#0A2E5C;
 }
-.hub-home-subtitle{
-  font-size: 14px; color: #6A7482; margin-bottom: 36px; max-width: 520px; line-height: 1.6;
+.hub-home-lead{
+  max-width:500px;
+  margin:17px 0 0;
+  font-size:clamp(15px,1.45vw,18px);
+  line-height:1.6;
+  font-weight:500;
+  color:#536174;
+}
+.hub-home-support{
+  max-width:500px;
+  margin:10px 0 0;
+  font-size:12px;
+  line-height:1.6;
+  color:#7B8797;
+}
+.hub-home-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:24px;
+}
+.hub-home-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:29px;
+  padding:6px 10px;
+  border:1px solid #DCE5EE;
+  border-radius:999px;
+  background:#F8FAFC;
+  font-size:10.5px;
+  font-weight:700;
+  color:#536174;
+}
+.hub-home-art{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hub-home-art img{
+  display:block;
+  width:100%;
+  max-width:720px;
+  height:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 16px 20px rgba(10,46,92,.08));
+}
+
+.hub-home-tools-section{
+  margin-top:28px;
+}
+.hub-home-section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin:0 2px 14px;
+}
+.hub-home-section-kicker{
+  display:block;
+  margin-bottom:4px;
+  font-size:9.5px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#6E7C8E;
+}
+.hub-home-section-head h2{
+  margin:0;
+  font-size:19px;
+  line-height:1.25;
+  font-weight:800;
+  letter-spacing:-.025em;
+  color:#202833;
+}
+.hub-home-section-head p{
+  max-width:430px;
+  margin:0;
+  font-size:11.5px;
+  line-height:1.55;
+  text-align:right;
+  color:#7A8696;
 }
 .hub-home-cards{
-  display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 900px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
 }
 .hub-home-card{
-  background: #fff; border: 1px solid #E2E8F0; border-radius: 16px;
-  box-shadow: 0 8px 28px rgba(15,64,131,.08);
-  padding: 26px 22px; width: 230px;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  cursor: pointer; font-family: inherit;
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  min-width:0;
+  min-height:154px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  text-align:left;
+  border:1px solid #E2E8F0;
+  border-radius:16px;
+  background:#fff;
+  color:inherit;
+  cursor:pointer;
+  font-family:inherit;
+  box-shadow:0 1px 2px rgba(16,24,40,.035);
+  transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;
 }
 .hub-home-card:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 14px 34px rgba(15,64,131,.14);
-  border-color: #C7DEF5;
+  transform:translateY(-2px);
+  border-color:#C9D9E9;
+  box-shadow:0 9px 24px rgba(15,64,131,.08);
+}
+.hub-home-card-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
 }
 .hub-home-card-icon{
-  width: 52px; height: 52px; border-radius: 13px;
-  background: #EEF6FD; color: #0F4083;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 14px;
+  width:42px;
+  height:42px;
+  margin:0;
+  border-radius:11px;
+  background:#EEF6FD;
+  color:#0F4083;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 42px;
+}
+.hub-home-card-icon svg{width:21px;height:21px;}
+.hub-home-card-arrow{
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  color:#7E8B9C;
+  background:#F8FAFC;
+  transition:transform .16s ease,color .16s ease,background .16s ease;
+}
+.hub-home-card:hover .hub-home-card-arrow{
+  transform:translateX(2px);
+  color:#0F4083;
+  background:#EEF6FD;
 }
 .hub-home-card-title{
-  font-family: 'Manrope','Segoe UI',Arial,sans-serif;
-  font-size: 15px; font-weight: 700; color: #0A2E5C; margin-bottom: 5px;
+  margin-top:18px;
+  font-size:14px;
+  line-height:1.25;
+  font-weight:800;
+  letter-spacing:-.015em;
+  color:#172D49;
 }
 .hub-home-card-sub{
-  font-size: 12px; color: #6A7482;
+  margin-top:6px;
+  font-size:11px;
+  line-height:1.5;
+  color:#758193;
 }
-@media (max-width: 760px){
-  .hub-home-title{ font-size: 21px; }
-  .hub-home-wrap{ padding: 32px 18px 48px; }
+
+@media (max-width:1050px){
+  .hub-home-hero{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .hub-home-copy{text-align:center;}
+  .hub-home-lead,.hub-home-support{margin-left:auto;margin-right:auto;}
+  .hub-home-badges{justify-content:center;}
+  .hub-home-art img{max-width:760px;}
+}
+@media (max-width:820px){
+  .hub-home-cards{grid-template-columns:1fr;}
+  .hub-home-card{min-height:132px;}
+  .hub-home-section-head{align-items:flex-start;flex-direction:column;gap:6px;}
+  .hub-home-section-head p{text-align:left;}
+}
+@media (max-width:760px){
+  .hub-home-wrap{padding:20px 16px 42px;}
+  .hub-home-hero{
+    min-height:0;
+    padding:26px 20px 22px;
+    border-radius:18px;
+  }
+  .hub-home-title{font-size:34px;}
+  .hub-home-lead{font-size:14px;}
+  .hub-home-badges{margin-top:18px;}
+  .hub-home-tools-section{margin-top:22px;}
+  .hub-nav-label{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .hub-brand,.hub-nav-label,.hub-home-card,.hub-home-card-arrow{transition:none!important;}
 }
 /* === /HUB HOME === */
 </style>
@@ -444,6 +761,7 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
   </button>
 
   <nav class="hub-tabs" aria-label="Ferramentas">
+    <div class="hub-nav-label" aria-hidden="true">Ferramentas</div>
     <button class="hub-tab" data-tab="cadastro" data-tooltip="Cadastro / Fichas" onclick="hubTrocarAba('cadastro')" type="button">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       <span class="hub-tab-copy"><span class="hub-tab-title">Cadastro / Fichas</span><span class="hub-tab-sub">Admissão e importações</span></span>
@@ -477,32 +795,75 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
 
   <div class="hub-pane active" id="pane-home">
     <div class="hub-home-wrap">
-      <img class="hub-home-hero" src="inicio-ilustracao.png" alt="Equipe Gestamg: administrativo, coleta, manutencao e transporte">
-      <h1 class="hub-home-title">HUB DE FERRAMENTAS DP GESTAMG</h1>
-      <p class="hub-home-subtitle">Departamento Pessoal &mdash; selecione uma ferramenta para comecar.</p>
-      <div class="hub-home-cards">
-        <button class="hub-home-card" onclick="hubTrocarAba('cadastro')" type="button">
-          <span class="hub-home-card-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </span>
-          <span class="hub-home-card-title">Cadastro / Fichas</span>
-          <span class="hub-home-card-sub">Admissao e importacoes</span>
-        </button>
-        <button class="hub-home-card" onclick="hubTrocarAba('dias')" type="button">
-          <span class="hub-home-card-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </span>
-          <span class="hub-home-card-title">Pontos</span>
-          <span class="hub-home-card-sub">Analise e dias trabalhados</span>
-        </button>
-        <button class="hub-home-card" onclick="hubTrocarAba('impressao')" type="button">
-          <span class="hub-home-card-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          </span>
-          <span class="hub-home-card-title">Documentos</span>
-          <span class="hub-home-card-sub">Termos e impressao</span>
-        </button>
-      </div>
+      <main class="hub-home">
+        <section class="hub-home-hero" aria-labelledby="hub-home-title">
+          <div class="hub-home-copy">
+            <span class="hub-home-eyebrow">Departamento Pessoal</span>
+            <h1 class="hub-home-title" id="hub-home-title">Hub Gestamg</h1>
+            <p class="hub-home-lead">Pessoas, processos e operação em um só lugar.</p>
+            <p class="hub-home-support">Ferramentas internas para tornar as rotinas do DP mais simples, organizadas e padronizadas.</p>
+            <div class="hub-home-badges" aria-label="Características do portal">
+              <span class="hub-home-badge">Portal interno</span>
+              <span class="hub-home-badge">Rotinas do DP</span>
+              <span class="hub-home-badge">Gestamg</span>
+            </div>
+          </div>
+          <div class="hub-home-art">
+            <img src="inicio-ilustracao.png" alt="Equipe Gestamg representando administrativo, coleta, transporte e manutenção">
+          </div>
+        </section>
+
+        <section class="hub-home-tools-section" aria-labelledby="hub-tools-title">
+          <div class="hub-home-section-head">
+            <div>
+              <span class="hub-home-section-kicker">Acessos rápidos</span>
+              <h2 id="hub-tools-title">O que você precisa fazer?</h2>
+            </div>
+            <p>Escolha uma rotina para continuar. As ferramentas existentes continuam funcionando da mesma forma.</p>
+          </div>
+
+          <div class="hub-home-cards">
+            <button class="hub-home-card" onclick="hubTrocarAba('cadastro')" type="button">
+              <span class="hub-home-card-top">
+                <span class="hub-home-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <span class="hub-home-card-arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+                </span>
+              </span>
+              <span class="hub-home-card-title">Cadastro / Fichas</span>
+              <span class="hub-home-card-sub">Importação de fichas e apoio às rotinas de admissão.</span>
+            </button>
+
+            <button class="hub-home-card" onclick="hubTrocarAba('dias')" type="button">
+              <span class="hub-home-card-top">
+                <span class="hub-home-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </span>
+                <span class="hub-home-card-arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+                </span>
+              </span>
+              <span class="hub-home-card-title">Pontos / Dias Trabalhados</span>
+              <span class="hub-home-card-sub">Análise de ocorrências, fechamentos e dias trabalhados.</span>
+            </button>
+
+            <button class="hub-home-card" onclick="hubTrocarAba('impressao')" type="button">
+              <span class="hub-home-card-top">
+                <span class="hub-home-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                </span>
+                <span class="hub-home-card-arrow" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+                </span>
+              </span>
+              <span class="hub-home-card-title">Documentos</span>
+              <span class="hub-home-card-sub">Preenchimento, geração e impressão de documentos padronizados.</span>
+            </button>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
 
@@ -608,6 +969,12 @@ function hubCarregarAba(tab) {
 function hubTrocarAba(tab) {
   document.querySelectorAll('.hub-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   document.querySelectorAll('.hub-pane').forEach(p => p.classList.toggle('active', p.id === 'pane-' + tab));
+  const brand = document.querySelector('.hub-brand');
+  if (brand) {
+    brand.classList.toggle('active', tab === 'home');
+    if (tab === 'home') brand.setAttribute('aria-current', 'page');
+    else brand.removeAttribute('aria-current');
+  }
   hubCarregarAba(tab);
 }
 
@@ -622,7 +989,7 @@ function hubAlternarMenu() {
   if (label) label.textContent = aberto ? 'Recolher menu' : 'Expandir menu';
 }
 
-hubCarregarAba('cadastro');
+hubTrocarAba('home');
 </script>
 
 </body>
