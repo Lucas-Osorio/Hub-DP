@@ -206,6 +206,27 @@
   .anexo-card p.desc{margin:0 0 12px;font-size:12.5px;color:var(--texto-suave);}
   table.tabela-checklist td.check{text-align:center;width:60px;color:var(--cinza-400);font-size:15px;}
 
+  .documentos-lista{display:flex;flex-direction:column;gap:10px;}
+  .documento-item{
+    display:flex;align-items:center;gap:14px;
+    background:#fff;border:1px solid var(--borda);border-radius:var(--raio);
+    padding:14px 18px;box-shadow:var(--sombra-sm);
+    text-decoration:none;color:inherit;
+    transition:box-shadow .15s ease,border-color .15s ease;
+  }
+  .documento-item:hover{box-shadow:var(--sombra-md);border-color:var(--azul-borda);}
+  .documento-icone{
+    flex:0 0 auto;width:36px;height:36px;border-radius:8px;
+    background:var(--azul-claro);color:var(--azul-escuro);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .documento-corpo{flex:1;min-width:0;}
+  .documento-titulo{display:block;font-size:13.5px;font-weight:700;color:var(--texto);}
+  .documento-desc{display:block;font-size:12px;color:var(--texto-suave);margin-top:2px;}
+
+  .setor-card .guia-card-icon{width:48px;height:48px;}
+  .setor-card .guia-card-titulo{font-size:15.5px;}
+
   .sem-resultado{padding:40px 10px;text-align:center;color:var(--texto-suave);font-size:13.5px;}
 
   @media (max-width:640px){
@@ -239,7 +260,7 @@
 // "guias" (nova categoria) ou dentro de uma categoria existente.
 // Cada guia segue as 8 seções padrão do Guia de Processo Gestamg.
 // ============================================================
-const GUIAS = [
+const CATEGORIAS_DP = [
   {
     categoria: 'Admissão de Colaboradores',
     guias: [
@@ -530,6 +551,9 @@ const GUIAS = [
             ${imgGuia('assets/guias/admissao-colaboradores/image8.webp', 'Relatório consolidado de vencimentos do período.')}
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Este passo é uma rotina mensal e contínua do Departamento Pessoal, independente da data de admissão de um colaborador específico. Deve ser executado todo mês para acompanhar todos os colaboradores em período de experiência — não é uma ação sequencial aos passos anteriores deste guia.</span></div>
           `},
+        ],
+        documentos: [
+          { titulo: 'Formulário de E-mail — Admissão', descricao: 'Ferramenta que monta o e-mail padrão de admissão a partir dos dados do colaborador.', arquivo: 'ferramentas/formulario-email-admissao.html', tipo: 'ferramenta' },
         ],
         duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
         anexo: {
@@ -1565,9 +1589,549 @@ const GUIAS = [
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A recusa ao teste equivale disciplinarmente a resultado positivo, conforme previsto na Política Interna e no Termo de Ciência assinado pelo colaborador.</span></div>
           `},
         ],
+        documentos: [
+          { titulo: 'Ficha de Registro — Bafômetro (modelo em branco)', descricao: 'PDF pronto pra impressão, usado pelo líder da filial no momento do teste.', arquivo: 'assets/guias/bafometro/docs/ficha-registro-bafometro.pdf', tipo: 'download' },
+        ],
+        politicaInterna: {
+          titulo: 'Política Interna — Programa de Teste de Bafômetro',
+          html: `
+            <p><strong>Este documento é de uso interno. Seu conteúdo deve ser tratado com sigilo e não deve ser compartilhado fora da empresa.</strong></p>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">1. Por que fazemos isso</p>
+            <p>Dirigir sob efeito de álcool é uma das principais causas de acidentes graves no trânsito. Como empresa de transportes, temos a responsabilidade de garantir que nossos motoristas estejam em condições seguras para exercer sua função.</p>
+            <p>O programa de bafômetro não é uma medida punitiva nem uma demonstração de desconfiança. É uma ação preventiva que protege o próprio colaborador, seus colegas e todas as pessoas que dependem do nosso trabalho.</p>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">2. Quem participa</p>
+            <p>O programa se aplica a todos os motoristas ativos de todas as filiais da empresa. A participação é obrigatória sempre que o colaborador for convocado pelo sorteio.</p>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">3. Como funciona o sorteio</p>
+            <p>Toda semana, o Departamento Pessoal realiza um sorteio eletrônico e seleciona 3 motoristas por filial para o teste. O sorteio é aleatório e feito de forma centralizada — o líder da filial não tem nenhuma influência sobre quem é escolhido.</p>
+            <ul>
+              <li>O resultado do sorteio é comunicado ao líder da filial com antecedência;</li>
+              <li>O líder convoca os motoristas selecionados no horário definido;</li>
+              <li>O mesmo motorista pode ser sorteado em semanas diferentes — isso é normal e esperado.</li>
+            </ul>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">4. Como o teste é aplicado</p>
+            <p>O teste é realizado pelo líder da filial, de forma individual e reservada, antes do início da jornada de trabalho. O equipamento utilizado é um bafômetro calibrado e homologado.</p>
+            <ul>
+              <li>O colaborador sopra no equipamento por alguns segundos;</li>
+              <li>O resultado aparece no display do equipamento;</li>
+              <li>O líder registra o resultado em formulário próprio;</li>
+              <li>Uma foto do equipamento com o resultado é tirada como evidência — sem exposição do rosto do colaborador;</li>
+              <li>O colaborador assina o formulário confirmando que participou do procedimento.</li>
+            </ul>
+            <p><strong>O teste é rápido, discreto e não causa nenhum tipo de constrangimento quando seguido corretamente.</strong></p>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">5. Resultado negativo</p>
+            <p>O motorista é liberado normalmente para iniciar sua jornada. O registro fica arquivado de forma confidencial no Departamento Pessoal.</p>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">6. Resultado positivo</p>
+            <p>O motorista é afastado imediatamente da função de condução naquele dia. O Departamento Pessoal e o gestor da filial são comunicados. A situação é tratada com sigilo — nenhum colega será informado sobre o ocorrido.</p>
+            <p><strong>As medidas seguem uma escala progressiva, considerando o histórico dos últimos 12 meses:</strong></p>
+            <table class="tabela-guia" style="margin:10px 0;">
+              <tr><th>Ocorrência</th><th>Medida</th><th>O que acontece</th></tr>
+              <tr><td><strong>1ª vez</strong></td><td>Advertência escrita</td><td>Afastamento no dia. Advertência registrada. Encaminhamento ao médico do trabalho. Oferta de apoio, se disponível.</td></tr>
+              <tr><td><strong>2ª vez (em 12 meses)</strong></td><td>Suspensão de 3 dias</td><td>Afastamento imediato. Suspensão sem remuneração. Avaliação médica obrigatória antes do retorno.</td></tr>
+              <tr><td><strong>3ª vez (em 12 meses)</strong></td><td>Demissão por justa causa</td><td>Rescisão por justa causa com base no art. 482 da CLT. Conduzido pelo setor jurídico.</td></tr>
+            </table>
+            <p>Após 12 meses sem ocorrência, o histórico é zerado para fins desta escala.</p>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">7. Recusa ao teste</p>
+            <p>Recusar a realização do teste é tratado da mesma forma que um resultado positivo. A recusa será registrada no formulário e seguirá a mesma escala disciplinar descrita acima.</p>
+            <p><strong>Ao assinar o Termo de Ciência, o colaborador reconhece que a recusa ao teste é uma falta disciplinar grave.</strong></p>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">8. Ausência no dia do teste</p>
+            <p>Se o motorista sorteado não estiver presente na filial por motivo justificado (atestado médico, folga programada, etc.), o líder registra a ausência e o Departamento Pessoal avalia o caso. Ausências injustificadas repetidas serão encaminhadas para análise.</p>
+            <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">9. Privacidade e sigilo</p>
+            <p>Todos os registros deste programa — formulários, resultados e evidências fotográficas — são confidenciais. Apenas o Departamento Pessoal, a Segurança do Trabalho e a Diretoria têm acesso a essas informações.</p>
+            <ul>
+              <li>As fotos não mostram o rosto do colaborador;</li>
+              <li>Os resultados nunca são compartilhados com colegas ou expostos publicamente;</li>
+              <li>Os dados são armazenados de forma segura e descartados após o prazo legal.</li>
+            </ul>
+`,
+        },
         duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
       },
     ],
+  },
+];
+
+const CATEGORIAS_FF = [
+  {
+    categoria: 'Compras e Pagamentos',
+    guias: [
+      {
+        id: 'boleto-praxio',
+        titulo: 'Lançamento e Rateio do Boleto Praxio',
+        subtitulo: 'Encaminhamento, lançamento no Siga-i e rateio mensal do boleto da Praxio (BGM Rodotec) entre os estabelecimentos.',
+        identificacao: [
+          ['Processo', 'Lançamento e Rateio do Boleto Praxio (BGM Rodotec)'],
+          ['Responsável principal', 'Trainee'],
+          ['Quem mais participa', 'Gerente Administrativo, Exacta Contábil (contabilidade terceirizada)'],
+          ['Quando acontece', 'Mensalmente, até o dia 10'],
+          ['Sistemas utilizados', 'Siga-i, E-mail, OneDrive, Excel, Slack'],
+          ['Filiais', 'Ambiental'],
+          ['Documentos relacionados', 'Boleto, Nota Fiscal (NF), Guia de Pagamento, Planilha de Rateio Praxio'],
+        ],
+        objetivo: 'Este guia orienta o Trainee responsável pelo Fiscal Contábil na execução do processo de encaminhamento, lançamento e rateio do boleto da Praxio (BGM Rodotec), garantindo o cumprimento das obrigações fiscais, a atualização correta dos registros no sistema Siga-i e a distribuição padronizada dos valores entre os estabelecimentos das filiais Ambiental.',
+        conceitos: [
+          ['Praxio (BGM Rodotec)', 'Empresa responsável pelo sistema Siga-i, utilizado pela empresa para controle de estoque, compras e lançamento de boletos.'],
+          ['Siga-i', 'Sistema de gestão utilizado para o lançamento de solicitações de compra, entrada de notas fiscais e boletos.'],
+          ['Rateio', 'Divisão proporcional do valor do boleto entre os estabelecimentos, realizada com base nas placas de veículos cadastradas no sistema Siga-i.'],
+          ['Guia de Pagamento', 'Documento que indica o estabelecimento responsável pelo registro financeiro do boleto — atualmente, Ambiental Matriz.'],
+          ['Tabela Dinâmica', 'Resumo automático gerado na planilha de rateio, consolidando quantidade de veículos, valor total e percentual por estabelecimento.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema ou nas pastas do Drive.'],
+          ['🔗 Link', 'Referência a um sistema, planilha ou documento externo acessível por link.'],
+          ['📎 Anexo', 'Referência a um documento de apoio ou template disponível na pasta de Anexos.'],
+        ],
+        quemFazOQue: [
+          ['Trainee', 'Encaminha o boleto e a NF para a contabilidade, realiza o lançamento no Siga-i e calcula e envia o rateio entre os estabelecimentos.', 'Mensalmente, até o dia 10.'],
+          ['Gerente Administrativo', 'Confirma se houve mudança no estabelecimento de algum veículo antes do envio do rateio.', 'Quando consultado pelo Trainee, antes do envio do rateio.'],
+          ['Exacta Contábil (terceirizada)', 'Recebe o boleto e a NF por e-mail para emissão das Guias de Imposto.', 'Após o encaminhamento por e-mail, mensalmente.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Encaminhar o Boleto', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Receba o boleto e a nota fiscal (NF) da <strong>Praxio (BGM Rodotec)</strong> por e-mail.</li>
+              <li>Encaminhe o boleto e a NF para o e-mail <strong>fisc01@exactacontabil.com.br</strong>, solicitando a emissão das Guias de Imposto.</li>
+            </ul>
+            ${imgGuia('assets/guias/boleto-praxio/image1.webp', 'Exemplo de e-mail de encaminhamento do boleto e da NFS-e para a contabilidade.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Garanta que tanto o boleto quanto a NFS-e estejam anexados ao e-mail antes do envio, conforme o exemplo acima.</span></div>
+          `},
+          { numero: 2, titulo: 'Lançar o Boleto no Sistema Siga-i', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Acesse o sistema <strong>Siga-i</strong>.</li>
+              <li>Navegue até <strong>Controle de Estoque</strong>.</li>
+              <li>Selecione o estabelecimento registrado na Guia de Pagamento: «Ambiental Matriz».</li>
+              <li>Realize o processo completo de <strong>Solicitação de Compra, Entrada da NF e Boleto</strong>, conforme o POP — Compras, NF e Boletos.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O estabelecimento selecionado deve ser sempre o indicado na Guia de Pagamento. Lançamentos no estabelecimento errado geram inconsistência no rateio final.</span></div>
+          `},
+          { numero: 3, titulo: 'Calcular e Enviar o Rateio', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Abra a pasta <strong>AMBIENTAL CLEAN</strong> no OneDrive.</li>
+              <li>Navegue até <strong>OPERAÇÃO → Rateio Praxio - Estabelecimentos</strong>.</li>
+              <li>Verifique com o <strong>Gerente Administrativo</strong> se houve alguma mudança no estabelecimento dos veículos.</li>
+              <li>Caso tenha ocorrido mudança, atualize a «Coluna B» com o novo estabelecimento correspondente à placa.</li>
+              <li>Insira o valor total da NF na célula «H1».</li>
+              <li>Confira a tabela dinâmica gerada automaticamente, com o total e o percentual por estabelecimento.</li>
+            </ul>
+            ${imgGuia('assets/guias/boleto-praxio/image2.webp', 'Planilha de Rateio Praxio: valor por placa/estabelecimento e tabela dinâmica consolidada.')}
+            <ul>
+              <li>Envie um print da tabela dinâmica no canal <strong>#estoque_locação</strong>, no <strong>Slack</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/boleto-praxio/image3.webp', 'Exemplo de envio do rateio no canal #estoque_locação do Slack.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O valor inserido na célula H1 deve corresponder exatamente ao valor total da NF recebida. Qualquer divergência compromete a distribuição correta do rateio entre os estabelecimentos.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o setor Fiscal Contábil.',
+      },
+      {
+        id: 'compras-nf-boletos',
+        titulo: 'Solicitação de Compra, Cotação, NF e Pagamentos',
+        subtitulo: 'Fluxo completo de aquisição no Siga-i — da abertura da Solicitação de Compra à entrada da Nota Fiscal e ao pagamento do fornecedor.',
+        identificacao: [
+          ['Processo', 'Solicitação de Compra, Cotação, NF e Pagamentos'],
+          ['Responsável principal', 'Setor de Compras'],
+          ['Quem mais participa', 'Gestor da área solicitante, Setor Financeiro, Gerente, Diretor (conforme valor)'],
+          ['Quando acontece', 'Conforme demanda'],
+          ['Sistemas utilizados', 'Siga-i (Controle de Estoque, Compras, Controle Financeiro)'],
+          ['Filiais', 'Clean LTDA (todas), Ambiental (todas), SR Transporte'],
+          ['Documentos relacionados', 'Solicitação de Compra, Ordem de Coleta, Comparativo de Preços, Nota Fiscal, Boleto'],
+        ],
+        objetivo: 'Este guia orienta o Setor de Compras na execução completa do fluxo de aquisição de itens e serviços, desde a abertura da Solicitação de Compra no sistema Siga-i até a entrada da Nota Fiscal e o pagamento ao fornecedor, garantindo a padronização das cotações, a correta aprovação por alçada de valor e a conformidade fiscal dos lançamentos.',
+        conceitos: [
+          ['Siga-i', 'Sistema de gestão utilizado para todo o fluxo de compras, controle de estoque, entrada de notas fiscais e controle financeiro.'],
+          ['Solicitação de Compra (SC)', 'Registro de abertura de uma necessidade de compra ou orçamento, sujeito à aprovação do gestor responsável.'],
+          ['Ordem de Coleta (OC)', 'Documento onde são lançadas as cotações de preço junto a um ou mais fornecedores para os itens solicitados.'],
+          ['Comparativo de Preços', 'Tela do sistema que compara os valores cotados nas Ordens de Coleta, permitindo selecionar o menor preço e enviar para aprovação.'],
+          ['Ordem de Fornecimento (OF)', 'Documento gerado após a aprovação do Comparativo de Preços, autorizando a compra junto ao fornecedor selecionado.'],
+          ['CFOP / CST / NCM', 'Códigos fiscais utilizados na classificação dos itens da Nota Fiscal, exigidos para apuração de impostos.'],
+          ['Pagfor', 'Tela de pagamento ao fornecedor, dentro do Controle Financeiro do Siga-i.'],
+          ['Pgto Concessionárias', 'Categoria de boletos emitidos por prestadores de serviços públicos (ex: CEMIG, Copasa), identificados por código de barras com maior número de dígitos.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['F2 / F5 / F11', 'Atalho de teclado correspondente à ação indicada no sistema.'],
+          ['P Pendência', 'Item que ainda precisa ser criado, definido ou documentado.'],
+        ],
+        quemFazOQue: [
+          ['Setor de Compras', 'Abre a Solicitação de Compra, realiza cotações, preenche a Ordem de Coleta, lança a Nota Fiscal e processa o pagamento ao fornecedor.', 'Conforme demanda, em todas as etapas do fluxo.'],
+          ['Gestor da Área Solicitante', 'Aprova a Solicitação de Compra antes de seguir para cotação ou compra direta.', 'Após a abertura da Solicitação de Compra.'],
+          ['Aprovador por Alçada (Setor de Compras, Gerente ou Diretor)', 'Aprova o Comparativo de Preços conforme o valor da compra: até R$ 700 pelo Setor de Compras, de R$ 700 a R$ 2.000 pelo Gerente, e acima de R$ 2.000 pelo Gerente com aprovação adicional do Diretor.', 'Após o envio do Comparativo de Preços para aprovação.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Abrir a Solicitação de Compra', responsavel: 'Setor de Compras', html: `
+            <ul>
+              <li>Acesse o sistema <strong>Siga-i</strong> e abra o módulo <strong>Controle de Estoque</strong>.</li>
+              <li>Mude para o estabelecimento correspondente, se necessário, pelo atalho <strong>F11</strong>.</li>
+              <li>No menu lateral esquerdo, navegue até <strong>Compras → Solicitações de Compra → Digitação da Solicitação</strong> e clique em <strong>Incluir</strong>.</li>
+              <li>Preencha o cabeçalho:
+                <ul>
+                  <li><strong>Centro de Custo:</strong> selecione ADM ou OP do estabelecimento, ou a placa do veículo, se aplicável.</li>
+                  <li><strong>Responsável:</strong> selecione o próprio nome.</li>
+                  <li><strong>Prioridade:</strong> Normal (5 dias), Urgente (3 dias) ou Afeta Produção (1 dia).</li>
+                  <li><strong>N° OS:</strong> preencha apenas se houver Ordem de Serviço vinculada.</li>
+                </ul>
+              </li>
+              <li>Na tabela de itens, clique no ícone «...» (atalho <strong>F2</strong>) para buscar a «Descrição» do item e confirme em <strong>Prosseguir</strong>.</li>
+              <li>Informe a «Qtde» desejada e clique em <strong>Gravar</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image1.webp', 'Tela de Solicitação de Compra: cabeçalho e tabela de itens.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Devido ao grande volume de itens cadastrados, o item buscado pode não aparecer de imediato. Feche a janela e busque novamente até que o item apareça. Após gravar, aguarde a aprovação do gestor responsável antes de seguir para a cotação ou compra.</span></div>
+          `},
+          { numero: 2, titulo: 'Realizar a Cotação de Preços (Ordem de Coleta)', responsavel: 'Setor de Compras', html: `
+            <ul>
+              <li>No <strong>Controle de Estoque</strong>, navegue até <strong>Compras → Ordem de Coleta</strong>.</li>
+              <li>Use o <strong>Filtrar</strong> (atalho <strong>F5</strong>) para localizar a Ordem de Coleta correspondente e dê 2 cliques no item.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image2.webp', 'Filtro de Ordem de Coleta: período, situação e prioridade.')}
+            <ul>
+              <li>Selecione o fornecedor com 2 cliques. Caso o fornecedor não apareça na lista, clique em <strong>Incluir Fornecedor</strong> e busque pelo CNPJ/CPF ou nome.</li>
+              <li>Selecione os itens da cotação do fornecedor e use <strong>&gt;</strong> para enviar um item por vez, ou <strong>&gt;&gt;</strong> para enviar todos.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image3.webp', 'Tela de Inclusão de Fornecedor: seleção dos itens cotados.')}
+            <ul>
+              <li>Preencha o valor unitário (o sistema calcula o total) ou o valor total (o sistema calcula o unitário). O valor deve ser sempre o constante na NF.</li>
+              <li>Clique em <strong>Gravar</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image4.webp', 'Tela de Itens da Ordem de Coleta: dados do fornecedor e valores cotados.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O valor lançado na Ordem de Coleta deve corresponder exatamente ao valor constante na Nota Fiscal do fornecedor. Divergências aqui geram inconsistência no Comparativo de Preços.</span></div>
+          `},
+          { numero: 3, titulo: 'Aprovar o Comparativo de Preços', responsavel: 'Setor de Compras / Aprovador', html: `
+            <ul>
+              <li>Navegue até <strong>Compras → Comparativo de Preços</strong>.</li>
+              <li>Use o <strong>Filtrar</strong> (atalho <strong>F5</strong>) e selecione a Ordem de Coleta.</li>
+              <li>No canto inferior direito, clique em <strong>Menores</strong> e depois em <strong>Enviar Aprov</strong>.</li>
+              <li>O aprovador responsável depende do valor da compra:
+                <ul>
+                  <li><strong>Até R$ 700:</strong> Setor de Compras.</li>
+                  <li><strong>De R$ 700 a R$ 2.000:</strong> Gerente.</li>
+                  <li><strong>Acima de R$ 2.000:</strong> Gerente, com aprovação adicional do Diretor.</li>
+                </ul>
+              </li>
+              <li>Aguarde a aprovação e a confirmação da Ordem de Fornecimento.</li>
+              <li>Para gerar a Ordem de Fornecimento, navegue até <strong>Compras → Aprovação → Filtrar → Gerar OF</strong>.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A alçada de aprovação é definida exclusivamente pelo valor total da compra. Compras acima de R$ 2.000 exigem aprovação dupla — Gerente e Diretor — antes de seguir para a entrada da NF.</span></div>
+          `},
+          { numero: 4, titulo: 'Lançar a Entrada de Nota Fiscal', responsavel: 'Setor de Compras', html: `
+            <ul>
+              <li>No <strong>Controle de Estoque</strong>, navegue até <strong>Menu Principal → NF entrada → Consumo Direto</strong>.</li>
+              <li>Preencha o cabeçalho com os dados da NF: «OF n°», «Número», «Série/Modelo» e «CFO».</li>
+              <li>Em <strong>Dados Adicionais</strong>, confira se o «Total Bruto» coincide com a soma dos valores da tabela de itens.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image5.webp', 'Aba de Dados Adicionais da NF: Total Bruto, Frete e ICMS.')}
+            <ul>
+              <li>Caso a NF possua Retenção de Impostos, preencha a «Base» (geralmente o valor total da NF) e a «Alíquota» de cada imposto retido.</li>
+              <li>Em <strong>Distribuição por Centro de Custo</strong>, verifique o vínculo automático com a Natureza do item — geralmente não exige ajuste.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image6.webp', 'Aba de Distribuição por Centro de Custo.')}
+            <ul>
+              <li>Em <strong>Classificação</strong>, confirme o «Tipo da Nota Fiscal» (indicado no cabeçalho da NF) e o «Tipo de Lançamento» (método de pagamento).</li>
+              <li>Em <strong>Itens</strong>, preencha «CFOP» (geralmente automático), «CST» e «NCM», e clique em <strong>Incluir</strong>. Repita para cada item da NF.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image7.webp', 'Aba de Itens da NF: CFOP, CST, NCM e valores.')}
+            <ul>
+              <li>Em <strong>Condições de Pagamento</strong>, informe o «Vcto. Parcela» e confira se o «Valor» coincide com o previsto, e clique em <strong>Prosseguir</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image8.webp', 'Tela de Forma de Pagamento: vencimento e valor da parcela.')}
+            <ul>
+              <li>Finalize clicando em <strong>Gravar</strong>.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Sempre confira se o valor da parcela e a data de vencimento informados coincidem com os dados do boleto ou da condição de pagamento acordada com o fornecedor.</span></div>
+          `},
+          { numero: 5, titulo: 'Processar o Pagamento ao Fornecedor', responsavel: 'Setor de Compras', html: `
+            <ul>
+              <li>Acesse o módulo <strong>Controle Financeiro</strong> e mude para o estabelecimento correspondente, se necessário, pelo atalho <strong>F11</strong>.</li>
+              <li>Navegue até <strong>Obrigações</strong> e use o <strong>Filtrar</strong> (atalho <strong>F5</strong>) para localizar a obrigação pelo vencimento, natureza, centro de custo ou fornecedor.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image9.webp', 'Filtros do Controle Financeiro / Obrigações.')}
+            <ul>
+              <li>Clique na obrigação correspondente e selecione <strong>Pagto Fornecedor</strong>.</li>
+              <li>Para boleto bancário ou concessionárias (ex: CEMIG, Copasa), selecione a «Conta Corrente» do estabelecimento correto e o «Tipo de Pagamento» = <strong>Título de Cobrança</strong>, e clique em <strong>Gravar</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image10.webp', 'Tela de Pagamento de Boleto: conta corrente e tipo de pagamento.')}
+            <ul>
+              <li>Em seguida, selecione o «Tipo de Documento» = <strong>01 — Nota Fiscal/Fatura</strong>, cole o código do boleto no campo «Linha Digitável» e clique em <strong>Gravar</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/compras-nf-boletos/image11.webp', 'Tela de Linha Digitável do boleto bancário.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Pagamentos de Concessionárias seguem o mesmo lançamento do boleto convencional — a diferença está apenas na seleção do Tipo de Pagamento e no maior número de dígitos do código de barras.</span></div>
+          `},
+          { numero: 6, titulo: 'Realizar a Transferência Bancária', responsavel: 'Setor de Compras', html: `
+            <ul>
+              <li>Para pagamentos via transferência bancária, seguir o fluxo correspondente dentro do <strong>Pagto Fornecedor</strong>.</li>
+            </ul>
+            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: o passo a passo detalhado da Transferência Bancária ainda não foi documentado no procedimento original. Esta etapa será detalhada em versão futura deste guia.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o setor de Compras.',
+      },
+    ],
+  },
+  {
+    categoria: 'Frota e Veículos',
+    guias: [
+      {
+        id: 'fechamento-bombas',
+        titulo: 'Fechamento de Bombas',
+        subtitulo: 'Fechamento semanal das bombas de abastecimento no Siga-i, conferindo consistência dos dados de consumo de combustível da frota.',
+        identificacao: [
+          ['Processo', 'Fechamento de Bombas'],
+          ['Responsável principal', 'Trainee'],
+          ['Quem mais participa', 'Auxiliar Administrativo da filial, Gerente Administrativo'],
+          ['Quando acontece', 'Semanalmente, toda quarta-feira'],
+          ['Sistemas utilizados', 'Siga-i (Manutenção de Frota)'],
+          ['Filiais', 'Todas'],
+          ['Documentos relacionados', 'Relatório Consistir Movimento, Requisição de Combustível'],
+        ],
+        objetivo: 'Este guia orienta o Trainee responsável pela Operação na execução do fechamento semanal das bombas de abastecimento no sistema Siga-i, garantindo a consistência das informações de consumo de combustível, evitando divergências e possibilitando o controle eficiente dos custos operacionais da frota.',
+        conceitos: [
+          ['Siga-i', 'Sistema de gestão utilizado para controle de abastecimentos, manutenções e movimentações da frota.'],
+          ['Manutenção de Frota', 'Módulo do sistema responsável pelos registros de abastecimentos.'],
+          ['Consistir Movimento', 'Relatório do sistema que valida os dados registrados de abastecimento, verificando possíveis diferenças (coluna DIF) entre os lançamentos e os valores reais.'],
+          ['Coluna DIF', 'Campo que aponta discrepâncias entre os registros e os totais de combustível. Diferença igual a zero indica dados corretos; diferenças devem ser tratadas antes do fechamento.'],
+          ['Data Inicial e Data Final', 'Sempre inicia no dia seguinte ao último fechamento (00:00) e termina no dia anterior ao dia atual (23:59).'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['DIF = 0', 'Indicador de que os dados do relatório Consistir Movimento estão corretos.'],
+          ['DIF ≠ 0', 'Indicador de divergência — exige comunicação ao Auxiliar Administrativo antes de prosseguir.'],
+        ],
+        quemFazOQue: [
+          ['Trainee', 'Localiza o último fechamento, executa o Consistir Movimento, gera a Requisição de Combustível e realiza o fechamento do período no Siga-i.', 'Semanalmente, toda quarta-feira.'],
+          ['Auxiliar Administrativo da Filial', 'Recebe a comunicação de divergência na coluna DIF e localiza o erro no lançamento de abastecimento.', 'Quando houver diferença identificada no Consistir Movimento.'],
+          ['Gerente Administrativo', 'É comunicado em caso de erro na geração da Requisição de Combustível.', 'Quando houver erro na geração da requisição.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Localizar a Última Data de Fechamento', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Acesse o sistema <strong>Siga-i</strong> e abra o módulo <strong>Manutenção de Frota</strong>.</li>
+              <li>No menu esquerdo, navegue até <strong>Movimento → + Abastecimento → + Fechamento de Movimento</strong> e clique em <strong>Fechar</strong>.</li>
+              <li>Localize o dia do último fechamento na «Coluna Data e Hora».</li>
+            </ul>
+            ${imgGuia('assets/guias/fechamento-bombas/image1.webp', 'Lista de fechamentos anteriores — localizar a data do último fechamento.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A data localizada aqui define o início do período a ser conferido no próximo passo. Confirme a data com atenção antes de seguir.</span></div>
+          `},
+          { numero: 2, titulo: 'Consistir o Movimento de Abastecimento', responsavel: 'Trainee', html: `
+            <ul>
+              <li>No menu <strong>Abastecimento</strong>, clique em <strong>Consistir Movimento</strong>.</li>
+              <li>Preencha a «Data Inicial» com o dia seguinte ao último fechamento, às 00:00.</li>
+              <li>Preencha a «Data Final» com o dia anterior ao atual, às 23:59.</li>
+            </ul>
+            ${imgGuia('assets/guias/fechamento-bombas/image2.webp', 'Campos de Data Inicial e Data Final do Consistir Movimento.')}
+            <ul>
+              <li>Clique em <strong>Processar</strong>.</li>
+              <li>No relatório gerado, pule para a última página.</li>
+              <li>Analise a coluna <strong>DIF</strong>:
+                <ul>
+                  <li>Se <strong>DIF = 0</strong>, os dados estão corretos — feche o relatório.</li>
+                  <li>Se <strong>DIF ≠ 0</strong>, comunique a diferença ao Auxiliar Administrativo responsável pela filial para que o erro seja localizado, e então prossiga para o próximo passo.</li>
+                </ul>
+              </li>
+            </ul>
+            ${imgGuia('assets/guias/fechamento-bombas/image3.webp', 'Relatório Consistir Movimento, com a coluna DIF por bomba.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Não avance para a geração da Requisição de Combustível sem antes verificar a coluna DIF. Diferenças não tratadas comprometem a consistência do fechamento.</span></div>
+          `},
+          { numero: 3, titulo: 'Gerar a Requisição de Combustível', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Novamente no menu <strong>Abastecimento</strong>, clique em <strong>Gerar Requisição de Combustível</strong>.</li>
+              <li>Preencha a «Data Inicial» com o dia seguinte ao último fechamento, às 00:00.</li>
+              <li>Preencha a «Data Final» com o dia anterior ao atual, às 23:59.</li>
+              <li>Clique em <strong>Gravar</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/fechamento-bombas/image4.webp', 'Tela de Baixa de Diesel/Lubrificante: período e seleção das bombas.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Em caso de erro na geração da requisição, comunique imediatamente o Gerente Administrativo.</span></div>
+          `},
+          { numero: 4, titulo: 'Fechar o Período de Lançamentos', responsavel: 'Trainee', html: `
+            <ul>
+              <li>No menu <strong>Abastecimento → + Fechamento de Movimento</strong>, clique em <strong>Fechar</strong>.</li>
+              <li>No canto inferior direito, clique novamente em <strong>Fechar</strong>.</li>
+              <li>Preencha «Data e Hora» com o <strong>sábado da semana anterior, às 23:59</strong>.</li>
+              <li>Selecione <strong>Todas as bombas</strong>.</li>
+              <li>Clique em <strong>Fechar</strong> para concluir.</li>
+            </ul>
+            ${imgGuia('assets/guias/fechamento-bombas/image5.webp', 'Tela de Fechamento de Movimento de Bomba: data, hora e seleção das bombas.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A data e hora do fechamento devem corresponder sempre ao sábado da semana anterior, às 23:59 — esse é o marco que define o início do próximo período a ser conferido na semana seguinte.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com a Operação.',
+      },
+      {
+        id: 'lancamento-ipva',
+        titulo: 'Lançamento Guia IPVA e Taxa de Licenciamento',
+        subtitulo: 'Emissão anual da guia de IPVA e Licenciamento dos veículos próprios, do site da Fazenda MG ao lançamento do Pagfor no Siga-i.',
+        identificacao: [
+          ['Processo', 'Lançamento Guia IPVA e Taxa de Licenciamento'],
+          ['Responsável principal', 'Trainee'],
+          ['Quem mais participa', 'Diretoria, Gerente Administrativo'],
+          ['Quando acontece', 'Anualmente'],
+          ['Sistemas utilizados', 'Siga-i (Manutenção de Frota, Controle Financeiro), Site da Fazenda MG'],
+          ['Filiais', 'Clean LTDA (todas), Ambiental (todas), SR Transporte'],
+          ['Documentos relacionados', 'Guia de Pagamento IPVA/Licenciamento'],
+        ],
+        objetivo: 'Este guia orienta o Trainee responsável pela área Operacional na execução do lançamento anual da Guia de IPVA e Taxa de Licenciamento dos veículos próprios da frota, garantindo o fluxo correto de emissão, lançamento no sistema Siga-i e pagamento dentro do prazo definido.',
+        conceitos: [
+          ['IPVA', 'Imposto sobre a Propriedade de Veículos Automotores. Tributo estadual obrigatório, cobrado anualmente, referente à posse de veículos automotores.'],
+          ['Taxa de Licenciamento', 'Tributo anual que autoriza a circulação do veículo em via pública, regularizando sua documentação junto ao DETRAN.'],
+          ['RENAVAM', 'Registro Nacional de Veículos Automotores. Código único de 7 dígitos que identifica cada veículo no sistema nacional de trânsito, encontrado no documento do veículo e no módulo Manutenção de Frota.'],
+          ['Apenas Veículos Próprios', 'Este procedimento deve ser feito apenas para veículos próprios. Veículos alugados e terceirizados não devem ser considerados.'],
+          ['Pagto Concessionárias', 'Modalidade de pagamento utilizada para boletos emitidos por órgãos públicos, como a Fazenda Estadual, dentro do Controle Financeiro do Siga-i.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['🔗 Link', 'Referência a um site ou sistema externo acessível por link.'],
+        ],
+        quemFazOQue: [
+          ['Trainee', 'Localiza os veículos próprios, consulta o RENAVAM no site da Fazenda MG, gera a guia de pagamento e realiza o lançamento do Pagfor no Siga-i.', 'Anualmente.'],
+          ['Diretoria', 'Define, junto ao Trainee, qual cenário de parcelamento será adotado (Parcela Única ou Parcelas Separadas) antes do início da emissão das guias.', 'Antes do início da emissão das guias, anualmente.'],
+          ['Gerente Administrativo', 'Confirma o estabelecimento correto do veículo em caso de dúvida, principalmente para veículos novos.', 'Quando houver dúvida sobre o estabelecimento do veículo.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Acessar a Lista de Veículos Próprios', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Acesse o sistema <strong>Siga-i</strong> e navegue até <strong>Manutenção de Frota → Veículos</strong>.</li>
+              <li>Aplique o filtro «Tipo de Frota» = <strong>Própria</strong> e clique em <strong>Filtrar</strong>.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Este procedimento deve ser feito apenas para veículos próprios. Veículos alugados e terceirizados não devem ser levados em consideração.</span></div>
+          `},
+          { numero: 2, titulo: 'Consultar o RENAVAM no Site da Fazenda MG', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Localize o RENAVAM de cada veículo na Lista de Veículos do Passo 1 — dê 2 cliques no veículo para abrir os dados; o código fica no canto esquerdo inferior.</li>
+              <li>Acesse o site da Fazenda MG (🔗 veiculosmg.fazenda.mg.gov.br/buscar-renavam).</li>
+              <li>Cole o código do «RENAVAM» no campo de busca e clique em <strong>Consultar</strong>.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Confirme que o RENAVAM copiado corresponde exatamente ao veículo desejado antes de consultar, para evitar emissão de guia para o veículo errado.</span></div>
+          `},
+          { numero: 3, titulo: 'Selecionar as Parcelas e Gerar o Pagamento', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Antes de emitir as guias, alinhe com a <strong>Diretoria</strong> qual cenário será adotado:
+                <ul>
+                  <li><strong>Parcela Única:</strong> desconto de 3% e menor volume de lançamentos no sistema (1 por veículo) — modalidade mais indicada.</li>
+                  <li><strong>Parcelas Separadas:</strong> valor total, sem desconto, e maior volume de lançamentos no sistema (3 por veículo).</li>
+                </ul>
+              </li>
+              <li>No site da Fazenda MG, selecione o método de parcelamento definido e clique em <strong>Gerar Pagamento</strong>.</li>
+            </ul>
+            ${imgGuia('assets/guias/lancamento-ipva/image1.webp', 'Tela do site da Fazenda MG: seleção de Cota Única ou parcelas IPVA 1/2/3.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A decisão entre Parcela Única e Parcelas Separadas deve ser tomada com a Diretoria antes de iniciar a emissão das guias — o cenário escolhido se aplica a todos os veículos do lote.</span></div>
+          `},
+          { numero: 4, titulo: 'Lançar o Pagfor no Siga-i', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Acesse o módulo <strong>Controle Financeiro</strong> e navegue até <strong>Obrigações → Incluir Pag.</strong></li>
+              <li>Preencha os campos:
+                <ul>
+                  <li><strong>Cliente Fornecedor:</strong> digite «Estado de Minas Gerais» (basta apertar espaço para o nome aparecer).</li>
+                  <li><strong>Data de Vencimento:</strong> conforme indicado na guia de pagamento.</li>
+                  <li><strong>Valor:</strong> valor da guia.</li>
+                  <li><strong>Histórico:</strong> descrição do pagamento.</li>
+                  <li><strong>Centro de Custo:</strong> selecione a placa correspondente — para veículos novos, normalmente uma das Matrizes.</li>
+                  <li><strong>Estabelecimento:</strong> indique o estabelecimento onde o veículo se encontra. Automóveis leves devem ser atribuídos a Ambiental CB. Em caso de dúvida, confirme com o Gerente Administrativo antes de continuar.</li>
+                  <li><strong>Tipo de Lançamento:</strong> Boleto Bancário.</li>
+                </ul>
+              </li>
+              <li>No quadro de Naturezas, selecione a natureza do pagamento e indique o percentual correspondente:
+                <ul>
+                  <li>Se for apenas IPVA ou apenas Licenciamento, indique <strong>100%</strong>.</li>
+                  <li>Se for um pagamento dividido, realize o rateio na calculadora.</li>
+                </ul>
+              </li>
+            </ul>
+            ${imgGuia('assets/guias/lancamento-ipva/image2.webp', 'Tela de Dados da Obrigação no Siga-i: dados do fornecedor, vencimento, valor e natureza.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Para veículos novos ou em caso de dúvida sobre o estabelecimento correto, confirme com o Gerente Administrativo antes de gravar o lançamento.</span></div>
+          `},
+          { numero: 5, titulo: 'Realizar o Pagamento via Pagto Concessionárias', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Realize o pagamento através do <strong>Pagto Concessionárias</strong>, seguindo o mesmo fluxo descrito no Guia de Processo de Compras, NF e Boletos (etapa de Pagamento via Boleto/Concessionárias).</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O lançamento de IPVA e Taxa de Licenciamento segue a mesma lógica de pagamento de concessionárias — a diferença está apenas no fornecedor (Estado de Minas Gerais) e na natureza do pagamento.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o setor Operacional.',
+      },
+      {
+        id: 'preventivas-sr',
+        titulo: 'Abertura de Preventivas — SR',
+        subtitulo: 'Abertura das Ordens de Serviço de manutenção preventiva da frota SR Transporte, de acordo com a agenda programada no Siga-i.',
+        identificacao: [
+          ['Processo', 'Abertura de Preventivas — SR'],
+          ['Responsável principal', 'Trainee'],
+          ['Quem mais participa', 'Encarregado da Manutenção (SR Transporte)'],
+          ['Quando acontece', 'Semanalmente, toda segunda-feira'],
+          ['Sistemas utilizados', 'Siga-i (Manutenção de Frotas)'],
+          ['Filiais', 'SR Transporte'],
+          ['Documentos relacionados', 'Agenda de Preventivas, Ordem de Serviço (OS)'],
+        ],
+        objetivo: 'Este guia orienta o Trainee responsável pela área Operacional na abertura correta e controlada das Ordens de Serviço de manutenção preventiva da frota SR Transporte, de acordo com a agenda programada no sistema Siga-i.',
+        conceitos: [
+          ['OS (Ordem de Serviço)', 'Registro formal da manutenção a ser executada no veículo.'],
+          ['Preventiva 25.000 km', 'Manutenção baseada em quilometragem; deve ser aberta quando a Diferença (coluna Dif) for igual ou menor que 1.000 km.'],
+          ['Situação: Pendente', 'OS ainda não aberta — necessita ação do Trainee.'],
+          ['Situação: Agendada', 'Status automático atribuído após a abertura da OS, com data e hora previstas.'],
+          ['Situação: Em execução', 'OS aberta e iniciada pela oficina, ainda não finalizada.'],
+        ],
+        simbologia: [
+          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
+          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
+          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
+          ['Dif ≤ 1.000 km', 'Critério de abertura da Preventiva 25.000 km.'],
+        ],
+        quemFazOQue: [
+          ['Trainee', 'Identifica as preventivas pendentes ou próximas do vencimento na agenda e gera as Ordens de Serviço correspondentes no Siga-i.', 'Semanalmente, toda segunda-feira.'],
+          ['Encarregado da Manutenção (SR Transporte)', 'É designado como funcionário responsável pela execução da manutenção ao gerar a OS.', 'No momento da geração da OS.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Acessar a Agenda de Preventivas', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Acesse o sistema <strong>Siga-i</strong> e abra o módulo <strong>Manutenção de Frotas</strong>.</li>
+              <li>Mude o estabelecimento para <strong>SR Transportes [9]</strong>.</li>
+              <li>Navegue até <strong>Agenda</strong>.</li>
+            </ul>
+          `},
+          { numero: 2, titulo: 'Identificar as Preventivas a Abrir', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Para a <strong>Preventiva 25.000 km</strong>: abra a OS sempre que a «Diferença» (coluna Dif) for <strong>menor ou igual a 1.000 km</strong>.</li>
+              <li>Para as <strong>demais preventivas periódicas</strong>: abra as OS de todos os itens com situação <strong>Pendente</strong>, ou que irão vencer no decorrer da semana.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Itens com situação Agendada já possuem OS aberta — não exigem nova ação. Itens em Em execução já estão sendo tratados pela oficina.</span></div>
+          `},
+          { numero: 3, titulo: 'Gerar a Ordem de Serviço', responsavel: 'Trainee', html: `
+            <ul>
+              <li>Clique no ícone <strong>Gerar OS</strong>, no menu do lado esquerdo da tela.</li>
+              <li>Preencha os campos obrigatórios:
+                <ul>
+                  <li><strong>Previsão de Término:</strong> 24 horas para Calibragem; 1 semana (7 dias corridos) para os demais serviços preventivos, salvo regras específicas definidas na planilha.</li>
+                  <li><strong>Funcionário:</strong> selecione o responsável pela manutenção — Encarregado da SR Transporte.</li>
+                </ul>
+              </li>
+              <li>Clique em <strong>Gerar OS</strong> para concluir.</li>
+            </ul>
+            ${imgGuia('assets/guias/preventivas-sr/image1.webp', 'Tela de Geração de Ordem de Serviço de Preventiva: planos, datas e funcionário responsável.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Respeite o prazo de Previsão de Término correto para cada tipo de serviço — Calibragem tem prazo de apenas 24 horas, diferente das demais preventivas.</span></div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o setor Operacional.',
+      },
+    ],
+  },
+];
+
+const SETORES = [
+  {
+    id: 'dp',
+    nome: 'Departamento Pessoal',
+    descricao: 'Rotinas operacionais do Departamento Pessoal, documentadas passo a passo — da admissão ao desligamento.',
+    categorias: CATEGORIAS_DP,
+  },
+  {
+    id: 'financeiro-frotas',
+    nome: 'Financeiro e Frotas',
+    descricao: 'Processos fiscais, financeiros e de frota — compras, boletos, impostos e manutenção de veículos.',
+    categorias: CATEGORIAS_FF,
   },
 ];
 
@@ -1594,11 +2158,29 @@ function fecharLightbox() {
 
 const ICONE_GUIA = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>`;
 const ICONE_SETA = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>`;
+const ICONE_SETOR = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>`;
+const ICONE_DOWNLOAD = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+const ICONE_FERRAMENTA = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 13l-1.5 1.5L10 16"/><path d="M14 13l1.5 1.5L14 16"/></svg>`;
+
+function achaSetor(id) {
+  return SETORES.find(s => s.id === id) || null;
+}
 
 function achaGuia(id) {
-  for (const cat of GUIAS) {
-    const g = cat.guias.find(x => x.id === id);
-    if (g) return g;
+  for (const setor of SETORES) {
+    for (const cat of setor.categorias) {
+      const g = cat.guias.find(x => x.id === id);
+      if (g) return g;
+    }
+  }
+  return null;
+}
+
+function achaSetorDoGuia(id) {
+  for (const setor of SETORES) {
+    for (const cat of setor.categorias) {
+      if (cat.guias.some(x => x.id === id)) return setor;
+    }
   }
   return null;
 }
@@ -1620,12 +2202,45 @@ function tabelaQuemFaz(linhas) {
   return `<table class="tabela-guia">${th}${tr}</table>`;
 }
 
-function renderIndice() {
+// Tela principal de Materiais de Apoio: escolha do setor.
+function renderSetores() {
   document.getElementById('header-titulo').textContent = 'Materiais de Apoio';
-  document.getElementById('header-sub').textContent = '· Guias de Processo do DP';
+  document.getElementById('header-sub').textContent = '· Escolha um setor';
   document.getElementById('busca-wrap').classList.remove('ativo');
 
-  const grupos = GUIAS.map(cat => {
+  const cards = SETORES.map(s => `
+    <button class="guia-card setor-card" data-id="${s.id}" onclick="abrirSetor('${s.id}')" type="button">
+      <span class="guia-card-icon">${ICONE_SETOR}</span>
+      <span class="guia-card-corpo">
+        <span class="guia-card-titulo">${s.nome}</span>
+        <span class="guia-card-sub">${s.descricao}</span>
+      </span>
+      <span class="guia-card-seta">${ICONE_SETA}</span>
+    </button>
+  `).join('');
+
+  document.getElementById('main').innerHTML = `
+    <div class="indice-intro">
+      <h2>Materiais de Apoio</h2>
+      <p>Escolha o setor pra ver os guias de processo disponíveis.</p>
+    </div>
+    <div class="categoria-grupo">
+      <p class="categoria-titulo">Setores</p>
+      <div class="guia-lista">${cards}</div>
+    </div>
+  `;
+}
+
+// Índice de guias de um setor específico.
+function renderIndice(setorId) {
+  const setor = achaSetor(setorId);
+  if (!setor) { renderSetores(); return; }
+
+  document.getElementById('header-titulo').textContent = setor.nome;
+  document.getElementById('header-sub').textContent = '· Guias de Processo';
+  document.getElementById('busca-wrap').classList.remove('ativo');
+
+  const grupos = setor.categorias.map(cat => {
     const cards = cat.guias.map(g => `
       <button class="guia-card" data-id="${g.id}" onclick="abrirGuia('${g.id}')" type="button">
         <span class="guia-card-icon">${ICONE_GUIA}</span>
@@ -1645,9 +2260,10 @@ function renderIndice() {
   }).join('');
 
   document.getElementById('main').innerHTML = `
+    <button class="guia-voltar" onclick="abrirSetores()" type="button">← Voltar aos setores</button>
     <div class="indice-intro">
-      <h2>Guias de Processo</h2>
-      <p>Rotinas operacionais do Departamento Pessoal, documentadas passo a passo — da admissão ao desligamento.</p>
+      <h2>${setor.nome}</h2>
+      <p>${setor.descricao}</p>
     </div>
     ${grupos}
   `;
@@ -1655,7 +2271,8 @@ function renderIndice() {
 
 function renderGuia(id) {
   const g = achaGuia(id);
-  if (!g) { renderIndice(); return; }
+  if (!g) { renderSetores(); return; }
+  const setor = achaSetorDoGuia(id);
 
   document.getElementById('header-titulo').textContent = g.titulo;
   document.getElementById('header-sub').textContent = '· Guia de Processo';
@@ -1685,11 +2302,21 @@ function renderGuia(id) {
     </div>
   `).join('') : '';
 
+  const documentosHtml = g.documentos ? g.documentos.map(d => `
+    <a class="documento-item" href="${d.arquivo}" target="_blank" rel="noopener">
+      <span class="documento-icone">${d.tipo === 'ferramenta' ? ICONE_FERRAMENTA : ICONE_DOWNLOAD}</span>
+      <span class="documento-corpo">
+        <span class="documento-titulo">${d.titulo}</span>
+        <span class="documento-desc">${d.descricao}</span>
+      </span>
+    </a>
+  `).join('') : '';
+
   document.getElementById('main').innerHTML = `
-    <button class="guia-voltar" onclick="renderIndice()" type="button">← Voltar aos guias</button>
+    <button class="guia-voltar" onclick="abrirIndice('${setor ? setor.id : ''}')" type="button">← Voltar aos guias</button>
 
     <div class="guia-header">
-      <span class="tag">Guia de Processo · Departamento Pessoal</span>
+      <span class="tag">Guia de Processo · ${setor ? setor.nome : ''}</span>
       <h1>${g.titulo}</h1>
       <p>${g.subtitulo}</p>
     </div>
@@ -1731,6 +2358,20 @@ function renderGuia(id) {
     </div>
     ` : ''}
 
+    ${g.documentos ? `
+    <div class="secao">
+      <p class="secao-titulo">📎 Documentos e Ferramentas de Apoio</p>
+      <div class="documentos-lista">${documentosHtml}</div>
+    </div>
+    ` : ''}
+
+    ${g.politicaInterna ? `
+    <div class="secao">
+      <p class="secao-titulo">📜 ${g.politicaInterna.titulo}</p>
+      <div class="objetivo-texto politica-interna">${g.politicaInterna.html}</div>
+    </div>
+    ` : ''}
+
     <div class="secao">
       <p class="secao-titulo">❓ Dúvidas ou Problemas?</p>
       <div class="duvidas-card">
@@ -1756,10 +2397,28 @@ function renderGuia(id) {
   window.scrollTo(0, 0);
 }
 
-function abrirGuia(id) {
-  renderGuia(id);
+function abrirSetores() {
+  renderSetores();
+  history.replaceState(null, '', location.pathname + location.search);
+}
+
+function abrirSetor(id) {
+  renderIndice(id);
   history.replaceState(null, '', '#' + id);
 }
+
+function abrirIndice(setorId) {
+  if (!setorId) { abrirSetores(); return; }
+  renderIndice(setorId);
+  history.replaceState(null, '', '#' + setorId);
+}
+
+function abrirGuia(id) {
+  renderGuia(id);
+  const setor = achaSetorDoGuia(id);
+  history.replaceState(null, '', '#' + (setor ? setor.id + '/' : '') + id);
+}
+
 
 // Busca simples: filtra os cards do índice por título/subtítulo/categoria.
 document.addEventListener('input', (e) => {
@@ -1780,19 +2439,23 @@ document.addEventListener('input', (e) => {
 });
 
 // Chamado pelo Hub (index.html) quando o usuário clica de novo no ícone
-// "Materiais de Apoio" no menu lateral, mesmo já estando dentro de um guia —
-// funciona como um botão "voltar ao início do módulo".
+// "Materiais de Apoio" no menu lateral, mesmo já estando fundo em um guia —
+// funciona como um botão "voltar ao início do módulo", sempre até a escolha
+// de setor (a página principal de Materiais de Apoio).
 window.hubResetView = function () {
   history.replaceState(null, '', location.pathname + location.search);
-  renderIndice();
+  renderSetores();
 };
 
-// Inicialização: se a URL já tem #id-do-guia, abre direto nele.
+// Inicialização: a URL pode ter #setor, #setor/guia, ou nada.
 const hashInicial = location.hash.replace('#', '');
-if (hashInicial && achaGuia(hashInicial)) {
-  renderGuia(hashInicial);
+if (hashInicial.includes('/')) {
+  const guiaId = hashInicial.split('/')[1];
+  if (achaGuia(guiaId)) { renderGuia(guiaId); } else { renderSetores(); }
+} else if (hashInicial && achaSetor(hashInicial)) {
+  renderIndice(hashInicial);
 } else {
-  renderIndice();
+  renderSetores();
 }
 </script>
 </body>

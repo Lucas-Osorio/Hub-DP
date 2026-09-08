@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulário de E-mail — Admissão | Gestamg</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    background: #F0F4F9;
+    color: #1A1A1A;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  /* HEADER */
+  .page-header {
+    width: 100%;
+    max-width: 600px;
+    background: #0F4083;
+    border-radius: 12px 12px 0 0;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .page-header .brand { display: flex; flex-direction: column; }
+  .page-header .brand span:first-child { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: 0.5px; }
+  .page-header .brand span:last-child { font-size: 12px; color: #C8D9F0; margin-top: 2px; }
+  .page-header .badge {
+    font-size: 11px; font-weight: 500; color: #C8D9F0;
+    border: 1px solid rgba(200,217,240,0.4);
+    border-radius: 20px; padding: 4px 12px; white-space: nowrap;
+  }
+
+  /* CARD */
+  .card {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    border: 0.5px solid #D8E2EF;
+    border-top: none;
+    padding: 1.75rem 1.75rem 2rem;
+    box-shadow: 0 4px 24px rgba(15,64,131,0.07);
+  }
+
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    border: 1px solid #D8E2EF;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+  }
+  .tab {
+    flex: 1; padding: 10px 0;
+    text-align: center; font-size: 13.5px;
+    cursor: pointer; background: #F5F8FD;
+    color: #555; border: none;
+    transition: background 0.15s, color 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+  }
+  .tab svg { width: 16px; height: 16px; stroke: currentColor; flex-shrink: 0; }
+  .tab:first-child { border-right: 1px solid #D8E2EF; }
+  .tab.active { background: #0F4083; color: #fff; font-weight: 500; }
+  .tab:not(.active):hover { background: #E8F0FB; color: #0F4083; }
+
+  /* FORM */
+  .form-section { display: none; flex-direction: column; gap: 0; }
+  .form-section.visible { display: flex; }
+
+  .field-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+  .field-group label { font-size: 12.5px; font-weight: 500; color: #555; }
+  .field-group input[type="text"],
+  .field-group input[type="email"],
+  .field-group input[type="date"] {
+    width: 100%; padding: 9px 12px;
+    border: 1px solid #D8E2EF; border-radius: 7px;
+    font-size: 14px; color: #1A1A1A;
+    background: #fff; outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .field-group input:focus {
+    border-color: #0F4083;
+    box-shadow: 0 0 0 3px rgba(15,64,131,0.1);
+  }
+
+  .radio-group { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  .radio-group label {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 13.5px; color: #333; cursor: pointer; font-weight: 400;
+  }
+  .radio-group input[type="radio"] { accent-color: #0F4083; width: 15px; height: 15px; cursor: pointer; }
+
+  .divider { border: none; border-top: 1px solid #EEF2F8; margin: 4px 0 16px; }
+
+  .section-label {
+    font-size: 11px; font-weight: 600; color: #0F4083;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 12px; margin-top: 4px;
+  }
+
+  /* BUTTONS */
+  .btn-row { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+  .btn-primary {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 22px; background: #0F4083; color: #fff;
+    border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: opacity 0.15s, transform 0.1s;
+    text-decoration: none;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-secondary {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 18px; background: #fff; color: #0F4083;
+    border: 1px solid #2E75B6; border-radius: 8px; font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: background 0.15s, transform 0.1s;
+  }
+  .btn-secondary:hover { background: #E8F0FB; }
+  .btn-secondary:active { transform: scale(0.98); }
+  .btn-primary svg, .btn-secondary svg { width: 16px; height: 16px; stroke: currentColor; flex-shrink: 0; }
+
+  /* NOTICE */
+  .notice {
+    display: flex; align-items: flex-start; gap: 7px;
+    font-size: 12px; color: #888; margin-top: 10px; line-height: 1.5;
+  }
+  .notice svg { width: 14px; height: 14px; stroke: #AAA; flex-shrink: 0; margin-top: 1px; }
+
+  /* PREVIEW */
+  .preview-label { font-size: 12px; color: #888; margin: 14px 0 6px; }
+  .preview-box {
+    display: none;
+    background: #F5F8FD;
+    border: 0.5px solid #D8E2EF;
+    border-left: 3px solid #0F4083;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    font-size: 13px; color: #444;
+    white-space: pre-wrap; line-height: 1.65;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  /* SUCCESS TOAST */
+  .toast {
+    display: none; position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    background: #0F4083; color: #fff; padding: 10px 20px;
+    border-radius: 8px; font-size: 13px; font-weight: 500;
+    box-shadow: 0 4px 16px rgba(15,64,131,0.25); z-index: 999;
+    animation: fadeup 0.2s ease;
+  }
+  @keyframes fadeup { from { opacity:0; transform: translateX(-50%) translateY(8px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="brand">
+    <span>GESTAMG</span>
+    <span>Departamento Pessoal — Formulário de E-mail</span>
+  </div>
+  <div class="badge">Admissão</div>
+</div>
+
+<div class="card">
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab active" role="tab" aria-selected="true" onclick="switchTab('aso', this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>
+      Envio do ASO
+    </button>
+    <button class="tab" role="tab" aria-selected="false" onclick="switchTab('pgto', this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Informações de Pagamento
+    </button>
+  </div>
+
+  <!-- FORM ASO -->
+  <div class="form-section visible" id="form-aso">
+    <div class="section-label">Destinatário</div>
+    <div class="field-group">
+      <label for="aso-para">E-mail do DP</label>
+      <input type="email" id="aso-para" value="DP01@GESTAMG.COM.BR" readonly style="background:#F5F8FD; color:#888; cursor:not-allowed;">
+    </div>
+
+    <hr class="divider">
+    <div class="section-label">Dados do candidato</div>
+
+    <div class="field-group">
+      <label for="aso-nome">Nome completo</label>
+      <input type="text" id="aso-nome" placeholder="Nome do candidato">
+    </div>
+    <div class="field-group">
+      <label for="aso-cargo">Cargo</label>
+      <input type="text" id="aso-cargo" placeholder="Cargo">
+    </div>
+    <div class="field-group">
+      <label for="aso-unidade">Unidade / filial</label>
+      <input type="text" id="aso-unidade" placeholder="Unidade">
+    </div>
+    <div class="field-group">
+      <label for="aso-data">Data prevista de admissão</label>
+      <input type="date" id="aso-data">
+      <div id="date-warning" style="display:none; align-items:flex-start; gap:6px; font-size:12px; color:#B45309; background:#FEF6E4; border:1px solid #F4B942; border-radius:6px; padding:7px 10px; margin-top:4px; line-height:1.5;">
+        <svg style="width:14px;height:14px;stroke:#B45309;flex-shrink:0;margin-top:1px;" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Data inferior ao prazo mínimo de 48h úteis. Em casos urgentes, entre em contato com o DP para solicitar prioridade.</span>
+      </div>
+      <div style="font-size:11.5px; color:#888; margin-top:4px;">Prazo mínimo: 48h úteis após o envio do ASO.</div>
+    </div>
+    <div class="field-group">
+      <label>Resultado do exame</label>
+      <div class="radio-group">
+        <label><input type="radio" name="aso-resultado" value="Apto" checked> Apto</label>
+        <label><input type="radio" name="aso-resultado" value="Inapto"> Inapto</label>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-primary" onclick="enviarASO()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Abrir no Outlook
+      </button>
+      <button class="btn-secondary" onclick="previewASO()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Pré-visualizar
+      </button>
+    </div>
+
+    <div class="notice">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      O Outlook abrirá com o e-mail preenchido. Lembre-se de anexar o arquivo do ASO antes de enviar.
+    </div>
+
+    <div class="preview-label" id="lbl-aso" style="display:none">Pré-visualização:</div>
+    <div class="preview-box" id="preview-aso"></div>
+  </div>
+
+  <!-- FORM PAGAMENTO -->
+  <div class="form-section" id="form-pgto">
+    <div class="section-label">Destinatário</div>
+    <div class="field-group">
+      <label for="pgto-para">E-mail do DP</label>
+      <input type="email" id="pgto-para" value="DP01@GESTAMG.COM.BR" readonly style="background:#F5F8FD; color:#888; cursor:not-allowed;">
+    </div>
+
+    <hr class="divider">
+    <div class="section-label">Dados do exame</div>
+
+    <div class="field-group">
+      <label for="pgto-nome">Nome do candidato</label>
+      <input type="text" id="pgto-nome" placeholder="Nome completo">
+    </div>
+    <div class="field-group">
+      <label for="pgto-clinica">Clínica</label>
+      <input type="text" id="pgto-clinica" placeholder="Nome da clínica">
+    </div>
+    <div class="field-group">
+      <label for="pgto-unidade">Unidade / filial</label>
+      <input type="text" id="pgto-unidade" placeholder="Unidade">
+    </div>
+
+
+    <hr class="divider">
+    <div class="section-label">Forma de cobrança e pagamento</div>
+
+    <div class="field-group">
+      <label>Forma de cobrança</label>
+      <div class="radio-group">
+        <label><input type="radio" name="pgto-cobranca" value="Avulsa (por exame)" checked> Avulsa (por exame)</label>
+        <label><input type="radio" name="pgto-cobranca" value="Mensal (extrato)"> Mensal (extrato)</label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Forma de pagamento</label>
+      <div class="radio-group">
+        <label><input type="radio" name="pgto-pagamento" value="Boleto" checked> Boleto</label>
+        <label><input type="radio" name="pgto-pagamento" value="TED"> TED</label>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-primary" onclick="enviarPgto()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Abrir no Outlook
+      </button>
+      <button class="btn-secondary" onclick="previewPgto()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Pré-visualizar
+      </button>
+    </div>
+
+    <div class="notice">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      O Outlook abrirá com o e-mail preenchido. Lembre-se de anexar o boleto, extrato ou comprovante antes de enviar.
+    </div>
+
+    <div class="preview-label" id="lbl-pgto" style="display:none">Pré-visualização:</div>
+    <div class="preview-box" id="preview-pgto"></div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">E-mail aberto no Outlook!</div>
+
+<script>
+
+  function addBusinessDays(date, days) {
+    let d = new Date(date); let added = 0;
+    while (added < days) { d.setDate(d.getDate()+1); const dow=d.getDay(); if(dow!==0&&dow!==6) added++; }
+    return d;
+  }
+  function toInputDate(d) {
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  window.addEventListener('DOMContentLoaded',function(){
+    const min = addBusinessDays(new Date(),2);
+    const inp = document.getElementById('aso-data');
+    inp.value = toInputDate(min);
+    inp.min = toInputDate(min);
+    inp.addEventListener('change',function(){
+      const sel=new Date(this.value+'T12:00:00');
+      const m=addBusinessDays(new Date(),2); m.setHours(0,0,0,0);
+      document.getElementById('date-warning').style.display = sel<m?'flex':'none';
+    });
+  });
+
+  function addBusinessDays(date, days) {
+    let d = new Date(date);
+    let added = 0;
+    while (added < days) {
+      d.setDate(d.getDate() + 1);
+      const dow = d.getDay();
+      if (dow !== 0 && dow !== 6) added++;
+    }
+    return d;
+  }
+
+  function toInputDate(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return y + '-' + m + '-' + day;
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const minDate = addBusinessDays(new Date(), 2);
+    const input = document.getElementById('aso-data');
+    input.value = toInputDate(minDate);
+    input.min = toInputDate(minDate);
+    input.addEventListener('change', function() {
+      const sel = new Date(this.value + 'T12:00:00');
+      const min = addBusinessDays(new Date(), 2);
+      min.setHours(0,0,0,0);
+      if (sel < min) {
+        document.getElementById('date-warning').style.display = 'flex';
+      } else {
+        document.getElementById('date-warning').style.display = 'none';
+      }
+    });
+  });
+
+  function addBusinessDays(date, days) {
+    let d = new Date(date);
+    let added = 0;
+    while (added < days) {
+      d.setDate(d.getDate() + 1);
+      const dow = d.getDay();
+      if (dow !== 0 && dow !== 6) added++;
+    }
+    return d;
+  }
+
+  function toInputDate(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return y + '-' + m + '-' + day;
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const minDate = addBusinessDays(new Date(), 2);
+    const input = document.getElementById('aso-data');
+    input.value = toInputDate(minDate);
+    input.min = toInputDate(minDate);
+    input.addEventListener('change', function() {
+      const sel = new Date(this.value + 'T12:00:00');
+      const min = addBusinessDays(new Date(), 2);
+      min.setHours(0,0,0,0);
+      if (sel < min) {
+        document.getElementById('date-warning').style.display = 'flex';
+      } else {
+        document.getElementById('date-warning').style.display = 'none';
+      }
+    });
+  });
+
+  function addBusinessDays(date, days) {
+    let d = new Date(date);
+    let added = 0;
+    while (added < days) {
+      d.setDate(d.getDate() + 1);
+      const dow = d.getDay();
+      if (dow !== 0 && dow !== 6) added++;
+    }
+    return d;
+  }
+
+  function toInputDate(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return y + '-' + m + '-' + day;
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const minDate = addBusinessDays(new Date(), 2);
+    const input = document.getElementById('aso-data');
+    input.value = toInputDate(minDate);
+    input.min = toInputDate(minDate);
+    input.addEventListener('change', function() {
+      const sel = new Date(this.value + 'T12:00:00');
+      const min = addBusinessDays(new Date(), 2);
+      min.setHours(0,0,0,0);
+      if (sel < min) {
+        document.getElementById('date-warning').style.display = 'flex';
+      } else {
+        document.getElementById('date-warning').style.display = 'none';
+      }
+    });
+  });
+
+  function switchTab(tab, el) {
+    document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.form-section').forEach(s => s.classList.remove('visible'));
+    el.classList.add('active');
+    el.setAttribute('aria-selected','true');
+    document.getElementById('form-' + tab).classList.add('visible');
+    document.getElementById('preview-aso').style.display = 'none';
+    document.getElementById('preview-pgto').style.display = 'none';
+    document.getElementById('lbl-aso').style.display = 'none';
+    document.getElementById('lbl-pgto').style.display = 'none';
+  }
+
+  function fmtDate(val) {
+    if (!val) return '[data não informada]';
+    const [y,m,d] = val.split('-');
+    return d + '/' + m + '/' + y;
+  }
+
+  function getASO() {
+    const nome = document.getElementById('aso-nome').value.trim() || '[Nome do Candidato]';
+    const cargo = document.getElementById('aso-cargo').value.trim() || '[Cargo]';
+    const unidade = document.getElementById('aso-unidade').value.trim() || '[Unidade]';
+    const data = fmtDate(document.getElementById('aso-data').value);
+    const resultado = document.querySelector('input[name="aso-resultado"]:checked').value;
+    const para = document.getElementById('aso-para').value.trim() || 'dp@gestamg.com.br';
+    const assunto = 'ASO — ' + nome + ' — ' + unidade;
+    const corpo =
+      'Olá,\n\n' +
+      'Segue em anexo o ASO do(a) candidato(a):\n\n' +
+      'Nome: ' + nome + '\n' +
+      'Cargo: ' + cargo + '\n' +
+      'Unidade: ' + unidade + '\n' +
+      'Data prevista de admissão: ' + data + '\n' +
+      'Resultado: ' + resultado + '\n\n' +
+      '';
+    return { para, assunto, corpo };
+  }
+
+  function getPgto() {
+    const nome = document.getElementById('pgto-nome').value.trim() || '[Nome do Candidato]';
+    const clinica = document.getElementById('pgto-clinica').value.trim() || '[Clínica]';
+    const unidade = document.getElementById('pgto-unidade').value.trim() || '[Unidade]';
+    const cobranca = document.querySelector('input[name="pgto-cobranca"]:checked').value;
+    const pagamento = document.querySelector('input[name="pgto-pagamento"]:checked').value;
+    const para = document.getElementById('pgto-para').value.trim() || 'dp@gestamg.com.br';
+    const assunto = 'Pgto. Exame Admissional — ' + nome + ' — ' + unidade;
+    const corpo =
+      'Olá,\n\n' +
+      'Seguem as informações de pagamento do exame admissional:\n\n' +
+      'Candidato(a): ' + nome + '\n' +
+      'Clínica: ' + clinica + '\n' +
+      'Forma de cobrança: ' + cobranca + '\n' +
+      'Forma de pagamento: ' + pagamento + '\n\n' +
+      'Documento em anexo.';
+    return { para, assunto, corpo };
+  }
+
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, 2500);
+  }
+
+  function enviarASO() {
+    const { para, assunto, corpo } = getASO();
+    window.location.href = 'mailto:' + encodeURIComponent(para) + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
+    setTimeout(showToast, 500);
+  }
+
+  function enviarPgto() {
+    const { para, assunto, corpo } = getPgto();
+    window.location.href = 'mailto:' + encodeURIComponent(para) + '?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
+    setTimeout(showToast, 500);
+  }
+
+  function previewASO() {
+    const { assunto, corpo } = getASO();
+    const box = document.getElementById('preview-aso');
+    const lbl = document.getElementById('lbl-aso');
+    box.textContent = 'Assunto: ' + assunto + '\n\n' + corpo;
+    box.style.display = 'block';
+    lbl.style.display = 'block';
+  }
+
+  function previewPgto() {
+    const { assunto, corpo } = getPgto();
+    const box = document.getElementById('preview-pgto');
+    const lbl = document.getElementById('lbl-pgto');
+    box.textContent = 'Assunto: ' + assunto + '\n\n' + corpo;
+    box.style.display = 'block';
+    lbl.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
