@@ -1661,11 +1661,11 @@ const CATEGORIAS_FF = [
         identificacao: [
           ['Processo', 'Lançamento e Rateio do Boleto Praxio (BGM Rodotec)'],
           ['Responsável principal', 'Trainee'],
-          ['Quem mais participa', 'Gerente Administrativo, Exacta Contábil (contabilidade terceirizada)'],
+          ['Quem mais participa', 'Gerente Administrativo, Exacta Contábil (contabilidade terceirizada), Claude (Cowork)'],
           ['Quando acontece', 'Mensalmente, até o dia 10'],
-          ['Sistemas utilizados', 'Siga-i, E-mail, OneDrive, Excel, Slack'],
+          ['Sistemas utilizados', 'Siga-i, E-mail, OneDrive, Excel, Slack, Claude (Cowork)'],
           ['Filiais', 'Ambiental'],
-          ['Documentos relacionados', 'Boleto, Nota Fiscal (NF), Guia de Pagamento, Planilha de Rateio Praxio'],
+          ['Documentos relacionados', 'Boleto, Nota Fiscal (NF), Guia de Pagamento, Relatório de Veículos (PDF, Siga-i), Planilha de Rateio Praxio'],
         ],
         objetivo: 'Este guia orienta o Trainee responsável pelo Fiscal Contábil na execução do processo de encaminhamento, lançamento e rateio do boleto da Praxio (BGM Rodotec), garantindo o cumprimento das obrigações fiscais, a atualização correta dos registros no sistema Siga-i e a distribuição padronizada dos valores entre os estabelecimentos das filiais Ambiental.',
         conceitos: [
@@ -1674,6 +1674,7 @@ const CATEGORIAS_FF = [
           ['Rateio', 'Divisão proporcional do valor do boleto entre os estabelecimentos, realizada com base nas placas de veículos cadastradas no sistema Siga-i.'],
           ['Guia de Pagamento', 'Documento que indica o estabelecimento responsável pelo registro financeiro do boleto — atualmente, Ambiental Matriz.'],
           ['Tabela Dinâmica', 'Resumo automático gerado na planilha de rateio, consolidando quantidade de veículos, valor total e percentual por estabelecimento.'],
+          ['Claude (Cowork)', 'Assistente de IA que automatiza o rateio: a partir do PDF e do valor da NF enviados pelo Trainee, preenche a planilha e envia o rateio no Slack sozinho, sem intervenção manual.'],
         ],
         simbologia: [
           ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
@@ -1683,9 +1684,10 @@ const CATEGORIAS_FF = [
           ['📎 Anexo', 'Referência a um documento de apoio ou template disponível na pasta de Anexos.'],
         ],
         quemFazOQue: [
-          ['Trainee', 'Encaminha o boleto e a NF para a contabilidade, realiza o lançamento no Siga-i e calcula e envia o rateio entre os estabelecimentos.', 'Mensalmente, até o dia 10.'],
-          ['Gerente Administrativo', 'Confirma se houve mudança no estabelecimento de algum veículo antes do envio do rateio.', 'Quando consultado pelo Trainee, antes do envio do rateio.'],
+          ['Trainee', 'Encaminha o boleto e a NF para a contabilidade, realiza o lançamento no Siga-i, exporta o relatório de veículos e envia ao Claude junto com o valor da NF, e confirma o envio do rateio no Slack.', 'Mensalmente, até o dia 10.'],
+          ['Gerente Administrativo', 'Confirma ou corrige o estabelecimento de veículos no Siga-i quando há mudança, ou quando alguma placa fica sem estabelecimento definido no relatório exportado.', 'Quando consultado pelo Trainee, antes da exportação do relatório.'],
           ['Exacta Contábil (terceirizada)', 'Recebe o boleto e a NF por e-mail para emissão das Guias de Imposto.', 'Após o encaminhamento por e-mail, mensalmente.'],
+          ['Claude (Cowork)', 'Preenche a planilha com as placas e o valor da NF, confere os totais e envia o rateio no Slack — processo automático, sem intervenção manual.', 'Mensalmente, após receber do Trainee o relatório de veículos e o valor da NF.'],
         ],
         passos: [
           { numero: 1, titulo: 'Encaminhar o Boleto', responsavel: 'Trainee', html: `
@@ -1705,21 +1707,26 @@ const CATEGORIAS_FF = [
             </ul>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O estabelecimento selecionado deve ser sempre o indicado na Guia de Pagamento. Lançamentos no estabelecimento errado geram inconsistência no rateio final.</span></div>
           `},
-          { numero: 3, titulo: 'Calcular e Enviar o Rateio', responsavel: 'Trainee', html: `
+          { numero: 3, titulo: 'Exportar os Dados do Siga-i e Enviar ao Claude', responsavel: 'Trainee', html: `
             <ul>
-              <li>Abra a pasta <strong>AMBIENTAL CLEAN</strong> no OneDrive.</li>
-              <li>Navegue até <strong>OPERAÇÃO → Rateio Praxio - Estabelecimentos</strong>.</li>
-              <li>Verifique com o <strong>Gerente Administrativo</strong> se houve alguma mudança no estabelecimento dos veículos.</li>
-              <li>Caso tenha ocorrido mudança, atualize a «Coluna B» com o novo estabelecimento correspondente à placa.</li>
-              <li>Insira o valor total da NF na célula «H1».</li>
-              <li>Confira a tabela dinâmica gerada automaticamente, com o total e o percentual por estabelecimento.</li>
+              <li>Acesse o sistema <strong>Siga-i</strong> e gere o relatório «Veículos» (Manutenção de Frota), com a placa e a garagem de cada veículo.</li>
+              <li>Confira se todas as placas estão com um estabelecimento (garagem) definido no relatório.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Se alguma placa estiver sem estabelecimento definido, corrija o cadastro da placa no Siga-i (consultando o Gerente Administrativo, se necessário) antes de exportar o relatório — nunca envie o rateio com placas sem estabelecimento confirmado.</span></div>
+            <ul>
+              <li>Exporte o relatório em PDF e envie o arquivo para o <strong>Claude (Cowork)</strong>, junto com o valor total da NF do boleto.</li>
+            </ul>
+          `},
+          { numero: 4, titulo: 'Atualizar a Planilha e Enviar o Rateio no Slack (Automático)', responsavel: 'Claude (Cowork) — automático, sem intervenção manual', html: `
+            <ul>
+              <li>Preenche a planilha com as placas, os estabelecimentos e o valor da NF recebidos do Trainee.</li>
+              <li>Confere se os totais da tabela dinâmica batem com o PDF e com o valor da NF.</li>
             </ul>
             ${imgGuia('assets/guias/boleto-praxio/image2.webp', 'Planilha de Rateio Praxio: valor por placa/estabelecimento e tabela dinâmica consolidada.')}
             <ul>
-              <li>Envie um print da tabela dinâmica no canal <strong>#estoque_locação</strong>, no <strong>Slack</strong>.</li>
+              <li>Envia o rateio automaticamente no canal <strong>#estoque_locação</strong>, no <strong>Slack</strong>.</li>
             </ul>
-            ${imgGuia('assets/guias/boleto-praxio/image3.webp', 'Exemplo de envio do rateio no canal #estoque_locação do Slack.')}
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O valor inserido na célula H1 deve corresponder exatamente ao valor total da NF recebida. Qualquer divergência compromete a distribuição correta do rateio entre os estabelecimentos.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O valor informado ao Claude deve corresponder exatamente ao valor total da NF, não do boleto. Devido à retenção de impostos os valores são diferentes.</span></div>
           `},
         ],
         duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o setor Fiscal Contábil.',
