@@ -1647,7 +1647,7 @@ const CATEGORIAS_DP = [
           ['Responsável principal', 'Analista de Departamento Pessoal'],
           ['Quem mais participa', 'Gestão de Frotas, Contabilidade'],
           ['Quando acontece', 'Sempre que houver notificação de avaria em caminhão'],
-          ['Sistemas utilizados', 'E-mail'],
+          ['Sistemas utilizados', 'E-mail, Hub GestaMG (Impressão de Documentos)'],
           ['Filiais', 'Todas'],
           ['Documentos relacionados', 'Termo de Ciência e Autorização de Desconto, Comprovação do Dano (laudo/orçamento)'],
         ],
@@ -1676,7 +1676,7 @@ const CATEGORIAS_DP = [
             </ul>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O valor a ser descontado do colaborador corresponde a 100% do valor total da avaria, independentemente de o seguro ter sido acionado ou não — a apólice atual não cobre reparos do próprio veículo.</span></div>
           `},
-          { numero: 2, titulo: 'Validação Legal e Coleta do Termo de Ciência', responsavel: 'Analista de DP', html: `
+          { numero: 2, titulo: 'Validação Legal e Emissão do Termo de Ciência', responsavel: 'Analista de DP', html: `
             <p>Antes de efetuar qualquer aviso ou lançamento de desconto, o Analista de DP deve obrigatoriamente validar os seguintes requisitos:</p>
             <table class="tabela-guia">
               <tr><th>Requisito</th><th>Descrição / Fundamentação</th><th>Ação do DP</th></tr>
@@ -1684,8 +1684,13 @@ const CATEGORIAS_DP = [
               <tr><td><strong>Termo de Autorização</strong></td><td>Documento assinado pelo colaborador reconhecendo o dano e autorizando formalmente o valor e o número de parcelas.</td><td>Coletar assinatura física ou digital válida do colaborador.</td></tr>
               <tr><td><strong>Comprovação do Dano</strong></td><td>Documentação técnica e financeira demonstrando o valor real do prejuízo causado ao veículo.</td><td>Relatório extrajudicial quando se tratar de seguro; relatório de despesas quando for dano interno.</td></tr>
             </table>
+            <p>Após a verificação, o Termo de Ciência é emitido direto no Hub, na aba <strong>Impressão de Documentos</strong>:</p>
             <ul>
-              <li>Após a verificação, o Analista de DP emite o Termo de Ciência e Autorização de Desconto (modelo disponível em Documentos e Ferramentas de Apoio) e o envia à unidade para colher a assinatura formal do colaborador.</li>
+              <li>Acesse a aba <strong>🖨️ Impressão de Documentos</strong> no menu lateral do Hub.</li>
+              <li>Escolha o modelo <strong>«Termo de Autorização de Desconto de Avaria»</strong>.</li>
+              <li>Preencha o formulário: Empregador (Filial), Nome completo do funcionário, CPF, CTPS (nº/série), Cargo, Veículo (modelo) e Placa, Data da Ocorrência, os checkboxes «Houve dano a terceiro (sinistro)?» e «Houve dano ao veículo da empresa (caminhão)?», o Número de Parcelas e a Data do documento — a Cidade/UF é preenchida automaticamente a partir da Filial escolhida.</li>
+              <li>Clique em <strong>Gerar documento</strong> — o Termo já sai formatado e pronto pra imprimir.</li>
+              <li>Imprima e envie o Termo à unidade para colher a assinatura formal do colaborador.</li>
             </ul>
           `},
           { numero: 3, titulo: 'Retorno ao Setor de Frotas', responsavel: 'Analista de DP', html: `
@@ -1714,9 +1719,6 @@ const CATEGORIAS_DP = [
             'Conferir o espelho da folha retornado pela Contabilidade para validar o lançamento do desconto.',
           ],
         },
-        documentos: [
-          { titulo: 'Termo de Ciência e Autorização de Desconto (modelo)', descricao: 'Documento a ser preenchido, assinado pelo colaborador e anexado ao processo.', arquivo: 'assets/guias/desconto-avaria/docs/termo-autorizacao-desconto-avaria.pdf', tipo: 'download' },
-        ],
         duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
       },
     ],
