@@ -2131,6 +2131,7 @@ const SETORES = [
     id: 'financeiro-frotas',
     nome: 'Financeiro e Frotas',
     descricao: 'Processos fiscais, financeiros e de frota — compras, boletos, impostos e manutenção de veículos.',
+    aviso: 'Vários processos deste setor têm vídeos explicativos complementares, gravados passo a passo. Eles não estão incorporados aqui — consulte direto na pasta AMBIENTAL CLEAN → OPERAÇÃO → TREINAMENTOS E GUIAS, no OneDrive.',
     categorias: CATEGORIAS_FF,
   },
 ];
@@ -2265,6 +2266,7 @@ function renderIndice(setorId) {
       <h2>${setor.nome}</h2>
       <p>${setor.descricao}</p>
     </div>
+    ${setor.aviso ? `<div class="caixa caixa-atencao" style="margin:0 0 22px;"><span class="caixa-icone">!</span><span>${setor.aviso}</span></div>` : ''}
     ${grupos}
   `;
 }
