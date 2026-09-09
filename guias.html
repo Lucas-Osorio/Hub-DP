@@ -141,6 +141,8 @@
   table.tabela-guia td{padding:9px 12px;border-top:1px solid var(--cinza-100);vertical-align:top;line-height:1.5;}
   table.tabela-guia tr:nth-child(even) td{background:var(--cinza-50);}
   table.tabela-id td.rotulo{width:220px;font-weight:700;color:var(--azul-escuro-2);background:var(--azul-claro)!important;}
+  .tabela-scroll{width:100%;overflow-x:auto;border-radius:var(--raio-sm);box-shadow:var(--sombra-sm);}
+  .tabela-scroll table.tabela-guia{min-width:620px;box-shadow:none;}
 
   .objetivo-texto{font-size:13.5px;line-height:1.65;color:var(--texto);background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:16px 18px;box-shadow:var(--sombra-sm);}
 
@@ -226,11 +228,26 @@
 
   .setor-card .guia-card-icon{width:48px;height:48px;}
   .setor-card .guia-card-titulo{font-size:15.5px;}
+  .guia-card-tipo{
+    display:inline-flex;margin-top:7px;padding:3px 7px;border-radius:5px;
+    background:var(--cinza-100);color:var(--cinza-600);
+    font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  }
 
   .sem-resultado{padding:40px 10px;text-align:center;color:var(--texto-suave);font-size:13.5px;}
 
   @media (max-width:640px){
+    header{min-height:64px;padding:12px 16px;align-items:flex-start;flex-direction:column;gap:2px;}
+    header h1{font-size:16px;}
+    header .sub{font-size:11.5px;}
+    main{padding:20px 14px 72px;}
     #busca-wrap.ativo{display:none;}
+    .guia-card{align-items:flex-start;gap:11px;padding:14px;}
+    .guia-card-icon{width:38px;height:38px;}
+    .setor-card .guia-card-icon{width:42px;height:42px;}
+    .guia-card-seta{margin-top:11px;}
+    .guia-header{padding:18px;margin-bottom:20px;}
+    .guia-header h1{font-size:19px;}
     table.tabela-id td.rotulo{width:150px;}
   }
 </style>
@@ -239,7 +256,7 @@
 
 <header>
   <h1 id="header-titulo">Materiais de Apoio</h1>
-  <span class="sub" id="header-sub">· Guias de Processo do DP</span>
+  <span class="sub" id="header-sub">· Guias, políticas e treinamentos</span>
   <div id="busca-wrap">
     <input type="search" id="busca" placeholder="Buscar por processo ou palavra-chave...">
   </div>
@@ -1636,7 +1653,7 @@ const CATEGORIAS_DP = [
     ],
   },
   {
-    categoria: 'Frota e Patrimônio',
+    categoria: 'Descontos e Responsabilização',
     guias: [
       {
         id: 'desconto-avaria',
@@ -2730,6 +2747,7 @@ const CATEGORIAS_INST = [
     guias: [
       {
         id: 'treinamento-coletores',
+        tipo: 'treinamento',
         titulo: 'Treinamento de Novos Coletores',
         subtitulo: 'Roteiro de integração e capacitação inicial para coletores recém-admitidos — apresentação da equipe, EPIs, normas de segurança e conhecimento da rota.',
         identificacao: [
@@ -2822,7 +2840,7 @@ const SETORES = [
   {
     id: 'institucional',
     nome: 'Treinamentos e Políticas',
-    descricao: 'Código de conduta, políticas institucionais e treinamentos de acesso geral — conteúdo que vale pra toda a empresa, sem informações específicas de cargo ou remuneração.',
+    descricao: 'Códigos de conduta, políticas internas e treinamentos institucionais ou operacionais, organizados para públicos gerais e específicos.',
     categorias: CATEGORIAS_INST,
   },
 ];
@@ -2912,13 +2930,52 @@ const ICONES_GUIA = {
   'preventivas-sr': SVG_GUIA(
     '<path d="M14.7 6.3a4 4 0 0 0-5-5L12 3.6 9.6 6 7.3 3.7a4 4 0 0 0 5 5l7.4 7.4a2 2 0 0 1-2.8 2.8L9.5 11.5"/><path d="M5 13l-3 3 6 6 3-3"/>'
   ),
+
+  'desconto-avaria': SVG_GUIA(
+    '<path d="M3 13h13l2-5H7L5 13"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="15.5" cy="17.5" r="2.5"/><path d="M18 12l3 3"/><path d="M21 12l-3 3"/>'
+  ),
+
+  'guias-imposto': SVG_GUIA(
+    '<path d="M6 2h12a2 2 0 0 1 2 2v18l-3-2-3 2-3-2-3 2-3-2-3 2V4a2 2 0 0 1 2-2h2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M12 6v8"/>'
+  ),
+
+  'reembolso-diarias': SVG_GUIA(
+    '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h4"/><path d="M6 9h5"/><path d="M6 13h3"/>'
+  ),
+
+  'controle-km-sr': SVG_GUIA(
+    '<circle cx="12" cy="12" r="9"/><path d="M5.6 15a7 7 0 0 1 12.8 0"/><path d="M12 12l4-4"/><circle cx="12" cy="12" r="1"/>'
+  ),
+
+  'codigo-conduta': SVG_GUIA(
+    '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>'
+  ),
+
+  'codigo-conduta-operacao-coleta': SVG_GUIA(
+    '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M7.5 12h9"/><circle cx="9" cy="15" r="1"/><circle cx="15" cy="15" r="1"/>'
+  ),
+
+  'direcao-defensiva': SVG_GUIA(
+    '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M3.5 10h17"/><path d="M12 15v6"/>'
+  ),
+
+  'treinamento-coletores': SVG_GUIA(
+    '<circle cx="9" cy="7" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2"/><path d="M17 8h4"/><path d="M19 6v4"/><path d="M16 13h5"/>'
+  ),
 };
 
 function iconeGuia(id) {
   return ICONES_GUIA[id] || ICONE_GUIA_PADRAO;
 }
 const ICONE_SETA = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>`;
-const ICONE_SETOR = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>`;
+const ICONES_SETOR = {
+  'dp': SVG_GUIA('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M16 11h6"/>'),
+  'financeiro-frotas': SVG_GUIA('<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h4"/><path d="M6 9h6"/><path d="M6 13h4"/>'),
+  'institucional': SVG_GUIA('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>'),
+};
+function iconeSetor(id) {
+  return ICONES_SETOR[id] || ICONE_GUIA_PADRAO;
+}
 const ICONE_DOWNLOAD = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
 const ICONE_FERRAMENTA = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 13l-1.5 1.5L10 16"/><path d="M14 13l1.5 1.5L14 16"/></svg>`;
 
@@ -2948,18 +3005,18 @@ function achaSetorDoGuia(id) {
 function tabela2col(linhas, cabecalhos) {
   const th = cabecalhos ? `<tr><th>${cabecalhos[0]}</th><th>${cabecalhos[1]}</th></tr>` : '';
   const tr = linhas.map(([a, b]) => `<tr><td><strong>${a}</strong></td><td>${b}</td></tr>`).join('');
-  return `<table class="tabela-guia">${th}${tr}</table>`;
+  return `<div class="tabela-scroll"><table class="tabela-guia">${th}${tr}</table></div>`;
 }
 
 function tabelaId(linhas) {
   const tr = linhas.map(([a, b]) => `<tr><td class="rotulo">${a}</td><td>${b}</td></tr>`).join('');
-  return `<table class="tabela-guia table-id">${tr}</table>`;
+  return `<div class="tabela-scroll"><table class="tabela-guia tabela-id">${tr}</table></div>`;
 }
 
 function tabelaQuemFaz(linhas) {
   const th = `<tr><th>Responsável / Setor</th><th>Papel no processo</th><th>Quando atua</th></tr>`;
   const tr = linhas.map(([r, p, q]) => `<tr><td><strong>${r}</strong></td><td>${p}</td><td>${q}</td></tr>`).join('');
-  return `<table class="tabela-guia">${th}${tr}</table>`;
+  return `<div class="tabela-scroll"><table class="tabela-guia">${th}${tr}</table></div>`;
 }
 
 // Tela principal de Materiais de Apoio: escolha do setor.
@@ -2970,7 +3027,7 @@ function renderSetores() {
 
   const cards = SETORES.map(s => `
     <button class="guia-card setor-card" data-id="${s.id}" onclick="abrirSetor('${s.id}')" type="button">
-      <span class="guia-card-icon">${ICONE_SETOR}</span>
+      <span class="guia-card-icon">${iconeSetor(s.id)}</span>
       <span class="guia-card-corpo">
         <span class="guia-card-titulo">${s.nome}</span>
         <span class="guia-card-sub">${s.descricao}</span>
@@ -2982,7 +3039,7 @@ function renderSetores() {
   document.getElementById('main').innerHTML = `
     <div class="indice-intro">
       <h2>Materiais de Apoio</h2>
-      <p>Escolha o setor pra ver os guias de processo disponíveis.</p>
+      <p>Escolha uma área para consultar os materiais disponíveis.</p>
     </div>
     <div class="categoria-grupo">
       <p class="categoria-titulo">Setores</p>
@@ -2997,7 +3054,7 @@ function renderIndice(setorId) {
   if (!setor) { renderSetores(); return; }
 
   document.getElementById('header-titulo').textContent = setor.nome;
-  document.getElementById('header-sub').textContent = '· Guias de Processo';
+  document.getElementById('header-sub').textContent = setor.id === 'institucional' ? '· Políticas e treinamentos' : '· Guias de processo';
   document.getElementById('busca-wrap').classList.remove('ativo');
 
   const grupos = setor.categorias.map(cat => {
@@ -3007,6 +3064,7 @@ function renderIndice(setorId) {
         <span class="guia-card-corpo">
           <span class="guia-card-titulo">${g.titulo}</span>
           <span class="guia-card-sub">${g.subtitulo}</span>
+          ${g.tipo ? `<span class="guia-card-tipo">${g.tipo === 'politica' ? 'Política interna' : 'Treinamento'}</span>` : ''}
         </span>
         <span class="guia-card-seta">${ICONE_SETA}</span>
       </button>
@@ -3036,7 +3094,7 @@ function renderGuia(id) {
   const setor = achaSetorDoGuia(id);
 
   document.getElementById('header-titulo').textContent = g.titulo;
-  document.getElementById('header-sub').textContent = '· ' + (g.tipo === 'politica' ? 'Política Interna' : 'Guia de Processo');
+  document.getElementById('header-sub').textContent = '· ' + (g.tipo === 'politica' ? 'Política interna' : g.tipo === 'treinamento' ? 'Treinamento' : 'Guia de processo');
   document.getElementById('busca-wrap').classList.remove('ativo');
 
   if (g.tipo === 'politica') {
@@ -3126,7 +3184,7 @@ function renderGuia(id) {
     <button class="guia-voltar" onclick="abrirIndice('${setor ? setor.id : ''}')" type="button">← Voltar aos guias</button>
 
     <div class="guia-header">
-      <span class="tag">Guia de Processo · ${setor ? setor.nome : ''}</span>
+      <span class="tag">${g.tipo === 'treinamento' ? 'Treinamento' : 'Guia de Processo'} · ${setor ? setor.nome : ''}</span>
       <h1>${g.titulo}</h1>
       <p>${g.subtitulo}</p>
     </div>
