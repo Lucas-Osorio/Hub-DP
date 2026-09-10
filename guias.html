@@ -250,6 +250,13 @@
     .guia-header h1{font-size:19px;}
     table.tabela-id td.rotulo{width:150px;}
   }
+/* Identificação das duas versões do Código de Conduta. */
+.guia-card[data-id="codigo-conduta"] { border-left: 4px solid #0F4083; }
+.guia-card[data-id="codigo-conduta"] .guia-card-titulo { color: #0F4083; }
+.guia-card[data-id="codigo-conduta"] .guia-card-icon { background: #E8F0FB; color: #0F4083; }
+.guia-card[data-id="codigo-conduta-operacao-coleta"] { border-left: 4px solid #1A4A0F; }
+.guia-card[data-id="codigo-conduta-operacao-coleta"] .guia-card-titulo { color: #1A4A0F; }
+.guia-card[data-id="codigo-conduta-operacao-coleta"] .guia-card-icon { background: #EBF5E6; color: #1A4A0F; }
 </style>
 </head>
 <body>
@@ -2433,6 +2440,7 @@ const CATEGORIAS_INST = [
     guias: [
       {
         id: 'codigo-conduta',
+        rotulo: 'GESTAMG (AZUL)',
         tipo: 'politica',
         titulo: 'Código de Conduta e Ética',
         subtitulo: 'Diretrizes de ética, respeito, segurança e responsabilidade que orientam as atitudes e decisões de colaboradores, líderes e diretores.',
@@ -2566,6 +2574,7 @@ const CATEGORIAS_INST = [
       },
       {
         id: 'codigo-conduta-operacao-coleta',
+        rotulo: 'OPERAÇÃO (VERDE)',
         tipo: 'politica',
         titulo: 'Código de Conduta e Ética — Operação Coleta',
         subtitulo: 'Diretrizes de ética, respeito, segurança e responsabilidade que orientam as atitudes e decisões dos colaboradores da Operação Coleta (Clean Limpeza e Serviços LTDA).',
@@ -2874,7 +2883,17 @@ const CATEGORIAS_INST = [
   },
 ];
 
+// Os códigos têm acesso próprio por operação; os demais materiais institucionais permanecem no setor original.
+const CODIGOS_CONDUTA = ['codigo-conduta-operacao-coleta', 'codigo-conduta'].map(id =>
+  CATEGORIAS_INST.flatMap(c => c.guias).find(g => g.id === id)
+);
 const SETORES = [
+  {
+    id: 'codigos-conduta',
+    nome: 'Código de Conduta e Ética',
+    descricao: 'Selecione o código correspondente à sua operação ou empresa.',
+    categorias: [{ categoria: 'Escolha a versão', guias: CODIGOS_CONDUTA }],
+  },
   {
     id: 'dp',
     nome: 'Departamento Pessoal',
@@ -2891,8 +2910,8 @@ const SETORES = [
   {
     id: 'institucional',
     nome: 'Treinamentos e Políticas',
-    descricao: 'Códigos de conduta, políticas internas e treinamentos institucionais ou operacionais, organizados para públicos gerais e específicos.',
-    categorias: CATEGORIAS_INST,
+    descricao: 'Políticas internas e treinamentos institucionais ou operacionais, organizados para públicos gerais e específicos.',
+    categorias: CATEGORIAS_INST.map(c => ({ ...c, guias: c.guias.filter(g => !CODIGOS_CONDUTA.includes(g)) })).filter(c => c.guias.length),
   },
 ];
 
@@ -3022,6 +3041,7 @@ const ICONE_SETA = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
 const ICONES_SETOR = {
   'dp': SVG_GUIA('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M16 11h6"/>'),
   'financeiro-frotas': SVG_GUIA('<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h4"/><path d="M6 9h6"/><path d="M6 13h4"/>'),
+  'codigos-conduta': '📘',
   'institucional': SVG_GUIA('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>'),
 };
 function iconeSetor(id) {
@@ -3073,7 +3093,7 @@ function tabelaQuemFaz(linhas) {
 // Tela principal de Materiais de Apoio: escolha do setor.
 function renderSetores() {
   document.getElementById('header-titulo').textContent = 'Materiais de Apoio';
-  document.getElementById('header-sub').textContent = '· Escolha um setor';
+  document.getElementById('header-sub').textContent = '· Escolha uma área ou tema';
   document.getElementById('busca-wrap').classList.remove('ativo');
 
   const cards = SETORES.map(s => `
@@ -3090,10 +3110,10 @@ function renderSetores() {
   document.getElementById('main').innerHTML = `
     <div class="indice-intro">
       <h2>Materiais de Apoio</h2>
-      <p>Escolha uma área para consultar os materiais disponíveis.</p>
+      <p>Escolha uma área ou tema para consultar os materiais disponíveis.</p>
     </div>
     <div class="categoria-grupo">
-      <p class="categoria-titulo">Setores</p>
+      <p class="categoria-titulo">Áreas e temas</p>
       <div class="guia-lista">${cards}</div>
     </div>
   `;
@@ -3105,7 +3125,7 @@ function renderIndice(setorId) {
   if (!setor) { renderSetores(); return; }
 
   document.getElementById('header-titulo').textContent = setor.nome;
-  document.getElementById('header-sub').textContent = setor.id === 'institucional' ? '· Políticas e treinamentos' : '· Guias de processo';
+  document.getElementById('header-sub').textContent = setor.id === 'codigos-conduta' ? '· Escolha a versão' : setor.id === 'institucional' ? '· Políticas e treinamentos' : '· Guias de processo';
   document.getElementById('busca-wrap').classList.remove('ativo');
 
   const grupos = setor.categorias.map(cat => {
@@ -3113,7 +3133,7 @@ function renderIndice(setorId) {
       <button class="guia-card" data-id="${g.id}" onclick="abrirGuia('${g.id}')" type="button">
         <span class="guia-card-icon">${iconeGuia(g.id)}</span>
         <span class="guia-card-corpo">
-          <span class="guia-card-titulo">${g.titulo}</span>
+          <span class="guia-card-titulo">${g.rotulo || g.titulo}</span>
           <span class="guia-card-sub">${g.subtitulo}</span>
           ${g.tipo ? `<span class="guia-card-tipo">${g.tipo === 'politica' ? 'Política interna' : 'Treinamento'}</span>` : ''}
         </span>
@@ -3129,7 +3149,7 @@ function renderIndice(setorId) {
   }).join('');
 
   document.getElementById('main').innerHTML = `
-    <button class="guia-voltar" onclick="abrirSetores()" type="button">← Voltar aos setores</button>
+    <button class="guia-voltar" onclick="abrirSetores()" type="button">← Voltar aos Materiais de Apoio</button>
     <div class="indice-intro">
       <h2>${setor.nome}</h2>
       <p>${setor.descricao}</p>
