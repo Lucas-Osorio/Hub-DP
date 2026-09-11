@@ -81,6 +81,8 @@
     color:var(--azul-medio);margin:0 0 10px;
   }
   .guia-lista{display:flex;flex-direction:column;gap:10px;}
+  .pasta-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+  .pasta-grade .guia-card{height:100%;}
   .guia-card{
     display:flex;align-items:center;gap:14px;
     background:#fff;border:1px solid var(--borda);border-radius:var(--raio);
@@ -273,6 +275,7 @@
     .guia-card-icon{width:38px;height:38px;}
     .setor-card .guia-card-icon{width:42px;height:42px;}
     .guia-card-seta{margin-top:11px;}
+    .pasta-grade{grid-template-columns:1fr;}
     .guia-header{padding:18px;margin-bottom:20px;}
     .guia-header h1{font-size:19px;}
     table.tabela-id td.rotulo{width:150px;}
@@ -2910,6 +2913,33 @@ const CATEGORIAS_INST = [
   },
 ];
 
+const PASTAS_INSTITUCIONAIS = [
+  {
+    id: 'codigos-conduta',
+    nome: 'Código de Conduta e Ética',
+    descricao: 'Consulte a versão da GestaMG ou da Operação Coleta.',
+    icone: 'codigo-conduta',
+    guias: CATEGORIAS_INST.find(cat => cat.categoria === 'Código de Conduta e Ética').guias,
+  },
+  {
+    id: 'politicas-internas',
+    nome: 'Políticas Internas',
+    descricao: 'Políticas para motoristas nas versões Padrão e São João del-Rei.',
+    icone: 'direcao-defensiva',
+    guias: CATEGORIAS_INST.find(cat => cat.categoria === 'Políticas Internas para Motoristas').guias,
+  },
+  {
+    id: 'integracao-colaboradores',
+    nome: 'Integração de Novos Colaboradores',
+    descricao: 'Roteiro de integração e treinamento inicial da operação.',
+    icone: 'roteiro-integracao',
+    guias: [
+      ...CATEGORIAS_INST.find(cat => cat.categoria === 'Integração de Novos Colaboradores').guias,
+      ...CATEGORIAS_INST.find(cat => cat.categoria === 'Treinamentos e Capacitação').guias,
+    ],
+  },
+];
+
 const SETORES = [
   {
     id: 'dp',
@@ -2929,6 +2959,7 @@ const SETORES = [
     nome: 'Treinamentos e Políticas',
     descricao: 'Códigos de conduta, políticas internas e treinamentos institucionais ou operacionais, organizados para públicos gerais e específicos.',
     categorias: CATEGORIAS_INST,
+    pastas: PASTAS_INSTITUCIONAIS,
   },
 ];
 
@@ -3093,6 +3124,11 @@ function achaSetorDoGuia(id) {
   return null;
 }
 
+function achaPastaDoGuia(setor, guiaId) {
+  if (!setor || !setor.pastas) return null;
+  return setor.pastas.find(pasta => pasta.guias.some(guia => guia.id === guiaId)) || null;
+}
+
 function tabela2col(linhas, cabecalhos) {
   const th = cabecalhos ? `<tr><th>${cabecalhos[0]}</th><th>${cabecalhos[1]}</th></tr>` : '';
   const tr = linhas.map(([a, b]) => `<tr><td><strong>${a}</strong></td><td>${b}</td></tr>`).join('');
@@ -3148,6 +3184,29 @@ function renderIndice(setorId) {
   document.getElementById('header-sub').textContent = setor.id === 'institucional' ? '· Políticas e treinamentos' : '· Guias de processo';
   document.getElementById('busca-wrap').classList.remove('ativo');
 
+  if (setor.pastas) {
+    const pastas = setor.pastas.map(pasta => `
+      <button class="guia-card setor-card" onclick="abrirPasta('${setor.id}', '${pasta.id}')" type="button">
+        <span class="guia-card-icon">${iconeGuia(pasta.icone)}</span>
+        <span class="guia-card-corpo">
+          <span class="guia-card-titulo">${pasta.nome}</span>
+          <span class="guia-card-sub">${pasta.descricao}</span>
+        </span>
+        <span class="guia-card-seta">${ICONE_SETA}</span>
+      </button>
+    `).join('');
+
+    document.getElementById('main').innerHTML = `
+      <button class="guia-voltar" onclick="abrirSetores()" type="button">← Voltar aos setores</button>
+      <div class="indice-intro">
+        <h2>${setor.nome}</h2>
+        <p>${setor.descricao}</p>
+      </div>
+      <div class="pasta-grade">${pastas}</div>
+    `;
+    return;
+  }
+
   const grupos = setor.categorias.map(cat => {
     const cards = cat.guias.map(g => `
       <button class="guia-card" data-id="${g.id}" onclick="abrirGuia('${g.id}')" type="button">
@@ -3179,6 +3238,36 @@ function renderIndice(setorId) {
   `;
 }
 
+function renderPasta(setorId, pastaId) {
+  const setor = achaSetor(setorId);
+  const pasta = setor && setor.pastas ? setor.pastas.find(item => item.id === pastaId) : null;
+  if (!setor || !pasta) { renderIndice(setorId); return; }
+
+  document.getElementById('header-titulo').textContent = pasta.nome;
+  document.getElementById('header-sub').textContent = '· Treinamentos e Políticas';
+  document.getElementById('busca-wrap').classList.remove('ativo');
+
+  const cards = pasta.guias.map(g => `
+    <button class="guia-card" data-id="${g.id}" onclick="abrirGuia('${g.id}')" type="button">
+      <span class="guia-card-icon">${iconeGuia(g.id)}</span>
+      <span class="guia-card-corpo">
+        <span class="guia-card-titulo">${g.titulo}</span>
+        <span class="guia-card-sub">${g.subtitulo}</span>
+      </span>
+      <span class="guia-card-seta">${ICONE_SETA}</span>
+    </button>
+  `).join('');
+
+  document.getElementById('main').innerHTML = `
+    <button class="guia-voltar" onclick="abrirSetor('${setorId}')" type="button">← Voltar para ${setor.nome}</button>
+    <div class="indice-intro">
+      <h2>${pasta.nome}</h2>
+      <p>${pasta.descricao}</p>
+    </div>
+    <div class="pasta-grade">${cards}</div>
+  `;
+}
+
 function atualizarChecklistIntegracao() {
   const itens = [...document.querySelectorAll('.checklist-integracao-item')];
   const concluidos = itens.filter(item => item.checked).length;
@@ -3205,6 +3294,9 @@ function renderGuia(id) {
   const g = achaGuia(id);
   if (!g) { renderSetores(); return; }
   const setor = achaSetorDoGuia(id);
+  const pasta = achaPastaDoGuia(setor, id);
+  const acaoVoltar = pasta ? `abrirPasta('${setor.id}', '${pasta.id}')` : `abrirIndice('${setor ? setor.id : ''}')`;
+  const textoVoltar = pasta ? `Voltar para ${pasta.nome}` : 'Voltar aos guias';
 
   document.getElementById('header-titulo').textContent = g.titulo;
   document.getElementById('header-sub').textContent = '· ' + (g.tipo === 'politica' ? 'Política interna' : g.tipo === 'treinamento' ? 'Treinamento' : 'Guia de processo');
@@ -3222,7 +3314,7 @@ function renderGuia(id) {
     `).join('') : '';
 
     document.getElementById('main').innerHTML = `
-      <button class="guia-voltar" onclick="abrirIndice('${setor ? setor.id : ''}')" type="button">← Voltar aos guias</button>
+      <button class="guia-voltar" onclick="${acaoVoltar}" type="button">← ${textoVoltar}</button>
 
       <div class="guia-header">
         <span class="tag">Política Interna · ${setor ? setor.nome : ''}</span>
@@ -3294,7 +3386,7 @@ function renderGuia(id) {
   `).join('') : '';
 
   document.getElementById('main').innerHTML = `
-    <button class="guia-voltar" onclick="abrirIndice('${setor ? setor.id : ''}')" type="button">← Voltar aos guias</button>
+    <button class="guia-voltar" onclick="${acaoVoltar}" type="button">← ${textoVoltar}</button>
 
     <div class="guia-header">
       <span class="tag">${g.tipo === 'treinamento' ? 'Treinamento' : 'Guia de Processo'} · ${setor ? setor.nome : ''}</span>
@@ -3388,6 +3480,11 @@ function abrirSetor(id) {
   history.replaceState(null, '', '#' + id);
 }
 
+function abrirPasta(setorId, pastaId) {
+  renderPasta(setorId, pastaId);
+  history.replaceState(null, '', '#' + setorId + '/pasta/' + pastaId);
+}
+
 function abrirIndice(setorId) {
   if (!setorId) { abrirSetores(); return; }
   renderIndice(setorId);
@@ -3428,10 +3525,13 @@ window.hubResetView = function () {
   renderSetores();
 };
 
-// Inicialização: a URL pode ter #setor, #setor/guia, ou nada.
+// Inicialização: a URL pode ter #setor, #setor/pasta/id, #setor/guia, ou nada.
 const hashInicial = location.hash.replace('#', '');
-if (hashInicial.includes('/')) {
-  const guiaId = hashInicial.split('/')[1];
+const partesHash = hashInicial.split('/');
+if (partesHash.length === 3 && partesHash[1] === 'pasta') {
+  renderPasta(partesHash[0], partesHash[2]);
+} else if (hashInicial.includes('/')) {
+  const guiaId = partesHash[1];
   if (achaGuia(guiaId)) { renderGuia(guiaId); } else { renderSetores(); }
 } else if (hashInicial && achaSetor(hashInicial)) {
   renderIndice(hashInicial);
