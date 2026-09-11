@@ -311,65 +311,65 @@ const CATEGORIAS_DP = [
       {
         id: 'roteiro-integracao',
         titulo: 'Roteiro de Integração — Coletor e Motorista de Coleta',
-        subtitulo: 'Checklist institucional e administrativo para o supervisor conduzir a integração de novos coletores e motoristas de coleta no primeiro dia.',
+        subtitulo: 'Checklist institucional e administrativo para acompanhar a integração de novos coletores e motoristas de coleta no primeiro dia.',
         identificacao: [
           ['Processo', 'Integração Institucional e Administrativa — Coletor e Motorista de Coleta'],
-          ['Responsável principal', 'Supervisor da filial'],
-          ['Quem mais participa', 'Novo colaborador, Assistente Administrativo, Encarregado Operacional e colega responsável pelo acompanhamento prático'],
+          ['Responsáveis principais', 'Encarregado Operacional e Assistente Administrativo'],
+          ['Quem mais participa', 'Novo colaborador, colega responsável pelo acompanhamento prático e Departamento Pessoal'],
           ['Quando acontece', 'No primeiro dia de trabalho, antes do acompanhamento prático na rota'],
           ['Público', 'Coletores de Resíduos e Motoristas de Coleta recém-admitidos'],
           ['Abrangência', 'Todas as filiais e marcas do grupo'],
-          ['Sistemas e materiais utilizados', 'Código de Conduta e Ética, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação'],
+          ['Sistemas e materiais utilizados', 'Código de Conduta e Ética, Política de Direção Defensiva, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação'],
         ],
-        objetivo: 'Este guia orienta o supervisor direto na integração inicial de um novo colaborador admitido para as funções de Coletor de Resíduos ou Motorista de Coleta. Todas as etapas devem ser realizadas no primeiro dia de trabalho, antes de o colaborador ser encaminhado ao acompanhamento prático na rota, garantindo que nenhum tópico administrativo ou institucional seja esquecido.',
+        objetivo: 'Orientar os responsáveis pela integração inicial de novos Coletores de Resíduos e Motoristas de Coleta, garantindo que todas as informações administrativas e institucionais sejam apresentadas no primeiro dia de trabalho, antes do acompanhamento prático na rota.',
         conceitos: [
-          ['Integração administrativa e institucional', 'Apresentação inicial que reúne informações sobre a filial, conduta, benefícios, ponto e cartão alimentação. O treinamento prático da função é realizado à parte.'],
-          ['Código de Conduta e Ética', 'Documento com as diretrizes de segurança, respeito, responsabilidade e conduta aplicáveis ao colaborador. Sua apresentação inclui a assinatura do Termo de Compromisso.'],
-          ['Banner da Filial', 'Material fixado na filial que reúne normas gerais, benefícios, percentual de desconto por avaria ou sinistro e uma visão geral do controle de ponto.'],
+          ['Integração administrativa e institucional', 'Apresentação inicial que reúne informações sobre a filial, conduta, política aplicável ao cargo, benefícios, ponto e cartão alimentação. O treinamento prático da função é realizado à parte.'],
+          ['Código de Conduta e Ética', 'Documento institucional entregue e apresentado a todos os novos colaboradores. A ciência é registrada no Termo de Conclusão do roteiro.'],
+          ['Política de Direção Defensiva', 'Política obrigatória para Motoristas de Coleta. Não se aplica a Coletores de Resíduos.'],
           ['Sólides Ponto / Tangerino', 'Aplicativo utilizado para o registro de ponto. Tangerino é o nome encontrado em materiais mais antigos.'],
           ['Acompanhamento prático', 'Período de aprendizagem da rota e da rotina ao lado de um colega mais experiente, após a integração inicial.'],
         ],
         simbologia: [
-          ['☐ Checklist', 'Item que deve ser realizado e conferido pelo supervisor durante a integração.'],
+          ['☐ Checklist', 'Item interativo que deve ser realizado e conferido durante a integração.'],
           ['Aplicativo', 'Sistema que deve ser instalado, configurado e demonstrado na prática ao colaborador.'],
-          ['Documento', 'Material que deve ser apresentado, lido ou assinado durante a etapa.'],
+          ['Documento', 'Material que deve ser entregue, apresentado e lido com o colaborador.'],
           ['Acompanhamento prático', 'Atividade realizada na operação, ao lado de um colega mais experiente.'],
         ],
         quemFazOQue: [
-          ['Supervisor da filial', 'Conduz todas as etapas do checklist, apresenta os materiais, configura os aplicativos, entrega o cartão e encaminha o colaborador ao acompanhamento prático.', 'No primeiro dia de trabalho, antes do início da prática na rota.'],
-          ['Novo colaborador', 'Participa da integração, acompanha as demonstrações, esclarece dúvidas e assina o Termo de Compromisso do Código de Conduta e Ética.', 'Durante toda a integração inicial.'],
-          ['Assistente Administrativo e Encarregado Operacional', 'São apresentados ao novo colaborador como responsáveis diretos na filial.', 'Na recepção e apresentação da filial.'],
+          ['Assistente Administrativo', 'Apresenta o Código de Conduta e, para motoristas, a Política de Direção Defensiva; configura o ponto e entrega o cartão alimentação. Também pode realizar a recepção inicial.', 'Etapas 1 a 5.'],
+          ['Encarregado Operacional', 'Apresenta a filial e o banner, explica regras específicas e encaminha o colaborador ao acompanhamento prático. Também pode realizar a recepção inicial.', 'Etapas 1, 6, 7 e 8.'],
+          ['Novo colaborador', 'Participa da integração, acompanha as demonstrações, esclarece dúvidas e assina o Termo de Conclusão.', 'Durante toda a integração inicial.'],
           ['Colega mais experiente', 'Acompanha o novo colaborador na rota para ensinar a rotina e a operação na prática.', 'Após a conclusão da integração institucional e administrativa.'],
         ],
         passos: [
-          { numero: 1, titulo: 'Recepção e Apresentação da Filial', responsavel: 'Supervisor da filial', html: `
+          { numero: 1, titulo: 'Recepção e Apresentação da Filial', responsavel: 'Encarregado Operacional ou Assistente Administrativo', html: `
             <div class="checklist-integracao">
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Receber o colaborador — apenas o supervisor, sem apresentação pública para o restante da equipe.</span></label>
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar a filial: o local de trabalho.</span></label>
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o Assistente Administrativo e o Encarregado Operacional da filial — os responsáveis diretos por ele.</span></label>
             </div>
           `},
-          { numero: 2, titulo: 'Apresentar o Código de Conduta e Ética', responsavel: 'Supervisor da filial', html: `
+          { numero: 2, titulo: 'Apresentar o Código de Conduta e Ética', responsavel: 'Assistente Administrativo', html: `
             <div class="checklist-integracao">
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar (ou confirmar que o colaborador já recebeu, no processo de admissão) uma via do Código de Conduta e Ética.</span></label>
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Colher a assinatura do colaborador no Termo de Compromisso do Código de Conduta e Ética.</span></label>
             </div>
           `},
-          { numero: 3, titulo: 'Apresentar o Banner da Filial', responsavel: 'Supervisor da filial', html: `
-            <p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p>
+          { numero: 3, titulo: 'Apresentar a Política de Direção Defensiva', responsavel: 'Assistente Administrativo', html: `
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Etapa exclusiva para a função de Motorista de Coleta. Para Coletor de Resíduos, ainda não existe uma política formal equivalente (em desenvolvimento) — pule esta etapa.</span></div>
             <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar (ou confirmar que o colaborador já recebeu) uma via da Política de Direção Defensiva.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>
             </div>
           `},
-          { numero: 4, titulo: 'Configurar o Registro de Ponto', responsavel: 'Supervisor da filial', html: `
+          { numero: 4, titulo: 'Configurar o Registro de Ponto', responsavel: 'Assistente Administrativo', html: `
             <p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p>
             <div class="checklist-integracao">
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label>
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label>
             </div>
           `},
-          { numero: 5, titulo: 'Entregar o Cartão Alimentação', responsavel: 'Supervisor da filial', html: `
+          { numero: 5, titulo: 'Entregar o Cartão Alimentação', responsavel: 'Assistente Administrativo', html: `
             <p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p>
             <div class="checklist-integracao">
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label>
@@ -377,7 +377,13 @@ const CATEGORIAS_DP = [
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label>
             </div>
           `},
-          { numero: 6, titulo: 'Explicar Benefícios e Regras Específicas', responsavel: 'Supervisor da filial', html: `
+          { numero: 6, titulo: 'Apresentar o Banner da Filial', responsavel: 'Encarregado Operacional', html: `
+            <p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p>
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label>
+            </div>
+          `},
+          { numero: 7, titulo: 'Explicar Benefícios e Regras Específicas', responsavel: 'Encarregado Operacional', html: `
             <div class="checklist-integracao">
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar a escala de domingo: o serviço de coleta não pode parar, por isso há rodízio entre as equipes aos domingos. Não está descrita em nenhum outro material — use os pontos abaixo como referência.</span></label>
             </div>
@@ -388,16 +394,16 @@ const CATEGORIAS_DP = [
               <li>A escala deve ser comunicada ao colaborador com antecedência.</li>
             </ul>
           `},
-          { numero: 7, titulo: 'Encaminhar para o Acompanhamento Prático', responsavel: 'Supervisor da filial', html: `
+          { numero: 8, titulo: 'Encaminhar para o Acompanhamento Prático', responsavel: 'Encarregado Operacional', html: `
             <div class="checklist-integracao">
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label>
               <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão.</span></label>
             </div>
             <div class="checklist-conclusao">
               <div class="checklist-conclusao-texto">
                 <strong>Checklist de integração</strong>
-                <span class="checklist-progresso" id="checklist-integracao-progresso" aria-live="polite">0 de 16 itens concluídos</span>
+                <span class="checklist-progresso" id="checklist-integracao-progresso" aria-live="polite">0 de 17 itens concluídos</span>
               </div>
               <button class="checklist-termo" id="checklist-integracao-termo" type="button" onclick="abrirTermoIntegracao()" disabled>Imprimir Termo de Conclusão</button>
             </div>
@@ -2551,9 +2557,54 @@ const CATEGORIAS_FF = [
   },
 ];
 
+function politicaMotoristasHtml(percentual) {
+  return `
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Objetivo</p>
+    <p>Esta política estabelece as regras de condução, os princípios de direção defensiva e as condutas obrigatórias e proibidas para os motoristas de caminhão de coleta de resíduos, com o objetivo de prevenir acidentes, proteger a vida do motorista, dos coletores e de terceiros, preservar a frota e reduzir os custos operacionais decorrentes de sinistros.</p>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Abrangência</p>
+    <p>Esta política se aplica a todos os motoristas de caminhão de coleta de resíduos da empresa, sejam efetivos, temporários ou substitutos, em qualquer rota ou turno de operação.</p>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Princípios da Direção Defensiva</p>
+    <p>A direção defensiva é a forma de conduzir o veículo prevenindo acidentes por meio da aplicação de conhecimentos, atitudes e técnicas que permitem antecipar situações de risco no trânsito. Ela se apoia em cinco elementos, que todo motorista deve exercitar continuamente:</p>
+    <table class="tabela-guia" style="margin:10px 0;"><tr><td>Conhecimento</td><td>Atenção</td></tr><tr><td>Previsão</td><td>Decisão</td></tr><tr><td>Habilidade</td><td></td></tr></table>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Regras Gerais de Condução</p>
+    <ul><li>Usar o cinto de segurança durante todo o trajeto, sem exceção.</li><li>Respeitar rigorosamente os limites de velocidade da via e as sinalizações de trânsito.</li><li>Manter distância segura do veículo à frente, ajustando-a às condições da via e do clima.</li><li>Redobrar a atenção em cruzamentos, faixas de pedestres, pontos de ônibus e áreas escolares.</li><li>Sinalizar com antecedência qualquer mudança de faixa, conversão ou manobra.</li><li>Verificar os espelhos retrovisores com frequência e checar os pontos cegos antes de qualquer manobra.</li><li>Reduzir a velocidade em condições adversas (chuva, neblina, pista molhada ou mal iluminada).</li><li>Respeitar os horários de descanso previstos na legislação, evitando dirigir em estado de fadiga ou sonolência.</li></ul>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Regras Específicas da Operação de Coleta</p>
+    <ul><li>Limitar a velocidade a, no máximo, 10 km/h durante o deslocamento nas áreas de coleta.</li><li>Aguardar o sinal sonoro do coletor antes de movimentar o veículo.</li><li>Nunca movimentar o veículo em marcha à ré com coletor na plataforma traseira, salvo com sinalização e acompanhamento adequados.</li><li>Permitir a permanência de coletores na plataforma somente com o veículo parado.</li><li>Manter faróis, luz de ré e sinalizadores sonoros de ré em pleno funcionamento.</li></ul>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Condutas Proibidas ao Volante</p>
+    <p>É proibido, durante a condução do veículo:</p>
+    <ul><li>Fumar dentro da cabine.</li><li>Utilizar o celular para ligações, mensagens ou redes sociais — inclusive em suporte ou viva-voz — enquanto o veículo estiver em movimento.</li><li>Dirigir sob efeito de álcool ou de qualquer substância que comprometa a atenção, os reflexos ou a capacidade de direção.</li><li>Transportar passageiros ou caronas não autorizadas pela empresa.</li><li>Realizar ultrapassagens indevidas, manobras arriscadas ou disputas de velocidade.</li><li>Deixar o veículo em movimento sem o motorista ao volante.</li></ul>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Checagem do Veículo (Pré-Operação)</p>
+    <p>Antes de iniciar a rota, o motorista deve verificar:</p>
+    <ul><li>Freios, pneus (calibragem e desgaste) e sistema de suspensão.</li><li>Faróis, lanternas, setas, luz de ré e sinalizador sonoro de ré.</li><li>Espelhos retrovisores e limpadores de para-brisa.</li><li>Níveis de óleo, água e combustível.</li><li>Sistema de carregamento — roldanas, cabos, travas do contêiner e alavancas de comando.</li><li>Presença e validade do extintor de incêndio e do triângulo de sinalização.</li></ul>
+    <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Qualquer irregularidade identificada na checagem deve ser comunicada ao responsável pela filial antes da saída do veículo para a rota — o caminhão não deve operar com item de segurança comprometido.</span></div>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Em Caso de Sinistro ou Acidente</p>
+    <p>Em caso de acidente de trânsito envolvendo o veículo, o motorista deve seguir, nesta ordem:</p>
+    <ol><li>Manter a calma, parar em local seguro e ligar o pisca-alerta.</li><li>Verificar se há feridos. Havendo, acionar imediatamente o SAMU (192) e, se necessário, a Polícia Militar (190).</li><li>Sinalizar o local do acidente (triângulo, a uma distância segura).</li><li>Fotografar o local, os veículos envolvidos e os danos.</li><li>Anotar os dados do(s) outro(s) motorista(s) e de eventuais testemunhas (nome, telefone, placa).</li><li>Comunicar o acidente imediatamente ao gestor da filial e ao Departamento Pessoal.</li><li>Aguardar as orientações da empresa antes de assumir responsabilidade ou fechar qualquer acordo no local.</li><li>Providenciar o Boletim de Ocorrência quando houver vítima, dano relevante ou exigência legal.</li></ol>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Responsabilização Financeira</p>
+    <p>A apuração de responsabilidade é conduzida internamente pela empresa, mediante análise individual de cada caso, não havendo critério fixo pré-estabelecido para a definição da culpa.</p>
+    <p>Constatada a responsabilidade, o valor devido poderá ser cobrado em parcela única ou parcelado, sem limite máximo, sempre observados os limites legais de desconto em folha previstos na legislação trabalhista.</p>
+    <p><strong>Danos a terceiros (cobertos pelo seguro da empresa):</strong></p>
+    <ul><li>O seguro da empresa cobre apenas danos a terceiros — não cobre danos ao veículo ou equipamento da própria empresa.</li><li>Caso a seguradora resolva o caso diretamente com o terceiro, sem custo adicional para a empresa, não haverá cobrança ao colaborador.</li><li>Caso seja necessário um desembolso adicional para a resolução do caso (por exemplo, quando o terceiro contesta o acordo inicial da seguradora) e seja constatada a culpa, o colaborador arcará com ${percentual} desse valor adicional.</li></ul>
+    <p><strong>Danos ou perda de equipamento/veículo da empresa:</strong></p>
+    <ul><li>O seguro da empresa não cobre danos ao próprio veículo ou equipamento da frota.</li><li>Constatada a culpa, o colaborador arcará com 100% do valor do dano ou da perda, ainda que não haja abertura formal de sinistro (por exemplo, a perda de um item do equipamento do caminhão).</li></ul>
+
+    <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Uso de Equipamento Corporativo (Smartphone)</p>
+    <p>Colaboradores que recebem smartphone corporativo da empresa devem observar as seguintes regras:</p>
+    <ul><li>O aparelho destina-se exclusivamente ao desempenho das atividades profissionais, sendo vedado o uso para fins pessoais ou ilícitos.</li><li>O colaborador é responsável pela guarda, pelo uso adequado e pela conservação do aparelho, devendo comunicar imediatamente ao supervisor ou ao Departamento Pessoal qualquer dano, perda, furto ou extravio.</li><li>Danos, perdas ou extravios decorrentes de mau uso ou negligência poderão ser descontados da folha de pagamento do colaborador, respeitando os limites legais previstos na legislação trabalhista.</li><li>É vedada a instalação de aplicativos ou softwares não autorizados pela empresa.</li><li>O colaborador deve manter sigilo das informações corporativas acessadas pelo aparelho, sendo vedado compartilhar senhas ou acessos com terceiros.</li><li>O aparelho deve ser devolvido à empresa ao término do vínculo empregatício ou sempre que solicitado, em condições adequadas de uso, ressalvado o desgaste natural.</li></ul>
+  `;
+}
+
 const CATEGORIAS_INST = [
   {
-    categoria: 'Código de Conduta e Políticas',
+    categoria: 'Código de Conduta e Ética',
     guias: [
       {
         id: 'codigo-conduta',
@@ -2692,7 +2743,7 @@ const CATEGORIAS_INST = [
         id: 'codigo-conduta-operacao-coleta',
         tipo: 'politica',
         titulo: 'Código de Conduta e Ética — Operação Coleta',
-        subtitulo: 'Diretrizes de ética, respeito, segurança e responsabilidade que orientam as atitudes e decisões dos colaboradores da Operação Coleta (Clean Limpeza e Serviços LTDA).',
+        subtitulo: 'Diretrizes de ética, respeito, segurança, responsabilidade e compromisso ambiental para os colaboradores da Operação Coleta.',
         identificacao: [
           ['Documento', 'Código de Conduta e Ética — Operação Coleta'],
           ['Empresa', 'Clean Limpeza e Serviços LTDA (Operação Coleta)'],
@@ -2701,218 +2752,74 @@ const CATEGORIAS_INST = [
         ],
         html: `
           <div style="display:flex;flex-wrap:wrap;gap:24px;margin:0 0 6px;">
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Objetivo</p>
-              <p>Este Código tem como objetivo orientar as atitudes e decisões dos colaboradores no exercício de suas atividades profissionais, promovendo relações pautadas pela ética, respeito às pessoas, cumprimento da legislação e responsabilidade perante clientes, fornecedores, parceiros e sociedade.</p>
-            </div>
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Abrangência</p>
-              <p>Este Código aplica-se a:</p>
-              <ul>
-                <li>Colaboradores</li>
-                <li>Estagiários</li>
-                <li>Aprendizes</li>
-                <li>Líderes</li>
-                <li>Diretores</li>
-                <li>Terceiros, quando estiverem atuando nas dependências da empresa</li>
-              </ul>
-            </div>
+            <div style="flex:1 1 260px;min-width:240px;"><p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Objetivo</p><p>Este Código tem como objetivo orientar as atitudes e decisões dos colaboradores no exercício de suas atividades profissionais, promovendo relações pautadas pela ética, respeito às pessoas, cumprimento da legislação e responsabilidade perante clientes, fornecedores, parceiros e sociedade.</p></div>
+            <div style="flex:1 1 260px;min-width:240px;"><p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Abrangência</p><p>Este Código aplica-se a:</p><ul><li>Colaboradores</li><li>Estagiários</li><li>Aprendizes</li><li>Líderes</li><li>Diretores</li><li>Terceiros, quando estiverem atuando nas dependências da empresa</li></ul></div>
           </div>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Condutas Esperadas</p>
-          <div style="display:flex;flex-wrap:wrap;gap:24px;margin:0 0 6px;">
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p><strong>Respeito às Pessoas</strong></p>
-              <ul>
-                <li>Tratar todos com educação e cordialidade.</li>
-                <li>Respeitar diferenças de gênero, raça, idade, religião, orientação sexual, deficiência ou qualquer outra condição.</li>
-                <li>Manter relacionamento profissional.</li>
-                <li>Zelar por um ambiente harmonioso.</li>
-              </ul>
-            </div>
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p><strong>Ambiente de Trabalho</strong></p>
-              <p>Espera-se que cada colaborador:</p>
-              <ul>
-                <li>Cumpra horários.</li>
-                <li>Utilize corretamente os recursos da empresa.</li>
-                <li>Preserve limpeza e organização.</li>
-                <li>Cuide dos equipamentos.</li>
-                <li>Utilize EPIs quando aplicável.</li>
-                <li>Siga as normas de segurança.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style="display:flex;flex-wrap:wrap;gap:24px;margin:0 0 6px;">
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p><strong>Ética Profissional</strong></p>
-              <p>Todos devem:</p>
-              <ul>
-                <li>Agir com honestidade.</li>
-                <li>Cumprir leis e normas internas.</li>
-                <li>Evitar conflitos de interesse.</li>
-                <li>Proteger informações confidenciais.</li>
-                <li>Comunicar irregularidades.</li>
-              </ul>
-            </div>
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p><strong>Relacionamento com Clientes e Fornecedores</strong></p>
-              <p>O colaborador deve:</p>
-              <ul>
-                <li>Agir com profissionalismo.</li>
-                <li>Preservar a imagem da empresa.</li>
-                <li>Cumprir compromissos assumidos.</li>
-                <li>Manter sigilo das informações.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style="display:flex;flex-wrap:wrap;gap:24px;margin:0 0 6px;">
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p><strong>Uso dos Recursos da Empresa</strong></p>
-              <p>Os recursos físicos e tecnológicos devem ser utilizados exclusivamente para fins profissionais, evitando desperdícios, danos ou utilização inadequada, conforme as políticas internas e o Termo de Responsabilidade firmado pelo colaborador. Incluem: computadores, celulares, internet, e-mail corporativo, veículos, ferramentas, documentos e sistemas.</p>
-            </div>
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p><strong>Confidencialidade</strong></p>
-              <p>O colaborador deve manter sigilo sobre: dados de clientes, dados financeiros, documentos internos, estratégias e informações de colaboradores.</p>
-            </div>
-          </div>
-          <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Esse dever de sigilo permanece mesmo após o desligamento do colaborador.</span></div>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Condutas Não Permitidas</p>
-          <p>É proibido:</p>
-          <ul>
-            <li>Discriminação, assédio moral, assédio sexual, agressões físicas ou verbais, intimidação.</li>
-            <li>Fraude e falsificação de documentos.</li>
-            <li>Uso de álcool ou drogas durante a jornada.</li>
-            <li>Portar armas sem autorização legal e institucional.</li>
-            <li>Divulgar informações confidenciais.</li>
-            <li>Utilizar recursos da empresa para fins ilícitos.</li>
-            <li>Receber vantagens indevidas.</li>
-            <li>Realizar qualquer prática que coloque em risco a segurança das pessoas.</li>
-          </ul>
-
+          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Nossos Princípios</p>
+          <p>Ética · Respeito · Segurança · Compromisso · Transparência · Responsabilidade · Colaboração · Desenvolvimento Contínuo</p>
           <div style="display:flex;flex-wrap:wrap;gap:24px;margin:16px 0 6px;">
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Brindes, Presentes e Favores</p>
-              <p>Os colaboradores não devem solicitar ou aceitar presentes, vantagens financeiras ou benefícios que possam influenciar decisões profissionais. Brindes institucionais de pequeno valor podem ser aceitos, desde que não configurem favorecimento.</p>
-            </div>
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Redes Sociais</p>
-              <p>Os colaboradores devem utilizar as redes sociais com responsabilidade, evitando divulgar informações internas, expor colegas sem autorização ou publicar conteúdos que prejudiquem a imagem da empresa.</p>
-            </div>
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Respeito às Pessoas</strong></p><ul><li>Tratar todos com educação e cordialidade.</li><li>Respeitar diferenças de gênero, raça, idade, religião, orientação sexual, deficiência ou qualquer outra condição.</li><li>Manter relacionamento profissional.</li><li>Zelar por um ambiente harmonioso.</li></ul></div>
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Ambiente de Trabalho</strong></p><p>Espera-se que cada colaborador:</p><ul><li>Cumpra horários.</li><li>Preserve limpeza e organização.</li></ul></div>
           </div>
-
           <div style="display:flex;flex-wrap:wrap;gap:24px;margin:0 0 6px;">
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Segurança e Saúde</p>
-              <p>Todos são responsáveis por cumprir normas de Saúde e Segurança do Trabalho, utilizar corretamente os EPIs, comunicar acidentes, identificar riscos e colaborar para um ambiente seguro.</p>
-            </div>
-            <div style="flex:1 1 260px;min-width:240px;">
-              <p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Medidas Disciplinares</p>
-              <p>O descumprimento deste Código poderá resultar na aplicação de medidas disciplinares, conforme a gravidade da ocorrência e a legislação vigente, incluindo: orientação verbal, advertência escrita, suspensão ou desligamento por justa causa, quando cabível.</p>
-            </div>
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Ética Profissional</strong></p><p>Todos devem:</p><ul><li>Agir com honestidade.</li><li>Cumprir leis e normas internas.</li><li>Evitar conflitos de interesse.</li><li>Proteger informações confidenciais.</li><li>Comunicar irregularidades.</li></ul></div>
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Relacionamentos</strong></p><p>O contato externo da empresa varia conforme a função de cada colaborador:</p><ul><li>Coletores, motoristas e demais colaboradores em atividade de rua representam a empresa perante a sociedade — devem agir com profissionalismo e cordialidade no contato com moradores e pedestres.</li><li>O contato com clientes e fornecedores é conduzido apenas pelas funções administrativas e de supervisão; os demais colaboradores não devem negociar ou assumir compromissos em nome da empresa sem autorização.</li></ul></div>
           </div>
-
+          <div style="display:flex;flex-wrap:wrap;gap:24px;margin:0 0 6px;">
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Uso dos Recursos da Empresa</strong></p><p>Os recursos físicos e tecnológicos devem ser utilizados exclusivamente para fins profissionais, evitando desperdícios, danos ou utilização inadequada, conforme as políticas internas do cargo. Incluem: computadores, celulares, internet, e-mail corporativo, veículos, ferramentas, documentos e sistemas.</p></div>
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Confidencialidade</strong></p><p>O colaborador deve manter sigilo sobre dados de clientes, dados financeiros, documentos internos, estratégias e informações de colaboradores.</p><div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Esse dever de sigilo permanece mesmo após o desligamento do colaborador.</span></div></div>
+          </div>
+          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Condutas Não Permitidas</p>
+          <ul><li>Discriminação.</li><li>Assédio moral ou sexual.</li><li>Agressões físicas ou verbais e intimidação.</li><li>Fraude ou falsificação de documentos.</li><li>Uso de álcool ou drogas durante a jornada.</li><li>Portar armas sem autorização legal e institucional.</li><li>Divulgar informações confidenciais.</li><li>Utilizar recursos da empresa para fins ilícitos.</li><li>Receber vantagens indevidas.</li><li>Realizar qualquer prática que coloque em risco a segurança das pessoas.</li></ul>
+          <div style="display:flex;flex-wrap:wrap;gap:24px;margin:16px 0 6px;">
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Brindes, Presentes e Favores</strong></p><p>Os colaboradores não devem solicitar ou aceitar presentes, vantagens financeiras ou benefícios que possam influenciar decisões profissionais. Brindes institucionais de pequeno valor podem ser aceitos, desde que não configurem favorecimento.</p></div>
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Redes Sociais</strong></p><p>Os colaboradores devem utilizar as redes sociais com responsabilidade, evitando divulgar informações internas, expor colegas sem autorização ou publicar conteúdos que prejudiquem a imagem da empresa.</p></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:24px;margin:0 0 6px;">
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Segurança e Saúde</strong></p><p>Todos são responsáveis por cumprir normas de Saúde e Segurança do Trabalho, utilizar corretamente os EPIs, comunicar acidentes, identificar riscos e colaborar para um ambiente seguro.</p></div>
+            <div style="flex:1 1 260px;min-width:240px;"><p><strong>Medidas Disciplinares</strong></p><p>O descumprimento deste Código poderá resultar na aplicação de medidas disciplinares, conforme a gravidade da ocorrência e a legislação vigente, incluindo orientação verbal, advertência escrita, suspensão ou desligamento por justa causa, quando cabível.</p></div>
+          </div>
+          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Responsabilidade Ambiental</p>
+          <p>Por atuar diretamente na coleta e destinação de resíduos, a empresa e todos os seus colaboradores têm responsabilidade direta com o meio ambiente. Espera-se que todos:</p>
+          <ul><li>Cumpram a legislação ambiental aplicável às suas atividades.</li><li>Realizem a coleta, o manuseio e a destinação dos resíduos de forma correta, evitando descarte inadequado ou contaminação do meio ambiente.</li><li>Utilizem os recursos naturais (água, energia, combustível) de forma consciente, evitando desperdícios.</li><li>Comuniquem imediatamente ao gestor da filial qualquer vazamento, derramamento ou outro incidente com potencial impacto ambiental.</li><li>Zelem pela correta separação e descarte dos materiais recicláveis e resíduos internos da própria empresa.</li></ul>
           <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Canal para Relato de Condutas</p>
           <p>A empresa incentiva que qualquer situação de fraude, assédio, discriminação, descumprimento deste Código ou comportamento antiético seja comunicada ao RH e/ou à liderança imediata.</p>
           <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>As manifestações serão tratadas com confidencialidade e sem retaliação ao denunciante de boa-fé.</span></div>
+          <div class="caixa caixa-exemplo"><span class="caixa-icone">i</span><span>A ciência deste Código é registrada no Termo de Conclusão assinado pelo colaborador ao final do Roteiro de Integração.</span></div>
         `,
         duvidas: 'Em caso de dúvidas sobre este documento, entre em contato com o Departamento Pessoal.',
       },
+    ],
+  },
+  {
+    categoria: 'Políticas Internas para Motoristas',
+    guias: [
       {
         id: 'direcao-defensiva',
         tipo: 'politica',
-        titulo: 'Política de Direção Defensiva',
-        subtitulo: 'Regras de condução, princípios de direção defensiva e condutas obrigatórias e proibidas para motoristas de caminhão de coleta.',
+        titulo: 'Política Interna para Motoristas — Padrão',
+        subtitulo: 'Regras de direção defensiva, operação de coleta, responsabilização financeira e uso de smartphone aplicáveis às demais filiais.',
         identificacao: [
           ['Documento', 'Política de Direção Defensiva e Conduta no Trânsito'],
-          ['Abrangência', 'Todos os motoristas de caminhão de coleta de resíduos — efetivos, temporários ou substitutos'],
-          ['Empresa', 'Clean Limpeza e Serviços LTDA'],
+          ['Versão', 'Padrão'],
+          ['Abrangência', 'Motoristas de caminhão de coleta de resíduos — efetivos, temporários ou substitutos'],
+          ['Área responsável', 'Departamento Pessoal'],
         ],
-        html: `
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:0 0 6px;">Objetivo</p>
-          <p>Esta política estabelece as regras de condução, os princípios de direção defensiva e as condutas obrigatórias e proibidas para os motoristas de caminhão de coleta de resíduos, com o objetivo de prevenir acidentes, proteger a vida do motorista, dos coletores e de terceiros, preservar a frota e reduzir os custos operacionais decorrentes de sinistros.</p>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Abrangência</p>
-          <p>Esta política se aplica a todos os motoristas de caminhão de coleta de resíduos da empresa, sejam efetivos, temporários ou substitutos, em qualquer rota ou turno de operação.</p>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Princípios da Direção Defensiva</p>
-          <p>A direção defensiva é a forma de conduzir o veículo prevenindo acidentes por meio da aplicação de conhecimentos, atitudes e técnicas que permitem antecipar situações de risco no trânsito. Ela se apoia em cinco elementos, que todo motorista deve exercitar continuamente:</p>
-          <table class="tabela-guia" style="margin:10px 0;">
-            <tr><td>Conhecimento</td><td>Atenção</td></tr>
-            <tr><td>Previsão</td><td>Decisão</td></tr>
-            <tr><td>Habilidade</td><td></td></tr>
-          </table>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Regras Gerais de Condução</p>
-          <ul>
-            <li>Usar o cinto de segurança durante todo o trajeto, sem exceção.</li>
-            <li>Respeitar rigorosamente os limites de velocidade da via e as sinalizações de trânsito.</li>
-            <li>Manter distância segura do veículo à frente, ajustando-a às condições da via e do clima.</li>
-            <li>Redobrar a atenção em cruzamentos, faixas de pedestres, pontos de ônibus e áreas escolares.</li>
-            <li>Sinalizar com antecedência qualquer mudança de faixa, conversão ou manobra.</li>
-            <li>Verificar os espelhos retrovisores com frequência e checar os pontos cegos antes de qualquer manobra.</li>
-            <li>Reduzir a velocidade em condições adversas (chuva, neblina, pista molhada ou mal iluminada).</li>
-            <li>Respeitar os horários de descanso previstos na legislação, evitando dirigir em estado de fadiga ou sonolência.</li>
-          </ul>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Regras Específicas da Operação de Coleta</p>
-          <ul>
-            <li>Limitar a velocidade a, no máximo, 10 km/h durante o deslocamento nas áreas de coleta.</li>
-            <li>Aguardar o sinal sonoro do coletor antes de movimentar o veículo.</li>
-            <li>Nunca movimentar o veículo em marcha à ré com coletor na plataforma traseira, salvo com sinalização e acompanhamento adequados.</li>
-            <li>Permitir a permanência de coletores na plataforma somente com o veículo parado.</li>
-            <li>Manter faróis, luz de ré e sinalizadores sonoros de ré em pleno funcionamento.</li>
-          </ul>
-          <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Estas regras seguem os parâmetros de segurança da NR-38 (coleta de resíduos) e devem ser observadas em conjunto com as orientações específicas de cada rota.</span></div>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Condutas Proibidas ao Volante</p>
-          <p>É proibido, durante a condução do veículo:</p>
-          <ul>
-            <li>Fumar dentro da cabine.</li>
-            <li>Utilizar o celular para ligações, mensagens ou redes sociais — inclusive em suporte ou viva-voz — enquanto o veículo estiver em movimento.</li>
-            <li>Dirigir sob efeito de álcool ou de qualquer substância que comprometa a atenção, os reflexos ou a capacidade de direção.</li>
-            <li>Transportar passageiros ou caronas não autorizadas pela empresa.</li>
-            <li>Realizar ultrapassagens indevidas, manobras arriscadas ou disputas de velocidade.</li>
-            <li>Exceder os limites de velocidade da via ou o limite de 10 km/h nas áreas de coleta.</li>
-            <li>Deixar o veículo em movimento sem o motorista ao volante.</li>
-            <li>Movimentar o veículo sem aguardar o sinal do coletor.</li>
-          </ul>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Checagem do Veículo (Pré-Operação)</p>
-          <p>Antes de iniciar a rota, o motorista deve verificar:</p>
-          <ul>
-            <li>Freios, pneus (calibragem e desgaste) e sistema de suspensão.</li>
-            <li>Faróis, lanternas, setas, luz de ré e sinalizador sonoro de ré.</li>
-            <li>Espelhos retrovisores e limpadores de para-brisa.</li>
-            <li>Níveis de óleo, água e combustível.</li>
-            <li>Sistema de carregamento — roldanas, cabos, travas do contêiner e alavancas de comando.</li>
-            <li>Presença e validade do extintor de incêndio e do triângulo de sinalização.</li>
-          </ul>
-          <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Qualquer irregularidade identificada na checagem deve ser comunicada ao responsável pela filial antes da saída do veículo para a rota — o caminhão não deve operar com item de segurança comprometido.</span></div>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Em Caso de Sinistro ou Acidente</p>
-          <p>Em caso de acidente de trânsito envolvendo o veículo, o motorista deve seguir, nesta ordem:</p>
-          <ul>
-            <li>Manter a calma, parar em local seguro e ligar o pisca-alerta.</li>
-            <li>Verificar se há feridos. Havendo, acionar imediatamente o SAMU (192) e, se necessário, a Polícia Militar (190).</li>
-            <li>Sinalizar o local do acidente (triângulo, a uma distância segura).</li>
-            <li>Fotografar o local, os veículos envolvidos e os danos.</li>
-            <li>Anotar os dados do(s) outro(s) motorista(s) e de eventuais testemunhas (nome, telefone, placa).</li>
-            <li>Comunicar o acidente imediatamente ao gestor da filial e ao Departamento Pessoal.</li>
-            <li>Aguardar as orientações da empresa antes de assumir responsabilidade ou fechar qualquer acordo no local.</li>
-            <li>Providenciar o Boletim de Ocorrência quando houver vítima, dano relevante ou exigência legal.</li>
-          </ul>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Responsabilização Financeira em Sinistros</p>
-          <p>Em caso de sinistro em que fique caracterizada a responsabilidade do motorista, será aplicada multa correspondente a 15% do valor total do sinistro, a ser arcada pelo motorista responsável.</p>
-          <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: ainda precisam ser definidos o critério e o responsável pela apuração de culpa (ex.: perícia, gestor, seguradora), a forma de cobrança/desconto do valor (parcela única ou parcelado, e limite de desconto em folha conforme legislação trabalhista) e se há teto máximo para o valor da multa.</span></div>
-
-          <p style="font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;">Medidas Disciplinares</p>
-          <p>O descumprimento desta política poderá resultar na aplicação de medidas disciplinares, conforme a gravidade da ocorrência e a legislação vigente, incluindo: orientação verbal, advertência escrita, suspensão ou desligamento por justa causa, quando cabível.</p>
-        `,
+        html: politicaMotoristasHtml('10%'),
+        duvidas: 'Em caso de dúvidas sobre este documento, entre em contato com o Departamento Pessoal.',
+      },
+      {
+        id: 'direcao-defensiva-sao-joao-del-rei',
+        tipo: 'politica',
+        titulo: 'Política Interna para Motoristas — São João del-Rei',
+        subtitulo: 'Versão específica de São João del-Rei, com as regras locais de responsabilização financeira.',
+        identificacao: [
+          ['Documento', 'Política de Direção Defensiva e Conduta no Trânsito'],
+          ['Versão', 'São João del-Rei'],
+          ['Abrangência', 'Motoristas de caminhão de coleta de resíduos de São João del-Rei — efetivos, temporários ou substitutos'],
+          ['Área responsável', 'Departamento Pessoal'],
+        ],
+        html: politicaMotoristasHtml('15%'),
         duvidas: 'Em caso de dúvidas sobre este documento, entre em contato com o Departamento Pessoal.',
       },
     ],
@@ -3131,6 +3038,10 @@ const ICONES_GUIA = {
   ),
 
   'direcao-defensiva': SVG_GUIA(
+    '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M3.5 10h17"/><path d="M12 15v6"/>'
+  ),
+
+  'direcao-defensiva-sao-joao-del-rei': SVG_GUIA(
     '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M3.5 10h17"/><path d="M12 15v6"/>'
   ),
 
