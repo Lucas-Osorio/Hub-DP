@@ -282,6 +282,97 @@ const CATEGORIAS_DP = [
     categoria: 'Admissão e Contratação',
     guias: [
       {
+        id: 'roteiro-integracao',
+        titulo: 'Roteiro de Integração — Coletor e Motorista de Coleta',
+        subtitulo: 'Checklist institucional e administrativo para o supervisor conduzir a integração de novos coletores e motoristas de coleta no primeiro dia.',
+        identificacao: [
+          ['Processo', 'Integração Institucional e Administrativa — Coletor e Motorista de Coleta'],
+          ['Responsável principal', 'Supervisor da filial'],
+          ['Quem mais participa', 'Novo colaborador, Assistente Administrativo, Encarregado Operacional e colega responsável pelo acompanhamento prático'],
+          ['Quando acontece', 'No primeiro dia de trabalho, antes do acompanhamento prático na rota'],
+          ['Público', 'Coletores de Resíduos e Motoristas de Coleta recém-admitidos'],
+          ['Abrangência', 'Todas as filiais e marcas do grupo'],
+          ['Sistemas e materiais utilizados', 'Código de Conduta e Ética, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação'],
+        ],
+        objetivo: 'Este guia orienta o supervisor direto na integração inicial de um novo colaborador admitido para as funções de Coletor de Resíduos ou Motorista de Coleta. Todas as etapas devem ser realizadas no primeiro dia de trabalho, antes de o colaborador ser encaminhado ao acompanhamento prático na rota, garantindo que nenhum tópico administrativo ou institucional seja esquecido.',
+        conceitos: [
+          ['Integração administrativa e institucional', 'Apresentação inicial que reúne informações sobre a filial, conduta, benefícios, ponto e cartão alimentação. O treinamento prático da função é realizado à parte.'],
+          ['Código de Conduta e Ética', 'Documento com as diretrizes de segurança, respeito, responsabilidade e conduta aplicáveis ao colaborador. Sua apresentação inclui a assinatura do Termo de Compromisso.'],
+          ['Banner da Filial', 'Material fixado na filial que reúne normas gerais, benefícios, percentual de desconto por avaria ou sinistro e uma visão geral do controle de ponto.'],
+          ['Sólides Ponto / Tangerino', 'Aplicativo utilizado para o registro de ponto. Tangerino é o nome encontrado em materiais mais antigos.'],
+          ['Acompanhamento prático', 'Período de aprendizagem da rota e da rotina ao lado de um colega mais experiente, após a integração inicial.'],
+        ],
+        simbologia: [
+          ['☐ Checklist', 'Item que deve ser realizado e conferido pelo supervisor durante a integração.'],
+          ['Aplicativo', 'Sistema que deve ser instalado, configurado e demonstrado na prática ao colaborador.'],
+          ['Documento', 'Material que deve ser apresentado, lido ou assinado durante a etapa.'],
+          ['Acompanhamento prático', 'Atividade realizada na operação, ao lado de um colega mais experiente.'],
+        ],
+        quemFazOQue: [
+          ['Supervisor da filial', 'Conduz todas as etapas do checklist, apresenta os materiais, configura os aplicativos, entrega o cartão e encaminha o colaborador ao acompanhamento prático.', 'No primeiro dia de trabalho, antes do início da prática na rota.'],
+          ['Novo colaborador', 'Participa da integração, acompanha as demonstrações, esclarece dúvidas e assina o Termo de Compromisso do Código de Conduta e Ética.', 'Durante toda a integração inicial.'],
+          ['Assistente Administrativo e Encarregado Operacional', 'São apresentados ao novo colaborador como responsáveis diretos na filial.', 'Na recepção e apresentação da filial.'],
+          ['Colega mais experiente', 'Acompanha o novo colaborador na rota para ensinar a rotina e a operação na prática.', 'Após a conclusão da integração institucional e administrativa.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Recepção e Apresentação da Filial', responsavel: 'Supervisor da filial', html: `
+            <ul>
+              <li>Receber o colaborador — apenas o supervisor, sem apresentação pública para o restante da equipe.</li>
+              <li>Apresentar a filial: o local de trabalho.</li>
+              <li>Apresentar o Assistente Administrativo e o Encarregado Operacional da filial — os responsáveis diretos por ele.</li>
+            </ul>
+          `},
+          { numero: 2, titulo: 'Apresentar o Código de Conduta e Ética', responsavel: 'Supervisor da filial', html: `
+            <ul>
+              <li>Entregar (ou confirmar que o colaborador já recebeu, no processo de admissão) uma via do Código de Conduta e Ética.</li>
+              <li>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</li>
+              <li>Colher a assinatura do colaborador no Termo de Compromisso do Código de Conduta e Ética.</li>
+            </ul>
+          `},
+          { numero: 3, titulo: 'Apresentar o Banner da Filial', responsavel: 'Supervisor da filial', html: `
+            <p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p>
+            <ul>
+              <li>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</li>
+            </ul>
+          `},
+          { numero: 4, titulo: 'Configurar o Registro de Ponto', responsavel: 'Supervisor da filial', html: `
+            <p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p>
+            <ul>
+              <li>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</li>
+              <li>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</li>
+            </ul>
+          `},
+          { numero: 5, titulo: 'Entregar o Cartão Alimentação', responsavel: 'Supervisor da filial', html: `
+            <p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p>
+            <ul>
+              <li>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</li>
+              <li>Entregar o cartão alimentação físico ao colaborador.</li>
+              <li>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</li>
+            </ul>
+          `},
+          { numero: 6, titulo: 'Explicar Benefícios e Regras Específicas', responsavel: 'Supervisor da filial', html: `
+            <ul>
+              <li>Explicar a escala de domingo: o serviço de coleta não pode parar, por isso há rodízio entre as equipes aos domingos. Não está descrita em nenhum outro material — use os pontos abaixo como referência:
+                <ul>
+                  <li>Organizada pelo Encarregado Operacional, com folgas alternadas entre as equipes.</li>
+                  <li>Exemplo: semana 1 — Equipe A trabalha no domingo, Equipe B folga; semana 2 — invertem.</li>
+                  <li>Feriados prolongados: pode haver reforço de equipe para evitar acúmulo de resíduos.</li>
+                  <li>A escala deve ser comunicada ao colaborador com antecedência.</li>
+                </ul>
+              </li>
+            </ul>
+          `},
+          { numero: 7, titulo: 'Encaminhar para o Acompanhamento Prático', responsavel: 'Supervisor da filial', html: `
+            <ul>
+              <li>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</li>
+              <li>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</li>
+              <li>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação.</li>
+            </ul>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
+      },
+      {
         id: 'admissao-colaboradores',
         titulo: 'Admissão de Colaboradores',
         subtitulo: 'Requisição e admissão de colaboradores — do alinhamento da vaga com o RH até a liberação do colaborador para o trabalho.',
