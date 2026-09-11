@@ -309,109 +309,6 @@ const CATEGORIAS_DP = [
     categoria: 'Admissão e Contratação',
     guias: [
       {
-        id: 'roteiro-integracao',
-        titulo: 'Roteiro de Integração — Coletor e Motorista de Coleta',
-        subtitulo: 'Checklist institucional e administrativo para acompanhar a integração de novos coletores e motoristas de coleta no primeiro dia.',
-        identificacao: [
-          ['Processo', 'Integração Institucional e Administrativa — Coletor e Motorista de Coleta'],
-          ['Responsáveis principais', 'Encarregado Operacional e Assistente Administrativo'],
-          ['Quem mais participa', 'Novo colaborador, colega responsável pelo acompanhamento prático e Departamento Pessoal'],
-          ['Quando acontece', 'No primeiro dia de trabalho, antes do acompanhamento prático na rota'],
-          ['Público', 'Coletores de Resíduos e Motoristas de Coleta recém-admitidos'],
-          ['Abrangência', 'Todas as filiais e marcas do grupo'],
-          ['Sistemas e materiais utilizados', 'Código de Conduta e Ética, Política de Direção Defensiva, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação'],
-        ],
-        objetivo: 'Orientar os responsáveis pela integração inicial de novos Coletores de Resíduos e Motoristas de Coleta, garantindo que todas as informações administrativas e institucionais sejam apresentadas no primeiro dia de trabalho, antes do acompanhamento prático na rota.',
-        conceitos: [
-          ['Integração administrativa e institucional', 'Apresentação inicial que reúne informações sobre a filial, conduta, política aplicável ao cargo, benefícios, ponto e cartão alimentação. O treinamento prático da função é realizado à parte.'],
-          ['Código de Conduta e Ética', 'Documento institucional entregue e apresentado a todos os novos colaboradores. A ciência é registrada no Termo de Conclusão do roteiro.'],
-          ['Política de Direção Defensiva', 'Política obrigatória para Motoristas de Coleta. Não se aplica a Coletores de Resíduos.'],
-          ['Sólides Ponto / Tangerino', 'Aplicativo utilizado para o registro de ponto. Tangerino é o nome encontrado em materiais mais antigos.'],
-          ['Acompanhamento prático', 'Período de aprendizagem da rota e da rotina ao lado de um colega mais experiente, após a integração inicial.'],
-        ],
-        simbologia: [
-          ['☐ Checklist', 'Item interativo que deve ser realizado e conferido durante a integração.'],
-          ['Aplicativo', 'Sistema que deve ser instalado, configurado e demonstrado na prática ao colaborador.'],
-          ['Documento', 'Material que deve ser entregue, apresentado e lido com o colaborador.'],
-          ['Acompanhamento prático', 'Atividade realizada na operação, ao lado de um colega mais experiente.'],
-        ],
-        quemFazOQue: [
-          ['Assistente Administrativo', 'Apresenta o Código de Conduta e, para motoristas, a Política de Direção Defensiva; configura o ponto e entrega o cartão alimentação. Também pode realizar a recepção inicial.', 'Etapas 1 a 5.'],
-          ['Encarregado Operacional', 'Apresenta a filial e o banner, explica regras específicas e encaminha o colaborador ao acompanhamento prático. Também pode realizar a recepção inicial.', 'Etapas 1, 6, 7 e 8.'],
-          ['Novo colaborador', 'Participa da integração, acompanha as demonstrações, esclarece dúvidas e assina o Termo de Conclusão.', 'Durante toda a integração inicial.'],
-          ['Colega mais experiente', 'Acompanha o novo colaborador na rota para ensinar a rotina e a operação na prática.', 'Após a conclusão da integração institucional e administrativa.'],
-        ],
-        passos: [
-          { numero: 1, titulo: 'Recepção e Apresentação da Filial', responsavel: 'Encarregado Operacional ou Assistente Administrativo', html: `
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Receber o colaborador — apenas o supervisor, sem apresentação pública para o restante da equipe.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar a filial: o local de trabalho.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o Assistente Administrativo e o Encarregado Operacional da filial — os responsáveis diretos por ele.</span></label>
-            </div>
-          `},
-          { numero: 2, titulo: 'Apresentar o Código de Conduta e Ética', responsavel: 'Assistente Administrativo', html: `
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar (ou confirmar que o colaborador já recebeu, no processo de admissão) uma via do Código de Conduta e Ética.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>
-            </div>
-          `},
-          { numero: 3, titulo: 'Apresentar a Política de Direção Defensiva', responsavel: 'Assistente Administrativo', html: `
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Etapa exclusiva para a função de Motorista de Coleta. Para Coletor de Resíduos, ainda não existe uma política formal equivalente (em desenvolvimento) — pule esta etapa.</span></div>
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar (ou confirmar que o colaborador já recebeu) uma via da Política de Direção Defensiva.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>
-            </div>
-          `},
-          { numero: 4, titulo: 'Configurar o Registro de Ponto', responsavel: 'Assistente Administrativo', html: `
-            <p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p>
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label>
-            </div>
-          `},
-          { numero: 5, titulo: 'Entregar o Cartão Alimentação', responsavel: 'Assistente Administrativo', html: `
-            <p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p>
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar o cartão alimentação físico ao colaborador.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label>
-            </div>
-          `},
-          { numero: 6, titulo: 'Apresentar o Banner da Filial', responsavel: 'Encarregado Operacional', html: `
-            <p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p>
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label>
-            </div>
-          `},
-          { numero: 7, titulo: 'Explicar Benefícios e Regras Específicas', responsavel: 'Encarregado Operacional', html: `
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar a escala de domingo: o serviço de coleta não pode parar, por isso há rodízio entre as equipes aos domingos. Não está descrita em nenhum outro material — use os pontos abaixo como referência.</span></label>
-            </div>
-            <ul class="checklist-referencia">
-              <li>Organizada pelo Encarregado Operacional, com folgas alternadas entre as equipes.</li>
-              <li>Exemplo: semana 1 — Equipe A trabalha no domingo, Equipe B folga; semana 2 — invertem.</li>
-              <li>Feriados prolongados: pode haver reforço de equipe para evitar acúmulo de resíduos.</li>
-              <li>A escala deve ser comunicada ao colaborador com antecedência.</li>
-            </ul>
-          `},
-          { numero: 8, titulo: 'Encaminhar para o Acompanhamento Prático', responsavel: 'Encarregado Operacional', html: `
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão.</span></label>
-            </div>
-            <div class="checklist-conclusao">
-              <div class="checklist-conclusao-texto">
-                <strong>Checklist de integração</strong>
-                <span class="checklist-progresso" id="checklist-integracao-progresso" aria-live="polite">0 de 17 itens concluídos</span>
-              </div>
-              <button class="checklist-termo" id="checklist-integracao-termo" type="button" onclick="abrirTermoIntegracao()" disabled>Imprimir Termo de Conclusão</button>
-            </div>
-          `},
-        ],
-        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
-      },
-      {
         id: 'admissao-colaboradores',
         titulo: 'Admissão de Colaboradores',
         subtitulo: 'Requisição e admissão de colaboradores — do alinhamento da vaga com o RH até a liberação do colaborador para o trabalho.',
@@ -2821,6 +2718,114 @@ const CATEGORIAS_INST = [
         ],
         html: politicaMotoristasHtml('15%'),
         duvidas: 'Em caso de dúvidas sobre este documento, entre em contato com o Departamento Pessoal.',
+      },
+    ],
+  },
+  {
+    categoria: 'Integração de Novos Colaboradores',
+    guias: [
+      {
+        id: 'roteiro-integracao',
+        titulo: 'Roteiro de Integração — Coletor e Motorista de Coleta',
+        subtitulo: 'Checklist institucional e administrativo para acompanhar a integração de novos coletores e motoristas de coleta no primeiro dia.',
+        identificacao: [
+          ['Processo', 'Integração Institucional e Administrativa — Coletor e Motorista de Coleta'],
+          ['Responsáveis principais', 'Encarregado Operacional e Assistente Administrativo'],
+          ['Quem mais participa', 'Novo colaborador, colega responsável pelo acompanhamento prático e Departamento Pessoal'],
+          ['Quando acontece', 'No primeiro dia de trabalho, antes do acompanhamento prático na rota'],
+          ['Público', 'Coletores de Resíduos e Motoristas de Coleta recém-admitidos'],
+          ['Abrangência', 'Todas as filiais e marcas do grupo'],
+          ['Sistemas e materiais utilizados', 'Código de Conduta e Ética, Política de Direção Defensiva, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação'],
+        ],
+        objetivo: 'Orientar os responsáveis pela integração inicial de novos Coletores de Resíduos e Motoristas de Coleta, garantindo que todas as informações administrativas e institucionais sejam apresentadas no primeiro dia de trabalho, antes do acompanhamento prático na rota.',
+        conceitos: [
+          ['Integração administrativa e institucional', 'Apresentação inicial que reúne informações sobre a filial, conduta, política aplicável ao cargo, benefícios, ponto e cartão alimentação. O treinamento prático da função é realizado à parte.'],
+          ['Código de Conduta e Ética', 'Documento institucional entregue e apresentado a todos os novos colaboradores. A ciência é registrada no Termo de Conclusão do roteiro.'],
+          ['Política de Direção Defensiva', 'Política obrigatória para Motoristas de Coleta. Não se aplica a Coletores de Resíduos.'],
+          ['Sólides Ponto / Tangerino', 'Aplicativo utilizado para o registro de ponto. Tangerino é o nome encontrado em materiais mais antigos.'],
+          ['Acompanhamento prático', 'Período de aprendizagem da rota e da rotina ao lado de um colega mais experiente, após a integração inicial.'],
+        ],
+        simbologia: [
+          ['☐ Checklist', 'Item interativo que deve ser realizado e conferido durante a integração.'],
+          ['Aplicativo', 'Sistema que deve ser instalado, configurado e demonstrado na prática ao colaborador.'],
+          ['Documento', 'Material que deve ser entregue, apresentado e lido com o colaborador.'],
+          ['Acompanhamento prático', 'Atividade realizada na operação, ao lado de um colega mais experiente.'],
+        ],
+        quemFazOQue: [
+          ['Assistente Administrativo', 'Apresenta o Código de Conduta e, para motoristas, a Política de Direção Defensiva; configura o ponto e entrega o cartão alimentação. Também pode realizar a recepção inicial.', 'Etapas 1 a 5.'],
+          ['Encarregado Operacional', 'Apresenta a filial e o banner, explica regras específicas e encaminha o colaborador ao acompanhamento prático. Também pode realizar a recepção inicial.', 'Etapas 1, 6, 7 e 8.'],
+          ['Novo colaborador', 'Participa da integração, acompanha as demonstrações, esclarece dúvidas e assina o Termo de Conclusão.', 'Durante toda a integração inicial.'],
+          ['Colega mais experiente', 'Acompanha o novo colaborador na rota para ensinar a rotina e a operação na prática.', 'Após a conclusão da integração institucional e administrativa.'],
+        ],
+        passos: [
+          { numero: 1, titulo: 'Recepção e Apresentação da Filial', responsavel: 'Encarregado Operacional ou Assistente Administrativo', html: `
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Receber o colaborador — apenas o supervisor, sem apresentação pública para o restante da equipe.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar a filial: o local de trabalho.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o Assistente Administrativo e o Encarregado Operacional da filial — os responsáveis diretos por ele.</span></label>
+            </div>
+          `},
+          { numero: 2, titulo: 'Apresentar o Código de Conduta e Ética', responsavel: 'Assistente Administrativo', html: `
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar (ou confirmar que o colaborador já recebeu, no processo de admissão) uma via do Código de Conduta e Ética.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>
+            </div>
+          `},
+          { numero: 3, titulo: 'Apresentar a Política de Direção Defensiva', responsavel: 'Assistente Administrativo', html: `
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Etapa exclusiva para a função de Motorista de Coleta. Para Coletor de Resíduos, ainda não existe uma política formal equivalente (em desenvolvimento) — pule esta etapa.</span></div>
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar (ou confirmar que o colaborador já recebeu) uma via da Política de Direção Defensiva.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>
+            </div>
+          `},
+          { numero: 4, titulo: 'Configurar o Registro de Ponto', responsavel: 'Assistente Administrativo', html: `
+            <p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p>
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label>
+            </div>
+          `},
+          { numero: 5, titulo: 'Entregar o Cartão Alimentação', responsavel: 'Assistente Administrativo', html: `
+            <p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p>
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar o cartão alimentação físico ao colaborador.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label>
+            </div>
+          `},
+          { numero: 6, titulo: 'Apresentar o Banner da Filial', responsavel: 'Encarregado Operacional', html: `
+            <p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p>
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label>
+            </div>
+          `},
+          { numero: 7, titulo: 'Explicar Benefícios e Regras Específicas', responsavel: 'Encarregado Operacional', html: `
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar a escala de domingo: o serviço de coleta não pode parar, por isso há rodízio entre as equipes aos domingos. Não está descrita em nenhum outro material — use os pontos abaixo como referência.</span></label>
+            </div>
+            <ul class="checklist-referencia">
+              <li>Organizada pelo Encarregado Operacional, com folgas alternadas entre as equipes.</li>
+              <li>Exemplo: semana 1 — Equipe A trabalha no domingo, Equipe B folga; semana 2 — invertem.</li>
+              <li>Feriados prolongados: pode haver reforço de equipe para evitar acúmulo de resíduos.</li>
+              <li>A escala deve ser comunicada ao colaborador com antecedência.</li>
+            </ul>
+          `},
+          { numero: 8, titulo: 'Encaminhar para o Acompanhamento Prático', responsavel: 'Encarregado Operacional', html: `
+            <div class="checklist-integracao">
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label>
+              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão.</span></label>
+            </div>
+            <div class="checklist-conclusao">
+              <div class="checklist-conclusao-texto">
+                <strong>Checklist de integração</strong>
+                <span class="checklist-progresso" id="checklist-integracao-progresso" aria-live="polite">0 de 17 itens concluídos</span>
+              </div>
+              <button class="checklist-termo" id="checklist-integracao-termo" type="button" onclick="abrirTermoIntegracao()" disabled>Imprimir Termo de Conclusão</button>
+            </div>
+          `},
+        ],
+        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
       },
     ],
   },
