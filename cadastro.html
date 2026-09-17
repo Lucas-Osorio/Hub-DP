@@ -1941,11 +1941,12 @@ function render(){
         <div class="campo-destaque ${['sim','nao'].includes(colab.contratacao?.feitaComRH) ? 'ok' : ''}">
           <div class="field">
             <label for="contratacao-rh-${colab.id}">Contratação feita com o RH <span class="obrigatorio-tag">${['sim','nao'].includes(colab.contratacao?.feitaComRH) ? 'preenchido' : 'obrigatório'}</span></label>
-            <select id="contratacao-rh-${colab.id}" required onchange="atualizarCampo(${colab.id}, 'contratacao', 'feitaComRH', this.value)">
-              <option value="" ${!colab.contratacao?.feitaComRH ? 'selected' : ''}>Selecione...</option>
-              <option value="sim" ${colab.contratacao?.feitaComRH === 'sim' ? 'selected' : ''}>Sim</option>
-              <option value="nao" ${colab.contratacao?.feitaComRH === 'nao' ? 'selected' : ''}>Não</option>
-            </select>
+            <div id="contratacao-rh-${colab.id}" role="radiogroup" aria-label="Contratação feita com o RH" aria-required="true" style="display:flex;gap:10px;flex-wrap:wrap;">
+              ${[['sim','Sim'],['nao','Não']].map(([valor,texto]) => `<label class="checkbox-label" style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:10px 16px;border:1px solid var(--cinza-200);border-radius:9px;background:#fff;min-width:90px;">
+                <input type="radio" name="contratacao-rh-${colab.id}" value="${valor}" required style="width:16px;height:16px;margin:0;accent-color:var(--azul-medio);" ${colab.contratacao?.feitaComRH === valor ? 'checked' : ''} onchange="atualizarCampo(${colab.id}, 'contratacao', 'feitaComRH', this.value)">
+                ${texto}
+              </label>`).join('')}
+            </div>
             <div style="font-size:11.5px;color:var(--texto-suave);margin-top:6px;">Se a contratação foi feita com o RH terceirizado, será criado no Trello um lembrete de 45 dias após a admissão para reabrir a vaga sem custo, quando conectado.</div>
           </div>
         </div>
