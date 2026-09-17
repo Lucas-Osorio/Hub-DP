@@ -1508,12 +1508,12 @@ const FILIAL_LISTA_TRELLO = {
 // data por componentes (ano/mês/dia) em vez de "new Date(string)" direto
 // — o construtor de string interpreta como UTC meia-noite, o que em fusos
 // negativos (como o do Brasil) pode voltar um dia na exibição local.
-function calcularVencimentosExperiencia(dataAdmissaoISO){
+function calcularVencimentosExperiencia(dataAdmissaoISO, prazos = PRAZOS_EXPERIENCIA_DIAS){
   const m = String(dataAdmissaoISO || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if(!m) return [];
   const ano = Number(m[1]), mes = Number(m[2]), dia = Number(m[3]);
   const base = new Date(ano, mes - 1, dia, 12, 0, 0); // meio-dia local evita virar de dia
-  return PRAZOS_EXPERIENCIA_DIAS.map(dias => {
+  return prazos.map(dias => {
     const venc = new Date(base);
     venc.setDate(venc.getDate() + dias);
     return { dias, data: venc };
@@ -1563,13 +1563,12 @@ function verificarConexaoTrelloSalva(){
   });
 }
 
-// Cria os dois cards de vencimento de experiência de UM colaborador no
-// Trello. Marca colab.trelloCardsCriados pra nunca duplicar, mesmo que a
-// planilha seja exportada de novo (ex: depois de corrigir um campo) —
-// tentativa só acontece uma vez por colaborador, na mesma sessão.
+// Cria os cards de experiência e, quando aplicável, o prazo do RH.
+// Controla cada envio na sessão para não repetir cards já criados ou em andamento.
 function criarCardsExperiencia(colab){
   if(!trelloConectado) return;
-  if(colab.trelloCardsCriados) return;
+  if(!['sim','nao'].includes(colab.contratacao?.feitaComRH)) return;
+  colab.trelloCardsStatus ||= {};
   const d = colab.dados;
   if(!d.data_admissao) return;
   const filial = nomeFilialPorCNPJ(d.cnpj);
@@ -1578,8 +1577,8 @@ function criarCardsExperiencia(colab){
     console.warn('Sem lista do Trello mapeada pra filial "' + filial + '" (colaborador: ' + d.nome + ') — card de experiência não foi criado.');
     return;
   }
-  colab.trelloCardsCriados = true; // marca antes de disparar, pra não duplicar em cliques/exports rápidos em sequência
   const vencimentos = calcularVencimentosExperiencia(d.data_admissao);
+  if(colab.contratacao.feitaComRH === 'sim') vencimentos.push(...calcularVencimentosExperiencia(d.data_admissao, [45]).map(v => ({...v, rh:true})));
   const descricaoBase = [
     'Colaborador: ' + (d.nome || '—'),
     'Cargo: ' + (d.cargo || '—'),
@@ -1587,10 +1586,13 @@ function criarCardsExperiencia(colab){
     'Data de admissão: ' + paraDataTexto(d.data_admissao),
   ].join('\n');
   vencimentos.forEach(v => {
+    const chave = v.rh ? 'rh45' : 'experiencia' + v.dias;
+    if(colab.trelloCardsStatus[chave]) return;
+    colab.trelloCardsStatus[chave] = 'pendente';
     const dd = String(v.data.getDate()).padStart(2, '0');
     const mm = String(v.data.getMonth() + 1).padStart(2, '0');
     const yyyy = v.data.getFullYear();
-    const partesTitulo = [(d.nome || 'Colaborador').toUpperCase()];
+    const partesTitulo = v.rh ? ['PRAZO RECONTRATAÇÃO RH', (d.nome || 'Colaborador').toUpperCase()] : [(d.nome || 'Colaborador').toUpperCase()];
     if(d.cargo) partesTitulo.push(d.cargo.toUpperCase());
     partesTitulo.push(v.dias + ' DIAS');
     const tituloCard = partesTitulo.join(' - ') + '\nDIA: ' + dd + '/' + mm + '/' + yyyy;
@@ -1598,13 +1600,14 @@ function criarCardsExperiencia(colab){
       name: tituloCard,
       idList: idList,
       due: v.data.toISOString(),
-      desc: descricaoBase,
+      desc: descricaoBase + (v.rh ? '\n\nContratação feita com o RH terceirizado. Prazo de 45 dias a partir da admissão para reabrir a vaga sem custo.' : ''),
     }, function(){
+      colab.trelloCardsStatus[chave] = 'criado';
       mostrarToast('Card de ' + v.dias + ' dias criado no Trello pra ' + (d.nome || 'colaborador') + '.');
     }, function(err){
       console.error('Erro ao criar card no Trello:', err);
       mostrarToast('Não consegui criar o card de ' + v.dias + ' dias no Trello pra ' + (d.nome || 'colaborador') + '. Confira a conexão e tente exportar de novo.', 5500);
-      colab.trelloCardsCriados = false; // libera nova tentativa já que essa falhou
+      delete colab.trelloCardsStatus[chave]; // repete somente o card que falhou
     });
   });
 }
@@ -1826,6 +1829,7 @@ function adicionarColaborador(dados, nomeArquivo){
   colaboradores.push({
     id: seq,
     arquivo: nomeArquivo,
+    contratacao: { feitaComRH: '' },
     dados,
     beneficios: {
       email_pessoal_ref:'', // usa ponto.email_pessoal
@@ -1881,6 +1885,7 @@ function iniciais(nome){
 
 function camposObrigatoriosFaltando(d, colab){
   const faltando = [];
+  if(colab && !['sim','nao'].includes(colab.contratacao?.feitaComRH)) faltando.push('Contratação com RH');
   if(colab && !colab.ponto.email_pessoal) faltando.push('E-mail');
   if(!d.tel_celular) faltando.push('Celular');
   if(!d.nome) faltando.push('Nome');
@@ -1933,6 +1938,17 @@ function render(){
         <button class="btn-remove" title="Remover" onclick="event.stopPropagation(); removerColaborador(${colab.id})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <div class="colab-body">
+        <div class="campo-destaque ${['sim','nao'].includes(colab.contratacao?.feitaComRH) ? 'ok' : ''}">
+          <div class="field">
+            <label for="contratacao-rh-${colab.id}">Contratação feita com o RH <span class="obrigatorio-tag">${['sim','nao'].includes(colab.contratacao?.feitaComRH) ? 'preenchido' : 'obrigatório'}</span></label>
+            <select id="contratacao-rh-${colab.id}" required onchange="atualizarCampo(${colab.id}, 'contratacao', 'feitaComRH', this.value)">
+              <option value="" ${!colab.contratacao?.feitaComRH ? 'selected' : ''}>Selecione...</option>
+              <option value="sim" ${colab.contratacao?.feitaComRH === 'sim' ? 'selected' : ''}>Sim</option>
+              <option value="nao" ${colab.contratacao?.feitaComRH === 'nao' ? 'selected' : ''}>Não</option>
+            </select>
+            <div style="font-size:11.5px;color:var(--texto-suave);margin-top:6px;">Se a contratação foi feita com o RH terceirizado, será criado no Trello um lembrete de 45 dias após a admissão para reabrir a vaga sem custo, quando conectado.</div>
+          </div>
+        </div>
 
         <div class="campo-destaque ${colab.ponto.email_pessoal ? 'ok' : ''}">
           <div class="field">
@@ -2468,6 +2484,7 @@ function bloquearSeFaltaObrigatorio(){
   const problemas = colaboradores
     .map(c => {
       const falta = [];
+      if(!['sim','nao'].includes(c.contratacao?.feitaComRH)) falta.push('contratação feita com o RH (Sim ou Não)');
       if(!c.ponto.email_pessoal) falta.push('e-mail');
       if(!c.dados.tel_celular) falta.push('celular');
       if(opcoesFilialAmbigua(c.dados.cnpj) && !c.ponto.codigo_filial) falta.push('unidade da filial');
