@@ -959,213 +959,184 @@ const CATEGORIAS_DP = [
   "duvidas": "Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal."
 },
       {
-        id: 'ferias',
-        titulo: 'Lançamento de Férias',
-        subtitulo: 'Programação, aprovação e cálculo de férias no Sólides e no Portal Onvio, da solicitação da filial ao pagamento pelo Financeiro.',
-        identificacao: [
-          ['Processo', 'Lançamento de Férias'],
-          ['Responsável principal', 'Auxiliares e Analistas de DP'],
-          ['Quem mais participa', 'Responsáveis de Filial, Gestores de Unidade, Financeiro, Contabilidade'],
-          ['Quando acontece', 'Conforme demanda'],
-          ['Sistemas utilizados', 'Sólides, Onvio (Portal Cliente)'],
-        ],
-        objetivo: 'Este guia orienta os responsáveis de filial e o Departamento Pessoal a realizarem o lançamento e o controle das férias na plataforma Sólides e no Portal Onvio, garantindo o registro correto das informações e evitando perda de dados ao longo do processo.',
-        conceitos: [
-          ['Sólides', 'Plataforma usada para programação e controle de férias dos colaboradores.'],
-          ['Período trabalhado', 'Intervalo de 12 meses que gera o direito às férias. Cada colaborador pode ter períodos diferentes.'],
-          ['Venda de férias', 'Opção em que o colaborador converte até 1/3 dos dias de férias (máx. 10 dias) em pagamento, em vez de descanso.'],
-          ['Venda no início', 'Os dias vendidos são descontados do começo das férias. O descanso começa após esses dias.'],
-          ['Venda no final', 'Os dias vendidos são descontados do final das férias, antecipando o retorno ao trabalho.'],
-          ['Onvio', 'Portal Cliente utilizado pela Contabilidade para o registro oficial do cálculo de férias de cada colaborador.'],
-          ['Fracionamento de férias', 'Divisão do período de férias em até três parcelas, sendo obrigatório que uma delas tenha, no mínimo, 14 dias e as demais, no mínimo, 5 dias cada.'],
-        ],
-        simbologia: [
-          ['Botão', 'Elemento clicável — botão, link ou ação do sistema.'],
-          ['☐ / ☑', 'Caixa de seleção — ☐ desmarcada / ☑ marcada.'],
-          ['«Campo»', 'Campo de preenchimento — insira o valor solicitado.'],
-          ['Menu → Submenu', 'Caminho de navegação no sistema.'],
-          ['Ex.', 'Exemplo prático de aplicação da etapa descrita.'],
-          ['P Pendência', 'Item que ainda precisa ser criado, definido ou documentado.'],
-        ],
-        quemFazOQue: [
-          ['Responsável de Filial', 'Solicita e programa as férias no sistema.', 'Conforme demanda'],
-          ['Auxiliar / Analista de DP', 'Revisa e aprova a solicitação.', 'Após solicitação da filial'],
-          ['Gerente Operacional', 'Alinha e programa as férias anualmente junto ao Assistente Administrativo e monitora prazos para evitar férias em dobro.', 'Anualmente e conforme demanda'],
-          ['Assistente Administrativo da Unidade', 'Alinha a programação anual de férias com o Gerente Operacional, solicita remanejamentos e o cálculo de férias no Portal Onvio.', 'Após a aprovação no Sólides'],
-          ['Financeiro', 'Processa o pagamento das férias com base nas informações enviadas pelo DP.', 'Até 10 dias antes do vencimento'],
-        ],
-        passos: [
-          { numero: 1, titulo: 'Acessar o Sistema', responsavel: 'Assistente Administrativo', html: `
-            <ul>
-              <li>Acesse o sistema <strong>Sólides</strong> pelo navegador ou aplicativo, utilizando seu login e senha.</li>
-              <li>No menu lateral esquerdo, navegue até <strong>Férias → Visão Geral</strong>.</li>
-              <li>Utilize o filtro/aba «Férias a vencer» para localizar rapidamente os colaboradores com período aquisitivo próximo do vencimento.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image2.webp', 'Menu lateral do Sólides — acesso a Férias → Visão Geral.')}
-            <ul>
-              <li>O Dashboard exibirá um resumo das férias dos colaboradores sob sua responsabilidade.</li>
-            </ul>
-          `},
-          { numero: 2, titulo: 'Iniciar a Programação das Férias', responsavel: 'Assistente Administrativo', html: `
-            <ul>
-              <li>No canto superior direito, clique em <strong>+ Programar Férias</strong>.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image3.webp', 'Botão + Programar Férias no Dashboard.')}
-            <ul>
-              <li>Use os filtros «Colaborador», «Filial» ou «Local de Trabalho» para localizar o colaborador desejado.</li>
-              <li>Clique em <strong>Programar</strong> ao lado do nome do colaborador.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image4.webp', 'Tela de programação com filtro de colaborador e botão Programar.')}
-          `},
-          { numero: 3, titulo: 'Preencher os Dados da Solicitação', responsavel: 'Assistente Administrativo', html: `
-            <ul>
-              <li>Na tela de solicitação, preencha os campos obrigatórios:
-                <ul>
-                  <li>«Período trabalhado»: selecione o intervalo que origina o direito às férias.</li>
-                  <li>«Data de início»: informe o primeiro dia de férias do colaborador.</li>
-                  <li>«Quantidade de dias»: informe o total de dias de férias.</li>
-                </ul>
-              </li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image5.webp', 'Tela Nova Solicitação com os campos de período, data e quantidade de dias.')}
-            <ul>
-              <li>Caso o colaborador queira vender parte das férias, marque <strong>☑ Vender alguns dias?</strong> e preencha:
-                <ul>
-                  <li>«Número de dias a serem vendidos»: limite de até 10 dias.</li>
-                  <li>Selecione se a venda será no <strong>início</strong> ou no <strong>final</strong> do período.</li>
-                </ul>
-              </li>
-            </ul>
-            <div class="caixa caixa-exemplo"><span class="caixa-icone">Ex</span><span>Solicitação original: 30 dias de férias. Dias vendidos: 10 dias ao final do período. Nesse caso: o colaborador gozará 20 dias de férias; as férias iniciarão na data solicitada; o retorno ao trabalho ocorrerá 10 dias antes do fim do período originalmente previsto.</span></div>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A venda de férias está limitada a 1/3 do total de dias (máximo de 10 dias). A posição da venda (início ou final) altera diretamente a data de afastamento e retorno — preencha com atenção.</span></div>
-            <ul><li>Clique em <strong>+ Programar</strong> para concluir a solicitação.</li></ul>
-          `},
-          { numero: 4, titulo: 'Aprovação da Solicitação', responsavel: 'Departamento Pessoal', html: `
-            <ul>
-              <li>Acesse o <strong>Sólides</strong> e navegue até <strong>Férias → Visão Geral</strong>.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image6.webp', 'Submenu Férias — Visão Geral, Afastamento e Configurações.')}
-            <ul>
-              <li>No Dashboard, clique na aba <strong>Pendentes</strong> na parte superior da tela.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image7.webp', 'Aba Pendentes na tela de Visão Geral de Férias.')}
-            <ul>
-              <li>Localize a solicitação enviada pela filial, revise os dados e aprove.</li>
-            </ul>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Verifique se o período trabalhado, a data de início e a quantidade de dias estão corretos antes de aprovar. Uma aprovação incorreta exige cancelamento e reenvio pela filial.</span></div>
-          `},
-          { numero: 5, titulo: 'Solicitar o Cálculo de Férias no Portal Onvio', responsavel: 'Assistente Administrativo', html: `
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Este passo deve ser feito depois do Passo 4 (solicitação lançada no Sólides), mas não é necessário aguardar a aprovação dessa solicitação para iniciar a solicitação no Onvio.</span></div>
-            <ul>
-              <li>Após lançar a solicitação no Sólides (Passo 4), acesse também o <strong>Portal Cliente da Onvio</strong> — sistema utilizado pela Contabilidade para apurar oficialmente os valores devidos ao colaborador — e registre o pedido de cálculo de férias correspondente.</li>
-              <li>Acesse o portal utilizando as credenciais cadastradas para a sua unidade.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image9.webp', 'Tela inicial do Portal do Cliente Onvio.')}
-            <ul>
-              <li>Informe seu «E-mail» e, em seguida, sua «Senha» para concluir o login na plataforma.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image10.webp', 'Campo de E-mail para login no Portal do Cliente.')}
-            ${imgGuia('assets/guias/ferias/image11.webp', 'Campo de Senha para login no Portal do Cliente.')}
-            <ul>
-              <li>Clique na aba <strong>Portal do Cliente</strong> para acessar o ambiente de solicitações.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image12.webp', 'Abas do portal — Início, Documentos e Portal do Cliente.')}
-            <ul>
-              <li>Selecione o ícone <strong>Cálculo de Férias</strong> no menu principal do portal.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image13.webp', 'Cartões do Portal do Cliente, incluindo o ícone Cálculo de Férias.')}
-            <ul>
-              <li>Clique em <strong>+ Adicionar</strong> para abrir uma nova solicitação de cálculo.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image14.webp', 'Barra de ações da tela Solicitações de Cálculo de Férias, com o botão Adicionar.')}
-            <ul>
-              <li>Selecione, no campo «Empregado», o colaborador desejado e preencha as informações solicitadas na tela:
-                <ul>
-                  <li>«Data de início de gozo»: informe a data em que as férias terão início.</li>
-                  <li>«Dias de gozo»: informe a quantidade de dias de descanso.</li>
-                  <li>«Pagar abono pecuniário»: selecione, se aplicável, caso o colaborador opte por vender parte das férias.</li>
-                  <li>«Adiantar 1ª parcela do 13º»: selecione, se aplicável, caso haja adiantamento do 13º salário.</li>
-                </ul>
-              </li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image15.webp', 'Formulário de nova solicitação — Empregado, datas, dias de gozo e opções de abono/13º.')}
-            <ul>
-              <li>Preencha os campos «Assunto» e «Descrição» conforme o padrão abaixo, garantindo que a Contabilidade identifique rapidamente o colaborador e a natureza da solicitação.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image16.webp', 'Campos Assunto e Descrição da solicitação.')}
-            <div class="caixa caixa-exemplo"><span class="caixa-icone">Ex</span><span>Assunto: nome completo do colaborador. Descrição: "Solicito o cálculo de férias do funcionário «Nome completo do colaborador»".</span></div>
-            <ul>
-              <li>No canto superior direito, clique em <strong>Adicionar</strong> para confirmar o envio. Antes de concluir, revise novamente todas as informações preenchidas.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image17.webp', 'Botões Adicionar e Cancelar para confirmar o envio.')}
-            ${imgGuia('assets/guias/ferias/image18.webp', 'Tela de Solicitações de Cálculo de Férias após o envio.')}
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Caso ocorra qualquer mudança no cronograma já enviado, entre em contato com o Departamento Pessoal central e solicite o cancelamento da solicitação. Após o cancelamento, ajuste a programação tanto no Sólides quanto na solicitação da Onvio.</span></div>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O cadastro no Onvio é feito por unidade, e o acesso à plataforma é restrito ao administrativo responsável pelo contrato daquela unidade.</span></div>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Envie a solicitação de cálculo com, no mínimo, 10 dias de antecedência do vencimento das férias, garantindo tempo hábil para o Financeiro processar o pagamento.</span></div>
-          `},
-          { numero: 6, titulo: 'Programar as Férias Anualmente', responsavel: 'Gerente Operacional / Assistente Administrativo', html: `
-            <ul>
-              <li>Realize a programação anual das férias em alinhamento entre o Gerente Operacional e o Assistente Administrativo responsável pela unidade, definindo em conjunto as datas de toda a equipe uma vez por ano, obrigatoriamente durante a primeira quinzena de janeiro.</li>
-              <li>Até o <strong>dia 15 de janeiro</strong>, encaminhe a planilha de programação ao Departamento Pessoal, pelo e-mail <strong>dp01@gestamg.com.br</strong>, para acompanhamento.</li>
-              <li>Registre a mesma programação, no mesmo momento, no Sólides e na Onvio, evitando divergência de datas entre os dois sistemas.</li>
-              <li>A cada bimestre, revise junto às áreas envolvidas se a programação permanece válida, verificando possíveis desligamentos, alterações de data ou afastamentos do colaborador que exijam ajuste no cronograma.</li>
-            </ul>
-          `},
-          { numero: 7, titulo: 'Solicitar o Remanejamento de Férias', responsavel: 'Assistente Administrativo', html: `
-            <ul>
-              <li>Solicite qualquer remanejamento de férias com, no mínimo, <strong>30 dias</strong> de antecedência, evitando impacto nos fluxos das demais áreas envolvidas.</li>
-              <li>Atualize a nova data no Sólides e na Onvio.</li>
-              <li>Justifique o motivo do remanejamento por e-mail ao Departamento Pessoal.</li>
-            </ul>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Por determinação legal, as férias podem ser fracionadas em até três períodos, desde que um deles tenha, no mínimo, 14 dias corridos e os demais, no mínimo, 5 dias cada. Além disso, as férias não podem iniciar às sextas-feiras nem nos dois dias que antecedem feriado ou DSR — a única exceção é iniciar na quinta-feira, desde que sexta-feira e sábado não sejam feriados.</span></div>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O Gerente Operacional deve monitorar o vencimento do período aquisitivo de cada colaborador para evitar férias em dobro, situação que gera penalidade financeira para a empresa.</span></div>
-          `},
-          { numero: 8, titulo: 'Conferir e Encaminhar as Férias ao Financeiro', responsavel: 'Departamento Pessoal', html: `
-            <ul>
-              <li>Acompanhe todas as solicitações e requisições de férias recebidas, avaliando se as informações estão de acordo com o que foi programado.</li>
-              <li>Confira valores, datas e demais dados antes de enviar as informações à Contabilidade e ao Financeiro, apontando e corrigindo qualquer inconsistência encontrada.</li>
-              <li>Encaminhe as férias ao Financeiro por e-mail, sinalizando claramente qualquer particularidade que impacte o pagamento — como desconto de pensão alimentícia.</li>
-            </ul>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Quando houver desconto de pensão alimentícia, destaque essa informação no corpo do e-mail ao Financeiro, em negrito, na cor vermelha, com os dizeres: "FÉRIAS DO COLABORADOR [NOME] COM DESCONTO DE PENSÃO ALIMENTÍCIA."</span></div>
-          `},
-          { numero: 9, titulo: 'Conferir a Solicitação no Domínio Web', responsavel: 'Departamento Pessoal', html: `
-            <ul>
-              <li>Acesse o portal do Domínio Web pelo link <strong>www.dominioweb.com.br</strong>, e clique em Entrar.</li>
-              <li>Faça login com seu e-mail e senha de acesso.</li>
-              <li>Acesse o módulo Folha e, caso solicitado, informe usuário e senha adicionais no campo «Conectar em: Contábil».</li>
-              <li>Selecione a empresa e o período (competência) que deseja conferir.</li>
-              <li>Acesse a tela de solicitações, pelo ícone identificado na barra superior, para verificar se a solicitação de férias está corretamente registrada.</li>
-            </ul>
-            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Não está claro, na fonte original, o que exatamente deve ser validado na tela de solicitações do Domínio Web, nem se esta conferência é obrigatória para todo pedido de férias ou apenas para casos específicos — confirmar com quem já executa esse passo e detalhar em versão futura deste guia.</span></div>
-          `},
-        ],
-        ocorrencias: [
-          { titulo: 'Ocorrência 1 — Saldo de Férias com Erro', html: `
-            <p>O saldo de férias é calculado com base na data de admissão e nos eventos de afastamento e gozo registrados. Quando o saldo aparece incorreto, é necessário reprocessar para forçar uma nova contagem.</p>
-            <p class="como">Como resolver:</p>
-            <ul>
-              <li>Acesse <strong>Cadastros gerais → Colaboradores</strong>.</li>
-              <li>Clique no ícone de <strong>edição (lápis)</strong> ao lado do colaborador.</li>
-              <li>Altere a <strong>data de admissão</strong> para o dia anterior à data atual e salve.</li>
-            </ul>
-            ${imgGuia('assets/guias/ferias/image8.webp', 'Campo Data de Admissão em Dados Contratuais do colaborador.')}
-            <div class="caixa caixa-exemplo"><span class="caixa-icone">Ex</span><span>Data de admissão original: 05/05/2025. Altere temporariamente para 04/05/2025 (dia anterior) e salve. Em seguida, retorne para a data original — 05/05/2025 — e salve novamente.</span></div>
-            <ul>
-              <li>Depois, retorne à <strong>data correta original</strong> e salve.</li>
-              <li>Verifique novamente o saldo.</li>
-            </ul>
-          `},
-          { titulo: 'Ocorrência 2 — Programação com Início Retroativo (Colaborador já Iniciou as Férias)', html: `
-            <p>Essa situação ocorre quando o colaborador já iniciou o período de férias antes de a programação ter sido lançada no sistema — por exemplo, em casos de urgência ou atraso no fluxo interno.</p>
-            <p class="como">Como proceder:</p>
-            <ul>
-              <li>Informe o Departamento Pessoal sobre o início retroativo das férias, já que apenas esse setor tem permissão para realizar esse tipo de lançamento no sistema.</li>
-              <li>Aguarde a confirmação do Departamento Pessoal antes de considerar a programação concluída, garantindo que os dados fiquem corretamente registrados.</li>
-            </ul>
-          `},
-        ],
-        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
-      },
+  "id": "ferias",
+  "titulo": "Lançamento de Férias",
+  "subtitulo": "Este guia orienta os responsáveis de filial e o Departamento Pessoal a realizarem o lançamento e o controle de cada férias individual, já decidida na programação anual, na plataforma Sólides e no Portal Onvio, garantindo o registro correto das informações e evitando perda de dados ao longo do processo. Ele complementa o GUIA - Programação Anual de Férias, que trata da definição do calendário anual da unidade e de quem cobre cada ausência.",
+  "identificacao": [
+    [
+      "Processo:",
+      "Lançamento de Férias"
+    ],
+    [
+      "Responsável principal:",
+      "Auxiliares e Analistas de DP"
+    ],
+    [
+      "Quem mais participa:",
+      "Responsáveis de Filial, Financeiro, Contabilidade"
+    ],
+    [
+      "Quando acontece:",
+      "Conforme demanda, para cada férias já definida na programação anual"
+    ],
+    [
+      "Sistemas utilizados:",
+      "Sólides, Onvio (Portal Cliente), Domínio Web"
+    ],
+    [
+      "Documentos relacionados:",
+      "GUIA - Programação Anual de Férias"
+    ]
+  ],
+  "objetivo": "Este guia orienta os responsáveis de filial e o Departamento Pessoal a realizarem o lançamento e o controle de cada férias individual, já decidida na programação anual, na plataforma Sólides e no Portal Onvio, garantindo o registro correto das informações e evitando perda de dados ao longo do processo. Ele complementa o GUIA - Programação Anual de Férias, que trata da definição do calendário anual da unidade e de quem cobre cada ausência.",
+  "conceitos": [
+    [
+      "Sólides",
+      "Plataforma usada para programação e controle de férias dos colaboradores."
+    ],
+    [
+      "Período trabalhado",
+      "Intervalo de 12 meses que gera o direito às férias. Cada colaborador pode ter períodos diferentes."
+    ],
+    [
+      "Venda de férias",
+      "Opção em que o colaborador converte até 1/3 dos dias de férias (máx. 10 dias) em pagamento, em vez de descanso."
+    ],
+    [
+      "Venda no início",
+      "Os dias vendidos são descontados do começo das férias. O descanso começa após esses dias."
+    ],
+    [
+      "Venda no final",
+      "Os dias vendidos são descontados do final das férias, antecipando o retorno ao trabalho."
+    ],
+    [
+      "Onvio",
+      "Portal Cliente utilizado pela Contabilidade para o registro oficial do cálculo de férias de cada colaborador."
+    ],
+    [
+      "Fracionamento de férias",
+      "Divisão do período de férias em até três parcelas, sendo obrigatório que uma delas tenha, no mínimo, 14 dias e as demais, no mínimo, 5 dias cada."
+    ]
+  ],
+  "simbologia": [
+    [
+      "Botão",
+      "Elemento clicável — botão, link ou ação do sistema."
+    ],
+    [
+      "☐ / ☑",
+      "Caixa de seleção — ☐ desmarcada / ☑ marcada."
+    ],
+    [
+      "«Campo»",
+      "Campo de preenchimento — insira o valor solicitado."
+    ],
+    [
+      "Menu → Submenu",
+      "Caminho de navegação no sistema."
+    ],
+    [
+      "Ex.",
+      "Exemplo prático de aplicação da etapa descrita."
+    ],
+    [
+      "P  Pendência",
+      "Item que ainda precisa ser criado, definido ou documentado."
+    ]
+  ],
+  "quemFazOQue": [
+    [
+      "Responsável de Filial",
+      "Solicita e programa as férias no sistema.",
+      "Conforme demanda"
+    ],
+    [
+      "Auxiliar / Analista de DP",
+      "Revisa e aprova a solicitação.",
+      "Após solicitação da filial"
+    ],
+    [
+      "Assistente Administrativo da Unidade",
+      "Solicita o cálculo de férias no Portal Onvio e eventuais remanejamentos.",
+      "Após a aprovação no Sólides"
+    ],
+    [
+      "Financeiro",
+      "Processa o pagamento das férias com base nas informações enviadas pelo DP.",
+      "Até 10 dias antes do vencimento"
+    ]
+  ],
+  "passos": [
+    {
+      "numero": 1,
+      "titulo": "Acessar o Sistema",
+      "responsavel": "Assistente Administrativo",
+      "html": "<p>Acesse o sistema Sólides pelo navegador ou aplicativo, utilizando seu login e senha.</p>\n<p>Link direto de login no Sólides: https://app.tangerino.com.br/Tangerino/pages/LoginPage/wicket:pageMapName/wicket-0</p>\n<p>Link direto do Dashboard de Férias no Sólides: https://app.tangerino.com.br/Tangerino/pages/VacationDashboard?funcionalidade=111</p>\n<p>No menu lateral esquerdo, navegue até Férias → Visão Geral.</p>\n<p>Utilize o filtro/aba «Férias a vencer» para localizar rapidamente os colaboradores com período aquisitivo próximo do vencimento.</p>\n<p>O Dashboard exibirá um resumo das férias dos colaboradores sob sua responsabilidade.</p><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image2.webp\" alt=\"Menu lateral do Sólides — acesso a Férias → Visão Geral.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Menu lateral do Sólides — acesso a Férias → Visão Geral.</figcaption></figure>"
+    },
+    {
+      "numero": 2,
+      "titulo": "Iniciar o Lançamento no Sólides",
+      "responsavel": "Assistente Administrativo",
+      "html": "<p>No canto superior direito, clique em + Programar Férias.</p>\n<p>Use os filtros «Colaborador», «Filial» ou «Local de Trabalho» para localizar o colaborador desejado.</p>\n<p>Clique em Programar ao lado do nome do colaborador.</p><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image3.webp\" alt=\"Botão + Programar Férias no Dashboard.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Botão + Programar Férias no Dashboard.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image4.webp\" alt=\"Tela de programação com filtro de colaborador e botão Programar.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Tela de programação com filtro de colaborador e botão Programar.</figcaption></figure>"
+    },
+    {
+      "numero": 3,
+      "titulo": "Preencher os Dados da Solicitação",
+      "responsavel": "Assistente Administrativo",
+      "html": "<p>Na tela de solicitação, preencha os campos obrigatórios:</p>\n<p>«Período trabalhado»: selecione o intervalo que origina o direito às férias.</p>\n<p>«Data de início»: informe o primeiro dia de férias do colaborador.</p>\n<p>«Quantidade de dias»: informe o total de dias de férias.</p>\n<p>Caso o colaborador queira vender parte das férias, marque ☑ Vender alguns dias? e preencha:</p>\n<p>«Número de dias a serem vendidos»: limite de até 10 dias.</p>\n<p>Selecione se a venda será no início ou no final do período.</p>\n<div class=\"caixa caixa-exemplo\"><span class=\"caixa-icone\">i</span><span>Solicitação original: 30 dias de férias. Dias vendidos: 10 dias ao final do período. Nesse caso: o colaborador gozará 20 dias de férias; as férias iniciarão na data solicitada; o retorno ao trabalho ocorrerá 10 dias antes do fim do período originalmente previsto.</span></div>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>A venda de férias está limitada a 1/3 do total de dias (máximo de 10 dias). A posição da venda (início ou final) altera diretamente a data de afastamento e retorno — preencha com atenção.</span></div>\n<p>Clique em + Programar para concluir a solicitação.</p><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image5.webp\" alt=\"Tela Nova Solicitação com os campos de período, data e quantidade de dias.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Tela Nova Solicitação com os campos de período, data e quantidade de dias.</figcaption></figure>"
+    },
+    {
+      "numero": 4,
+      "titulo": "Aprovar a Solicitação",
+      "responsavel": "Departamento Pessoal",
+      "html": "<p>Acesse o Sólides e navegue até Férias → Visão Geral.</p>\n<p>No Dashboard, clique na aba Pendentes na parte superior da tela.</p>\n<p>Localize a solicitação enviada pela filial, revise os dados e aprove.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Verifique se o período trabalhado, a data de início e a quantidade de dias estão corretos antes de aprovar. Uma aprovação incorreta exige cancelamento e reenvio pela filial.</span></div><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image6.webp\" alt=\"Submenu Férias — Visão Geral, Afastamento e Configurações.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Submenu Férias — Visão Geral, Afastamento e Configurações.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image7.webp\" alt=\"Aba Pendentes na tela de Visão Geral de Férias.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Aba Pendentes na tela de Visão Geral de Férias.</figcaption></figure>"
+    },
+    {
+      "numero": 5,
+      "titulo": "Solicitar o Cálculo de Férias no Portal Onvio",
+      "responsavel": "Assistente Administrativo",
+      "html": "<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Este passo deve ser feito depois do Passo 4 (solicitação lançada no Sólides), mas não é necessário aguardar a aprovação dessa solicitação para iniciar a solicitação no Onvio.</span></div>\n<p>Após lançar a solicitação no Sólides (Passo 4), acesse também o Portal Cliente da Onvio — sistema utilizado pela Contabilidade para apurar oficialmente os valores devidos ao colaborador — e registre o pedido de cálculo de férias correspondente.</p>\n<p>Link direto do Portal do Cliente Onvio: https://onvio.com.br/clientcenter/pt/auth?r=%2Fhome</p>\n<p>Acesse o portal utilizando as credenciais cadastradas para a sua unidade.</p>\n<p>Informe seu «E-mail» e, em seguida, sua «Senha» para concluir o login na plataforma.</p>\n<p>Clique na aba Portal do Cliente para acessar o ambiente de solicitações.</p>\n<p>Selecione o ícone Cálculo de Férias no menu principal do portal.</p>\n<p>Clique em + Adicionar para abrir uma nova solicitação de cálculo.</p>\n<p>Selecione, no campo «Empregado», o colaborador desejado e preencha as informações solicitadas na tela:</p>\n<p>«Data de início de gozo»: informe a data em que as férias terão início.</p>\n<p>«Dias de gozo»: informe a quantidade de dias de descanso.</p>\n<p>«Pagar abono pecuniário»: selecione, se aplicável, caso o colaborador opte por vender parte das férias.</p>\n<p>«Adiantar 1ª parcela do 13º»: selecione, se aplicável, caso haja adiantamento do 13º salário.</p>\n<p>«Assunto» e «Descrição» conforme o padrão abaixo, garantindo que a Contabilidade identifique rapidamente o colaborador e a natureza da solicitação.</p>\n<div class=\"caixa caixa-exemplo\"><span class=\"caixa-icone\">i</span><span>Assunto: nome completo do colaborador. Descrição: “Solicito o cálculo de férias do funcionário «Nome completo do colaborador»”.</span></div>\n<p>No canto superior direito, clique em Adicionar para confirmar o envio. Antes de concluir, revise novamente todas as informações preenchidas.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Caso ocorra qualquer mudança no cronograma já enviado, entre em contato com o Departamento Pessoal central e solicite o cancelamento da solicitação. Após o cancelamento, ajuste a programação tanto no Sólides quanto na solicitação da Onvio.</span></div>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>O cadastro no Onvio é feito por unidade, e o acesso à plataforma é restrito ao administrativo responsável pelo contrato daquela unidade.</span></div>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Envie a solicitação de cálculo com, no mínimo, 10 dias de antecedência do vencimento das férias, garantindo tempo hábil para o Financeiro processar o pagamento.</span></div><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image9.webp\" alt=\"Tela inicial do Portal do Cliente Onvio.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Tela inicial do Portal do Cliente Onvio.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image10.webp\" alt=\"Campo de E-mail para login no Portal do Cliente.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Campo de E-mail para login no Portal do Cliente.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image11.webp\" alt=\"Campo de Senha para login no Portal do Cliente.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Campo de Senha para login no Portal do Cliente.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image12.webp\" alt=\"Abas do portal — Início, Documentos e Portal do Cliente.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Abas do portal — Início, Documentos e Portal do Cliente.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image13.webp\" alt=\"Cartões do Portal do Cliente, incluindo o ícone Cálculo de Férias.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Cartões do Portal do Cliente, incluindo o ícone Cálculo de Férias.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image14.webp\" alt=\"Barra de ações da tela Solicitações de Cálculo de Férias, com o botão Adicionar.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Barra de ações da tela Solicitações de Cálculo de Férias, com o botão Adicionar.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image15.webp\" alt=\"Formulário de nova solicitação — Empregado, datas, dias de gozo e opções de abono/13º.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Formulário de nova solicitação — Empregado, datas, dias de gozo e opções de abono/13º.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image16.webp\" alt=\"Campos Assunto e Descrição da solicitação.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Campos Assunto e Descrição da solicitação.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image17.webp\" alt=\"Botões Adicionar e Cancelar para confirmar o envio.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Botões Adicionar e Cancelar para confirmar o envio.</figcaption></figure><figure class=\"passo-figura\"><img src=\"assets/guias/ferias/image18.webp\" alt=\"Tela de Solicitações de Cálculo de Férias após o envio.\" loading=\"lazy\" onclick=\"abrirLightbox(this.src, this.alt)\"><figcaption>Tela de Solicitações de Cálculo de Férias após o envio.</figcaption></figure>"
+    },
+    {
+      "numero": 6,
+      "titulo": "Solicitar o Remanejamento de Férias",
+      "responsavel": "Assistente Administrativo",
+      "html": "<p>Solicite qualquer remanejamento de férias com, no mínimo, 30 dias de antecedência, evitando impacto nos fluxos das demais áreas envolvidas.</p>\n<p>Atualize a nova data no Sólides e na Onvio.</p>\n<p>Justifique o motivo do remanejamento por e-mail ao Departamento Pessoal.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Por determinação legal, as férias podem ser fracionadas em até três períodos, desde que um deles tenha, no mínimo, 14 dias corridos e os demais, no mínimo, 5 dias cada. Além disso, as férias não podem iniciar às sextas-feiras nem nos dois dias que antecedem feriado ou DSR — a única exceção é iniciar na quinta-feira, desde que sexta-feira e sábado não sejam feriados.</span></div>"
+    },
+    {
+      "numero": 7,
+      "titulo": "Conferir e Encaminhar as Férias ao Financeiro",
+      "responsavel": "Departamento Pessoal",
+      "html": "<p>Acompanhe todas as solicitações e requisições de férias recebidas, avaliando se as informações estão de acordo com o que foi programado.</p>\n<p>Confira valores, datas e demais dados antes de enviar as informações à Contabilidade e ao Financeiro, apontando e corrigindo qualquer inconsistência encontrada.</p>\n<p>Encaminhe as férias ao Financeiro por e-mail, sinalizando claramente qualquer particularidade que impacte o pagamento — como desconto de pensão alimentícia.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Quando houver desconto de pensão alimentícia, destaque essa informação no corpo do e-mail ao Financeiro, em negrito, na cor vermelha, com os dizeres: “FÉRIAS DO COLABORADOR [NOME] COM DESCONTO DE PENSÃO ALIMENTÍCIA.”</span></div>"
+    },
+    {
+      "numero": 8,
+      "titulo": "Conferir a Solicitação no Domínio Web",
+      "responsavel": "Departamento Pessoal",
+      "html": "<p>Acesse o portal do Domínio Web pelo link: https://www.dominioweb.com.br, e clique em Entrar.</p>\n<p>Faça login com seu e-mail e senha de acesso.</p>\n<p>Acesse o módulo Folha e, caso solicitado, informe usuário e senha adicionais no campo «Conectar em: Contábil».</p>\n<p>Selecione a empresa e o período (competência) que deseja conferir.</p>\n<p>Acesse a tela de solicitações, pelo ícone identificado na barra superior, para verificar se a solicitação de férias está corretamente registrada.</p>\n<div class=\"caixa caixa-pendencia\"><span class=\"caixa-icone\">P</span><span>Não está claro, na fonte original, o que exatamente deve ser validado na tela de solicitações do Domínio Web, nem se esta conferência é obrigatória para todo pedido de férias ou apenas para casos específicos — confirmar com quem já executa esse passo e detalhar em versão futura deste guia.</span></div>"
+    }
+  ],
+  "ocorrencias": [
+    {
+      "titulo": "Saldo de Férias com Erro",
+      "html": "<p>O saldo de férias é calculado com base na data de admissão e nos eventos de afastamento e gozo registrados. Quando o saldo aparece incorreto, é necessário reprocessar para forçar uma nova contagem.</p>\n<p>Como resolver:</p>\n<p>Acesse Cadastros gerais → Colaboradores.</p>\n<p>Clique no ícone de edição (lápis) ao lado do colaborador.</p>\n<p>Altere a data de admissão para o dia anterior à data atual e salve.</p>\n<div class=\"caixa caixa-exemplo\"><span class=\"caixa-icone\">i</span><span>Data de admissão original: 05/05/2025. Altere temporariamente para 04/05/2025 (dia anterior) e salve. Em seguida, retorne para a data original — 05/05/2025 — e salve novamente.</span></div>\n<p>Depois, retorne à data correta original e salve.</p>\n<p>Verifique novamente o saldo.</p>"
+    },
+    {
+      "titulo": "Lançamento com Data Retroativa",
+      "html": "<p>Essa situação ocorre quando o colaborador já iniciou o período de férias antes de a solicitação ter sido lançada no sistema — por exemplo, em casos de urgência ou atraso no fluxo interno.</p>\n<p>Como proceder:</p>\n<p>Informe o Departamento Pessoal sobre o início retroativo das férias, já que apenas esse setor tem permissão para realizar esse tipo de lançamento no sistema.</p>\n<p>Aguarde a confirmação do Departamento Pessoal antes de considerar o lançamento concluído, garantindo que os dados fiquem corretamente registrados.</p>"
+    }
+  ],
+  "duvidas": "Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.",
+  "documentos": [
+    {
+      "titulo": "Programação Anual de Férias",
+      "descricao": "Planejamento da unidade e cobertura das ausências.",
+      "arquivo": "#dp/programacao-anual-ferias",
+      "tipo": "ferramenta"
+    }
+  ]
+},
       {
         id: 'afastamentos',
         titulo: 'Lançamento de Afastamentos (Atestados)',
@@ -2597,6 +2568,37 @@ const CATEGORIAS_INST = [
   {
     categoria: 'Código de Conduta e Ética',
     guias: [
+{
+  "id": "codigo-conduta-sr-transportes",
+  "tipo": "politica",
+  "titulo": "Código de Conduta e Ética — SR Transportes",
+  "subtitulo": "Orientações e regras para consulta e impressão.",
+  "identificacao": [
+    [
+      "Documento",
+      "Código de Conduta e Ética — SR Transportes"
+    ],
+    [
+      "Responsável",
+      "Departamento Pessoal"
+    ]
+  ],
+  "html": "<p>Este Código estabelece os princípios de ética, conduta e relacionamento profissional esperados de todos os colaboradores da SR Transportes. Ele complementa a Política Interna — Motorista SR Transportes, que trata especificamente das normas operacionais de pontualidade, escalas e atendimento ao passageiro.</p>\n<h3>🎯  OBJETIVO</h3>\n<p>Este Código tem como objetivo orientar as atitudes e decisões dos colaboradores no exercício de suas atividades profissionais, promovendo relações pautadas pela ética, respeito às pessoas, cumprimento da legislação e responsabilidade perante passageiros, fornecedores, parceiros e sociedade.</p>\n<h3>👥  ABRANGÊNCIA</h3>\n<p>Este Código aplica-se a:</p>\n<p>Motoristas</p>\n<p>Colaboradores administrativos e de apoio</p>\n<p>Estagiários</p>\n<p>Aprendizes</p>\n<p>Líderes</p>\n<p>Diretores</p>\n<p>Terceiros, quando estiverem atuando nas dependências da empresa</p>\n<h3>💎  NOSSOS PRINCÍPIOS</h3>\n<p>Ética</p>\n<p>Respeito</p>\n<p>Segurança</p>\n<p>Compromisso</p>\n<p>Transparência</p>\n<p>Responsabilidade</p>\n<p>Colaboração</p>\n<p>Desenvolvimento Contínuo</p>\n<h3>🤝  RESPEITO ÀS PESSOAS</h3>\n<p>Tratar todos com educação e cordialidade.</p>\n<p>Respeitar diferenças de gênero, raça, idade, religião, orientação sexual, deficiência ou qualquer outra condição.</p>\n<p>Manter relacionamento profissional.</p>\n<p>Zelar por um ambiente harmonioso.</p>\n<h3>🏢  AMBIENTE DE TRABALHO</h3>\n<p>Espera-se que cada colaborador:</p>\n<p>Cumpra horários.</p>\n<p>Utilize corretamente os recursos da empresa.</p>\n<p>Preserve limpeza e organização.</p>\n<p>Cuide dos equipamentos e do veículo sob sua responsabilidade.</p>\n<p>Utilize EPIs quando aplicável.</p>\n<p>Siga as normas de segurança.</p>\n<h3>💼  ÉTICA PROFISSIONAL</h3>\n<p>Todos devem:</p>\n<p>Agir com honestidade.</p>\n<p>Cumprir leis e normas internas.</p>\n<p>Evitar conflitos de interesse.</p>\n<p>Proteger informações confidenciais.</p>\n<p>Comunicar irregularidades.</p>\n<h3>🤝  RELACIONAMENTOS</h3>\n<p>O contato externo da empresa varia conforme a função de cada colaborador:</p>\n<p>Motoristas e demais colaboradores em atividade de rua representam a empresa perante a sociedade — devem agir com profissionalismo e cortesia no contato com passageiros e pedestres.</p>\n<p>O contato com o poder público (ex.: prefeitura, secretaria de trânsito) e fornecedores (ex.: peças, combustível, serviços) é conduzido apenas pelas funções administrativas e de supervisão; os demais colaboradores não devem negociar ou assumir compromissos em nome da empresa sem autorização.</p>\n<h3>💻  USO DOS RECURSOS DA EMPRESA</h3>\n<p>Os recursos físicos e tecnológicos devem ser utilizados exclusivamente para fins profissionais, evitando desperdícios, danos ou utilização inadequada, conforme as políticas internas do cargo. Incluem:</p>\n<p>Computadores</p>\n<p>Celulares</p>\n<p>Internet</p>\n<p>E-mail corporativo</p>\n<p>Veículos</p>\n<p>Ferramentas</p>\n<p>Documentos</p>\n<p>Sistemas</p>\n<h3>🔒  CONFIDENCIALIDADE</h3>\n<p>O colaborador deve manter sigilo sobre:</p>\n<p>Dados de passageiros e de clientes institucionais</p>\n<p>Dados financeiros</p>\n<p>Documentos internos</p>\n<p>Estratégias</p>\n<p>Informações de colaboradores</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Esse dever de sigilo permanece mesmo após o desligamento do colaborador.</span></div>\n<h3>🚫  CONDUTAS NÃO PERMITIDAS</h3>\n<p>É proibido:</p>\n<p>Discriminação</p>\n<p>Assédio moral</p>\n<p>Assédio sexual</p>\n<p>Agressões físicas ou verbais</p>\n<p>Intimidação</p>\n<p>Fraude</p>\n<p>Falsificação de documentos</p>\n<p>Uso de álcool ou drogas durante a jornada</p>\n<p>Portar armas sem autorização legal e institucional</p>\n<p>Divulgar informações confidenciais</p>\n<p>Utilizar recursos da empresa para fins ilícitos</p>\n<p>Receber vantagens indevidas</p>\n<p>Realizar qualquer prática que coloque em risco a segurança das pessoas</p>\n<h3>🎁  BRINDES, PRESENTES E FAVORES</h3>\n<p>Os colaboradores não devem solicitar ou aceitar presentes, vantagens financeiras ou benefícios que possam influenciar decisões profissionais.</p>\n<p>Brindes institucionais de pequeno valor podem ser aceitos, desde que não configurem favorecimento.</p>\n<h3>📱  REDES SOCIAIS</h3>\n<p>Os colaboradores devem utilizar as redes sociais com responsabilidade, evitando:</p>\n<p>Divulgar informações internas.</p>\n<p>Expor colegas ou passageiros sem autorização.</p>\n<p>Publicar conteúdos que prejudiquem a imagem da empresa.</p>\n<h3>🦺  SEGURANÇA E SAÚDE</h3>\n<p>Todos são responsáveis por:</p>\n<p>Cumprir normas de Saúde e Segurança do Trabalho.</p>\n<p>Utilizar corretamente os EPIs.</p>\n<p>Comunicar acidentes.</p>\n<p>Identificar riscos.</p>\n<p>Colaborar para um ambiente seguro.</p>\n<h3>⚖️  MEDIDAS DISCIPLINARES</h3>\n<p>O descumprimento deste Código poderá resultar na aplicação de medidas disciplinares, conforme a gravidade da ocorrência e a legislação vigente, incluindo:</p>\n<p>Orientação verbal</p>\n<p>Advertência escrita</p>\n<p>Suspensão</p>\n<p>Desligamento por justa causa, quando cabível</p>\n<h3>📢  CANAL PARA RELATO DE CONDUTAS</h3>\n<p>A empresa incentiva que qualquer situação de:</p>\n<p>Fraude</p>\n<p>Assédio</p>\n<p>Discriminação</p>\n<p>Descumprimento deste Código</p>\n<p>Comportamento antiético</p>\n<p>seja comunicada ao RH e/ou à liderança imediata.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>As manifestações serão tratadas com confidencialidade e sem retaliação ao denunciante de boa-fé.</span></div>",
+  "documentos": [
+    {
+      "titulo": "Documento para impressão",
+      "descricao": "PDF completo, conforme o documento de referência.",
+      "arquivo": "assets/documentos/codigo-conduta-sr-transportes.pdf?v=20260918",
+      "tipo": "download"
+    },
+    {
+      "titulo": "Termo de Consentimento — SR Transportes",
+      "descricao": "PDF completo, conforme o documento de referência.",
+      "arquivo": "assets/documentos/termo-consentimento-sr-transportes.pdf?v=20260918",
+      "tipo": "download"
+    }
+  ]
+},
       {
         id: 'codigo-conduta',
         tipo: 'politica',
@@ -2783,145 +2785,296 @@ const CATEGORIAS_INST = [
     ],
   },
   {
-    categoria: 'Políticas Internas para Motoristas',
+    categoria: 'Políticas Internas',
     guias: [
+{
+  "id": "politica-motoristas-sr-transportes",
+  "tipo": "politica",
+  "titulo": "Política Interna — Motoristas (SR Transportes)",
+  "subtitulo": "Orientações e regras para consulta e impressão.",
+  "identificacao": [
+    [
+      "Documento",
+      "Política Interna — Motoristas (SR Transportes)"
+    ],
+    [
+      "Responsável",
+      "Departamento Pessoal"
+    ]
+  ],
+  "html": "<h3>🎯  OBJETIVO</h3>\n<p>Esta política estabelece as normas de conduta, atendimento, pontualidade e segurança para os motoristas de transporte urbano de passageiros da SR Transportes, com o objetivo de garantir a qualidade do serviço, o cumprimento das exigências da fiscalização municipal e o respeito aos passageiros.</p>\n<h3>👥  ABRANGÊNCIA</h3>\n<p>Esta política se aplica a todos os motoristas de ônibus da SR Transportes, efetivos, temporários ou substitutos, em qualquer linha ou turno de operação.</p>\n<h3>🚌  PERÍODO DE INTEGRAÇÃO E ACOMPANHAMENTO</h3>\n<p>Acompanhamento inicial (3 a 5 dias): Antes de assumir a operação individual, o novo motorista passa por um período de avaliação prática acompanhado do gestor responsável e de motoristas parceiros mais experientes.</p>\n<p>Avaliação contínua: São avaliados o cumprimento de horários, a postura profissional, a atenção às normas de trânsito e o manuseio adequado do veículo.</p>\n<p>Primeira viagem solo: No primeiro dia rodando sozinho, o gestor está presente no início do turno para prestar suporte e orientações finais.</p>\n<h3>🙋  EXCELÊNCIA E PRIORIDADE NO ATENDIMENTO</h3>\n<p>Prioridade absoluta: Garantir embarque e desembarque seguros, com paciência e total atenção a idosos, gestantes, pessoas com deficiência e pessoas com mobilidade reduzida.</p>\n<p>Postura e respeito: Tratar todos os passageiros com urbanidade, cortesia e profissionalismo. Dúvidas sobre itinerários devem ser respondidas com clareza.</p>\n<p>Segurança dos passageiros: Aguardar o desembarque ou a acomodação completa dos passageiros prioritários antes de dar a partida.</p>\n<h3>⏰  PONTUALIDADE, ESCALAS E RETORNO DE FOLGA</h3>\n<p>Cumprimento rigoroso de horário: A pontualidade nos pontos de partida e nos itinerários é monitorada diretamente pela prefeitura e pela fiscalização interna.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Atenção — retorno pós-folga:  o motorista que esteve de folga no dia anterior retorna para a garagem impreterivelmente no segundo horário (08h20, para saída às 09h00). O motorista parceiro da linha é responsável por cobrir o primeiro horário (05h30). É obrigação de ambos confirmarem previamente a escala do dia seguinte, para evitar faltas ou atrasos na linha.</span></div>\n<p>Apresentação de atestado médico: Deve ser apresentado ao Departamento Pessoal em até 48 horas a partir da data do afastamento, ou enviado pelo WhatsApp o quanto antes — para que a escala do dia seja reorganizada sem prejuízo à linha.</p>\n<h3>💰  PROGRAMA DE INCENTIVOS FINANCEIROS</h3>\n<p>Premiações mensais por desempenho:</p>\n<p>Bônus de Assiduidade e Pontualidade (R$ 120,00): Concedido ao motorista que cumpre integralmente os horários da escala, sem atrasos, faltas ou saídas adiantadas.</p>\n<p>Bônus de Postura e Boa Conduta (R$ 150,00): Destinado aos profissionais sem registros de reclamações na ouvidoria, advertências ou infrações operacionais.</p>\n<h3>🔀  PROTOCOLO DE DESVIO DE ROTA EM TEMPO REAL</h3>\n<p>Desvios só são autorizados em casos imprevistos (vias interditadas, acidentes, velórios ou socorro do SAMU). Siga o procedimento:</p>\n<p>1. Parar o veículo em local seguro assim que identificar o bloqueio na via.</p>\n<p>2. Registrar foto ou vídeo do obstáculo, de preferência enquadrando a placa com o nome da rua.</p>\n<p>3. Enviar a comprovação imediatamente via WhatsApp para o Gestor de Logística.</p>\n<p>4. O Gestor informará em tempo real a Fiscalização de Trânsito, o Engenheiro e a Secretaria de Trânsito para validação do desvio.</p>\n<h3>⚠️  MEDIDAS DISCIPLINARES E FISCALIZAÇÃO</h3>\n<p>Atrasos / falhas de comunicação: O descumprimento de horários ou erros de escala acarretam a perda imediata dos bônus mensais (R$ 120,00 e R$ 150,00), além de advertência formal no prontuário.</p>\n<p>Sinistros e avarias: Em caso de colisão ou danos ao veículo decorrentes de imprudência ou negligência, o motorista arca com o valor da franquia do seguro.</p>\n<p>Fiscalização e bafômetro: A empresa realiza fiscalizações periódicas e testes aleatórios de bafômetro. O cumprimento é obrigatório.</p>\n<p>Reclamações na ouvidoria: Queixas diretas da população ou da prefeitura são apuradas imediatamente para a tomada de providências cabíveis.</p>",
+  "documentos": [
+    {
+      "titulo": "Documento para impressão",
+      "descricao": "PDF completo, conforme o documento de referência.",
+      "arquivo": "assets/documentos/politica-motoristas-sr-transportes.pdf?v=20260918",
+      "tipo": "download"
+    },
+    {
+      "titulo": "Termo de Consentimento — SR Transportes",
+      "descricao": "PDF completo, conforme o documento de referência.",
+      "arquivo": "assets/documentos/termo-consentimento-sr-transportes.pdf?v=20260918",
+      "tipo": "download"
+    }
+  ]
+},
+{
+  "id": "politica-administrativo",
+  "tipo": "politica",
+  "titulo": "Política Interna Geral — Administrativo",
+  "subtitulo": "Orientações e regras para consulta e impressão.",
+  "identificacao": [
+    [
+      "Documento",
+      "Política Interna Geral — Administrativo"
+    ],
+    [
+      "Responsável",
+      "Departamento Pessoal"
+    ]
+  ],
+  "html": "<h3>🎯  OBJETIVO</h3>\n<p>Esta política reúne, de forma organizada e centralizada, as normas práticas do dia a dia administrativo da Gestamg: como funcionam o uso dos recursos da empresa, a jornada de trabalho, o controle de ponto e o banco de horas, além das regras de funcionamento da remuneração e dos benefícios oferecidos. O objetivo é que colaboradores e gestores tenham uma referência única e atualizada para consulta, evitando dúvidas e informações dispersas entre a Cartilha do Colaborador, comunicados e conversas informais.</p>\n<p>Esta política não substitui o Código de Conduta e Ética, que trata dos princípios éticos, de conduta profissional, confidencialidade, conflitos de interesse e medidas disciplinares. Aqui são tratadas apenas as regras operacionais de funcionamento do dia a dia — os dois documentos se complementam.</p>\n<h3>👥  ABRANGÊNCIA</h3>\n<p>Esta política se aplica a todos os colaboradores do quadro administrativo da Gestamg Gestão LTDA, em todas as filiais.</p>\n<p>Colaboradores da operação de coleta (motoristas de caminhão e coletores) seguem, adicionalmente, as políticas internas próprias de sua função — como a Política Interna do Motorista —, que tratam das regras específicas da rotina operacional de campo e não são substituídas por esta política.</p>\n<h3>🖥️  USO DE RECURSOS DA EMPRESA</h3>\n<p>Computador e internet: O uso é restrito a atividades profissionais. É proibido acessar sites impróprios ou sem relação com o trabalho durante o expediente.</p>\n<p>Telefone: As ligações devem ser curtas e voltadas ao trabalho. O uso pessoal é permitido apenas nos horários de almoço e de lanche.</p>\n<p>Sala de reunião: O uso da sala de reunião exige agendamento prévio. Ao final, mantenha o espaço organizado e evite atrapalhar outras atividades em andamento.</p>\n<h3>🕐  JORNADA, PONTO E BANCO DE HORAS</h3>\n<p>Jornada de trabalho:</p>\n<p>•  Segunda a quinta: 07h30 às 17h30</p>\n<p>•  Sexta: 07h30 às 16h30</p>\n<p>Atrasos ou ausências devem ser comunicados com antecedência.</p>\n<p>Intervalo para lanche: 15 minutos para lanche, a partir das 15h00.</p>\n<p>Registro de ponto: O registro é feito pelo aplicativo Sólides, com o PIN individual de cada colaborador.</p>\n<p>Esquecimento de ponto: O colaborador é responsável pelo próprio fechamento de ponto. Em caso de esquecimento, deve lançar o registro em atraso para aprovação do Departamento Pessoal.</p>\n<p>Banco de horas: O banco de horas é semestral. Os saldos positivos não são pagos — o colaborador deve tirar a folga correspondente — e os saldos negativos são descontados. A empresa trabalha para que todos encerrem o período com o saldo zerado.</p>\n<p>Atestado médico: Deve ser apresentado ao Departamento Pessoal em até 48 horas a partir da data do afastamento, ou enviado pelo WhatsApp o quanto antes.</p>\n<h3>💰  REMUNERAÇÃO E BENEFÍCIOS — REGRAS DE FUNCIONAMENTO</h3>\n<p>Salário: Pago até o 5º dia útil do mês, em conta bancária do Banco do Brasil. É possível solicitar adiantamento opcional de 25% do salário, mediante solicitação ao Departamento Pessoal.</p>\n<p>Cartão Alimentação: Valor de R$ 23,00 por dia efetivamente trabalhado, conforme a Convenção Coletiva de Trabalho (CCT) vigente. O crédito é feito no cartão benefício da Sólides, entregue no início da jornada do colaborador.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Perda do benefício  O benefício não é devido em dias de férias, faltas (justificadas ou não), afastamentos — com ou sem atestado —, licença-maternidade, doença ou benefício previdenciário, conforme a CCT. As regras completas de apuração dia a dia estão nas Regras de Concessão do Cartão Alimentação, documento específico para esse tema.</span></div>\n<p>Plano de Saúde: A adesão é facultativa. Atualmente, a empresa custeia 100% da mensalidade do plano para o colaborador titular. Quando há utilização do plano, o custo gerado (coparticipação) é descontado em folha de pagamento. É possível incluir dependentes, com a mensalidade e a eventual coparticipação referentes a eles descontadas integralmente do colaborador em folha. A forma de custeio pela empresa pode variar por colaborador, sempre dentro do que estabelece a CCT vigente.</p>\n<p>Plano Odontológico (OdontoPrev): A empresa oferece plano odontológico sem coparticipação para o colaborador titular. A adesão é facultativa. É possível incluir dependentes, mediante custeio assumido pelo colaborador.</p>\n<p>Cartão Farmácia: Sem taxa de adesão; as compras realizadas são descontadas em folha de pagamento.</p>\n<p>Seguro de Vida: Apólice em grupo, com subsídio de 100% do valor pela empresa.</p>\n<p>Vale-Transporte: Benefício opcional para deslocamento entre residência e trabalho. O desconto é de até 6% do salário-base, limitado ao valor efetivamente utilizado.</p>\n<p>TotalPass: Acesso a academias e diversas modalidades esportivas por meio da parceria mantida pela empresa.</p>\n<p>Substituição ou acúmulo de função: O colaborador que substitui um colega ou acumula outra função por período superior a 7 dias — por exemplo, ao cobrir as férias de um colega — tem direito a um complemento remuneratório de 20% sobre o salário da função substituída ou acumulada, proporcional ao período da tarefa, sem exceder o salário do substituído, conforme a CCT. A escolha do colaborador responsável pela substituição ou cobertura é definida pelo gestor da unidade, alinhada previamente com o Departamento Pessoal, e deve recair sobre apenas 1 colaborador a cada momento da ausência — nunca dois colaboradores cobrindo simultaneamente a mesma função. Em ausências mais longas, para evitar sobrecarga em uma única pessoa, o gestor pode dividir o período entre dois colaboradores em sequência (ex: 10 dias com um colaborador e os 5 dias restantes com outro), cada um recebendo o complemento remuneratório proporcional apenas aos dias em que efetivamente exerceu a cobertura — essa divisão sequencial não exige justificativa especial. Já a cobertura simultânea por mais de um colaborador na mesma função e período — com pagamento do complemento a ambos ao mesmo tempo — só é aceita em caráter excepcional, mediante justificativa do gestor e aprovação prévia do Departamento Pessoal.</p>\n<p>Plano de Cargos e Salários: Os critérios de estrutura salarial e progressão de carreira estão descritos na Política de Cargos e Salários da Gestamg, documento específico para esse tema.</p>\n<div class=\"caixa caixa-pendencia\"><span class=\"caixa-icone\">P</span><span>Pendência  Ainda não está definido se o documento da Política de Cargos e Salários fica disponível para consulta de todos os colaboradores ou apenas para a diretoria. Este ponto será esclarecido em uma próxima atualização.</span></div>\n<p>Em caso de dúvidas sobre qualquer ponto desta política, procure o Departamento Pessoal.</p>",
+  "documentos": [
+    {
+      "titulo": "Documento para impressão",
+      "descricao": "PDF completo, conforme o documento de referência.",
+      "arquivo": "assets/documentos/politica-administrativo.pdf?v=20260918",
+      "tipo": "download"
+    }
+  ]
+},
+{
+  "id": "regras-cartao-alimentacao",
+  "tipo": "politica",
+  "titulo": "Regras de Concessão do Cartão Alimentação",
+  "subtitulo": "Orientações e regras para consulta e impressão.",
+  "identificacao": [
+    [
+      "Documento",
+      "Regras de Concessão do Cartão Alimentação"
+    ],
+    [
+      "Responsável",
+      "Departamento Pessoal"
+    ]
+  ],
+  "html": "<p>Este documento explica, de forma direta, como funciona a concessão do Cartão Alimentação: quando o colaborador tem direito ao crédito do dia e quando não tem. O objetivo é padronizar o entendimento em todas as unidades e evitar dúvidas entre gestores e colaboradores.</p>\n<h3>🍽️  COMO FUNCIONA</h3>\n<p>O Cartão Alimentação cobre o custo de refeições feitas pelo colaborador durante a jornada de trabalho. O crédito é apurado dia a dia: só é concedido nos dias em que há comparecimento efetivo ao trabalho.</p>\n<h3>✅  QUANDO HÁ DIREITO AO CRÉDITO DO DIA</h3>\n<p>Dia trabalhado normalmente: O colaborador compareceu ao trabalho no dia — tem direito à diária correspondente.</p>\n<p>Comparecimento parcial: Mesmo que o colaborador se ausente antes do horário previsto por motivo pessoal, o comparecimento no dia já garante o direito à diária.</p>\n<p>Home office ou trabalho externo autorizado: Quando formalmente autorizado pela empresa, conta como comparecimento efetivo — gera direito à diária normalmente.</p>\n<p>Compensação de horas em sábado ou outro dia não útil: Gera direito à diária referente a esse dia, por se tratar de jornada adicional — mas não recupera a diária do dia da falta original (ver nota abaixo).</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Atenção —  compensar uma falta em dia útil normal (segunda a sexta) não gera diária extra, porque esses dias já são dias de trabalho regular, com diária própria. A diária extra só existe quando a compensação acontece num dia que normalmente não seria trabalhado, como um sábado.</span></div>\n<h3>❌  QUANDO NÃO HÁ DIREITO AO CRÉDITO DO DIA</h3>\n<p>Falta, justificada ou não: Não há direito à diária do dia, mesmo com atestado médico, licença legal, luto ou convocação judicial. O abono pode garantir a remuneração do dia, mas não a diária — como não houve comparecimento, não houve o gasto com alimentação que o benefício cobre.</p>\n<p>Férias, feriados e DSR sem convocação: Não há jornada a cumprir nesses dias, logo não há diária.</p>\n<p>Afastamento por auxílio-doença ou outro benefício previdenciário: Segue o que estiver previsto na Convenção Coletiva de Trabalho (CCT), quando ela definir uma regra mais benéfica que esta.</p>\n<h3>💰  VALOR E CÁLCULO</h3>\n<p>Valor por dia: R$ 23,00 por dia de comparecimento efetivo, podendo ser reajustado por decisão da empresa ou por previsão em norma coletiva.</p>\n<p>Apuração: Mensal, com base nos registros do ponto — número de dias com comparecimento efetivo multiplicado pelo valor da diária vigente.</p>\n<p>Estas regras valem para todas as unidades da empresa e substituem qualquer entendimento anterior sobre o tema. Em caso de dúvidas, procure o Departamento Pessoal.</p>",
+  "documentos": [
+    {
+      "titulo": "Documento para impressão",
+      "descricao": "PDF completo, conforme o documento de referência.",
+      "arquivo": "assets/documentos/regras-cartao-alimentacao.pdf?v=20260918",
+      "tipo": "download"
+    }
+  ]
+},
       {"id": "politica-coletores", "tipo": "politica", "titulo": "Política Interna — Coletores de Resíduos", "subtitulo": "Responsabilidades, segurança, conduta na rota e escala de domingos.", "identificacao": [["Documento", "Política Interna Coletor"], ["Abrangência", "Todas as filiais e marcas do grupo"]], "html": "<p style=\"font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;\">🎯  OBJETIVO</p>\n<p>Esta política estabelece as responsabilidades, as normas de segurança e as condutas obrigatórias para os colaboradores que atuam na função de Coletor de Resíduos, com o objetivo de garantir a segurança do próprio colaborador, da equipe e da sociedade durante a operação de coleta.</p>\n<p style=\"font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;\">👥  ABRANGÊNCIA</p>\n<p>Esta política se aplica a todos os Coletores de Resíduos da empresa, sejam efetivos, temporários ou substitutos, em qualquer filial ou marca do grupo.</p>\n<p style=\"font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;\">🧭  FUNÇÃO E RESPONSABILIDADES</p>\n<p>O Coletor de Resíduos é responsável por recolher resíduos sólidos urbanos nos pontos de coleta, auxiliar na carga e descarga do caminhão e garantir que o processo seja feito com segurança, eficiência e respeito às normas ambientais. Isso inclui:</p>\n<p>Coleta segura: retirar sacos e recipientes de forma correta, evitando acidentes com objetos cortantes ou pesados.</p>\n<p>Limpeza da via: caso um saco se rompa ou os resíduos se espalhem na rua (inclusive por ação de animais), fazer a varrição do local com a vassoura disponível no caminhão, sem deixar sujeira ou resíduos para trás.</p>\n<p>Apoio ao motorista: auxiliar em manobras, sinalizar pontos de parada e manter comunicação clara durante o percurso.</p>\n<p>Cumprimento da rota: seguir os trajetos estabelecidos, garantindo que todos os pontos sejam atendidos.</p>\n<p>Postura profissional: manter pontualidade, respeito à comunidade e trabalho em equipe.</p>\n<p style=\"font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;\">🧤  SEGURANÇA E EQUIPAMENTOS</p>\n<p>O uso correto dos Equipamentos de Proteção Individual (EPIs) é obrigatório durante toda a operação:</p>\n<p>Utilizar luvas, botas, uniforme refletivo e máscara sempre durante a operação.</p>\n<p>Adotar postura correta ao levantar sacos e recipientes, evitando lesões.</p>\n<p>Ter cuidado redobrado com objetos cortantes ou perfurantes misturados aos resíduos.</p>\n<p>Manter atenção constante ao tráfego de veículos durante a coleta.</p>\n<p>Em caso de acidente: prestar os primeiros socorros possíveis e comunicar imediatamente o supervisor.</p>\n<p style=\"font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;\">🗺️  APOIO AO MOTORISTA E CONDUTA NA ROTA</p>\n<p>Durante o percurso, o coletor deve:</p>\n<p>Auxiliar o motorista em manobras e sinalizar pontos de parada com clareza.</p>\n<p>Manter comunicação constante com o motorista e os demais colegas de equipe.</p>\n<p>Seguir os trajetos e pontos de coleta estabelecidos para a rota.</p>\n<p>Reportar ao supervisor qualquer ponto crítico da rota (ruas estreitas, maior volume de resíduos, horários de pico) que dificulte a operação.</p>\n<p>O reconhecimento da rota é feito na prática, acompanhado por um colega experiente durante o período de acompanhamento no campo — não é ensinado durante a integração no escritório/garagem.</p>\n<p style=\"font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;\">🌱  NORMAS AMBIENTAIS DA OPERAÇÃO</p>\n<p>Além dos princípios gerais de responsabilidade ambiental do Código de Conduta e Ética, a operação de coleta exige cuidados específicos:</p>\n<p>Evitar derramamentos de resíduos ou líquidos durante a carga e o transporte.</p>\n<p>Respeitar os locais de descarte definidos (estações de transbordo ou aterros).</p>\n<p>Comunicar ao supervisor qualquer descarte irregular observado na rota.</p>\n<p style=\"font-weight:800;color:var(--azul-escuro-2);margin:16px 0 6px;\">📅  ESCALA DE DOMINGOS (RODÍZIO)</p>\n<p>O serviço de coleta não pode parar, por isso existe um rodízio de domingos entre os colaboradores da empresa.</p>\n<p>A escala varia conforme a filial/cidade e é organizada pelo Encarregado Operacional — não segue um padrão fixo de equipes se revezando semana a semana.</p>\n<p>De forma geral, busca-se que um colaborador só volte a trabalhar em outro domingo depois que os demais colegas também tiverem trabalhado pelo menos uma vez.</p>\n<p>Quem trabalha no domingo recebe folga compensatória em outro dia da semana.</p>\n<p>Em feriados prolongados, pode haver reforço de equipe para evitar acúmulo de resíduos.</p>\n<p>A escala deve ser comunicada ao colaborador com antecedência.</p>\n<p>A ciência desta política é registrada no Termo de Conclusão assinado pelo colaborador ao final do Roteiro de Integração.</p>", "duvidas": "Em caso de dúvidas, entre em contato com o Departamento Pessoal."},
       {
-        id: 'direcao-defensiva',
-        tipo: 'politica',
-        titulo: 'Política Interna para Motoristas — Padrão',
-        subtitulo: 'Regras de direção defensiva, operação de coleta, responsabilização financeira e uso de smartphone aplicáveis às demais filiais.',
-        identificacao: [
-          ['Documento', 'Política de Direção Defensiva e Conduta no Trânsito'],
-          ['Versão', 'Padrão'],
-          ['Abrangência', 'Motoristas de caminhão de coleta de resíduos — efetivos, temporários ou substitutos'],
-          ['Área responsável', 'Departamento Pessoal'],
-        ],
-        html: politicaMotoristasHtml('10%'),
-        duvidas: 'Em caso de dúvidas sobre este documento, entre em contato com o Departamento Pessoal.',
-      },
+  "id": "direcao-defensiva",
+  "tipo": "politica",
+  "titulo": "Política Interna — Motoristas (Padrão)",
+  "subtitulo": "Orientações e regras para consulta e impressão.",
+  "identificacao": [
+    [
+      "Documento",
+      "Política Interna — Motoristas (Padrão)"
+    ],
+    [
+      "Responsável",
+      "Departamento Pessoal"
+    ]
+  ],
+  "html": "<h3>🎯  OBJETIVO</h3>\n<p>Esta política estabelece as regras de condução, os princípios de direção defensiva e as condutas obrigatórias e proibidas para os motoristas de caminhão de coleta de resíduos, com o objetivo de prevenir acidentes, proteger a vida do motorista, dos coletores e de terceiros, preservar a frota e reduzir os custos operacionais decorrentes de sinistros.</p>\n<h3>👥  ABRANGÊNCIA</h3>\n<p>Esta política se aplica a todos os motoristas de caminhão de coleta de resíduos da empresa, sejam efetivos, temporários ou substitutos, em qualquer rota ou turno de operação.</p>\n<h3>🛡️  PRINCÍPIOS DA DIREÇÃO DEFENSIVA</h3>\n<p>A direção defensiva é a forma de conduzir o veículo prevenindo acidentes por meio da aplicação de conhecimentos, atitudes e técnicas que permitem antecipar situações de risco no trânsito. Ela se apoia em cinco elementos, que todo motorista deve exercitar continuamente:</p>\n<p>Conhecimento</p>\n<p>Atenção</p>\n<p>Previsão</p>\n<p>Decisão</p>\n<p>Habilidade</p>\n<h3>🚚  REGRAS GERAIS DE CONDUÇÃO</h3>\n<p>Usar o cinto de segurança durante todo o trajeto, sem exceção.</p>\n<p>Respeitar rigorosamente os limites de velocidade da via e as sinalizações de trânsito.</p>\n<p>Manter distância segura do veículo à frente, ajustando-a às condições da via e do clima.</p>\n<p>Redobrar a atenção em cruzamentos, faixas de pedestres, pontos de ônibus e áreas escolares.</p>\n<p>Sinalizar com antecedência qualquer mudança de faixa, conversão ou manobra.</p>\n<p>Verificar os espelhos retrovisores com frequência e checar os pontos cegos antes de qualquer manobra.</p>\n<p>Reduzir a velocidade em condições adversas (chuva, neblina, pista molhada ou mal iluminada).</p>\n<p>Respeitar os horários de descanso previstos na legislação, evitando dirigir em estado de fadiga ou sonolência.</p>\n<h3>🗑️  REGRAS ESPECÍFICAS DA OPERAÇÃO DE COLETA</h3>\n<p>Limitar a velocidade a, no máximo, 10 km/h durante o deslocamento nas áreas de coleta.</p>\n<p>Aguardar o sinal sonoro do coletor antes de movimentar o veículo.</p>\n<p>Nunca movimentar o veículo em marcha à ré com coletor na plataforma traseira, salvo com sinalização e acompanhamento adequados.</p>\n<p>Permitir a permanência de coletores na plataforma somente com o veículo parado.</p>\n<p>Manter faróis, luz de ré e sinalizadores sonoros de ré em pleno funcionamento.</p>\n<h3>🚫  CONDUTAS PROIBIDAS AO VOLANTE</h3>\n<p>É proibido, durante a condução do veículo:</p>\n<p>Fumar dentro da cabine.</p>\n<p>Utilizar o celular para ligações, mensagens ou redes sociais — inclusive em suporte ou viva-voz — enquanto o veículo estiver em movimento.</p>\n<p>Dirigir sob efeito de álcool ou de qualquer substância que comprometa a atenção, os reflexos ou a capacidade de direção.</p>\n<p>Transportar passageiros ou caronas não autorizadas pela empresa.</p>\n<p>Realizar ultrapassagens indevidas, manobras arriscadas ou disputas de velocidade.</p>\n<p>Deixar o veículo em movimento sem o motorista ao volante.</p>\n<h3>🔧  CHECKLIST DO VEÍCULO PRÉ-OPERAÇÃO</h3>\n<p>Antes de iniciar a rota, o motorista deve realizar a checagem do veículo pelo checklist do aplicativo Praxio, preenchido antes de cada operação. O preenchimento é obrigatório em toda saída para rota. A checagem cobre:</p>\n<p>Componentes elétricos.</p>\n<p>Componentes hidráulicos.</p>\n<p>Componentes mecânicos.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Qualquer irregularidade identificada na checagem deve ser comunicada ao encarregado operacional antes da saída do veículo para a rota — o caminhão não deve operar com item de segurança comprometido.</span></div>\n<h3>🚨  EM CASO DE SINISTRO OU ACIDENTE</h3>\n<p>Em caso de acidente de trânsito envolvendo o veículo, o motorista deve seguir, nesta ordem:</p>\n<p>Manter a calma, parar em local seguro e ligar o pisca-alerta.</p>\n<p>Verificar se há feridos. Havendo, acionar imediatamente o SAMU (192) e, se necessário, a Polícia Militar (190).</p>\n<p>Sinalizar o local do acidente (triângulo, a uma distância segura).</p>\n<p>Fotografar o local, os veículos envolvidos e os danos.</p>\n<p>Anotar os dados do(s) outro(s) motorista(s) e de eventuais testemunhas (nome, telefone, placa).</p>\n<p>Comunicar o acidente imediatamente ao gestor da filial e ao Departamento Pessoal.</p>\n<p>Aguardar as orientações da empresa antes de assumir responsabilidade ou fechar qualquer acordo no local.</p>\n<p>Providenciar o Boletim de Ocorrência quando houver vítima, dano relevante ou exigência legal.</p>\n<h3>💰  RESPONSABILIZAÇÃO FINANCEIRA</h3>\n<p>A apuração de responsabilidade é conduzida internamente pela empresa, mediante análise individual de cada caso, não havendo critério fixo pré-estabelecido para a definição da culpa.</p>\n<p>Constatada a responsabilidade, o valor devido poderá ser cobrado em parcela única ou parcelado, sem limite máximo, sempre observados os limites legais de desconto em folha previstos na legislação trabalhista.</p>\n<p>Danos a terceiros (cobertos pelo seguro da empresa):</p>\n<p>O seguro da empresa cobre apenas danos a terceiros — não cobre danos ao veículo ou equipamento da própria empresa.</p>\n<p>Caso a seguradora resolva o caso diretamente com o terceiro, sem custo adicional para a empresa, não haverá cobrança ao colaborador.</p>\n<p>Caso seja necessário um desembolso adicional para a resolução do caso (por exemplo, quando o terceiro contesta o acordo inicial da seguradora) e seja constatada a culpa, o colaborador arcará com 10% desse valor adicional.</p>\n<p>Danos ou perda de equipamento/veículo da empresa:</p>\n<p>O seguro da empresa não cobre danos ao próprio veículo ou equipamento da frota. Constatada a culpa, o colaborador arcará com 100% do valor do dano ou da perda, ainda que não haja abertura formal de sinistro (por exemplo, a perda de um item do equipamento do caminhão).</p>\n<h3>📱  USO DE EQUIPAMENTO CORPORATIVO (SMARTPHONE)</h3>\n<p>Colaboradores que recebem smartphone corporativo da empresa devem observar as seguintes regras:</p>\n<p>O aparelho destina-se exclusivamente ao desempenho das atividades profissionais, sendo vedado o uso para fins pessoais ou ilícitos.</p>\n<p>O colaborador é responsável pela guarda, pelo uso adequado e pela conservação do aparelho, devendo comunicar imediatamente ao supervisor ou ao Departamento Pessoal qualquer dano, perda, furto ou extravio.</p>\n<p>Danos, perdas ou extravios decorrentes de mau uso ou negligência poderão ser descontados da folha de pagamento do colaborador, respeitando os limites legais previstos na legislação trabalhista.</p>\n<p>É vedada a instalação de aplicativos ou softwares não autorizados pela empresa.</p>\n<p>O colaborador deve manter sigilo das informações corporativas acessadas pelo aparelho, sendo vedado compartilhar senhas ou acessos com terceiros.</p>\n<p>O aparelho deve ser devolvido à empresa ao término do vínculo empregatício ou sempre que solicitado, em condições adequadas de uso, ressalvado o desgaste natural.</p>\n<h3>📅  ESCALA DE DOMINGOS (RODÍZIO)</h3>\n<p>O serviço de coleta não pode parar, por isso existe um rodízio de domingos entre os colaboradores da empresa.</p>\n<p>A escala varia conforme a filial/cidade e é organizada pelo Encarregado Operacional — não segue um padrão fixo de equipes se revezando semana a semana.</p>\n<p>De forma geral, busca-se que um colaborador só volte a trabalhar em outro domingo depois que os demais colegas também tiverem trabalhado pelo menos uma vez.</p>\n<p>Quem trabalha no domingo recebe folga compensatória em outro dia da semana.</p>\n<p>Em feriados prolongados, pode haver reforço de equipe para evitar acúmulo de resíduos.</p>\n<p>A escala deve ser comunicada ao colaborador com antecedência.</p>\n<h3>⚠️  PERMANÊNCIA NA CABINE DURANTE O DESCARREGAMENTO NO ATERRO</h3>\n<p>Durante o descarregamento no aterro sanitário, o motorista deve permanecer na cabine do caminhão. Não é permitido descer da cabine durante o período de descarregamento.</p>",
+  "duvidas": "Em caso de dúvidas sobre este documento, entre em contato com o Departamento Pessoal.",
+  "documentos": [
+    {
+      "titulo": "Documento para impressão",
+      "descricao": "PDF completo, conforme o documento de referência.",
+      "arquivo": "assets/documentos/politica-motoristas-padrao.pdf?v=20260918",
+      "tipo": "download"
+    }
+  ]
+},
       {
-        id: 'direcao-defensiva-sao-joao-del-rei',
-        tipo: 'politica',
-        titulo: 'Política Interna para Motoristas — São João del-Rei',
-        subtitulo: 'Versão específica de São João del-Rei, com as regras locais de responsabilização financeira.',
-        identificacao: [
-          ['Documento', 'Política de Direção Defensiva e Conduta no Trânsito'],
-          ['Versão', 'São João del-Rei'],
-          ['Abrangência', 'Motoristas de caminhão de coleta de resíduos de São João del-Rei — efetivos, temporários ou substitutos'],
-          ['Área responsável', 'Departamento Pessoal'],
-        ],
-        html: politicaMotoristasHtml('15%'),
-        duvidas: 'Em caso de dúvidas sobre este documento, entre em contato com o Departamento Pessoal.',
-      },
+  "id": "direcao-defensiva-sao-joao-del-rei",
+  "tipo": "politica",
+  "titulo": "Política Interna — Motoristas (São João del-Rei)",
+  "subtitulo": "Orientações e regras para consulta e impressão.",
+  "identificacao": [
+    [
+      "Documento",
+      "Política Interna — Motoristas (São João del-Rei)"
+    ],
+    [
+      "Responsável",
+      "Departamento Pessoal"
+    ]
+  ],
+  "html": "<h3>🎯  OBJETIVO</h3>\n<p>Esta política estabelece as regras de condução, os princípios de direção defensiva e as condutas obrigatórias e proibidas para os motoristas de caminhão de coleta de resíduos, com o objetivo de prevenir acidentes, proteger a vida do motorista, dos coletores e de terceiros, preservar a frota e reduzir os custos operacionais decorrentes de sinistros.</p>\n<h3>👥  ABRANGÊNCIA</h3>\n<p>Esta política se aplica a todos os motoristas de caminhão de coleta de resíduos da empresa, sejam efetivos, temporários ou substitutos, em qualquer rota ou turno de operação.</p>\n<h3>🛡️  PRINCÍPIOS DA DIREÇÃO DEFENSIVA</h3>\n<p>A direção defensiva é a forma de conduzir o veículo prevenindo acidentes por meio da aplicação de conhecimentos, atitudes e técnicas que permitem antecipar situações de risco no trânsito. Ela se apoia em cinco elementos, que todo motorista deve exercitar continuamente:</p>\n<p>Conhecimento</p>\n<p>Atenção</p>\n<p>Previsão</p>\n<p>Decisão</p>\n<p>Habilidade</p>\n<h3>🚚  REGRAS GERAIS DE CONDUÇÃO</h3>\n<p>Usar o cinto de segurança durante todo o trajeto, sem exceção.</p>\n<p>Respeitar rigorosamente os limites de velocidade da via e as sinalizações de trânsito.</p>\n<p>Manter distância segura do veículo à frente, ajustando-a às condições da via e do clima.</p>\n<p>Redobrar a atenção em cruzamentos, faixas de pedestres, pontos de ônibus e áreas escolares.</p>\n<p>Sinalizar com antecedência qualquer mudança de faixa, conversão ou manobra.</p>\n<p>Verificar os espelhos retrovisores com frequência e checar os pontos cegos antes de qualquer manobra.</p>\n<p>Reduzir a velocidade em condições adversas (chuva, neblina, pista molhada ou mal iluminada).</p>\n<p>Respeitar os horários de descanso previstos na legislação, evitando dirigir em estado de fadiga ou sonolência.</p>\n<h3>🗑️  REGRAS ESPECÍFICAS DA OPERAÇÃO DE COLETA</h3>\n<p>Limitar a velocidade a, no máximo, 10 km/h durante o deslocamento nas áreas de coleta.</p>\n<p>Aguardar o sinal sonoro do coletor antes de movimentar o veículo.</p>\n<p>Nunca movimentar o veículo em marcha à ré com coletor na plataforma traseira, salvo com sinalização e acompanhamento adequados.</p>\n<p>Permitir a permanência de coletores na plataforma somente com o veículo parado.</p>\n<p>Manter faróis, luz de ré e sinalizadores sonoros de ré em pleno funcionamento.</p>\n<h3>🚫  CONDUTAS PROIBIDAS AO VOLANTE</h3>\n<p>É proibido, durante a condução do veículo:</p>\n<p>Fumar dentro da cabine.</p>\n<p>Utilizar o celular para ligações, mensagens ou redes sociais — inclusive em suporte ou viva-voz — enquanto o veículo estiver em movimento.</p>\n<p>Dirigir sob efeito de álcool ou de qualquer substância que comprometa a atenção, os reflexos ou a capacidade de direção.</p>\n<p>Transportar passageiros ou caronas não autorizadas pela empresa.</p>\n<p>Realizar ultrapassagens indevidas, manobras arriscadas ou disputas de velocidade.</p>\n<p>Deixar o veículo em movimento sem o motorista ao volante.</p>\n<h3>🔧  CHECKLIST DO VEÍCULO PRÉ-OPERAÇÃO</h3>\n<p>Antes de iniciar a rota, o motorista deve realizar a checagem do veículo pelo checklist do aplicativo Praxio, preenchido antes de cada operação. O preenchimento é obrigatório em toda saída para rota. A checagem cobre:</p>\n<p>Componentes elétricos.</p>\n<p>Componentes hidráulicos.</p>\n<p>Componentes mecânicos.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Qualquer irregularidade identificada na checagem deve ser comunicada ao encarregado operacional antes da saída do veículo para a rota — o caminhão não deve operar com item de segurança comprometido.</span></div>\n<h3>🚨  EM CASO DE SINISTRO OU ACIDENTE</h3>\n<p>Em caso de acidente de trânsito envolvendo o veículo, o motorista deve seguir, nesta ordem:</p>\n<p>Manter a calma, parar em local seguro e ligar o pisca-alerta.</p>\n<p>Verificar se há feridos. Havendo, acionar imediatamente o SAMU (192) e, se necessário, a Polícia Militar (190).</p>\n<p>Sinalizar o local do acidente (triângulo, a uma distância segura).</p>\n<p>Fotografar o local, os veículos envolvidos e os danos.</p>\n<p>Anotar os dados do(s) outro(s) motorista(s) e de eventuais testemunhas (nome, telefone, placa).</p>\n<p>Comunicar o acidente imediatamente ao gestor da filial e ao Departamento Pessoal.</p>\n<p>Aguardar as orientações da empresa antes de assumir responsabilidade ou fechar qualquer acordo no local.</p>\n<p>Providenciar o Boletim de Ocorrência quando houver vítima, dano relevante ou exigência legal.</p>\n<h3>💰  RESPONSABILIZAÇÃO FINANCEIRA</h3>\n<p>A apuração de responsabilidade é conduzida internamente pela empresa, mediante análise individual de cada caso, não havendo critério fixo pré-estabelecido para a definição da culpa.</p>\n<p>Constatada a responsabilidade, o valor devido poderá ser cobrado em parcela única ou parcelado, sem limite máximo, sempre observados os limites legais de desconto em folha previstos na legislação trabalhista.</p>\n<p>Danos a terceiros (cobertos pelo seguro da empresa):</p>\n<p>O seguro da empresa cobre apenas danos a terceiros — não cobre danos ao veículo ou equipamento da própria empresa.</p>\n<p>Caso a seguradora resolva o caso diretamente com o terceiro, sem custo adicional para a empresa, não haverá cobrança ao colaborador.</p>\n<p>Caso seja necessário um desembolso adicional para a resolução do caso (por exemplo, quando o terceiro contesta o acordo inicial da seguradora) e seja constatada a culpa, o colaborador arcará com 15% desse valor adicional.</p>\n<p>Danos ou perda de equipamento/veículo da empresa:</p>\n<p>O seguro da empresa não cobre danos ao próprio veículo ou equipamento da frota. Constatada a culpa, o colaborador arcará com 100% do valor do dano ou da perda, ainda que não haja abertura formal de sinistro (por exemplo, a perda de um item do equipamento do caminhão).</p>\n<h3>📱  USO DE EQUIPAMENTO CORPORATIVO (SMARTPHONE)</h3>\n<p>Colaboradores que recebem smartphone corporativo da empresa devem observar as seguintes regras:</p>\n<p>O aparelho destina-se exclusivamente ao desempenho das atividades profissionais, sendo vedado o uso para fins pessoais ou ilícitos.</p>\n<p>O colaborador é responsável pela guarda, pelo uso adequado e pela conservação do aparelho, devendo comunicar imediatamente ao supervisor ou ao Departamento Pessoal qualquer dano, perda, furto ou extravio.</p>\n<p>Danos, perdas ou extravios decorrentes de mau uso ou negligência poderão ser descontados da folha de pagamento do colaborador, respeitando os limites legais previstos na legislação trabalhista.</p>\n<p>É vedada a instalação de aplicativos ou softwares não autorizados pela empresa.</p>\n<p>O colaborador deve manter sigilo das informações corporativas acessadas pelo aparelho, sendo vedado compartilhar senhas ou acessos com terceiros.</p>\n<p>O aparelho deve ser devolvido à empresa ao término do vínculo empregatício ou sempre que solicitado, em condições adequadas de uso, ressalvado o desgaste natural.</p>\n<h3>📅  ESCALA DE DOMINGOS (RODÍZIO)</h3>\n<p>O serviço de coleta não pode parar, por isso existe um rodízio de domingos entre os colaboradores da empresa.</p>\n<p>A escala varia conforme a filial/cidade e é organizada pelo Encarregado Operacional — não segue um padrão fixo de equipes se revezando semana a semana.</p>\n<p>De forma geral, busca-se que um colaborador só volte a trabalhar em outro domingo depois que os demais colegas também tiverem trabalhado pelo menos uma vez.</p>\n<p>Quem trabalha no domingo recebe folga compensatória em outro dia da semana.</p>\n<p>Em feriados prolongados, pode haver reforço de equipe para evitar acúmulo de resíduos.</p>\n<p>A escala deve ser comunicada ao colaborador com antecedência.</p>\n<h3>⚠️  PERMANÊNCIA NA CABINE DURANTE O DESCARREGAMENTO NO ATERRO</h3>\n<p>Durante o descarregamento no aterro sanitário, o motorista deve permanecer na cabine do caminhão. Não é permitido descer da cabine durante o período de descarregamento.</p>",
+  "duvidas": "Em caso de dúvidas sobre este documento, entre em contato com o Departamento Pessoal.",
+  "documentos": [
+    {
+      "titulo": "Documento para impressão",
+      "descricao": "PDF completo, conforme o documento de referência.",
+      "arquivo": "assets/documentos/politica-motoristas-sao-joao-del-rei.pdf?v=20260918",
+      "tipo": "download"
+    }
+  ]
+},
     ],
   },
   {
     categoria: 'Integração de Novos Colaboradores',
     guias: [
       {
-        id: 'roteiro-integracao',
-        titulo: 'Roteiro de Integração — Coletor e Motorista de Coleta',
-        subtitulo: 'Checklist institucional e administrativo para acompanhar a integração de novos coletores e motoristas de coleta no primeiro dia.',
-        identificacao: [
-          ['Processo', 'Integração Institucional e Administrativa — Coletor e Motorista de Coleta'],
-          ['Responsáveis principais', 'Encarregado Operacional e Assistente Administrativo'],
-          ['Quem mais participa', 'Novo colaborador, colega responsável pelo acompanhamento prático e Departamento Pessoal'],
-          ['Quando acontece', 'No primeiro dia de trabalho, antes do acompanhamento prático na rota'],
-          ['Público', 'Coletores de Resíduos e Motoristas de Coleta recém-admitidos'],
-          ['Abrangência', 'Todas as filiais e marcas do grupo'],
-          ['Sistemas e materiais utilizados', 'Código de Conduta e Ética, Política de Direção Defensiva, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação'],
-        ],
-        objetivo: 'Orientar os responsáveis pela integração inicial de novos Coletores de Resíduos e Motoristas de Coleta, garantindo que todas as informações administrativas e institucionais sejam apresentadas no primeiro dia de trabalho, antes do acompanhamento prático na rota.',
-        conceitos: [
-          ['Integração administrativa e institucional', 'Apresentação inicial que reúne informações sobre a filial, conduta, política aplicável ao cargo, benefícios, ponto e cartão alimentação. O treinamento prático da função é realizado à parte.'],
-          ['Código de Conduta e Ética', 'Documento institucional entregue e apresentado a todos os novos colaboradores. A ciência é registrada no Termo de Conclusão do roteiro.'],
-          ['Política de Direção Defensiva', 'Política obrigatória para Motoristas de Coleta. Não se aplica a Coletores de Resíduos.'],
-          ['Sólides Ponto / Tangerino', 'Aplicativo utilizado para o registro de ponto. Tangerino é o nome encontrado em materiais mais antigos.'],
-          ['Acompanhamento prático', 'Período de aprendizagem da rota e da rotina ao lado de um colega mais experiente, após a integração inicial.'],
-        ],
-        simbologia: [
-          ['☐ Checklist', 'Item interativo que deve ser realizado e conferido durante a integração.'],
-          ['Aplicativo', 'Sistema que deve ser instalado, configurado e demonstrado na prática ao colaborador.'],
-          ['Documento', 'Material que deve ser entregue, apresentado e lido com o colaborador.'],
-          ['Acompanhamento prático', 'Atividade realizada na operação, ao lado de um colega mais experiente.'],
-        ],
-        quemFazOQue: [
-          ['Assistente Administrativo', 'Apresenta o Código de Conduta e, para motoristas, a Política de Direção Defensiva; configura o ponto e entrega o cartão alimentação. Também pode realizar a recepção inicial.', 'Etapas 1 a 5.'],
-          ['Encarregado Operacional', 'Apresenta a filial e o banner, explica regras específicas e encaminha o colaborador ao acompanhamento prático. Também pode realizar a recepção inicial.', 'Etapas 1, 6, 7 e 8.'],
-          ['Novo colaborador', 'Participa da integração, acompanha as demonstrações, esclarece dúvidas e assina o Termo de Conclusão.', 'Durante toda a integração inicial.'],
-          ['Colega mais experiente', 'Acompanha o novo colaborador na rota para ensinar a rotina e a operação na prática.', 'Após a conclusão da integração institucional e administrativa.'],
-        ],
-        passos: [
-          { numero: 1, titulo: 'Recepção e Apresentação da Filial', responsavel: 'Encarregado Operacional ou Assistente Administrativo', html: `
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Receber o colaborador — apenas o supervisor, sem apresentação pública para o restante da equipe.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar a filial: o local de trabalho.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o Assistente Administrativo e o Encarregado Operacional da filial — os responsáveis diretos por ele.</span></label>
-            </div>
-          `},
-          { numero: 2, titulo: 'Apresentar o Código de Conduta e Ética', responsavel: 'Assistente Administrativo', html: `
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar (ou confirmar que o colaborador já recebeu, no processo de admissão) uma via do Código de Conduta e Ética.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>
-            </div>
-          `},
-          { numero: 3, titulo: 'Apresentar a Política de Direção Defensiva', responsavel: 'Assistente Administrativo', html: `
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Etapa exclusiva para a função de Motorista de Coleta. Para Coletor de Resíduos, ainda não existe uma política formal equivalente (em desenvolvimento) — pule esta etapa.</span></div>
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar (ou confirmar que o colaborador já recebeu) uma via da Política de Direção Defensiva.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>
-            </div>
-          `},
-          { numero: 4, titulo: 'Configurar o Registro de Ponto', responsavel: 'Assistente Administrativo', html: `
-            <p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p>
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label>
-            </div>
-          `},
-          { numero: 5, titulo: 'Entregar o Cartão Alimentação', responsavel: 'Assistente Administrativo', html: `
-            <p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p>
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Entregar o cartão alimentação físico ao colaborador.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label>
-            </div>
-          `},
-          { numero: 6, titulo: 'Apresentar o Banner da Filial', responsavel: 'Encarregado Operacional', html: `
-            <p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p>
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label>
-            </div>
-          `},
-          { numero: 7, titulo: 'Explicar Benefícios e Regras Específicas', responsavel: 'Encarregado Operacional', html: `
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar a escala de domingo: o serviço de coleta não pode parar, por isso há rodízio entre as equipes aos domingos. Não está descrita em nenhum outro material — use os pontos abaixo como referência.</span></label>
-            </div>
-            <ul class="checklist-referencia">
-              <li>Organizada pelo Encarregado Operacional, com folgas alternadas entre as equipes.</li>
-              <li>Exemplo: semana 1 — Equipe A trabalha no domingo, Equipe B folga; semana 2 — invertem.</li>
-              <li>Feriados prolongados: pode haver reforço de equipe para evitar acúmulo de resíduos.</li>
-              <li>A escala deve ser comunicada ao colaborador com antecedência.</li>
-            </ul>
-          `},
-          { numero: 8, titulo: 'Encaminhar para o Acompanhamento Prático', responsavel: 'Encarregado Operacional', html: `
-            <div class="checklist-integracao">
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label>
-              <label class="checklist-item"><input class="checklist-integracao-item" type="checkbox" onchange="atualizarChecklistIntegracao()"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão.</span></label>
-            </div>
-            <div class="checklist-conclusao">
-              <div class="checklist-conclusao-texto">
-                <strong>Checklist de integração</strong>
-                <span class="checklist-progresso" id="checklist-integracao-progresso" aria-live="polite">0 de 17 itens concluídos</span>
-              </div>
-              <button class="checklist-termo" id="checklist-integracao-termo" type="button" onclick="abrirTermoIntegracao()" disabled>Imprimir Termo de Conclusão</button>
-            </div>
-          `},
-        ],
-        duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
-      },
+  "id": "roteiro-integracao",
+  "titulo": "Roteiro de Integração — Coletor e Motorista de Coleta",
+  "subtitulo": "Checklist institucional e administrativo para acompanhar a integração de novos coletores e motoristas de coleta no primeiro dia.",
+  "identificacao": [
+    [
+      "Processo",
+      "Integração Institucional e Administrativa — Coletor e Motorista de Coleta"
+    ],
+    [
+      "Responsáveis principais",
+      "Encarregado Operacional e Assistente Administrativo"
+    ],
+    [
+      "Quem mais participa",
+      "Novo colaborador, colega responsável pelo acompanhamento prático e Departamento Pessoal"
+    ],
+    [
+      "Quando acontece",
+      "No primeiro dia de trabalho, antes do acompanhamento prático na rota"
+    ],
+    [
+      "Público",
+      "Coletores de Resíduos e Motoristas de Coleta recém-admitidos"
+    ],
+    [
+      "Abrangência",
+      "Todas as filiais e marcas do grupo"
+    ],
+    [
+      "Sistemas e materiais utilizados",
+      "Código de Conduta e Ética, Política de Direção Defensiva, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação"
+    ]
+  ],
+  "objetivo": "Este roteiro orienta o supervisor direto na integração inicial de um novo colaborador admitido para as funções de Coletor de Resíduos ou Motorista de Coleta. Ele é o mesmo para todas as filiais e marcas do grupo. Todas as etapas devem ser realizadas no primeiro dia de trabalho do colaborador, antes de ele ser encaminhado ao acompanhamento prático na rota. Marque cada item conforme ele for cumprido — o objetivo é garantir que nenhum tópico seja esquecido, independentemente de qual supervisor conduza a integração. Este roteiro cobre apenas a integração administrativa e institucional. O treinamento prático da função é feito à parte, durante a semana de acompanhamento com um colega mais experiente (ver Etapa 8).",
+  "conceitos": [
+    [
+      "Integração administrativa e institucional",
+      "Apresentação inicial que reúne informações sobre a filial, conduta, política aplicável ao cargo, benefícios, ponto e cartão alimentação. O treinamento prático da função é realizado à parte."
+    ],
+    [
+      "Código de Conduta e Ética",
+      "Documento institucional entregue e apresentado a todos os novos colaboradores. A ciência é registrada no Termo de Conclusão do roteiro."
+    ],
+    [
+      "Política de Direção Defensiva",
+      "Política obrigatória para Motoristas de Coleta. Não se aplica a Coletores de Resíduos."
+    ],
+    [
+      "Sólides Ponto / Tangerino",
+      "Aplicativo utilizado para o registro de ponto. Tangerino é o nome encontrado em materiais mais antigos."
+    ],
+    [
+      "Acompanhamento prático",
+      "Período de aprendizagem da rota e da rotina ao lado de um colega mais experiente, após a integração inicial."
+    ]
+  ],
+  "simbologia": [
+    [
+      "☐ Checklist",
+      "Item interativo que deve ser realizado e conferido durante a integração."
+    ],
+    [
+      "Aplicativo",
+      "Sistema que deve ser instalado, configurado e demonstrado na prática ao colaborador."
+    ],
+    [
+      "Documento",
+      "Material que deve ser entregue, apresentado e lido com o colaborador."
+    ],
+    [
+      "Acompanhamento prático",
+      "Atividade realizada na operação, ao lado de um colega mais experiente."
+    ]
+  ],
+  "quemFazOQue": [
+    [
+      "Assistente Administrativo",
+      "Apresenta o Código de Conduta e, para motoristas, a Política de Direção Defensiva; configura o ponto e entrega o cartão alimentação. Também pode realizar a recepção inicial.",
+      "Etapas 1 a 5."
+    ],
+    [
+      "Encarregado Operacional",
+      "Apresenta a filial e o banner, explica regras específicas e encaminha o colaborador ao acompanhamento prático. Também pode realizar a recepção inicial.",
+      "Etapas 1, 6, 7 e 8."
+    ],
+    [
+      "Novo colaborador",
+      "Participa da integração, acompanha as demonstrações, esclarece dúvidas e assina o Termo de Conclusão.",
+      "Durante toda a integração inicial."
+    ],
+    [
+      "Colega mais experiente",
+      "Acompanha o novo colaborador na rota para ensinar a rotina e a operação na prática.",
+      "Após a conclusão da integração institucional e administrativa."
+    ]
+  ],
+  "passos": [
+    {
+      "numero": 1,
+      "titulo": "Recepção e Apresentação da Filial",
+      "responsavel": "Encarregado Operacional ou Assistente Administrativo",
+      "html": "\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Receber o colaborador — apenas o supervisor, sem apresentação pública para o restante da equipe.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar a filial: o local de trabalho.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar o Assistente Administrativo e o Encarregado Operacional da filial — os responsáveis diretos por ele.</span></label>\n            </div>\n          "
+    },
+    {
+      "numero": 2,
+      "titulo": "Apresentar o Código de Conduta e Ética",
+      "responsavel": "Assistente Administrativo",
+      "html": "\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar (ou confirmar que o colaborador já recebeu, no processo de admissão) uma via do Código de Conduta e Ética.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>\n            </div>\n          "
+    },
+    {
+      "numero": 3,
+      "titulo": "Apresentar a Política de Direção Defensiva",
+      "responsavel": "Assistente Administrativo",
+      "html": "\n            <div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Etapa exclusiva para a função de Motorista de Coleta. Para Coletor de Resíduos, ainda não existe uma política formal equivalente (em desenvolvimento) — pule esta etapa.</span></div>\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar (ou confirmar que o colaborador já recebeu) uma via da Política de Direção Defensiva.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>\n            </div>\n          "
+    },
+    {
+      "numero": 4,
+      "titulo": "Configurar o Registro de Ponto",
+      "responsavel": "Assistente Administrativo",
+      "html": "\n            <p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p>\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label>\n            </div>\n          "
+    },
+    {
+      "numero": 5,
+      "titulo": "Entregar o Cartão Alimentação",
+      "responsavel": "Assistente Administrativo",
+      "html": "\n            <p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p>\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar o cartão alimentação físico ao colaborador.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label>\n            </div>\n          "
+    },
+    {
+      "numero": 6,
+      "titulo": "Apresentar o Banner da Filial",
+      "responsavel": "Encarregado Operacional",
+      "html": "\n            <p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p>\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label>\n            </div>\n          "
+    },
+    {
+      "numero": 7,
+      "titulo": "Explicar Benefícios e Regras Específicas",
+      "responsavel": "Encarregado Operacional",
+      "html": "\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar a escala de domingo: o serviço de coleta não pode parar, por isso há rodízio entre as equipes aos domingos. Não está descrita em nenhum outro material — use os pontos abaixo como referência.</span></label>\n            </div>\n            <ul class=\"checklist-referencia\">\n              <li>Organizada pelo Encarregado Operacional, com folgas alternadas entre as equipes.</li>\n              <li>Exemplo: semana 1 — Equipe A trabalha no domingo, Equipe B folga; semana 2 — invertem.</li>\n              <li>Feriados prolongados: pode haver reforço de equipe para evitar acúmulo de resíduos.</li>\n              <li>A escala deve ser comunicada ao colaborador com antecedência.</li>\n            </ul>\n          "
+    },
+    {
+      "numero": 8,
+      "titulo": "Encaminhar para o Acompanhamento Prático",
+      "responsavel": "Encarregado Operacional",
+      "html": "\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão (página seguinte).</span></label>\n            </div>\n            <div class=\"checklist-conclusao\">\n              <div class=\"checklist-conclusao-texto\">\n                <strong>Checklist de integração</strong>\n                <span class=\"checklist-progresso\" id=\"checklist-integracao-progresso\" aria-live=\"polite\">0 de 17 itens concluídos</span>\n              </div>\n              <button class=\"checklist-termo\" id=\"checklist-integracao-termo\" type=\"button\" onclick=\"abrirTermoIntegracao()\" disabled>Imprimir Termo de Conclusão</button>\n            </div>\n          "
+    }
+  ],
+  "duvidas": "Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal."
+},
     ],
   },
   {
@@ -3005,20 +3158,139 @@ const CATEGORIAS_INST = [
   },
 ];
 
+// A programação anual e o lançamento operacional são processos complementares.
+const categoriaJornada = CATEGORIAS_DP.find(c => c.categoria === 'Jornada e Afastamentos');
+const guiaLancamentoFerias = categoriaJornada.guias.find(g => g.id === 'ferias');
+categoriaJornada.guias = categoriaJornada.guias.filter(g => g.id !== 'ferias');
+CATEGORIAS_DP.splice(2, 0, {categoria: 'Férias', guias: [{
+  "id": "programacao-anual-ferias",
+  "titulo": "Programação Anual de Férias",
+  "subtitulo": "Este guia orienta o Gerente Operacional e o Assistente Administrativo a planejar, uma vez por ano, o calendário de férias de toda a equipe da unidade — incluindo a definição de quem cobre cada ausência — antes de cada férias individual ser processada nos sistemas. Ele complementa o GUIA - Lançamento de Férias, que trata da execução operacional de cada solicitação já decidida aqui.",
+  "identificacao": [
+    [
+      "Processo:",
+      "Programação Anual de Férias"
+    ],
+    [
+      "Responsável principal:",
+      "Gerente Operacional"
+    ],
+    [
+      "Quem mais participa:",
+      "Assistente Administrativo da Unidade, Departamento Pessoal"
+    ],
+    [
+      "Quando acontece:",
+      "Anualmente, até 15 de janeiro, com revisão a cada bimestre"
+    ],
+    [
+      "Sistemas utilizados:",
+      "Planilha de programação (enviada por e-mail); o lançamento de cada férias individual é feito depois no Sólides e na Onvio"
+    ],
+    [
+      "Documentos relacionados:",
+      "GUIA - Lançamento de Férias; Política Interna Geral - Administrativo (regra do complemento remuneratório de 20%)"
+    ]
+  ],
+  "objetivo": "Este guia orienta o Gerente Operacional e o Assistente Administrativo a planejar, uma vez por ano, o calendário de férias de toda a equipe da unidade — incluindo a definição de quem cobre cada ausência — antes de cada férias individual ser processada nos sistemas. Ele complementa o GUIA - Lançamento de Férias, que trata da execução operacional de cada solicitação já decidida aqui.",
+  "conceitos": [
+    [
+      "Período trabalhado",
+      "Intervalo de 12 meses que gera o direito às férias. Cada colaborador pode ter períodos diferentes."
+    ],
+    [
+      "Cobertura de função",
+      "Colaborador designado pelo gestor para assumir temporariamente as atividades de outro durante sua ausência (ex: férias)."
+    ],
+    [
+      "Complemento remuneratório",
+      "Adicional de 20% sobre o salário da função coberta, devido a quem assume a cobertura por período superior a 7 dias, conforme a Política Interna Geral - Administrativo."
+    ],
+    [
+      "Férias em dobro",
+      "Penalidade legal em que a empresa deve pagar as férias em dobro caso o colaborador não as goze dentro do período concessivo (12 meses após o período aquisitivo)."
+    ]
+  ],
+  "simbologia": [
+    [
+      "Botão",
+      "Elemento clicável — botão, link ou ação do sistema."
+    ],
+    [
+      "«Campo»",
+      "Campo de preenchimento — insira o valor solicitado."
+    ],
+    [
+      "Menu → Submenu",
+      "Caminho de navegação no sistema."
+    ],
+    [
+      "P  Pendência",
+      "Item que ainda precisa ser criado, definido ou documentado."
+    ]
+  ],
+  "quemFazOQue": [
+    [
+      "Gerente Operacional",
+      "Alinha e programa as férias anualmente junto ao Assistente Administrativo, define o colaborador responsável pela cobertura de cada ausência e monitora prazos para evitar férias em dobro.",
+      "Anualmente e conforme demanda"
+    ],
+    [
+      "Assistente Administrativo da Unidade",
+      "Alinha a programação anual de férias com o Gerente Operacional e encaminha a planilha ao Departamento Pessoal.",
+      "Até 15 de janeiro, com revisão bimestral"
+    ],
+    [
+      "Departamento Pessoal",
+      "Acompanha a programação recebida e verifica se há mais de um colaborador indicado para a mesma cobertura antes do processamento do complemento remuneratório.",
+      "Após recebimento da planilha"
+    ]
+  ],
+  "passos": [
+    {
+      "numero": 1,
+      "titulo": "Definir a Programação Anual da Unidade",
+      "responsavel": "Gerente Operacional / Assistente Administrativo",
+      "html": "<p>Realize a programação anual das férias em alinhamento entre o Gerente Operacional e o Assistente Administrativo responsável pela unidade, definindo em conjunto as datas de toda a equipe uma vez por ano, obrigatoriamente durante a primeira quinzena de janeiro.</p>\n<p>Para cada colaborador que sairá de férias, defina junto ao gestor qual será o colaborador responsável por cobrir a função durante a ausência. Em ausências mais longas, para evitar sobrecarga em uma única pessoa, o período pode ser dividido entre dois colaboradores em sequência (ex: 10 dias com um, os 5 dias restantes com outro).</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>A cobertura deve recair sobre apenas 1 colaborador a cada momento da ausência — nunca dois colaboradores cobrindo simultaneamente a mesma função. A divisão sequencial descrita acima (um colaborador depois do outro) não exige justificativa especial, e cada um recebe o complemento de 20% previsto na Política Interna Geral - Administrativo apenas pelos dias em que efetivamente cobriu. Já a cobertura simultânea por mais de um colaborador na mesma função e período só é aceita em caráter excepcional, mediante justificativa do gestor e aprovação prévia do Departamento Pessoal.</span></div>\n<p>Até o dia 15 de janeiro, encaminhe a planilha de programação — com as datas e os responsáveis pela cobertura de cada ausência — ao Departamento Pessoal, pelo e-mail dp01@gestamg.com.br.</p>"
+    },
+    {
+      "numero": 2,
+      "titulo": "Encaminhar a Programação para o Lançamento Operacional",
+      "responsavel": "Assistente Administrativo",
+      "html": "<p>Registre a mesma programação, no mesmo momento, no Sólides e na Onvio, seguindo o passo a passo do GUIA - Lançamento de Férias para cada colaborador.</p>\n<p>Evite divergência de datas entre a planilha anual, o Sólides e a Onvio.</p>"
+    },
+    {
+      "numero": 3,
+      "titulo": "Revisar a Programação Periodicamente",
+      "responsavel": "Gerente Operacional",
+      "html": "<p>A cada bimestre, revise junto às áreas envolvidas se a programação permanece válida, verificando possíveis desligamentos, alterações de data ou afastamentos do colaborador que exijam ajuste no cronograma.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Monitore o vencimento do período aquisitivo de cada colaborador para evitar férias em dobro, situação que gera penalidade financeira para a empresa.</span></div>"
+    }
+  ],
+  "duvidas": "Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.",
+  "documentos": [
+    {
+      "titulo": "Lançamento de Férias",
+      "descricao": "Solicitação no Sólides e no Onvio.",
+      "arquivo": "#dp/ferias",
+      "tipo": "ferramenta"
+    }
+  ]
+}, guiaLancamentoFerias]});
+
 const PASTAS_INSTITUCIONAIS = [
   {
     id: 'codigos-conduta',
     nome: 'Código de Conduta e Ética',
-    descricao: 'Consulte a versão da GestaMG ou da Operação Coleta.',
+    descricao: 'Consulte a versão da GestaMG, da Operação Coleta ou da SR Transportes.',
     icone: 'codigo-conduta',
     guias: CATEGORIAS_INST.find(cat => cat.categoria === 'Código de Conduta e Ética').guias,
   },
   {
     id: 'politicas-internas',
     nome: 'Políticas Internas',
-    descricao: 'Políticas para coletores e motoristas — Padrão e São João del-Rei.',
+    descricao: 'Políticas por público: administrativo, alimentação, coletores e motoristas.',
     icone: 'direcao-defensiva',
-    guias: CATEGORIAS_INST.find(cat => cat.categoria === 'Políticas Internas para Motoristas').guias,
+    guias: CATEGORIAS_INST.find(cat => cat.categoria === 'Políticas Internas').guias,
   },
   {
     id: 'integracao-colaboradores',
@@ -3178,6 +3450,10 @@ const ICONES_GUIA = {
     '<circle cx="9" cy="7" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2"/><path d="M17 8h4"/><path d="M19 6v4"/><path d="M16 13h5"/>'
   ),
 };
+
+ICONES_GUIA['codigo-conduta-sr-transportes'] = ICONES_GUIA['codigo-conduta'];
+ICONES_GUIA['programacao-anual-ferias'] = ICONES_GUIA['ferias'];
+ICONES_GUIA['politica-motoristas-sr-transportes'] = ICONES_GUIA['direcao-defensiva'];
 
 function iconeGuia(id) {
   return ICONES_GUIA[id] || ICONE_GUIA_PADRAO;
