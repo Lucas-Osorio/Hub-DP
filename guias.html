@@ -2594,7 +2594,7 @@ const CATEGORIAS_INST = [
     {
       "titulo": "Termo de Consentimento — SR Transportes",
       "descricao": "PDF completo, conforme o documento de referência.",
-      "arquivo": "assets/documentos/termo-consentimento-sr-transportes.pdf?v=20260918",
+      "arquivo": "assets/documentos/termo-consentimento-sr-transportes.pdf?v=20260919",
       "tipo": "download"
     }
   ]
@@ -2813,7 +2813,7 @@ const CATEGORIAS_INST = [
     {
       "titulo": "Termo de Consentimento — SR Transportes",
       "descricao": "PDF completo, conforme o documento de referência.",
-      "arquivo": "assets/documentos/termo-consentimento-sr-transportes.pdf?v=20260918",
+      "arquivo": "assets/documentos/termo-consentimento-sr-transportes.pdf?v=20260919",
       "tipo": "download"
     }
   ]
@@ -2957,10 +2957,10 @@ const CATEGORIAS_INST = [
     ],
     [
       "Sistemas e materiais utilizados",
-      "Código de Conduta e Ética, Política de Direção Defensiva, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação"
+      "Código de Conduta e Ética, Política Interna do Cargo, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação"
     ]
   ],
-  "objetivo": "Este roteiro orienta o supervisor direto na integração inicial de um novo colaborador admitido para as funções de Coletor de Resíduos ou Motorista de Coleta. Ele é o mesmo para todas as filiais e marcas do grupo. Todas as etapas devem ser realizadas no primeiro dia de trabalho do colaborador, antes de ele ser encaminhado ao acompanhamento prático na rota. Marque cada item conforme ele for cumprido — o objetivo é garantir que nenhum tópico seja esquecido, independentemente de qual supervisor conduza a integração. Este roteiro cobre apenas a integração administrativa e institucional. O treinamento prático da função é feito à parte, durante a semana de acompanhamento com um colega mais experiente (ver Etapa 8).",
+  "objetivo": "Este roteiro orienta o supervisor direto na integração inicial de um novo colaborador admitido para as funções de Coletor de Resíduos ou Motorista de Coleta. Ele é o mesmo para todas as filiais e marcas do grupo. Todas as etapas devem ser realizadas no primeiro dia de trabalho do colaborador, antes de ele ser encaminhado ao acompanhamento prático na rota. Marque cada item conforme ele for cumprido — o objetivo é garantir que nenhum tópico seja esquecido, independentemente de qual supervisor conduza a integração. Este roteiro cobre apenas a integração administrativa e institucional. O treinamento prático da função é feito à parte, durante a semana de acompanhamento com um colega mais experiente (ver Etapa 7).",
   "conceitos": [
     [
       "Integração administrativa e institucional",
@@ -2971,16 +2971,16 @@ const CATEGORIAS_INST = [
       "Documento institucional entregue e apresentado a todos os novos colaboradores. A ciência é registrada no Termo de Conclusão do roteiro."
     ],
     [
-      "Política de Direção Defensiva",
-      "Política obrigatória para Motoristas de Coleta. Não se aplica a Coletores de Resíduos."
-    ],
-    [
       "Sólides Ponto / Tangerino",
       "Aplicativo utilizado para o registro de ponto. Tangerino é o nome encontrado em materiais mais antigos."
     ],
     [
       "Acompanhamento prático",
       "Período de aprendizagem da rota e da rotina ao lado de um colega mais experiente, após a integração inicial."
+    ],
+    [
+      "Política Interna do Cargo",
+      "Direção Defensiva para Motoristas de Coleta; Política Interna do Coletor para Coletores de Resíduos."
     ]
   ],
   "simbologia": [
@@ -3004,13 +3004,13 @@ const CATEGORIAS_INST = [
   "quemFazOQue": [
     [
       "Assistente Administrativo",
-      "Apresenta o Código de Conduta e, para motoristas, a Política de Direção Defensiva; configura o ponto e entrega o cartão alimentação. Também pode realizar a recepção inicial.",
+      "Apresenta o Código de Conduta e a política aplicável à função; configura o ponto e entrega o cartão alimentação. Também pode realizar a recepção inicial.",
       "Etapas 1 a 5."
     ],
     [
       "Encarregado Operacional",
-      "Apresenta a filial e o banner, explica regras específicas e encaminha o colaborador ao acompanhamento prático. Também pode realizar a recepção inicial.",
-      "Etapas 1, 6, 7 e 8."
+      "Apresenta a filial e o banner, confirma a ciência do rodízio de domingos e encaminha ao acompanhamento prático.",
+      "Etapas 1, 6 e 7."
     ],
     [
       "Novo colaborador",
@@ -3028,49 +3028,43 @@ const CATEGORIAS_INST = [
       "numero": 1,
       "titulo": "Recepção e Apresentação da Filial",
       "responsavel": "Encarregado Operacional ou Assistente Administrativo",
-      "html": "\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Receber o colaborador — apenas o supervisor, sem apresentação pública para o restante da equipe.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar a filial: o local de trabalho.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar o Assistente Administrativo e o Encarregado Operacional da filial — os responsáveis diretos por ele.</span></label>\n            </div>\n          "
+      "html": "<div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Receber o colaborador — apenas o supervisor, sem apresentação pública para o restante da equipe.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar a filial: o local de trabalho.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar o Assistente Administrativo e o Encarregado Operacional da filial — os responsáveis diretos por ele.</span></label></div>"
     },
     {
       "numero": 2,
       "titulo": "Apresentar o Código de Conduta e Ética",
       "responsavel": "Assistente Administrativo",
-      "html": "\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar (ou confirmar que o colaborador já recebeu, no processo de admissão) uma via do Código de Conduta e Ética.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>\n            </div>\n          "
+      "html": "<div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar (ou confirmar que o colaborador já recebeu, no processo de admissão) uma via do Código de Conduta e Ética.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label></div>"
     },
     {
       "numero": 3,
-      "titulo": "Apresentar a Política de Direção Defensiva",
+      "titulo": "Apresentar a Política Interna do Cargo",
       "responsavel": "Assistente Administrativo",
-      "html": "\n            <div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Etapa exclusiva para a função de Motorista de Coleta. Para Coletor de Resíduos, ainda não existe uma política formal equivalente (em desenvolvimento) — pule esta etapa.</span></div>\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar (ou confirmar que o colaborador já recebeu) uma via da Política de Direção Defensiva.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label>\n            </div>\n          "
+      "html": "<div class=\"checklist-integracao\"><p>A via entregue varia conforme a função do colaborador: Política de Direção Defensiva, para Motorista de Coleta; ou Política Interna do Coletor, para Coletor de Resíduos.</p><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar (ou confirmar que o colaborador já recebeu) a via da Política Interna aplicável à sua função.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label></div>"
     },
     {
       "numero": 4,
       "titulo": "Configurar o Registro de Ponto",
       "responsavel": "Assistente Administrativo",
-      "html": "\n            <p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p>\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label>\n            </div>\n          "
+      "html": "<div class=\"checklist-integracao\"><p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label></div>"
     },
     {
       "numero": 5,
       "titulo": "Entregar o Cartão Alimentação",
       "responsavel": "Assistente Administrativo",
-      "html": "\n            <p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p>\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar o cartão alimentação físico ao colaborador.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label>\n            </div>\n          "
+      "html": "<div class=\"checklist-integracao\"><p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar o cartão alimentação físico ao colaborador.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label></div><button class=\"guia-voltar\" type=\"button\" onclick=\"abrirGuia('primeiro-uso-cartao-alimentacao')\">Consultar o guia de primeiro uso do cartão →</button>"
     },
     {
       "numero": 6,
       "titulo": "Apresentar o Banner da Filial",
       "responsavel": "Encarregado Operacional",
-      "html": "\n            <p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p>\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label>\n            </div>\n          "
+      "html": "<div class=\"checklist-integracao\"><p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Confirmar que o colaborador está ciente do rodízio de domingos e da folga compensatória correspondente, conforme a Política Interna já apresentada na Etapa 3.</span></label></div>"
     },
     {
       "numero": 7,
-      "titulo": "Explicar Benefícios e Regras Específicas",
-      "responsavel": "Encarregado Operacional",
-      "html": "\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar a escala de domingo: o serviço de coleta não pode parar, por isso há rodízio entre as equipes aos domingos. Não está descrita em nenhum outro material — use os pontos abaixo como referência.</span></label>\n            </div>\n            <ul class=\"checklist-referencia\">\n              <li>Organizada pelo Encarregado Operacional, com folgas alternadas entre as equipes.</li>\n              <li>Exemplo: semana 1 — Equipe A trabalha no domingo, Equipe B folga; semana 2 — invertem.</li>\n              <li>Feriados prolongados: pode haver reforço de equipe para evitar acúmulo de resíduos.</li>\n              <li>A escala deve ser comunicada ao colaborador com antecedência.</li>\n            </ul>\n          "
-    },
-    {
-      "numero": 8,
       "titulo": "Encaminhar para o Acompanhamento Prático",
       "responsavel": "Encarregado Operacional",
-      "html": "\n            <div class=\"checklist-integracao\">\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label>\n              <label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão (página seguinte).</span></label>\n            </div>\n            <div class=\"checklist-conclusao\">\n              <div class=\"checklist-conclusao-texto\">\n                <strong>Checklist de integração</strong>\n                <span class=\"checklist-progresso\" id=\"checklist-integracao-progresso\" aria-live=\"polite\">0 de 17 itens concluídos</span>\n              </div>\n              <button class=\"checklist-termo\" id=\"checklist-integracao-termo\" type=\"button\" onclick=\"abrirTermoIntegracao()\" disabled>Imprimir Termo de Conclusão</button>\n            </div>\n          "
+      "html": "<div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão (página seguinte).</span></label></div><div class=\"checklist-conclusao\"><div class=\"checklist-conclusao-texto\"><strong>Checklist de integração</strong><span class=\"checklist-progresso\" id=\"checklist-integracao-progresso\" aria-live=\"polite\">0 de 17 itens concluídos</span></div><button class=\"checklist-termo\" id=\"checklist-integracao-termo\" type=\"button\" onclick=\"abrirTermoIntegracao()\" disabled>Imprimir Termo de Conclusão</button></div>"
     }
   ],
   "duvidas": "Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal."
@@ -3295,6 +3289,12 @@ CATEGORIAS_INST.forEach(categoria => categoria.guias.sort((a, b) => {
   return (aPos < 0 ? 99 : aPos) - (bPos < 0 ? 99 : bPos);
 }));
 
+const politicasInstitucionais = CATEGORIAS_INST.find(c => c.categoria === 'Políticas Internas');
+const regrasAlimentacao = politicasInstitucionais.guias.find(g => g.id === 'regras-cartao-alimentacao');
+politicasInstitucionais.guias = politicasInstitucionais.guias.filter(g => g.id !== 'regras-cartao-alimentacao');
+CATEGORIAS_INST.push({categoria:'Benefícios',guias:[regrasAlimentacao,{"id": "primeiro-uso-cartao-alimentacao", "tipo": "politica", "rotulo": "Guia prático", "titulo": "Primeiro Uso e Desbloqueio do Cartão Alimentação", "subtitulo": "Ativação do cartão e orientações para as compras.", "identificacao": [["Documento", "Primeiro Uso e Desbloqueio do Cartão Alimentação"]], "html": "<p>Este guia explica como ativar o seu cartão de benefícios, com função Voucher, e começar a usá-lo no dia a dia. O saldo e a plataforma continuam os mesmos — o que muda é só a forma de uso.</p>\n<h3>🔄  O QUE MUDA NA PRÁTICA</h3>\n<p>Você recebe um cartão — continua sendo um único cartão para todos os benefícios.</p>\n<p>O sistema separa sozinho o saldo de Alimentação/Refeição do saldo de Benefícios Flexíveis (Home Office, Mobilidade, Saldo Livre etc.) na hora da compra.</p>\n<p>Não é preciso escolher saldo no aplicativo — o desconto certo acontece automaticamente.</p>\n<h3>📲  COMO ATIVAR O CARTÃO</h3>\n<p>1. Acesse o app Sólides HUB.</p>\n<p>2. Toque em <strong>“Meu Cartão”</strong> → <strong>“Novo Cartão”</strong>.</p>\n<p>3. Quando perguntar sobre 2ª via, escolha <strong>“Sim”</strong> e depois <strong>“outros”</strong> como motivo.</p>\n<p>4. Saia e entre no app novamente e toque em <strong>“cadastrar novo cartão”</strong>.</p>\n<p>5. Leia o QR Code do cartão e cadastre sua senha.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Ao confirmar a 2ª via, o cartão anterior é cancelado na hora. Só comece a ativação com o cartão novo em mãos.</span></div>\n<h3>🛒  COMO USAR NAS COMPRAS</h3>\n<p>Em mercados, restaurantes, padarias e afins, o pagamento é aprovado normalmente.</p>\n<p>Se a maquininha não tiver a opção Voucher, use <strong>“Crédito”</strong> mesmo assim — o sistema desconta do saldo certo do mesmo jeito.</p>\n<p>Transferência de saldo: pode entre Alimentação e Refeição. Não pode entre esses e os benefícios flexíveis (Home Office, Mobilidade, Saldo Livre).</p>\n<h3>🔗  QUER SABER MAIS?</h3>\n<p>Este guia cobre o essencial para o uso diário. Para dúvidas mais detalhadas (carteiras digitais, home office, cancelamento etc.), consulte o FAQ completo da Sólides:</p>\n<p><a href=\"https://ajuda.solides.com.br/hc/pt-br/articles/46213728924941-FAQ-Voucher-Troca-de-Cart%C3%B5es-de-Benef%C3%ADcios-e-Atualiza%C3%A7%C3%B5es-de-Funcionalidades\" target=\"_blank\" rel=\"noopener\">FAQ completo da Sólides</a></p>", "documentos": [{"titulo": "Versão para impressão", "descricao": "Documento completo em PDF.", "arquivo": "assets/documentos/primeiro-uso-cartao-alimentacao.pdf?v=20260919", "tipo": "download"}]}]}, {categoria:'Transporte Escolar',guias:[{"id": "boas-vindas-transporte-escolar", "tipo": "politica", "rotulo": "Orientações de integração", "titulo": "Boas-Vindas — Monitores de Transporte Escolar", "subtitulo": "Apresentação, chamada, comunicação e segurança dos alunos.", "identificacao": [["Documento", "Boas-Vindas — Monitores de Transporte Escolar"]], "html": "<p>Se este for o seu primeiro dia como monitora do transporte escolar, seguem algumas orientações importantes para te ajudar nessa nova jornada:</p>\n<h3>👋  APRESENTAÇÃO</h3>\n<p>Apresente-se para as crianças, o motorista e também para os pais ou responsáveis dos alunos. Essa aproximação é essencial para criar um ambiente de confiança e segurança.</p>\n<h3>📝  CHAMADA DOS ALUNOS</h3>\n<p>Com a lista de alunos da sua rota (que foi enviada para você), realize a chamada na ida e na volta. Assim, você garante que todos estejam no veículo e também começa a se familiarizar com os rostinhos das crianças.</p>\n<h3>📱  GRUPO DE WHATSAPP</h3>\n<p>Crie um grupo de WhatsApp com os pais e responsáveis, juntamente com o motorista, para facilitar a comunicação. Utilize o grupo para:</p>\n<p>Enviar avisos e comunicados;</p>\n<p>Permitir que os pais informem faltas ou mudanças;</p>\n<p>Manter uma comunicação rápida e organizada.</p>\n<p>Antes de criar o grupo, verifique com o motorista se ele já possui um grupo ativo da rota para você entrar.</p>\n<h3>🚌  EMBARQUE E DESEMBARQUE</h3>\n<p>Auxilie sempre as crianças ao embarcar e desembarcar do veículo.</p>\n<p>Ajude-as a atravessar a rua com segurança;</p>\n<p>Acompanhe-as até dentro da escola;</p>\n<p>Auxilie com as mochilas e garanta que todas as crianças estejam em segurança.</p>\n<p>💛  Sua função é essencial para garantir a segurança, o cuidado e o bem-estar dos alunos durante o transporte escolar.🎉  Seja muito bem-vinda à equipe!</p>", "documentos": [{"titulo": "Versão para impressão", "descricao": "Documento completo em PDF.", "arquivo": "assets/documentos/boas-vindas-transporte-escolar.pdf?v=20260919", "tipo": "download"}]}]});
+CATEGORIAS_DP.push({categoria:'Benefícios — Conferência Interna',guias:[{"id": "criterios-cesta-basica", "tipo": "politica", "rotulo": "Orientação interna", "titulo": "Cesta Básica — Critérios de Apuração", "subtitulo": "Conferência interna do benefício na operação de coleta.", "identificacao": [["Documento", "Cesta Básica — Critérios de Apuração"], ["Público", "Departamento Pessoal e responsáveis administrativos das filiais"], ["Abrangência", "Somente operação de coleta"]], "html": "<h3>🎯  OBJETIVO</h3>\n<p>Este documento reúne, de forma rápida e objetiva, os critérios para saber se o colaborador tem ou não direito à cesta básica no período. É material de apoio para o Departamento Pessoal e para os responsáveis administrativos de cada filial — não deve ser enviado aos colaboradores operacionais.</p>\n<p>Aplica-se apenas à operação de coleta. A cesta básica não é um benefício válido para a Gesta MG (administrativo) nem para a SR Transportes.</p>\n<h3>📅  REGRA GERAL DE APURAÇÃO</h3>\n<p>A cesta básica é apurada junto com a folha de pagamento: sempre do dia 26 do mês anterior até o dia 25 do mês atual. É paga junto com o salário, e quem faz essa conferência todo mês é o responsável administrativo de cada filial.</p>\n<h3>✅  TABELA DE ELEGIBILIDADE</h3><div class=\"tabela-scroll\"><table class=\"tabela-guia\"><thead><tr><th>SITUAÇÃO</th><th>O QUE COMPROVA</th><th>RESULTADO</th></tr></thead><tbody><tr><td>Comparecimento no período (26 a 25), com ou sem justificativa aceita: atestado médico, acidente de trabalho comprovado, óbito de cônjuge ou filho(a), férias, licença legal ou folga já combinada com a liderança.</td><td>Ponto sem ocorrência, ou o documento correspondente (atestado, CAT/laudo, certidão, registro do combinado).</td><td>MANTÉM</td></tr><tr><td>1ª falta no mês para cuidar de dependente (filho, cônjuge ou outro responsável direto) com problema de saúde comprovado, sem atestado do próprio colaborador.</td><td>Laudo, relatório médico ou declaração da escola/serviço de saúde do dependente, em até 5 dias úteis.</td><td>MANTÉM (automático)</td></tr><tr><td>2ª falta ou mais no mesmo mês, pelo mesmo motivo (dependente doente).</td><td>Mesma comprovação acima.</td><td>VAI PARA ANÁLISE DO DP</td></tr><tr><td>Falta sem aviso e sem comprovação, atraso ou saída antes do horário sem autorização.</td><td>Ponto, ou nenhuma comprovação apresentada.</td><td>PERDE</td></tr></tbody></table></div><p>A convenção coletiva não trata falta para cuidar de dependente doente como falta justificada. Mesmo assim, a empresa decidiu conceder esse benefício por conta própria, para qualquer colaborador. Por isso a 1ª ocorrência no mês é automática; da 2ª vez em diante, o caso sobe para análise do Departamento Pessoal. A contagem reinicia a cada mês — usar a falta automática em um mês não conta contra o colaborador no mês seguinte.</p>\n<p>O responsável administrativo da filial decide sozinho, usando a tabela acima. Só sobe para o Departamento Pessoal quando o colaborador repetir a falta por dependente no mesmo mês (2ª vez ou mais), ou quando a situação não se encaixar em nenhuma linha da tabela.</p>"}]});
+
 const PASTAS_INSTITUCIONAIS = [
   {
     id: 'codigos-conduta',
@@ -3306,7 +3306,7 @@ const PASTAS_INSTITUCIONAIS = [
   {
     id: 'politicas-internas',
     nome: 'Políticas Internas',
-    descricao: 'Administrativo, benefícios e operação.',
+    descricao: 'Administrativo, coletores e motoristas.',
     icone: 'direcao-defensiva',
     guias: CATEGORIAS_INST.find(cat => cat.categoria === 'Políticas Internas').guias,
   },
@@ -3321,6 +3321,8 @@ const PASTAS_INSTITUCIONAIS = [
     ],
   },
 ];
+
+PASTAS_INSTITUCIONAIS.push({id:'beneficios',nome:'Benefícios',descricao:'Regras e primeiro uso do cartão alimentação.',icone:'ferias',guias:CATEGORIAS_INST.find(c=>c.categoria==='Benefícios').guias}, {id:'transporte-escolar',nome:'Transporte Escolar',descricao:'Orientações para monitores do transporte escolar.',icone:'treinamento-coletores',guias:CATEGORIAS_INST.find(c=>c.categoria==='Transporte Escolar').guias});
 
 const SETORES = [
   {
@@ -3601,7 +3603,7 @@ function renderIndice(setorId) {
         <span class="guia-card-corpo">
           <span class="guia-card-titulo">${TITULOS_MENU[g.id] || g.titulo}</span>
           <span class="guia-card-sub">${g.subtitulo}</span>
-          ${g.tipo ? `<span class="guia-card-tipo">${g.id.startsWith('codigo-conduta') ? 'Código de conduta' : g.tipo === 'politica' ? 'Política interna' : 'Treinamento'}</span>` : ''}
+          ${g.tipo ? `<span class="guia-card-tipo">${g.rotulo || (g.id.startsWith('codigo-conduta') ? 'Código de conduta' : g.tipo === 'politica' ? 'Política interna' : 'Treinamento')}</span>` : ''}
         </span>
         <span class="guia-card-seta">${ICONE_SETA}</span>
       </button>
@@ -3673,7 +3675,7 @@ function atualizarChecklistIntegracao() {
 }
 
 function abrirTermoIntegracao() {
-  const aba = window.open('https://lucas-osorio.github.io/Hub-DP/assets/documentos/roteiro-integracao-termo.pdf', '_blank');
+  const aba = window.open('https://lucas-osorio.github.io/Hub-DP/assets/documentos/roteiro-integracao-termo.pdf?v=20260919', '_blank');
   if (aba) aba.opener = null;
 }
 
@@ -3686,7 +3688,7 @@ function renderGuia(id) {
   const textoVoltar = pasta ? `Voltar para ${pasta.nome}` : 'Voltar aos guias';
 
   document.getElementById('header-titulo').textContent = g.titulo;
-  document.getElementById('header-sub').textContent = '· ' + (g.tipo === 'politica' ? 'Política interna' : g.tipo === 'treinamento' ? 'Treinamento' : 'Guia de processo');
+  document.getElementById('header-sub').textContent = '· ' + (g.rotulo || (g.tipo === 'politica' ? 'Política interna' : g.tipo === 'treinamento' ? 'Treinamento' : 'Guia de processo'));
   document.getElementById('busca-wrap').classList.remove('ativo');
 
   if (g.tipo === 'politica') {
@@ -3704,7 +3706,7 @@ function renderGuia(id) {
       <button class="guia-voltar" onclick="${acaoVoltar}" type="button">← ${textoVoltar}</button>
 
       <div class="guia-header">
-        <span class="tag">${g.id.startsWith('codigo-conduta') ? 'Código de Conduta' : 'Política Interna'} · ${setor ? setor.nome : ''}</span>
+        <span class="tag">${g.rotulo || (g.id.startsWith('codigo-conduta') ? 'Código de Conduta' : 'Política Interna')} · ${setor ? setor.nome : ''}</span>
         <h1>${g.titulo}</h1>
         <p>${g.subtitulo}</p>
       </div>
