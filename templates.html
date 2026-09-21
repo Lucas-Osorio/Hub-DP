@@ -103,7 +103,7 @@
 
 main#templateEditor{max-width:980px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 100px;grid-template-columns:320px minmax(0,1fr);gap:24px}
 .template-catalog{max-width:980px;margin:0 auto;padding:26px clamp(16px,4vw,48px) 100px}
-.template-grid{display:flex;flex-direction:column;gap:10px}.guia-card{font-weight:400}
+.template-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;align-items:stretch}.template-grid .guia-card{height:100%}.guia-card{font-weight:400}
 .guia-card-icon svg,.guia-card-seta svg{width:22px;height:22px}
 .editor-nav{display:block;max-width:980px;margin:0 auto;padding:26px clamp(16px,4vw,48px) 0}
 .editor-nav h2{font-size:20px;font-weight:800;color:var(--azul-escuro-2);margin:0 0 22px}
@@ -117,7 +117,7 @@ label{font-size:12.5px;color:var(--texto);font-weight:700}button{border-color:va
 canvas{border-radius:var(--raio);box-shadow:var(--sombra-md)}#status{font-size:12.5px;color:var(--texto-suave)}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--azul-medio);outline-offset:3px}
 @media(max-width:800px){main#templateEditor{grid-template-columns:1fr}.preview{max-width:500px;margin:auto}}
-@media(max-width:640px){header{min-height:64px;padding:12px 16px;align-items:flex-start;flex-direction:column;gap:2px}header h1{font-size:16px}header .sub{font-size:11.5px}.template-catalog{padding:20px 14px 72px}.editor-nav{padding:20px 14px 0}main#templateEditor{padding:0 14px 72px}.guia-card{align-items:flex-start;gap:11px;padding:14px}.guia-card-icon{width:38px;height:38px}.guia-card-seta{margin-top:11px}}
+@media(max-width:640px){header{min-height:64px;padding:12px 16px;align-items:flex-start;flex-direction:column;gap:2px}header h1{font-size:16px}header .sub{font-size:11.5px}.template-catalog{padding:20px 14px 72px}.editor-nav{padding:20px 14px 0}main#templateEditor{padding:0 14px 72px}.guia-card{align-items:flex-start;gap:11px;padding:14px}.guia-card-icon{width:38px;height:38px}.guia-card-seta{margin-top:11px}.template-grid{grid-template-columns:1fr}}
 </style>
 <header><h1>Templates</h1><span class="sub">· Posts e comunicação interna</span></header>
 <section id="templateCatalog" class="template-catalog" aria-label="Modelos disponíveis"><div class="indice-intro"><h2>Escolha um template</h2><p>Crie posts de boas-vindas, aniversário e fotos de perfil com a identidade da Gestamg ou da Clean Ambiental.</p></div><div class="template-grid">

@@ -249,12 +249,12 @@ body.sidebar-open .hub-content { margin-left: 244px; }
   letter-spacing: -.015em; text-transform: none;
   color: var(--azul-escuro);
 }
-.ajuda-wrap { max-width: 880px; margin: 0 auto; padding: 30px clamp(16px,4vw,40px) 90px; }
+.ajuda-wrap { max-width: 1120px; margin: 0 auto; padding: 30px clamp(16px,4vw,40px) 90px; }
 .ajuda-wrap h2 { font-family: 'Manrope', 'Segoe UI', Arial, sans-serif; font-size: 19px; font-weight: 800; color: var(--azul-escuro); margin: 36px 0 8px; }
 .ajuda-wrap h2:first-child { margin-top: 0; }
 .ajuda-wrap h3 { font-family: 'Manrope', 'Segoe UI', Arial, sans-serif; font-size: 14.5px; font-weight: 700; color: var(--cinza-900); margin: 20px 0 8px; }
 .ajuda-wrap p, .ajuda-wrap li { font-size: 13.5px; line-height: 1.65; color: var(--cinza-900); }
-.ajuda-wrap > p.lead { font-size: 14.5px; color: var(--cinza-600); margin-top: -2px; }
+.ajuda-wrap p.lead { font-size: 14.5px; color: var(--cinza-600); margin-top: -2px; }
 .ajuda-card {
   background: #fff; border: 1px solid var(--cinza-200); border-radius: var(--raio);
   box-shadow: var(--sombra-sm); padding: 18px 20px; margin-bottom: 14px;
@@ -289,6 +289,26 @@ body.sidebar-open .hub-content { margin-left: 244px; }
   background: var(--azul-claro); border: 1px solid var(--azul-borda);
   border-radius: 20px; padding: 3px 10px; margin-bottom: 8px;
 }
+.ajuda-hero { margin-bottom: 18px; }
+.ajuda-hero h2 { margin-top: 0; margin-bottom: 8px; }
+.ajuda-hero p { max-width: 760px; }
+.ajuda-chips { display:flex; flex-wrap:wrap; gap:7px; margin-top:14px; }
+.ajuda-chip { display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:20px; background:#fff; border:1px solid var(--cinza-200); color:var(--cinza-600); font-size:11.5px; font-weight:700; }
+.ajuda-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin:12px 0 18px; }
+.ajuda-overview { display:flex; flex-direction:column; gap:5px; padding:14px 15px; border:1px solid var(--cinza-200); border-radius:var(--raio-sm); background:var(--cinza-50); }
+.ajuda-overview-btn { width:100%; text-align:left; cursor:pointer; font:inherit; transition:border-color .15s ease,box-shadow .15s ease,background .15s ease; }
+.ajuda-overview-btn:hover { border-color:var(--azul-borda); background:#fff; box-shadow:var(--sombra-sm); }
+.ajuda-overview strong { color:var(--azul-escuro); font-size:13px; }
+.ajuda-overview span { color:var(--cinza-600); font-size:12px; line-height:1.45; }
+.ajuda-card-wide { margin-bottom:18px; }
+.ajuda-card-wide h3 { margin-bottom:7px; }
+.ajuda-meta { color:var(--cinza-600); font-size:12.5px; margin:0 0 12px; }
+.ajuda-two-col { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+.ajuda-two-col h4 { margin:4px 0 6px; color:var(--azul-escuro); font-size:13px; }
+.ajuda-two-col ul { margin:0; padding-left:18px; }
+.ajuda-steps { margin-top:8px; }
+.ajuda-footer { margin-top:18px; }
+@media(max-width:640px){.ajuda-wrap{padding-top:22px}.ajuda-grid{grid-template-columns:1fr}.ajuda-two-col{grid-template-columns:1fr}}
 
 /* === GESTAMG DESIGN SYSTEM V2 === */
 
@@ -925,69 +945,106 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
   </div>
 
   <div class="hub-pane" id="pane-ajuda">
-    <header class="pane-header"><h1>Como Usar</h1></header>
+    <header class="pane-header"><h1>Como usar o Hub</h1></header>
     <div class="ajuda-wrap">
+      <section class="ajuda-hero" aria-labelledby="ajuda-titulo">
+        <span class="tag-etapa">Guia de navegação</span>
+        <h2 id="ajuda-titulo">Escolha a rotina e siga o fluxo</h2>
+        <p class="lead">O Hub reúne as tarefas do Departamento Pessoal, os documentos oficiais e os materiais de consulta em um só lugar. Cada módulo indica o arquivo de entrada, o que conferir e o resultado que você pode exportar.</p>
+        <div class="ajuda-chips" aria-label="Características do Hub">
+          <span class="ajuda-chip">⚡ Processamento no navegador</span>
+          <span class="ajuda-chip">🔒 Arquivos não ficam salvos no Hub</span>
+          <span class="ajuda-chip">📄 Planilhas, PDFs e PNGs prontos</span>
+        </div>
+      </section>
 
-      <p class="lead">Guia rápido de cada aba do Hub. Se ficar com dúvida em algum ponto, essa aba é sua referência.</p>
+      <section class="ajuda-card" aria-labelledby="ajuda-mapa">
+        <h3 id="ajuda-mapa">🧭 Mapa rápido</h3>
+        <div class="ajuda-grid">
+          <button class="ajuda-overview ajuda-overview-btn" type="button" onclick="hubTrocarAba('cadastro')"><strong>📋 Cadastro / Fichas</strong><span>Transforme fichas do Domínio em planilhas para Ponto, Benefícios e EPI.</span></button>
+          <button class="ajuda-overview ajuda-overview-btn" type="button" onclick="hubTrocarAba('dias')"><strong>🕒 Pontos</strong><span>Analise ocorrências, calcule dias e confira a folha de pagamento.</span></button>
+          <button class="ajuda-overview ajuda-overview-btn" type="button" onclick="hubTrocarAba('impressao')"><strong>🖨️ Documentos</strong><span>Encontre a empresa, gere termos e abra PDFs padronizados para impressão.</span></button>
+          <button class="ajuda-overview ajuda-overview-btn" type="button" onclick="hubTrocarAba('guias')"><strong>📚 Materiais de Apoio</strong><span>Consulte guias, políticas, treinamentos, checklists e documentos por setor.</span></button>
+          <button class="ajuda-overview ajuda-overview-btn" type="button" onclick="hubTrocarAba('templates')"><strong>🎨 Templates</strong><span>Monte posts de boas-vindas, aniversários e fotos de perfil.</span></button>
+        </div>
+      </section>
 
-      <div class="ajuda-card">
+      <div class="ajuda-card ajuda-card-wide">
+        <span class="tag-etapa">Antes de começar</span>
+        <h3>✅ Um fluxo seguro para qualquer rotina</h3>
+        <div class="ajuda-two-col">
+          <div><h4>1. Prepare o arquivo</h4><p class="ajuda-meta">Exporte o relatório no sistema de origem e mantenha a competência e a empresa corretas.</p></div>
+          <div><h4>2. Envie e confira</h4><p class="ajuda-meta">Arraste o arquivo, revise campos destacados e leia os avisos antes de gerar qualquer resultado.</p></div>
+          <div><h4>3. Exporte ou imprima</h4><p class="ajuda-meta">Baixe a planilha, o PNG ou o PDF. Quando houver envio por e-mail, o Hub abre o aplicativo de e-mail com a mensagem preenchida.</p></div>
+          <div><h4>4. Comece uma nova tarefa</h4><p class="ajuda-meta">Use “Nova análise”, “Voltar” ou o item do menu lateral. Os dados da sessão são limpos ao reiniciar o fluxo.</p></div>
+        </div>
+        <div class="caixa-dica"><strong>Privacidade:</strong> os arquivos selecionados são lidos e processados no seu navegador. O Hub não mantém uma pasta de uploads nem recupera dados de uma sessão anterior.</div>
+      </div>
+
+      <div class="ajuda-card ajuda-card-wide">
         <span class="tag-etapa">Cadastro / Fichas</span>
-        <h3>📋 O que essa ferramenta faz</h3>
-        <p>Lê a Ficha de Empregado (Excel exportado do Domínio), extrai os dados do colaborador automaticamente e preenche os templates reais dos três sistemas — Ponto, Benefícios e EPI — prontos pra subir em cada sistema. Os templates já vêm embutidos na ferramenta: não é necessário fazer upload deles.</p>
-        <h3>Passo a passo</h3>
-        <ol class="passo-lista">
-          <li><strong>Envie a(s) Ficha(s) de Empregado.</strong> Arraste ou clique na caixa de upload. Pode ser .xls exportado direto do Domínio (mesmo com erro de exportação — a ferramenta corrige sozinha) ou .xlsx. Dá pra soltar vários arquivos de uma vez, um colaborador por arquivo.</li>
-          <li><strong>Confira os dados de cada colaborador.</strong> Cada ficha vira um card. Clique para abrir e ver os campos extraídos. Campo com fundo amarelo veio vazio da ficha — não é erro, é sinal de "confira aqui".</li>
-          <li><strong>Preencha e-mail e celular.</strong> Ficam em destaque porque são obrigatórios — a ficha do Domínio nunca traz e-mail. Se o colaborador não tem e-mail próprio, marque a opção de usar o e-mail do DP.</li>
-          <li><strong>Gere as planilhas.</strong> Use os botões individuais (Ponto / Benefícios / EPI) ou "Gerar as 3 planilhas" de uma vez. Se faltar e-mail ou celular de algum colaborador, a ferramenta avisa exatamente quem está pendente antes de gerar.</li>
+        <h3>📋 Gere cadastros a partir da Ficha de Empregado</h3>
+        <p>Use a ficha exportada do Domínio para preparar as importações dos sistemas de Ponto (Tangerino/Sólides), Benefícios e EPI.</p>
+        <ol class="passo-lista ajuda-steps">
+          <li><strong>Envie uma ou várias fichas.</strong> Arraste arquivos .xls ou .xlsx para a área de upload. O .xls exportado diretamente do Domínio também é aceito.</li>
+          <li><strong>Abra os cards dos colaboradores.</strong> Revise os dados extraídos; campos amarelos pedem conferência ou preenchimento manual.</li>
+          <li><strong>Complete os obrigatórios.</strong> Informe e-mail e celular, confirme a contratação com o RH, a unidade e as opções de benefícios/EPI quando aparecerem.</li>
+          <li><strong>Exporte o que precisa.</strong> Baixe a planilha de Ponto, EPI ou Benefícios individualmente, ou use “Gerar as 3 planilhas”.</li>
         </ol>
-        <div class="caixa-dica"><strong>Código de Cargo e Local de Trabalho</strong> são preenchidos automaticamente com base no cargo do colaborador. Se o cargo da ficha vier escrito muito diferente do cadastrado, o campo fica em branco pra preenchimento manual — não trava a ferramenta.</div>
-        <div class="caixa-atencao">Os templates ficam fixos na versão atual do arquivo. Se um template mudar (layout novo do sistema), é preciso trazer o arquivo atualizado numa conversa com o Claude pra gerar uma nova versão do Hub.</div>
+        <div class="caixa-dica"><strong>Trello (opcional):</strong> conecte o Trello no topo da ferramenta para criar automaticamente os lembretes de experiência quando a admissão exigir esse acompanhamento.</div>
       </div>
 
-      <div class="ajuda-card">
+      <div class="ajuda-card ajuda-card-wide">
         <span class="tag-etapa">Pontos / Dias trabalhados</span>
-        <h3>🕒 O que essa ferramenta faz</h3>
-        <p>Duas funções na mesma tela: <strong>Analisar pontos</strong> (detecta faltas, pontos em aberto e duplicidades a partir do relatório de ponto) e <strong>Dias trabalhados</strong> (soma os dias com registro por colaborador, usado para o cálculo de vale-alimentação).</p>
-        <h3>Passo a passo</h3>
-        <ol class="passo-lista">
-          <li><strong>Exporte o relatório do Sólides.</strong> Tire o relatório de folha de ponto no formato aceito (XLS, XLSX ou ZIP com múltiplos arquivos).</li>
-          <li><strong>Suba o arquivo</strong> na caixa de upload e escolha "Analisar pontos" ou "Dias trabalhados", conforme o que precisar naquele momento.</li>
-          <li><strong>Revise o resultado.</strong> Em "Analisar pontos", use os filtros por tipo de ocorrência para revisar rápido. Em "Dias trabalhados", confira a tabela de dias por colaborador.</li>
-          <li><strong>Copie para a planilha de pagamento.</strong> Use "Copiar para Excel" e cole na aba PAINEL da planilha de vale-alimentação do mês.</li>
-        </ol>
-        <div class="caixa-dica">Essa ferramenta não guarda os dados entre uma análise e outra — é normal fechar e ter que subir o relatório de novo no próximo uso. É só a fase de processamento; o resultado final vive na planilha de pagamento, não aqui.</div>
+        <h3>🕒 Analise o ponto e faça as conferências do fechamento</h3>
+        <p>Envie .xls, .xlsx ou um .zip com os arquivos de ponto. Depois escolha a operação adequada no painel de ações.</p>
+        <div class="ajuda-two-col">
+          <div><h4>🔎 Analisar pontos</h4><p class="ajuda-meta">Identifica faltas, pontos em aberto e duplicidades. Use os filtros e revise cada ocorrência antes de corrigir o sistema.</p></div>
+          <div><h4>📅 Dias trabalhados</h4><p class="ajuda-meta">Calcula os dias por colaborador, mostra período, média e arquivos lidos, e permite copiar a tabela para o Excel da alimentação.</p></div>
+          <div><h4>✉️ Fechamento para Contabilidade</h4><p class="ajuda-meta">Organiza faltas, intermitentes, descontos de avaria e horas noturnas. Confira filial, competência e observações; o botão final abre o e-mail para a contabilidade.</p></div>
+          <div><h4>✅ Conferência da folha</h4><p class="ajuda-meta">Primeiro gere “Dias trabalhados” com o ZIP de ponto. Depois anexe o relatório Movimentos da mesma empresa e competência. A ferramenta lê o nome na coluna D e os dias na coluna W e marca iguais, divergentes e ausentes.</p></div>
+        </div>
+        <div class="caixa-atencao"><strong>Conferência da folha:</strong> use o relatório Movimentos correto, com a rubrica de dias e a coluna W preenchida. Diferenças indicam uma pendência para revisar, não uma correção automática.</div>
       </div>
 
-      <div class="ajuda-card">
+      <div class="ajuda-card ajuda-card-wide">
         <span class="tag-etapa">Impressão de Documentos</span>
-        <h3>🖨️ O que essa ferramenta faz</h3>
-        <p>Reúne templates de documentos do DP (advertências, termos, comunicados etc.) que são preenchidos por um formulário simples e ficam prontos pra impressão — sempre no mesmo padrão, sem risco de esquecer um campo ou preencher errado.</p>
-        <h3>Passo a passo</h3>
-        <ol class="passo-lista">
-          <li><strong>Escolha o template</strong> na tela inicial da ferramenta.</li>
-          <li><strong>Preencha o formulário.</strong> Os campos obrigatórios são avisados antes de gerar, se ficar algum vazio.</li>
-          <li><strong>Confira a pré-visualização</strong> do documento já formatado.</li>
-          <li><strong>Clique em Imprimir.</strong> Abre a caixa de impressão do navegador, pronta pra sair na impressora.</li>
+        <h3>🖨️ Encontre o documento pela empresa</h3>
+        <p>A tela inicial agora organiza os documentos por empresa/segmento. Entre na empresa e, dentro dela, escolha a subpasta de políticas, benefícios ou integração.</p>
+        <ol class="passo-lista ajuda-steps">
+          <li><strong>Escolha a empresa.</strong> GestaMG, Clean / Ambiental (Coleta de Resíduos) ou SR Transportes.</li>
+          <li><strong>Abra a subpasta.</strong> Políticas Internas, Benefícios ou Roteiro de Integração, conforme o documento necessário.</li>
+          <li><strong>Gere ou abra o arquivo.</strong> Termos de consentimento e autorização pedem os dados e geram um PDF preenchido; códigos, políticas e roteiros abrem o PDF pronto.</li>
+          <li><strong>Imprima pelo navegador.</strong> Confira a prévia, selecione a impressora e mantenha escala 100% quando essa opção aparecer.</li>
         </ol>
-        <div class="caixa-atencao">Os modelos são adicionados aos poucos, conforme a necessidade. Se faltar um template que você precisa, é só pedir numa conversa com o Claude.</div>
+        <div class="caixa-dica">O Roteiro de Integração — Coleta de Resíduos fica em sua própria subpasta, com “Checklist completo” e “Somente termo de conclusão”.</div>
       </div>
 
-      <div class="ajuda-card">
+      <div class="ajuda-card ajuda-card-wide">
         <span class="tag-etapa">Materiais de Apoio</span>
-        <h3>📚 O que essa ferramenta faz</h3>
-        <p>Biblioteca com os Guias de Processo — o passo a passo de cada rotina, com telas reais do sistema, tabela de quem faz o quê e prazos. Hoje reúne o setor <strong>Departamento Pessoal</strong> (admissão, jornada e afastamentos, desligamento, segurança e conduta, descontos e responsabilização), o setor <strong>Financeiro e Frotas</strong> (compras e pagamentos, frota e veículos) e o setor <strong>Treinamentos e Políticas</strong> (código de conduta, políticas institucionais e treinamentos de acesso geral).</p>
-        <h3>Passo a passo</h3>
-        <ol class="passo-lista">
-          <li><strong>Escolha o setor.</strong> A tela inicial da aba mostra os setores disponíveis — Departamento Pessoal, Financeiro e Frotas ou Treinamentos e Políticas.</li>
-          <li><strong>Escolha o guia</strong> dentro da categoria correspondente (por exemplo, em Departamento Pessoal: Admissão e Contratação, Jornada e Afastamentos, Desligamento ou Segurança e Conduta).</li>
-          <li><strong>Leia o passo a passo.</strong> Cada guia traz identificação do processo, conceitos importantes, quem faz o quê e os passos com telas reais do sistema.</li>
-          <li><strong>Use os documentos anexados</strong>, quando o guia tiver — modelos prontos pra baixar ou ferramentas vinculadas, na seção "Documentos e Ferramentas de Apoio" ao final do guia.</li>
-        </ol>
-        <div class="caixa-dica">Pra voltar ao início da aba de qualquer ponto — mesmo lendo um guia — clique de novo no ícone <strong>Materiais de Apoio</strong> no menu lateral. Ele sempre leva de volta à escolha de setor.</div>
-        <div class="caixa-atencao">No setor Financeiro e Frotas, vários processos têm vídeos explicativos complementares que não estão incorporados aqui — consulte direto na pasta AMBIENTAL CLEAN → OPERAÇÃO → TREINAMENTOS E GUIAS, no OneDrive.</div>
+        <h3>📚 Consulte guias, políticas e treinamentos sem se perder</h3>
+        <p>Os materiais são agrupados por finalidade e apresentados em cards. Use a busca da aba quando quiser localizar um título ou uma categoria.</p>
+        <div class="ajuda-two-col">
+          <div><h4>Departamento Pessoal</h4><p class="ajuda-meta">Admissão, férias, jornada e afastamentos, desligamento, segurança, conduta e conferências internas.</p></div>
+          <div><h4>Sistema e Frota</h4><p class="ajuda-meta">Processos de compras, pagamentos, impostos, frota e manutenção. Alguns guias têm vídeos complementares no OneDrive.</p></div>
+          <div><h4>Treinamentos e Políticas</h4><p class="ajuda-meta">Navegação por empresa e segmento: códigos de conduta, políticas internas, integração, benefícios e transporte escolar.</p></div>
+          <div><h4>Dentro de um guia</h4><p class="ajuda-meta">Leia identificação, objetivo, conceitos, responsáveis e o passo a passo. No final, abra PDFs e ferramentas vinculadas.</p></div>
+        </div>
+        <div class="caixa-dica"><strong>Checklist de integração:</strong> marque os itens diretamente na tela. O progresso aparece no final e o botão “Imprimir Termo de Conclusão” é liberado quando os 17 itens forem concluídos.</div>
       </div>
 
+      <div class="ajuda-card ajuda-card-wide">
+        <span class="tag-etapa">Templates</span>
+        <h3>🎨 Crie uma comunicação pronta para compartilhar</h3>
+        <p>Escolha Boas-vindas, Feliz aniversário ou Foto de perfil. Selecione a identidade Clean Ambiental ou GestaMG, preencha os dados e envie uma foto JPG, PNG ou WebP.</p>
+        <ol class="passo-lista ajuda-steps">
+          <li><strong>Escolha o modelo.</strong> Os cards aparecem em grade; clique no tipo de publicação.</li>
+          <li><strong>Personalize.</strong> Informe nome, cargo, cidade/filial e, no aniversário, dia e mês. Ajuste a foto na moldura ou no recorte circular.</li>
+          <li><strong>Baixe a imagem PNG.</strong> O arquivo exportado tem o mesmo conteúdo da prévia, em alta resolução, pronto para comunicação interna.</li>
+        </ol>
+      </div>
+
+      <div class="caixa-dica ajuda-footer"><strong>Precisa voltar ao começo?</strong> Clique novamente no item da aba no menu lateral. O Hub retorna à tela inicial daquele módulo.</div>
     </div>
   </div>
 
