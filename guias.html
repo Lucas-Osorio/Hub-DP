@@ -80,7 +80,8 @@
     font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
     color:var(--azul-medio);margin:0 0 10px;
   }
-  .guia-lista{display:flex;flex-direction:column;gap:10px;}
+  .guia-lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;align-items:stretch;}
+  .guia-lista .guia-card{height:100%;}
   .pasta-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
   .pasta-grade .guia-card{height:100%;}
   .guia-card{
@@ -237,7 +238,8 @@
   .anexo-card p.desc{margin:0 0 12px;font-size:12.5px;color:var(--texto-suave);}
   table.tabela-checklist td.check{text-align:center;width:60px;color:var(--cinza-400);font-size:15px;}
 
-  .documentos-lista{display:flex;flex-direction:column;gap:10px;}
+  .documentos-lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;align-items:stretch;}
+  .documentos-lista .documento-item{height:100%;}
   .documento-item{
     display:flex;align-items:center;gap:14px;
     background:#fff;border:1px solid var(--borda);border-radius:var(--raio);
@@ -276,6 +278,7 @@
     .setor-card .guia-card-icon{width:42px;height:42px;}
     .guia-card-seta{margin-top:11px;}
     .pasta-grade{grid-template-columns:1fr;}
+    .guia-lista,.documentos-lista{grid-template-columns:1fr;}
     .guia-header{padding:18px;margin-bottom:20px;}
     .guia-header h1{font-size:19px;}
     table.tabela-id td.rotulo{width:150px;}
