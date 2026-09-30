@@ -2593,12 +2593,6 @@ const CATEGORIAS_INST = [
       "descricao": "PDF completo, conforme o documento de referência.",
       "arquivo": "assets/documentos/codigo-conduta-sr-transportes.pdf?v=20260918",
       "tipo": "download"
-    },
-    {
-      "titulo": "Termo de Consentimento — SR Transportes",
-      "descricao": "PDF completo, conforme o documento de referência.",
-      "arquivo": "assets/documentos/termo-consentimento-sr-transportes.pdf?v=20260919",
-      "tipo": "download"
     }
   ]
 },
@@ -2811,12 +2805,6 @@ const CATEGORIAS_INST = [
       "titulo": "Documento para impressão",
       "descricao": "PDF completo, conforme o documento de referência.",
       "arquivo": "assets/documentos/politica-motoristas-sr-transportes.pdf?v=20260918",
-      "tipo": "download"
-    },
-    {
-      "titulo": "Termo de Consentimento — SR Transportes",
-      "descricao": "PDF completo, conforme o documento de referência.",
-      "arquivo": "assets/documentos/termo-consentimento-sr-transportes.pdf?v=20260919",
       "tipo": "download"
     }
   ]
@@ -3321,57 +3309,6 @@ const regrasAlimentacaoClean = {
 politicasInstitucionais.guias = politicasInstitucionais.guias.filter(g => g.id !== 'regras-cartao-alimentacao');
 CATEGORIAS_INST.push({categoria:'Benefícios',guias:[regrasAlimentacao,regrasAlimentacaoClean,{"id": "primeiro-uso-cartao-alimentacao", "tipo": "politica", "rotulo": "Guia prático", "titulo": "Primeiro Uso e Desbloqueio do Cartão Alimentação", "subtitulo": "Ativação do cartão e orientações para as compras.", "identificacao": [["Documento", "Primeiro Uso e Desbloqueio do Cartão Alimentação"]], "html": "<p>Este guia explica como ativar o seu cartão de benefícios, com função Voucher, e começar a usá-lo no dia a dia. O saldo e a plataforma continuam os mesmos — o que muda é só a forma de uso.</p>\n<h3>🔄  O QUE MUDA NA PRÁTICA</h3>\n<p>Você recebe um cartão — continua sendo um único cartão para todos os benefícios.</p>\n<p>O sistema separa sozinho o saldo de Alimentação/Refeição do saldo de Benefícios Flexíveis (Home Office, Mobilidade, Saldo Livre etc.) na hora da compra.</p>\n<p>Não é preciso escolher saldo no aplicativo — o desconto certo acontece automaticamente.</p>\n<h3>📲  COMO ATIVAR O CARTÃO</h3>\n<p>1. Acesse o app Sólides HUB.</p>\n<p>2. Toque em <strong>“Meu Cartão”</strong> → <strong>“Novo Cartão”</strong>.</p>\n<p>3. Quando perguntar sobre 2ª via, escolha <strong>“Sim”</strong> e depois <strong>“outros”</strong> como motivo.</p>\n<p>4. Saia e entre no app novamente e toque em <strong>“cadastrar novo cartão”</strong>.</p>\n<p>5. Leia o QR Code do cartão e cadastre sua senha.</p>\n<div class=\"caixa caixa-atencao\"><span class=\"caixa-icone\">!</span><span>Ao confirmar a 2ª via, o cartão anterior é cancelado na hora. Só comece a ativação com o cartão novo em mãos.</span></div>\n<h3>🛒  COMO USAR NAS COMPRAS</h3>\n<p>Em mercados, restaurantes, padarias e afins, o pagamento é aprovado normalmente.</p>\n<p>Se a maquininha não tiver a opção Voucher, use <strong>“Crédito”</strong> mesmo assim — o sistema desconta do saldo certo do mesmo jeito.</p>\n<p>Transferência de saldo: pode entre Alimentação e Refeição. Não pode entre esses e os benefícios flexíveis (Home Office, Mobilidade, Saldo Livre).</p>\n<h3>🔗  QUER SABER MAIS?</h3>\n<p>Este guia cobre o essencial para o uso diário. Para dúvidas mais detalhadas (carteiras digitais, home office, cancelamento etc.), consulte o FAQ completo da Sólides:</p>\n<p><a href=\"https://ajuda.solides.com.br/hc/pt-br/articles/46213728924941-FAQ-Voucher-Troca-de-Cart%C3%B5es-de-Benef%C3%ADcios-e-Atualiza%C3%A7%C3%B5es-de-Funcionalidades\" target=\"_blank\" rel=\"noopener\">FAQ completo da Sólides</a></p>", "documentos": [{"titulo": "Versão para impressão", "descricao": "Documento completo em PDF.", "arquivo": "assets/documentos/primeiro-uso-cartao-alimentacao.pdf?v=20260919", "tipo": "download"}]}]}, {categoria:'Transporte Escolar',guias:[{"id": "boas-vindas-transporte-escolar", "tipo": "politica", "rotulo": "Orientações de integração", "titulo": "Boas-Vindas — Monitores de Transporte Escolar", "subtitulo": "Apresentação, chamada, comunicação e segurança dos alunos.", "identificacao": [["Documento", "Boas-Vindas — Monitores de Transporte Escolar"]], "html": "<p>Se este for o seu primeiro dia como monitora do transporte escolar, seguem algumas orientações importantes para te ajudar nessa nova jornada:</p>\n<h3>👋  APRESENTAÇÃO</h3>\n<p>Apresente-se para as crianças, o motorista e também para os pais ou responsáveis dos alunos. Essa aproximação é essencial para criar um ambiente de confiança e segurança.</p>\n<h3>📝  CHAMADA DOS ALUNOS</h3>\n<p>Com a lista de alunos da sua rota (que foi enviada para você), realize a chamada na ida e na volta. Assim, você garante que todos estejam no veículo e também começa a se familiarizar com os rostinhos das crianças.</p>\n<h3>📱  GRUPO DE WHATSAPP</h3>\n<p>Crie um grupo de WhatsApp com os pais e responsáveis, juntamente com o motorista, para facilitar a comunicação. Utilize o grupo para:</p>\n<p>Enviar avisos e comunicados;</p>\n<p>Permitir que os pais informem faltas ou mudanças;</p>\n<p>Manter uma comunicação rápida e organizada.</p>\n<p>Antes de criar o grupo, verifique com o motorista se ele já possui um grupo ativo da rota para você entrar.</p>\n<h3>🚌  EMBARQUE E DESEMBARQUE</h3>\n<p>Auxilie sempre as crianças ao embarcar e desembarcar do veículo.</p>\n<p>Ajude-as a atravessar a rua com segurança;</p>\n<p>Acompanhe-as até dentro da escola;</p>\n<p>Auxilie com as mochilas e garanta que todas as crianças estejam em segurança.</p>\n<p>💛  Sua função é essencial para garantir a segurança, o cuidado e o bem-estar dos alunos durante o transporte escolar.🎉  Seja muito bem-vinda à equipe!</p>", "documentos": [{"titulo": "Versão para impressão", "descricao": "Documento completo em PDF.", "arquivo": "assets/documentos/boas-vindas-transporte-escolar.pdf?v=20260919", "tipo": "download"}]}]});
 CATEGORIAS_DP.push({categoria:'Benefícios — Conferência Interna',guias:[{"id": "criterios-cesta-basica", "tipo": "politica", "rotulo": "Orientação interna", "titulo": "Cesta Básica — Critérios de Apuração", "subtitulo": "Conferência interna do benefício na operação de coleta.", "identificacao": [["Documento", "Cesta Básica — Critérios de Apuração"], ["Público", "Departamento Pessoal e responsáveis administrativos das filiais"], ["Abrangência", "Somente operação de coleta"]], "html": "<h3>🎯  OBJETIVO</h3>\n<p>Este documento reúne, de forma rápida e objetiva, os critérios para saber se o colaborador tem ou não direito à cesta básica no período. É material de apoio para o Departamento Pessoal e para os responsáveis administrativos de cada filial — não deve ser enviado aos colaboradores operacionais.</p>\n<p>Aplica-se apenas à operação de coleta. A cesta básica não é um benefício válido para a Gesta MG (administrativo) nem para a SR Transportes.</p>\n<h3>📅  REGRA GERAL DE APURAÇÃO</h3>\n<p>A cesta básica é apurada junto com a folha de pagamento: sempre do dia 26 do mês anterior até o dia 25 do mês atual. É paga junto com o salário, e quem faz essa conferência todo mês é o responsável administrativo de cada filial.</p>\n<h3>✅  TABELA DE ELEGIBILIDADE</h3><div class=\"tabela-scroll\"><table class=\"tabela-guia\"><thead><tr><th>SITUAÇÃO</th><th>O QUE COMPROVA</th><th>RESULTADO</th></tr></thead><tbody><tr><td>Comparecimento no período (26 a 25), com ou sem justificativa aceita: atestado médico, acidente de trabalho comprovado, óbito de cônjuge ou filho(a), férias, licença legal ou folga já combinada com a liderança.</td><td>Ponto sem ocorrência, ou o documento correspondente (atestado, CAT/laudo, certidão, registro do combinado).</td><td>MANTÉM</td></tr><tr><td>1ª falta no mês para cuidar de dependente (filho, cônjuge ou outro responsável direto) com problema de saúde comprovado, sem atestado do próprio colaborador.</td><td>Laudo, relatório médico ou declaração da escola/serviço de saúde do dependente, em até 5 dias úteis.</td><td>MANTÉM (automático)</td></tr><tr><td>2ª falta ou mais no mesmo mês, pelo mesmo motivo (dependente doente).</td><td>Mesma comprovação acima.</td><td>VAI PARA ANÁLISE DO DP</td></tr><tr><td>Falta sem aviso e sem comprovação, atraso ou saída antes do horário sem autorização.</td><td>Ponto, ou nenhuma comprovação apresentada.</td><td>PERDE</td></tr></tbody></table></div><p>A convenção coletiva não trata falta para cuidar de dependente doente como falta justificada. Mesmo assim, a empresa decidiu conceder esse benefício por conta própria, para qualquer colaborador. Por isso a 1ª ocorrência no mês é automática; da 2ª vez em diante, o caso sobe para análise do Departamento Pessoal. A contagem reinicia a cada mês — usar a falta automática em um mês não conta contra o colaborador no mês seguinte.</p>\n<p>O responsável administrativo da filial decide sozinho, usando a tabela acima. Só sobe para o Departamento Pessoal quando o colaborador repetir a falta por dependente no mesmo mês (2ª vez ou mais), ou quando a situação não se encaixar em nenhuma linha da tabela.</p>"}]});
-
-CATEGORIAS_INST.push({categoria:'Teste de Assinatura Digital',guias:[
-  {
-    id:'teste-assinatura-pdfs',
-    tipo:'politica',
-    rotulo:'Material de teste',
-    titulo:'Documentos PDF para Assinatura Digital',
-    subtitulo:'PDFs prontos para validar o fluxo de assinatura.',
-    identificacao:[['Documento','Pacote de testes — PDFs'],['Finalidade','Avaliar a coleta de assinaturas digitais'],['Status','Em avaliação']],
-    html:'<p>Use esta área para testar a assinatura digital nos documentos já convertidos para PDF. Os arquivos são cópias de teste e ficam separados dos materiais oficiais da plataforma.</p><h3>📄 COMO USAR</h3><p>Abra um documento, faça o teste de assinatura e registre o resultado para a próxima etapa de validação.</p>',
-    documentos:[
-      {titulo:'Roteiro Checklist — PDF',descricao:'Arquivo PDF para teste.',arquivo:'assets/documentos/teste-assinatura-digital/pdf/roteiro-checklist.pdf',tipo:'download'},
-      {titulo:'Termo de Advertência — PDF',descricao:'Arquivo PDF para teste.',arquivo:'assets/documentos/teste-assinatura-digital/pdf/termo-advertencia.pdf',tipo:'download'},
-      {titulo:'Termo de Autorização de Desconto de Avaria — PDF',descricao:'Arquivo PDF para teste.',arquivo:'assets/documentos/teste-assinatura-digital/pdf/termo-desconto-avaria.pdf',tipo:'download'},
-      {titulo:'Termo de Consentimento — GestaMG — PDF',descricao:'Arquivo PDF para teste.',arquivo:'assets/documentos/teste-assinatura-digital/pdf/termo-consentimento-gestamg.pdf',tipo:'download'},
-      {titulo:'Termo de Consentimento — SR Transportes — PDF',descricao:'Arquivo PDF para teste.',arquivo:'assets/documentos/teste-assinatura-digital/pdf/termo-consentimento-sr-transportes.pdf',tipo:'download'}
-    ]
-  },
-  {
-    id:'teste-assinatura-editaveis',
-    tipo:'politica',
-    rotulo:'Material de teste',
-    titulo:'Arquivos Editáveis de Teste',
-    subtitulo:'Documentos de origem para comparar o resultado da assinatura.',
-    identificacao:[['Documento','Pacote de testes — arquivos editáveis'],['Finalidade','Comparar o arquivo original ao PDF assinado'],['Status','Em avaliação']],
-    html:'<p>Estes arquivos editáveis correspondem aos documentos usados na simulação. Mantenha-os como referência para comparar a formatação e o conteúdo antes e depois da assinatura digital.</p>',
-    documentos:[
-      {titulo:'Roteiro Checklist — Editável',descricao:'Arquivo Word de origem.',arquivo:'assets/documentos/teste-assinatura-digital/editaveis/roteiro-checklist.docx',tipo:'download'},
-      {titulo:'Termo de Advertência — Editável',descricao:'Arquivo Word de origem.',arquivo:'assets/documentos/teste-assinatura-digital/editaveis/termo-advertencia.docx',tipo:'download'},
-      {titulo:'Termo de Autorização de Desconto de Avaria — Editável',descricao:'Arquivo Word de origem.',arquivo:'assets/documentos/teste-assinatura-digital/editaveis/termo-desconto-avaria.docx',tipo:'download'},
-      {titulo:'Termo de Consentimento — GestaMG — Editável',descricao:'Arquivo Word de origem.',arquivo:'assets/documentos/teste-assinatura-digital/editaveis/termo-consentimento-gestamg.docx',tipo:'download'},
-      {titulo:'Termo de Consentimento — SR Transportes — Editável',descricao:'Arquivo Word de origem.',arquivo:'assets/documentos/teste-assinatura-digital/editaveis/termo-consentimento-sr-transportes.docx',tipo:'download'}
-    ]
-  },
-  {
-    id:'teste-assinatura-imagens',
-    tipo:'politica',
-    rotulo:'Material de teste',
-    titulo:'Imagens e Registros de Teste',
-    subtitulo:'Referências visuais usadas na avaliação do fluxo.',
-    identificacao:[['Documento','Pacote de testes — imagens'],['Finalidade','Registrar referências visuais do teste'],['Status','Em avaliação']],
-    html:'<p>Imagens de apoio reunidas durante a preparação dos documentos para assinatura digital. Elas servem apenas como referência do teste e não substituem os documentos oficiais.</p>',
-    documentos:[
-      {titulo:'Registro de teste — Advertência',descricao:'Imagem de referência.',arquivo:'assets/documentos/teste-assinatura-digital/imagens/advert-1.png',tipo:'download'},
-      {titulo:'Registro de teste — Avaria',descricao:'Imagem de referência.',arquivo:'assets/documentos/teste-assinatura-digital/imagens/avaria-1.png',tipo:'download'},
-      {titulo:'Registro de teste — GestaMG',descricao:'Imagem de referência.',arquivo:'assets/documentos/teste-assinatura-digital/imagens/gesta-1.png',tipo:'download'},
-      {titulo:'Registro de teste — Roteiro',descricao:'Imagem de referência.',arquivo:'assets/documentos/teste-assinatura-digital/imagens/roteiro-3.png',tipo:'download'},
-      {titulo:'Registro de teste — SR Transportes',descricao:'Imagem de referência.',arquivo:'assets/documentos/teste-assinatura-digital/imagens/sr-1.png',tipo:'download'}
-    ]
-  }
-]});
 
 const PASTAS_INSTITUCIONAIS = [
   {
