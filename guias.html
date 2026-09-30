@@ -471,7 +471,20 @@ const CATEGORIAS_DP = [
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O registro no Domínio deve ser concluído até 1 dia antes da admissão. O envio ao eSocial deve ocorrer até o final do expediente da data de admissão.</span></div>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Prazo: a Contabilidade deve devolver a admissão processada — liberação e documentos — ao Departamento Pessoal com, no mínimo, 24 horas de antecedência da data de admissão, garantindo tempo hábil para a coleta de assinaturas antes do primeiro dia do colaborador.</span></div>
           `},
-          { numero: 9, titulo: 'Baixar os Documentos do Onvio e Enviar para Assinatura na Sólides', responsavel: 'Departamento Pessoal', html: `
+          { numero: 9, titulo: 'Cadastrar no Sólides Ponto e no Sólides Benefícios', responsavel: 'Departamento Pessoal', html: `
+            <ul>
+              <li>Abra <strong>Cadastro / Fichas</strong> no Hub de Ferramentas DP.</li>
+              <li>Envie as fichas de empregado exportadas do Domínio em <strong>.xls</strong> ou <strong>.xlsx</strong>. Use um arquivo por colaborador, com apenas uma ficha em cada arquivo; vários arquivos podem ser enviados de uma vez.</li>
+              <li>Em cada card, confira os dados e preencha o <strong>e-mail pessoal</strong>, o <strong>telefone celular</strong> e informe se a contratação foi feita com o <strong>RH terceirizado</strong>.</li>
+              <li>Gere as planilhas de <strong>Ponto</strong>, <strong>Benefícios</strong> e <strong>EPI</strong> pelos botões da ferramenta.</li>
+              <li>Importe as planilhas de Ponto e Benefícios nos respectivos módulos atuais da Sólides e confira o processamento. A planilha de EPI segue para a rotina correspondente.</li>
+              <li>Depois do cadastro, informe ao colaborador o PIN de acesso ao ponto e oriente a instalação do aplicativo.</li>
+            </ul>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Com o Trello conectado, a geração das planilhas cria automaticamente os cards de acompanhamento: <strong>30 dias</strong> e <strong>90 dias</strong> do período de experiência e, quando a contratação foi feita com RH terceirizado, um card adicional de <strong>45 dias</strong> para reabertura da vaga.</span></div>
+            <div class="caixa caixa-exemplo"><span class="caixa-icone">i</span><span>A criação dos cards depende da conexão com o Trello no momento da geração das planilhas.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O cartão de benefícios precisa estar em posse do colaborador antes do primeiro pagamento, no 5º dia útil de cada mês.</span></div>
+          `},
+          { numero: 10, titulo: 'Baixar os Documentos do Onvio e Enviar para Assinatura no Sólides', responsavel: 'Departamento Pessoal', html: `
             <ul>
               <li>Acesse o <strong>Onvio</strong> — o mesmo portal do cliente utilizado no Passo 8 para o registro da admissão — e baixe os documentos que necessitam de assinatura do colaborador.</li>
               <li>Envie os documentos para assinatura digital seguindo o padrão do guia disponível na própria Plataforma GestaMG.</li>
@@ -479,14 +492,14 @@ const CATEGORIAS_DP = [
             <button class="guia-voltar" type="button" onclick="abrirGuia('assinatura-digital-documentos')"><strong>GUIA — Assinatura Digital de Documentos</strong> →</button>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O Departamento Pessoal acompanha e cobra a conclusão da assinatura digital dos documentos admissionais antes do primeiro dia de trabalho do colaborador.</span></div>
           `},
-          { numero: 10, titulo: 'Enviar a Ficha de Registro à Segurança do Trabalho', responsavel: 'Departamento Pessoal', html: `
+          { numero: 11, titulo: 'Enviar a Ficha de Registro à Segurança do Trabalho', responsavel: 'Departamento Pessoal', html: `
             <ul>
               <li>Envie o relatório de admitidos com nome completo, data de nascimento, CPF e matrícula.</li>
               <li>Envie a ficha de registro do novo colaborador à equipe de Segurança do Trabalho (<strong>Suprema</strong>), responsável pelos programas legais, para inclusão das informações no eSocial.</li>
             </ul>
             <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: confirmar e documentar o canal oficial de envio das informações à Suprema (grupo de WhatsApp correto ou outro canal formal).</span></div>
           `},
-          { numero: 11, titulo: 'Integrar e Recepcionar o Novo Colaborador', responsavel: 'Departamento Pessoal / Assistente Administrativo', html: `
+          { numero: 12, titulo: 'Integrar e Recepcionar o Novo Colaborador', responsavel: 'Departamento Pessoal / Assistente Administrativo', html: `
             <ul>
               <li>Confeccione o card de boas-vindas no <strong>Canva</strong> — modelo disponível no Drive, na pasta Identidade Visual.</li>
               <li>Envie o card ao Assistente Administrativo da unidade até um dia antes da admissão.</li>
@@ -495,6 +508,7 @@ const CATEGORIAS_DP = [
               <li>Quando a contratação for feita internamente, elabore o cronograma de integração da semana de admissão, confirmando horários com Frotas, Compras, Financeiro, DP e RH Reserva, e envie por e-mail a todos os participantes com antecedência, com cópia para a Gerente Administrativo.</li>
             </ul>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Quando a contratação for feita através do R&amp;S da Rheserva, a própria Rheserva planeja e acompanha ativamente a integração do colaborador. Nesse caso, o Departamento Pessoal deve apenas acompanhar o processo, sem assumir a elaboração do cronograma.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A Plataforma GestaMG é de uso administrativo do Departamento Pessoal e dos responsáveis pela filial. O colaborador não recebe acesso; os documentos são apresentados de forma impressa e presencial.</span></div>
             <ul>
               <li>Ministre o treinamento de integração na data de admissão, seguindo o padrão de integração definido para o tipo de contratação do colaborador (administrativo ou operacional — motorista, coletor etc.).</li>
               <li>Realize o treinamento via <strong>Google Meet</strong> ou presencialmente, conforme disponibilidade.</li>
@@ -502,7 +516,7 @@ const CATEGORIAS_DP = [
               <li>Gere o documento único de ciência na Plataforma GestaMG — Termo de Consentimento (administrativo) ou Termo de Conclusão (operação) — e envie-o para assinatura digital seguindo o <button class="guia-voltar" style="display:inline;padding:0;margin:0;vertical-align:baseline" type="button" onclick="abrirGuia('assinatura-digital-documentos')"><strong>GUIA — Assinatura Digital de Documentos</strong></button>.</li>
             </ul>
           `},
-          { numero: 12, titulo: 'Incluir Benefícios', responsavel: 'Departamento Pessoal', html: `
+          { numero: 13, titulo: 'Incluir Benefícios', responsavel: 'Departamento Pessoal', html: `
             <ul>
               <li><strong>Vale-Transporte:</strong> se o colaborador optar pelo benefício, cadastre-o no <strong>Domínio</strong> (verba de desconto) e no site da <strong>Turin</strong>.
                 <ul>
@@ -529,7 +543,7 @@ const CATEGORIAS_DP = [
             </ul>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Todos os cadastros de benefícios (Odontoprev, Unimed e Totalpass) devem ser realizados no dia 25 de cada mês, sem exceção.</span></div>
           `},
-          { numero: 13, titulo: 'Abrir a Conta Salário', responsavel: 'Financeiro', html: `
+          { numero: 14, titulo: 'Abrir a Conta Salário', responsavel: 'Financeiro', html: `
             <ul>
               <li>Gere o arquivo de abertura de conta no <strong>Domínio Web</strong>: acesse Relatórios → Gerenciador de Relatórios → Diversos, clique em + e selecione Abertura de Conta → Banco do Brasil.</li>
               <li>Preencha as informações da empresa e do novo colaborador.</li>
@@ -546,19 +560,6 @@ const CATEGORIAS_DP = [
             </ul>
             <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: criar modelo padrão de e-mail de comunicação dos dados da conta salário ao colaborador.</span></div>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Essa etapa deve ser concluída até o dia 23 de cada mês, para garantir o pagamento do salário no prazo.</span></div>
-          `},
-          { numero: 14, titulo: 'Cadastrar no Sólides Ponto e no Sólides Benefícios', responsavel: 'Departamento Pessoal', html: `
-            <ul>
-              <li>Abra <strong>Cadastro / Fichas</strong> no Hub de Ferramentas DP.</li>
-              <li>Envie as fichas de empregado exportadas do Domínio em <strong>.xls</strong> ou <strong>.xlsx</strong>. Use um arquivo por colaborador, com apenas uma ficha em cada arquivo; vários arquivos podem ser enviados de uma vez.</li>
-              <li>Em cada card, confira os dados e preencha o <strong>e-mail pessoal</strong>, o <strong>telefone celular</strong> e informe se a contratação foi feita com o <strong>RH terceirizado</strong>.</li>
-              <li>Gere as planilhas de <strong>Ponto</strong>, <strong>Benefícios</strong> e <strong>EPI</strong> pelos botões da ferramenta.</li>
-              <li>Importe as planilhas de Ponto e Benefícios nos respectivos módulos atuais da Sólides e confira o processamento. A planilha de EPI segue para a rotina correspondente.</li>
-              <li>Depois do cadastro, informe ao colaborador o PIN de acesso ao ponto e oriente a instalação do aplicativo.</li>
-            </ul>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Com o Trello conectado, a geração das planilhas cria automaticamente os cards de acompanhamento: <strong>30 dias</strong> e <strong>90 dias</strong> do período de experiência e, quando a contratação foi feita com RH terceirizado, um card adicional de <strong>45 dias</strong> para reabertura da vaga.</span></div>
-            <div class="caixa caixa-exemplo"><span class="caixa-icone">i</span><span>A criação dos cards depende da conexão com o Trello no momento da geração das planilhas.</span></div>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O cartão de benefícios precisa estar em posse do colaborador antes do primeiro pagamento, no 5º dia útil de cada mês.</span></div>
           `},
           { numero: 15, titulo: 'Monitorar o Vencimento do Período de Experiência', responsavel: 'Departamento Pessoal', html: `
             <ul>
