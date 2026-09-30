@@ -323,7 +323,7 @@ const CATEGORIAS_DP = [
           ['Responsável principal', 'Departamento Pessoal'],
           ['Quem mais participa', 'Gestor da Área, Diretoria, RH (recrutamento externo), Contabilidade, Financeiro, Assistente Administrativo, Segurança do Trabalho (Suprema), TI'],
           ['Quando acontece', 'Conforme abertura de vaga — nova posição, substituição ou aumento de quadro'],
-          ['Sistemas utilizados', 'Domínio, Praxio, eSocial, Hub de Ferramentas DP, Sólides Ponto, Sólides Benefícios, Site Turin, Site Odontoprev, Site Unimed, Site Totalpass, OneDrive'],
+          ['Sistemas utilizados', 'Domínio, Onvio, eSocial, Hub de Ferramentas DP, Sólides Ponto, Sólides Benefícios, Trello, Site Turin, Site Odontoprev, Site Unimed e Site Totalpass'],
           ['Documentos relacionados', 'Requisição de Admissão, Ficha de Admissão, ASO, Termo de Vale-Transporte'],
         ],
         objetivo: 'Este guia orienta os setores envolvidos na execução correta e sequencial do processo de requisição e admissão de colaboradores — da abertura da vaga, com o alinhamento ao RH, até a liberação do colaborador para o trabalho. Cobre a aprovação da contratação, o agendamento do exame admissional, o registro no eSocial, a inclusão de benefícios e o cadastro no controle de ponto. O objetivo é garantir conformidade legal, organização documental e uma boa experiência de chegada para o novo colaborador.',
@@ -549,45 +549,15 @@ const CATEGORIAS_DP = [
           `},
           { numero: 14, titulo: 'Cadastrar no Sólides Ponto e no Sólides Benefícios', responsavel: 'Departamento Pessoal', html: `
             <ul>
-              <li>Utilize a ferramenta <strong>Cadastro / Fichas</strong> do Hub de Ferramentas DP para gerar as planilhas de importação.</li>
-              <li>Envie a(s) Ficha(s) de Admissão do(s) colaborador(es), exportada(s) do Domínio em .xls ou .xlsx — é possível enviar várias de uma vez.</li>
-              <li>Confira os dados extraídos automaticamente em cada card. Campo com fundo amarelo veio vazio da ficha — não é erro, é sinal de "confira aqui".</li>
-              <li>Preencha e-mail e celular do colaborador — obrigatórios, pois a ficha do Domínio nunca traz e-mail. Sem e-mail próprio, marque a opção de usar o e-mail do DP.</li>
-              <li>Gere as planilhas de Ponto e Benefícios — pelos botões individuais ou por "Gerar as 3 planilhas" (inclui também a planilha de EPI).</li>
-              <li>No site do Sólides Ponto, no menu lateral, clique em Cadastros Gerais → Colaboradores.</li>
+              <li>Abra <strong>Cadastro / Fichas</strong> no Hub de Ferramentas DP.</li>
+              <li>Envie as fichas de empregado exportadas do Domínio em <strong>.xls</strong> ou <strong>.xlsx</strong>. Use um arquivo por colaborador, com apenas uma ficha em cada arquivo; vários arquivos podem ser enviados de uma vez.</li>
+              <li>Em cada card, confira os dados e preencha o <strong>e-mail pessoal</strong>, o <strong>telefone celular</strong> e informe se a contratação foi feita com o <strong>RH terceirizado</strong>.</li>
+              <li>Gere as planilhas de <strong>Ponto</strong>, <strong>Benefícios</strong> e <strong>EPI</strong> pelos botões da ferramenta.</li>
+              <li>Importe as planilhas de Ponto e Benefícios nos respectivos módulos atuais da Sólides e confira o processamento. A planilha de EPI segue para a rotina correspondente.</li>
+              <li>Depois do cadastro, informe ao colaborador o PIN de acesso ao ponto e oriente a instalação do aplicativo.</li>
             </ul>
-            ${imgGuia('assets/guias/admissao-colaboradores/image11.webp', 'Menu lateral — Cadastros Gerais → Colaboradores.')}
-            <ul>
-              <li>Na lista de colaboradores, clique em Ações em lote e, em seguida, em Admitir Colaboradores.</li>
-            </ul>
-            ${imgGuia('assets/guias/admissao-colaboradores/image12.webp', 'Tela de Colaboradores — botão Ações em lote.')}
-            <ul>
-              <li>Clique em Escolher arquivo e selecione a planilha de Ponto gerada. Escolha a <strong>«Escala»</strong> do(s) colaborador(es) e clique em Processar.</li>
-              <li>Confira os dados processados e clique em Admitir para concluir o cadastro.</li>
-            </ul>
-            ${imgGuia('assets/guias/admissao-colaboradores/image13.webp', 'Tela de Admitir Colaboradores — importação da planilha e confirmação.')}
-            <ul>
-              <li>Faça login na plataforma portal-beneficios.solides.com.br/login.</li>
-              <li>No menu lateral, clique em Colaboradores.</li>
-              <li>No canto superior direito, clique em Cadastrar colaborador.</li>
-              <li>Clique em Importar planilha.</li>
-            </ul>
-            ${imgGuia('assets/guias/admissao-colaboradores/image15.webp', 'Opções de cadastro — Importar planilha ou Cadastrar individualmente.')}
-            <ul>
-              <li>Clique em Selecionar arquivos e suba o arquivo de Benefícios gerado pela ferramenta.</li>
-              <li>Clique em Enviar planilha.</li>
-            </ul>
-            ${imgGuia('assets/guias/admissao-colaboradores/image16.webp', 'Tela de importação da planilha de Benefícios.')}
-            <ul>
-              <li>Novamente no canto superior direito, clique em Importações de colaboradores.</li>
-              <li>Localize a importação — sempre a primeira da lista — e clique no ícone para ver os detalhes.</li>
-              <li>Se a mensagem exibida for "sucesso", a importação foi realizada corretamente.</li>
-            </ul>
-            ${imgGuia('assets/guias/admissao-colaboradores/image18.webp', 'Mensagem de confirmação da importação.')}
-            <ul>
-              <li>Após o cadastro, informe ao colaborador o código PIN de acesso à plataforma de ponto e oriente a baixar o aplicativo.</li>
-            </ul>
-            ${imgGuia('assets/guias/admissao-colaboradores/image19.webp', 'Aplicativo Sólides Ponto — usado pelo colaborador para registrar o ponto.')}
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Com o Trello conectado, a geração das planilhas cria automaticamente os cards de acompanhamento: <strong>30 dias</strong> e <strong>90 dias</strong> do período de experiência e, quando a contratação foi feita com RH terceirizado, um card adicional de <strong>45 dias</strong> para reabertura da vaga.</span></div>
+            <div class="caixa caixa-exemplo"><span class="caixa-icone">i</span><span>A criação dos cards depende da conexão com o Trello no momento da geração das planilhas.</span></div>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O cartão de benefícios precisa estar em posse do colaborador antes do primeiro pagamento, no 5º dia útil de cada mês.</span></div>
           `},
           { numero: 15, titulo: 'Monitorar o Vencimento do Período de Experiência', responsavel: 'Departamento Pessoal', html: `
