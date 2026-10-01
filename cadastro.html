@@ -1186,24 +1186,38 @@ function derivarEstrangeiro(paisNacionalidade){
 }
 function parseEndereco(str){
   if(!str) return { logradouro:'', numero:'', complemento:'', bairro:'', cidade:'', estado:'', cep:'' };
-  const cepMatch = str.match(/CEP:?\s*([\d\-]+)/i);
+  const texto = String(str).replace(/[\\r\\n]+/g, ' ').trim();
+  const cepMatch = texto.match(/CEP:?\\s*([\\d\\-]+)/i);
   const cep = cepMatch ? cepMatch[1] : '';
-  const semCep = str.replace(/\s*-?\s*CEP:?\s*[\d\-]+/i, '').trim();
-  // A ficha traz o endereço em ordem fixa: Logradouro, Número, Complemento,
-  // Bairro, Cidade, UF. NÃO filtrar strings vazias aqui — quando o Complemento
-  // vem em branco, a vírgula continua no lugar (ex.: "Rua X, 100, , Bairro Y,
-  // Cidade Z, UF"), e remover essa posição vazia desalinha todos os campos
-  // seguintes (Bairro vira Complemento, Cidade vira Bairro, UF é perdida).
-  const partes = semCep.replace(/,\s*$/, '').split(',').map(p => p.trim());
-  return {
-    logradouro: partes[0] || '',
-    numero: partes[1] || '',
-    complemento: partes[2] || '',
-    bairro: partes[3] || '',
-    cidade: partes[4] || '',
-    estado: partes[5] || '',
-    cep,
-  };
+  const semCep = texto.replace(/\\s*-?\\s*CEP:?\\s*[\\d\\-]+/i, '').replace(/,\\s*$/, '').trim();
+  const partes = semCep.split(',').map(p => p.trim());
+  const ufs = /^(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)$/i;
+  let logradouro = partes[0] || '';
+  let numero = partes[1] || '';
+  let complemento = '';
+  let bairro = '';
+  let cidade = '';
+  let estado = '';
+  if(partes.length >= 6){
+    // Formato completo: logradouro, número, complemento, bairro, cidade, UF.
+    complemento = partes[2] || '';
+    bairro = partes[3] || '';
+    cidade = partes[4] || '';
+    estado = partes[5] || '';
+  }else if(partes.length === 5 && ufs.test(partes[4])){
+    // Formato do Domínio quando não existe complemento:
+    // logradouro, número, bairro, cidade, UF.
+    bairro = partes[2] || '';
+    cidade = partes[3] || '';
+    estado = partes[4] || '';
+  }else{
+    // Mantém a leitura compatível com fichas incompletas ou antigas.
+    complemento = partes[2] || '';
+    bairro = partes[3] || '';
+    cidade = partes[4] || '';
+    estado = partes[5] || '';
+  }
+  return { logradouro, numero, complemento, bairro, cidade, estado, cep };
 }
 // Converte uma data "YYYY-MM-DD" (usada nos <input type=date>) em objeto Date real.
 // Necessário porque o Excel só reconhece a data corretamente quando a célula é
