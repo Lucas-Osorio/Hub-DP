@@ -3541,7 +3541,7 @@ const SETORES = [
   },
   {
     id: 'institucional',
-    nome: 'Treinamentos e Políticas',
+    nome: 'Normas e Treinamentos',
     descricao: 'Selecione a empresa ou o segmento para consultar os materiais.',
     categorias: CATEGORIAS_INST,
     pastas: PASTAS_INSTITUCIONAIS,
@@ -3835,7 +3835,7 @@ function renderPasta(setorId, pastaId) {
 
   pastaInstitucionalAtual = pasta.id;
   document.getElementById('header-titulo').textContent = pasta.nome;
-  document.getElementById('header-sub').textContent = '· Treinamentos e Políticas';
+  document.getElementById('header-sub').textContent = '· Normas e Treinamentos';
   document.getElementById('busca-wrap').classList.remove('ativo');
 
   const subpastas = pasta.subpastas.map(id => setor.pastas.find(p=>p.id===id)).map(p => `<button class="guia-card" type="button" onclick="abrirPasta('${setorId}', '${p.id}')"><span class="guia-card-icon">${iconeGuia(p.icone)}</span><span class="guia-card-corpo"><span class="guia-card-titulo">${p.nome}</span><span class="guia-card-sub">${p.descricao}</span></span><span class="guia-card-seta">${ICONE_SETA}</span></button>`).join('');
