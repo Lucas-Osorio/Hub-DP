@@ -1186,10 +1186,10 @@ function derivarEstrangeiro(paisNacionalidade){
 }
 function parseEndereco(str){
   if(!str) return { logradouro:'', numero:'', complemento:'', bairro:'', cidade:'', estado:'', cep:'' };
-  const texto = String(str).replace(/[\\r\\n]+/g, ' ').trim();
-  const cepMatch = texto.match(/CEP:?\\s*([\\d\\-]+)/i);
+  const texto = String(str).replace(/[\r\n]+/g, ' ').trim();
+  const cepMatch = texto.match(/CEP:?\s*([\d\-]+)/i);
   const cep = cepMatch ? cepMatch[1] : '';
-  const semCep = texto.replace(/\\s*-?\\s*CEP:?\\s*[\\d\\-]+/i, '').replace(/,\\s*$/, '').trim();
+  const semCep = texto.replace(/\s*-?\s*CEP:?\s*[\d\-]+/i, '').replace(/,\s*$/, '').trim();
   const partes = semCep.split(',').map(p => p.trim());
   const ufs = /^(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MG|MS|MT|PA|PB|PE|PI|PR|RJ|RN|RO|RR|RS|SC|SE|SP|TO)$/i;
   let logradouro = partes[0] || '';
@@ -1199,19 +1199,15 @@ function parseEndereco(str){
   let cidade = '';
   let estado = '';
   if(partes.length >= 6){
-    // Formato completo: logradouro, número, complemento, bairro, cidade, UF.
     complemento = partes[2] || '';
     bairro = partes[3] || '';
     cidade = partes[4] || '';
     estado = partes[5] || '';
   }else if(partes.length === 5 && ufs.test(partes[4])){
-    // Formato do Domínio quando não existe complemento:
-    // logradouro, número, bairro, cidade, UF.
     bairro = partes[2] || '';
     cidade = partes[3] || '';
     estado = partes[4] || '';
   }else{
-    // Mantém a leitura compatível com fichas incompletas ou antigas.
     complemento = partes[2] || '';
     bairro = partes[3] || '';
     cidade = partes[4] || '';
