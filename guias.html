@@ -323,7 +323,7 @@ const CATEGORIAS_DP = [
           ['Responsável principal', 'Departamento Pessoal'],
           ['Quem mais participa', 'Gestor da Área, Diretoria, RH (recrutamento externo), Contabilidade, Financeiro, Assistente Administrativo, Segurança do Trabalho (Suprema), TI'],
           ['Quando acontece', 'Conforme abertura de vaga — nova posição, substituição ou aumento de quadro'],
-          ['Sistemas utilizados', 'Domínio, Onvio, eSocial, Hub de Ferramentas DP, Sólides Ponto, Sólides Benefícios, Trello, Site Turin, Site Odontoprev, Site Unimed e Site Totalpass'],
+          ['Sistemas utilizados', 'Domínio, Praxio, eSocial, Hub de Ferramentas DP, Sólides Ponto, Sólides Benefícios, Site Turin, Site Odontoprev, Site Unimed, Site Totalpass, OneDrive'],
           ['Documentos relacionados', 'Requisição de Admissão, Ficha de Admissão, ASO, Termo de Vale-Transporte'],
         ],
         objetivo: 'Este guia orienta os setores envolvidos na execução correta e sequencial do processo de requisição e admissão de colaboradores — da abertura da vaga, com o alinhamento ao RH, até a liberação do colaborador para o trabalho. Cobre a aprovação da contratação, o agendamento do exame admissional, o registro no eSocial, a inclusão de benefícios e o cadastro no controle de ponto. O objetivo é garantir conformidade legal, organização documental e uma boa experiência de chegada para o novo colaborador.',
@@ -452,7 +452,7 @@ const CATEGORIAS_DP = [
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Não encaminhe a documentação para a Contabilidade sem certificar que todos os itens estão presentes. Documentos incompletos atrasam a admissão.</span></div>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Prazo: o envio da documentação completa para a Contabilidade deve ocorrer com, no mínimo, 48 horas de antecedência da data de admissão do colaborador. Esse prazo é necessário para que a Contabilidade consiga registrar a admissão e enviar ao eSocial a tempo.</span></div>
           `},
-          { numero: 8, titulo: 'Registrar a Admissão no Sistema e Enviar ao eSocial', responsavel: 'Administrativo / Contabilidade / Analista de DP', html: `
+          { numero: 8, titulo: 'Registrar a Admissão no Sistema e Enviar ao eSocial', responsavel: 'Administrativo/Contabilidade/Analista de Departamento Pessoal', html: `
             <ul>
               <li>Acesse o portal do cliente e navegue até <strong>Cadastro Empregado → Adicionar</strong>, seguindo o passo a passo da admissão.</li>
               <li>Preencha o cadastro do funcionário com letras maiúsculas e sem acento e cedilha (ç).</li>
@@ -487,7 +487,8 @@ const CATEGORIAS_DP = [
           { numero: 10, titulo: 'Baixar os Documentos do Onvio e Enviar para Assinatura no Sólides', responsavel: 'Departamento Pessoal', html: `
             <ul>
               <li>Acesse o <strong>Onvio</strong> — o mesmo portal do cliente utilizado no Passo 8 para o registro da admissão — e baixe os documentos que necessitam de assinatura do colaborador.</li>
-              <li>Envie os documentos para assinatura digital seguindo o padrão do guia disponível na própria Plataforma GestaMG.</li>
+              <li>Envie os documentos para assinatura digital seguindo o padrão do <strong>GUIA - Assinatura Digital de Documentos</strong>, disponível na Plataforma GestaMG.</li>
+              <li>Depois da assinatura do colaborador, siga o Passo 5 do <strong>GUIA - Assinatura Digital de Documentos</strong> para baixar, contra-assinar e arquivar o documento final. Salve-o em <strong>DP → Departamento Pessoal → Admissão</strong>, selecione a cidade e crie a pasta do novo colaborador.</li>
             </ul>
             <button class="guia-voltar" type="button" onclick="abrirGuia('assinatura-digital-documentos')"><strong>GUIA — Assinatura Digital de Documentos</strong> →</button>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>O Departamento Pessoal acompanha e cobra a conclusão da assinatura digital dos documentos admissionais antes do primeiro dia de trabalho do colaborador.</span></div>
@@ -516,6 +517,7 @@ const CATEGORIAS_DP = [
               <li>Realize o treinamento via <strong>Google Meet</strong> ou presencialmente, conforme disponibilidade.</li>
               <li>Apresente ao colaborador, de forma impressa, o pacote de documentos de integração aplicável à sua função — Código de Conduta e Ética, Política Interna aplicável e, para cargos administrativos, também o Manual do Colaborador —, administrados na Plataforma GestaMG.</li>
               <li>Gere o documento único de ciência na Plataforma GestaMG — Termo de Consentimento (administrativo) ou Termo de Conclusão (operação) — e envie-o para assinatura digital seguindo o <button class="guia-voltar" style="display:inline;padding:0;margin:0;vertical-align:baseline" type="button" onclick="abrirGuia('assinatura-digital-documentos')"><strong>GUIA — Assinatura Digital de Documentos</strong></button>.</li>
+              <li>Para Motorista de Coleta, gere também o <strong>Termo de Responsabilidade para Uso de Smartphone Corporativo</strong> e envie-o para assinatura digital pelo mesmo padrão — a assinatura é colhida no dia da admissão, no momento da entrega do aparelho (ver Roteiro de Integração).</li>
             </ul>
           `},
           { numero: 13, titulo: 'Incluir Benefícios', responsavel: 'Departamento Pessoal', html: `
@@ -2998,7 +3000,7 @@ const CATEGORIAS_INST = [
     ],
     [
       "Responsáveis principais",
-      "Encarregado Operacional e Assistente Administrativo"
+      "Supervisor direto da filial"
     ],
     [
       "Quem mais participa",
@@ -3021,7 +3023,7 @@ const CATEGORIAS_INST = [
       "Código de Conduta e Ética, Política Interna do Cargo, Banner da Filial, Sólides Ponto (Tangerino), aplicativo e cartão alimentação"
     ]
   ],
-  "objetivo": "Este roteiro orienta o supervisor direto na integração inicial de um novo colaborador admitido para as funções de Coletor de Resíduos ou Motorista de Coleta. Ele é o mesmo para todas as filiais e marcas do grupo. Todas as etapas devem ser realizadas no primeiro dia de trabalho do colaborador, antes de ele ser encaminhado ao acompanhamento prático na rota. Marque cada item conforme ele for cumprido — o objetivo é garantir que nenhum tópico seja esquecido, independentemente de qual supervisor conduza a integração. Este roteiro cobre apenas a integração administrativa e institucional. O treinamento prático da função é feito à parte, durante a semana de acompanhamento com um colega mais experiente (ver Etapa 7).",
+  "objetivo": "Este roteiro orienta o supervisor direto na integração inicial de um novo colaborador admitido para as funções de Coletor de Resíduos ou Motorista de Coleta. Ele é o mesmo para todas as filiais e marcas do grupo. Todas as etapas devem ser realizadas no primeiro dia de trabalho do colaborador, antes de ele ser encaminhado ao acompanhamento prático na rota. Marque cada item conforme ele for cumprido — o objetivo é garantir que nenhum tópico seja esquecido, independentemente de qual supervisor conduza a integração. Este roteiro cobre apenas a integração administrativa e institucional. O treinamento prático da função é feito à parte, durante a semana de acompanhamento com um colega mais experiente (ver Etapa 8).",
   "conceitos": [
     [
       "Integração administrativa e institucional",
@@ -3064,14 +3066,14 @@ const CATEGORIAS_INST = [
   ],
   "quemFazOQue": [
     [
-      "Assistente Administrativo",
-      "Apresenta o Código de Conduta e a política aplicável à função; configura o ponto e entrega o cartão alimentação. Também pode realizar a recepção inicial.",
-      "Etapas 1 a 5."
+      "Supervisor direto da filial",
+      "Conduz a integração institucional e administrativa, realiza as apresentações, entrega e apresenta os documentos, configura os aplicativos e encaminha o colaborador para o acompanhamento prático.",
+      "Durante o primeiro dia de trabalho."
     ],
     [
-      "Encarregado Operacional",
-      "Apresenta a filial e o banner, confirma a ciência do rodízio de domingos e encaminha ao acompanhamento prático.",
-      "Etapas 1, 6 e 7."
+      "Assistente Administrativo",
+      "Apoia o supervisor nas etapas administrativas, especialmente na entrega de documentos, configuração do ponto, cartão alimentação e coleta de assinaturas.",
+      "Durante o primeiro dia, conforme organização da filial."
     ],
     [
       "Novo colaborador",
@@ -3101,31 +3103,37 @@ const CATEGORIAS_INST = [
       "numero": 3,
       "titulo": "Apresentar a Política Interna do Cargo",
       "responsavel": "Assistente Administrativo",
-      "html": "<div class=\"checklist-integracao\"><p>A via entregue varia conforme a função do colaborador: Política de Direção Defensiva, para Motorista de Coleta; ou Política Interna do Coletor, para Coletor de Resíduos.</p><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar (ou confirmar que o colaborador já recebeu) a via da Política Interna aplicável à sua função.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label></div>"
+      "html": "<p>A via entregue varia conforme a função do colaborador: Política de Direção Defensiva, para Motorista de Coleta; ou Política Interna do Coletor, para Coletor de Resíduos.</p><div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar (ou confirmar que o colaborador já recebeu) a via da Política Interna aplicável à sua função.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Ler os pontos principais junto com o colaborador e esclarecer dúvidas.</span></label></div>"
     },
     {
       "numero": 4,
-      "titulo": "Configurar o Registro de Ponto",
+      "titulo": "Entregar o Smartphone e Colher o Termo de Responsabilidade",
       "responsavel": "Assistente Administrativo",
-      "html": "<div class=\"checklist-integracao\"><p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label></div>"
+      "html": "<p><strong>Etapa exclusiva para Motorista de Coleta</strong> — Coletor de Resíduos não recebe smartphone corporativo, então esta etapa não se aplica a ele. É imprescindível que a assinatura seja colhida agora, antes de o motorista ser encaminhado à rota: nenhuma admissão de motorista está concluída sem ela.</p><div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar o smartphone corporativo ao colaborador.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Colher a assinatura do colaborador no Termo de Responsabilidade para Uso de Smartphone Corporativo, de forma digital, pela Sólides — seguindo o padrão do <strong>GUIA - Assinatura Digital de Documentos</strong>.</span></label></div>"
     },
     {
       "numero": 5,
-      "titulo": "Entregar o Cartão Alimentação",
+      "titulo": "Configurar o Registro de Ponto",
       "responsavel": "Assistente Administrativo",
-      "html": "<div class=\"checklist-integracao\"><p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar o cartão alimentação físico ao colaborador.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label></div><button class=\"guia-voltar\" type=\"button\" onclick=\"abrirGuia('primeiro-uso-cartao-alimentacao')\">Consultar o guia de primeiro uso do cartão →</button>"
+      "html": "<p>O ponto é feito pelo aplicativo Sólides (também chamado de Tangerino em materiais mais antigos). Esta etapa é prática — faça-a com o colaborador, não apenas explique.</p><div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Instalar o aplicativo de ponto no celular do colaborador (ou no equipamento disponibilizado, conforme o caso) junto com ele.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Abrir o aplicativo junto com ele e demonstrar na prática como fazer o registro de ponto, repassando o PIN de cadastro.</span></label></div>"
     },
     {
       "numero": 6,
-      "titulo": "Apresentar o Banner da Filial",
-      "responsavel": "Encarregado Operacional",
-      "html": "<div class=\"checklist-integracao\"><p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Confirmar que o colaborador está ciente do rodízio de domingos e da folga compensatória correspondente, conforme a Política Interna já apresentada na Etapa 3.</span></label></div>"
+      "titulo": "Entregar o Cartão Alimentação",
+      "responsavel": "Assistente Administrativo",
+      "html": "<p>Assim como o ponto, esta etapa é prática: faça-a com o colaborador, não apenas informe que o benefício existe.</p><div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Baixar o aplicativo do cartão alimentação junto com o colaborador e fazer o login/cadastro dele.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Entregar o cartão alimentação físico ao colaborador.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar como o cartão é utilizado, seguindo o manual de primeiro uso do cartão — certifique-se de que essa explicação foi passada ao colaborador.</span></label></div><button class=\"guia-voltar\" type=\"button\" onclick=\"abrirGuia(&quot;primeiro-uso-cartao-alimentacao&quot;)\">Consultar o guia de primeiro uso do cartão →</button>"
     },
     {
       "numero": 7,
+      "titulo": "Apresentar o Banner da Filial",
+      "responsavel": "Encarregado Operacional",
+      "html": "<p>O banner fixado na filial reúne, em um só lugar, as normas gerais, os benefícios, o percentual de desconto por avaria/sinistro e uma visão geral do ponto. Leia-o junto com o colaborador, item por item.</p><div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Apresentar o banner e ler seu conteúdo junto com o colaborador (normas gerais, benefícios, percentual de avaria/sinistro e visão geral do controle de ponto).</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Confirmar que o colaborador está ciente do rodízio de domingos e da folga compensatória correspondente, conforme a Política Interna já apresentada na Etapa 3.</span></label></div>"
+    },
+    {
+      "numero": 8,
       "titulo": "Encaminhar para o Acompanhamento Prático",
       "responsavel": "Encarregado Operacional",
-      "html": "<div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão (página seguinte).</span></label></div><div class=\"checklist-conclusao\"><div class=\"checklist-conclusao-texto\"><strong>Checklist de integração</strong><span class=\"checklist-progresso\" id=\"checklist-integracao-progresso\" aria-live=\"polite\">0 de 17 itens concluídos</span></div><button class=\"checklist-termo\" id=\"checklist-integracao-termo\" type=\"button\" onclick=\"abrirTermoIntegracao()\" disabled>Imprimir Termo de Conclusão</button></div>"
+      "html": "<div class=\"checklist-integracao\"><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Informar o nome do colega mais experiente que vai acompanhá-lo na rota (coletor experiente para Coletor, motorista experiente para Motorista de Coleta).</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Explicar o que esperar dessa semana de acompanhamento: aprender a rota e a rotina na prática, ao lado de alguém já experiente.</span></label><label class=\"checklist-item\"><input class=\"checklist-integracao-item\" type=\"checkbox\" onchange=\"atualizarChecklistIntegracao()\"><span>Confirmar que todas as dúvidas iniciais foram esclarecidas antes de encerrar a apresentação — e, antes de liberá-lo para rodar, colher a assinatura dele no Termo de Conclusão (documento separado).</span></label></div><div class=\"checklist-conclusao\"><div class=\"checklist-conclusao-texto\"><strong>Checklist de integração</strong><span class=\"checklist-progresso\" id=\"checklist-integracao-progresso\" aria-live=\"polite\">0 de 19 itens concluídos</span></div><button class=\"checklist-termo\" id=\"checklist-integracao-termo\" type=\"button\" onclick=\"abrirTermoIntegracao()\" disabled>Imprimir Termo de Conclusão</button></div>"
     }
   ],
   "duvidas": "Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal."
