@@ -2201,6 +2201,7 @@ const CATEGORIAS_FF = [
       },
       {
         id: 'reembolso-diarias',
+        oculto: true,
         titulo: 'Reembolso de Diárias de Gestores',
         subtitulo: "Solicitação e pagamento de diárias de viagem.",
         identificacao: [
@@ -2519,6 +2520,7 @@ const CATEGORIAS_FF = [
       },
       {
         id: 'controle-km-sr',
+        oculto: true,
         titulo: 'Controle de KM — Micro-ônibus SR',
         subtitulo: "Medição mensal e registro da quilometragem.",
         identificacao: [
@@ -3806,7 +3808,7 @@ function renderIndice(setorId) {
   }
 
   const grupos = setor.categorias.map(cat => {
-    const cards = cat.guias.map(g => `
+    const cards = cat.guias.filter(g => !g.oculto).map(g => `
       <button class="guia-card" data-id="${g.id}" onclick="abrirGuia('${g.id}')" type="button">
         <span class="guia-card-icon">${iconeGuia(g.id)}</span>
         <span class="guia-card-corpo">
@@ -3847,7 +3849,7 @@ function renderPasta(setorId, pastaId) {
   document.getElementById('busca-wrap').classList.remove('ativo');
 
   const subpastas = pasta.subpastas.map(id => setor.pastas.find(p=>p.id===id)).map(p => `<button class="guia-card" type="button" onclick="abrirPasta('${setorId}', '${p.id}')"><span class="guia-card-icon">${iconeGuia(p.icone)}</span><span class="guia-card-corpo"><span class="guia-card-titulo">${p.nome}</span><span class="guia-card-sub">${p.descricao}</span></span><span class="guia-card-seta">${ICONE_SETA}</span></button>`).join('');
-  const cards = pasta.guias.map(g => `
+  const cards = pasta.guias.filter(g => !g.oculto).map(g => `
     <button class="guia-card" data-id="${g.id}" onclick="abrirGuia('${g.id}')" type="button">
       <span class="guia-card-icon">${iconeGuia(g.id)}</span>
       <span class="guia-card-corpo">
