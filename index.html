@@ -777,6 +777,32 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
   .hub-brand,.hub-nav-label,.hub-home-card,.hub-home-card-arrow{transition:none!important;}
 }
 /* === /HUB HOME === */
+/* === ASSISTENTE DO HUB === */
+.hub-assistente-launcher{position:fixed;right:22px;bottom:22px;z-index:120;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;background:#0F4083;color:#fff;padding:12px 17px;box-shadow:0 8px 24px rgba(10,46,92,.2);font:600 13px Manrope,sans-serif;cursor:pointer;transition:transform .2s,background .2s}
+.hub-assistente-launcher:hover{background:#0A2E5C;transform:translateY(-2px)}
+.hub-assistente-launcher:focus-visible,.hub-assistente-close:focus-visible,.hub-assistente-send:focus-visible,.hub-assistente-suggestion:focus-visible{outline:3px solid rgba(46,117,182,.35);outline-offset:2px}
+.hub-assistente{position:fixed;inset:0;z-index:130;display:none;background:rgba(10,46,92,.16)}
+.hub-assistente.is-open{display:block}
+.hub-assistente-panel{position:absolute;top:0;right:0;width:min(390px,100%);height:100%;display:flex;flex-direction:column;background:#fff;box-shadow:-12px 0 32px rgba(10,46,92,.18);transform:translateX(100%);transition:transform .25s ease}
+.hub-assistente.is-open .hub-assistente-panel{transform:translateX(0)}
+.hub-assistente-head{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 16px;border-bottom:1px solid #e5edf7;background:#f7faff}
+.hub-assistente-head h2{font-size:17px;color:#0A2E5C;font-weight:800}
+.hub-assistente-head p{margin-top:3px;font-size:11px;color:#6b7e99}
+.hub-assistente-close{border:0;background:transparent;color:#5d7190;font-size:24px;line-height:1;cursor:pointer;padding:4px}
+.hub-assistente-messages{flex:1;overflow:auto;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.hub-assistente-msg{max-width:88%;padding:11px 13px;border-radius:14px;font-size:13px;line-height:1.5;color:#243650;white-space:pre-wrap}
+.hub-assistente-msg.bot{align-self:flex-start;background:#eef5fd;border-top-left-radius:4px}
+.hub-assistente-msg.user{align-self:flex-end;background:#0F4083;color:#fff;border-top-right-radius:4px}
+.hub-assistente-suggestions{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px 12px}
+.hub-assistente-suggestion{border:1px solid #cddced;border-radius:999px;background:#fff;color:#0F4083;padding:7px 10px;font:500 11px Manrope,sans-serif;cursor:pointer}
+.hub-assistente-suggestion:hover{background:#eef5fd}
+.hub-assistente-note{padding:0 16px 10px;color:#7a8ca5;font-size:10px;line-height:1.4}
+.hub-assistente-form{display:flex;gap:8px;padding:12px 16px 16px;border-top:1px solid #e5edf7}
+.hub-assistente-form textarea{flex:1;min-height:42px;max-height:110px;resize:vertical;border:1px solid #cad8e8;border-radius:10px;padding:10px 11px;color:#243650;font:13px Manrope,sans-serif}
+.hub-assistente-send{width:42px;border:0;border-radius:10px;background:#0F4083;color:#fff;font-size:18px;cursor:pointer}
+.hub-assistente-send:hover{background:#0A2E5C}
+@media(max-width:600px){.hub-assistente-launcher{right:14px;bottom:14px}.hub-assistente-panel{width:100%}}
+/* === /ASSISTENTE DO HUB === */
 </style>
 </head>
 <body>
@@ -1050,6 +1076,31 @@ body{background:var(--cinza-100);color:var(--cinza-900);-webkit-font-smoothing:a
 
 </div><!-- /hub-content -->
 
+<button class="hub-assistente-launcher" id="hub-assistente-launcher" type="button" aria-controls="hub-assistente" aria-expanded="false" onclick="hubAssistenteAbrir()">
+  <span aria-hidden="true">✦</span> Assistente
+</button>
+<div class="hub-assistente" id="hub-assistente" aria-hidden="true" onclick="if(event.target===this) hubAssistenteFechar()">
+  <section class="hub-assistente-panel" role="dialog" aria-modal="true" aria-labelledby="hub-assistente-titulo">
+    <header class="hub-assistente-head">
+      <div><h2 id="hub-assistente-titulo">Assistente do Hub</h2><p>Orientação rápida para as rotinas do DP</p></div>
+      <button class="hub-assistente-close" type="button" aria-label="Fechar assistente" onclick="hubAssistenteFechar()">×</button>
+    </header>
+    <div class="hub-assistente-messages" id="hub-assistente-messages" aria-live="polite">
+      <div class="hub-assistente-msg bot">Olá! Posso orientar onde encontrar uma rotina, qual ferramenta usar e qual é o próximo passo.</div>
+    </div>
+    <div class="hub-assistente-suggestions" aria-label="Sugestões de perguntas">
+      <button type="button" class="hub-assistente-suggestion" onclick="hubAssistenteSugestao('Como cadastrar uma ficha?')">Cadastrar ficha</button>
+      <button type="button" class="hub-assistente-suggestion" onclick="hubAssistenteSugestao('Onde encontro os documentos para impressão?')">Impressão</button>
+      <button type="button" class="hub-assistente-suggestion" onclick="hubAssistenteSugestao('Como consultar um guia?')">Materiais de apoio</button>
+    </div>
+    <p class="hub-assistente-note">Assistente em fase de validação. As respostas usam os conteúdos aprovados do Hub.</p>
+    <form class="hub-assistente-form" onsubmit="hubAssistenteEnviar(event)">
+      <textarea id="hub-assistente-input" rows="1" placeholder="Digite sua dúvida..." aria-label="Digite sua dúvida"></textarea>
+      <button class="hub-assistente-send" type="submit" aria-label="Enviar pergunta">↑</button>
+    </form>
+  </section>
+</div>
+
 <script>
 'use strict';
 
@@ -1111,6 +1162,80 @@ function hubAlternarMenu() {
   toggle.setAttribute('title', aberto ? 'Recolher menu' : 'Expandir menu');
   const label = toggle.querySelector('.hub-toggle-label');
   if (label) label.textContent = aberto ? 'Recolher menu' : 'Expandir menu';
+}
+
+const HUB_ASSISTENTE_ENDPOINT = '';
+const HUB_ASSISTENTE_KB = [
+  { termos: ['ficha', 'cadastro'], resposta: 'Para cadastrar fichas, abra “Cadastro / Fichas” no menu lateral. Envie uma ficha por arquivo — você pode enviar vários arquivos de uma vez — e revise os dados antes de exportar.' },
+  { termos: ['trello', 'card', 'cartão'], resposta: 'A geração de cards do Trello fica em “Cadastro / Fichas”. A opção vem marcada por padrão e pode ser desmarcada quando a ficha já tiver sido processada, evitando duplicidade.' },
+  { termos: ['ponto', 'dias trabalhados'], resposta: 'Use “Pontos / Dias Trabalhados” para analisar ocorrências, fechamentos e dias trabalhados. A ferramenta também permite a conferência com a folha de pagamento.' },
+  { termos: ['impressão', 'imprimir', 'documento'], resposta: 'Abra “Documentos” no menu lateral e escolha a empresa. Os documentos com campos personalizados abrem primeiro o formulário; depois, gere o arquivo preenchido para imprimir ou assinar.' },
+  { termos: ['material', 'guia', 'política', 'conduta'], resposta: 'Em “Materiais de Apoio”, escolha o setor e depois o guia, a política ou o treinamento. Essa área é para consulta e orientação das rotinas.' },
+  { termos: ['como usar', 'ajuda', 'orientação'], resposta: 'A aba “Como Usar” explica a finalidade de cada módulo e os passos principais. Se a dúvida for sobre uma rotina específica, consulte o guia correspondente em “Materiais de Apoio”.' },
+  { termos: ['template', 'aniversário', 'boas-vindas'], resposta: 'Abra “Templates” para criar posts de boas-vindas, aniversário e foto de perfil com a identidade visual da empresa.' }
+];
+
+function hubAssistenteEscape(texto) {
+  return String(texto).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
+}
+
+function hubAssistenteAdicionarMensagem(texto, tipo) {
+  const area = document.getElementById('hub-assistente-messages');
+  if (!area) return;
+  const msg = document.createElement('div');
+  msg.className = 'hub-assistente-msg ' + (tipo || 'bot');
+  msg.innerHTML = hubAssistenteEscape(texto);
+  area.appendChild(msg);
+  area.scrollTop = area.scrollHeight;
+}
+
+function hubAssistenteAbrir() {
+  const modal = document.getElementById('hub-assistente');
+  const launcher = document.getElementById('hub-assistente-launcher');
+  if (!modal) return;
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  if (launcher) launcher.setAttribute('aria-expanded', 'true');
+  setTimeout(() => document.getElementById('hub-assistente-input')?.focus(), 100);
+}
+
+function hubAssistenteFechar() {
+  const modal = document.getElementById('hub-assistente');
+  const launcher = document.getElementById('hub-assistente-launcher');
+  if (!modal) return;
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  if (launcher) { launcher.setAttribute('aria-expanded', 'false'); launcher.focus(); }
+}
+
+function hubAssistenteSugestao(texto) {
+  const input = document.getElementById('hub-assistente-input');
+  if (input) { input.value = texto; input.focus(); }
+}
+
+function hubAssistenteRespostaLocal(pergunta) {
+  const normalizada = pergunta.toLocaleLowerCase('pt-BR');
+  const item = HUB_ASSISTENTE_KB.find(entry => entry.termos.some(termo => normalizada.includes(termo)));
+  return item ? item.resposta : 'Ainda não encontrei uma orientação específica para essa dúvida. Tente mencionar a rotina ou o módulo, como “ficha”, “Trello”, “impressão”, “ponto” ou “materiais de apoio”.';
+}
+
+async function hubAssistenteEnviar(event) {
+  event.preventDefault();
+  const input = document.getElementById('hub-assistente-input');
+  const pergunta = input && input.value.trim();
+  if (!pergunta) return;
+  input.value = '';
+  hubAssistenteAdicionarMensagem(pergunta, 'user');
+  let resposta = '';
+  if (HUB_ASSISTENTE_ENDPOINT) {
+    try {
+      const retorno = await fetch(HUB_ASSISTENTE_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pergunta }) });
+      if (!retorno.ok) throw new Error('endpoint');
+      const dados = await retorno.json();
+      resposta = dados.resposta || dados.answer || '';
+    } catch (erro) { resposta = ''; }
+  }
+  hubAssistenteAdicionarMensagem(resposta || hubAssistenteRespostaLocal(pergunta), 'bot');
 }
 
 hubTrocarAba('home');
