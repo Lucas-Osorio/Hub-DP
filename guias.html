@@ -416,7 +416,7 @@ const CATEGORIAS_DP = [
               <li>Após o encerramento da requisição e a aprovação do candidato, agende o exame admissional com a clínica parceira, confirmando data, horário e local.</li>
               <li>Comunique ao candidato a data, o horário e o local do exame, informando eventual preparo necessário.</li>
               <li>Pergunte se o colaborador precisará de <strong>Vale-Transporte</strong> e comunique por e-mail ao Analista de DP (dp01@gestamg.co.br).</li>
-              <li>Solicite ao candidato a documentação necessária para a admissão.</li>
+              <li>Solicite ao candidato a documentação necessária para a admissão usando a lista padronizada na Plataforma GestaMG: abra <strong>Impressão de Documentos → Admissão → Lista de Documentos para Admissão</strong> e baixe o PDF para envio.</li>
               <li>Após o exame, encaminhe ao Departamento Pessoal por e-mail:
                 <ul>
                   <li>O <strong>ASO</strong> com o resultado do exame.</li>
@@ -509,13 +509,13 @@ const CATEGORIAS_DP = [
               <li>Quando a contratação for feita internamente, elabore o cronograma de integração da semana de admissão, confirmando horários com Frotas, Compras, Financeiro, DP e RH Reserva, e envie por e-mail a todos os participantes com antecedência, com cópia para a Gerente Administrativo.</li>
             </ul>
             <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>Quando a contratação for feita através do R&amp;S da Rheserva, a própria Rheserva planeja e acompanha ativamente a integração do colaborador. Nesse caso, o Departamento Pessoal deve apenas acompanhar o processo, sem assumir a elaboração do cronograma.</span></div>
-            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A Plataforma GestaMG é de uso administrativo do Departamento Pessoal e dos responsáveis pela filial. O colaborador não recebe acesso; os documentos são apresentados de forma impressa e presencial.</span></div>
-            <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: incluir neste passo o procedimento de geração e impressão do pacote de documentos personalizado na Plataforma GestaMG.</span></div>
+            <div class="caixa caixa-atencao"><span class="caixa-icone">!</span><span>A Plataforma GestaMG é de uso administrativo do Departamento Pessoal e dos responsáveis pela filial. O colaborador não recebe acesso. Para obter a lista de documentos, use <strong>Impressão de Documentos → Admissão → Lista de Documentos para Admissão</strong>; para os demais documentos de integração, selecione a empresa correspondente no mesmo menu. A apresentação dos documentos é impressa e presencial.</span></div>
+            <div class="caixa caixa-exemplo"><span class="caixa-icone">i</span><span>Na Plataforma GestaMG, abra <strong>Impressão de Documentos</strong>, selecione a empresa correspondente e gere os documentos aplicáveis, preenchendo os campos do formulário quando solicitado. Imprima o PDF ou encaminhe-o para assinatura digital, conforme o documento.</span></div>
             <div class="caixa caixa-pendencia"><span class="caixa-icone">P</span><span>Pendência: revisar o Guia de Integração da Operação, que ainda descreve um fluxo de duas vias diferente dos documentos atuais.</span></div>
             <ul>
               <li>Ministre o treinamento de integração na data de admissão, seguindo o padrão de integração definido para o tipo de contratação do colaborador (administrativo ou operacional — motorista, coletor etc.).</li>
               <li>Realize o treinamento via <strong>Google Meet</strong> ou presencialmente, conforme disponibilidade.</li>
-              <li>Apresente ao colaborador, de forma impressa, o pacote de documentos de integração aplicável à sua função — Código de Conduta e Ética, Política Interna aplicável e, para cargos administrativos, também o Manual do Colaborador —, administrados na Plataforma GestaMG.</li>
+              <li>Gere na Plataforma GestaMG e apresente ao colaborador, de forma impressa, o pacote de documentos de integração aplicável à sua função — Código de Conduta e Ética, Política Interna aplicável e, para cargos administrativos, também o Manual do Colaborador.</li>
               <li>Gere o documento único de ciência na Plataforma GestaMG — Termo de Consentimento (administrativo) ou Termo de Conclusão (operação) — e envie-o para assinatura digital seguindo o <button class="guia-voltar" style="display:inline;padding:0;margin:0;vertical-align:baseline" type="button" onclick="abrirGuia('assinatura-digital-documentos')"><strong>GUIA — Assinatura Digital de Documentos</strong></button>.</li>
               <li>Para Motorista de Coleta, gere também o <strong>Termo de Responsabilidade para Uso de Smartphone Corporativo</strong> e envie-o para assinatura digital pelo mesmo padrão — a assinatura é colhida no dia da admissão, no momento da entrega do aparelho (ver Roteiro de Integração).</li>
             </ul>
@@ -580,7 +580,7 @@ const CATEGORIAS_DP = [
         documentos: [
           { titulo: 'Formulário de E-mail — Admissão', descricao: 'Ferramenta que monta o e-mail padrão de admissão a partir dos dados do colaborador.', arquivo: 'ferramentas/formulario-email-admissao.html', tipo: 'ferramenta' },
           { titulo: 'Requisição de Admissão (modelo)', descricao: 'Formulário de abertura e justificativa da vaga, usado pelo gestor antes do início do processo de admissão.', arquivo: 'assets/guias/admissao-colaboradores/docs/requisicao-admissao.pdf', tipo: 'download' },
-          { titulo: 'Lista de Documentos para Admissão', descricao: 'Modelo em PDF para enviar ao candidato antes da admissão, com os documentos e informações necessários.', arquivo: 'assets/guias/admissao-colaboradores/docs/lista-documentos-admissao.pdf', tipo: 'download' },
+          { titulo: 'Lista de Documentos para Admissão', descricao: 'Modelo em PDF para enviar ao candidato antes da admissão, acessível em Impressão de Documentos → Admissão.', arquivo: 'assets/guias/admissao-colaboradores/docs/lista-documentos-admissao.pdf', tipo: 'download' },
           { titulo: 'Cartilha do Colaborador', descricao: 'Cartilha institucional entregue ao colaborador na admissão, com informações gerais sobre a empresa.', arquivo: 'assets/guias/admissao-colaboradores/docs/cartilha-do-colaborador.pdf', tipo: 'download' },
         ],
         duvidas: 'Em caso de dúvidas sobre este processo, entre em contato com o Departamento Pessoal.',
