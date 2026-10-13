@@ -1658,26 +1658,89 @@ function opcoesFilialAmbigua(cnpjFormatado){
   return CNPJ_MULTIPLAS_FILIAIS[digitos] || null;
 }
 
-// ============================================================
-// TABELAS DE CARGOS / LOCAL DE TRABALHO — lidas do próprio template do Ponto
-// -------------------------------------------------------------
-// O template de Ponto (.xlsx) que você sobe agora traz duas abas extras,
-// "CARGOS" e "LOCAL DE TRABALHO", que funcionam como uma pequena base de
-// dados editável: você atualiza essas abas no Excel e sobe o template de
-// novo, sem precisar mexer no código da ferramenta.
-//   LOCAL DE TRABALHO: CÓDIGO | LOCAL DE TRABALHO (nome)
-//   CARGOS:             CÓDIGO CARGO | CARGO | LOCAL DE TRABALHO (nome, bate com a aba acima)
-// A partir do cargo do colaborador (extraído da Ficha), a ferramenta:
-//   1) acha o Código Cargo na aba CARGOS
-//   2) acha o nome do Local de Trabalho associado àquele cargo
-//   3) troca esse nome pelo Código na aba LOCAL DE TRABALHO
-// ============================================================
-let tabelasPonto = { cargoPorNome: null, localPorNome: null };
-
 function normalizarTexto(s){
   return String(s||'')
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // remove acentos
     .trim().toUpperCase().replace(/\s+/g,' ');
+}
+
+// Base interna de cargos do Ponto. Ela é a fonte principal dos códigos
+// enviados pelo DP; a aba CARGOS do template continua sendo lida para
+// complementar o local de trabalho e eventuais cargos novos.
+const BASE_CARGOS_PONTO = [
+  ['2174517','AJUDANTE GERAL'],
+  ['3113158','ANALISTA CONTÁBIL JÚNIOR'],
+  ['2278822','ANALISTA CONTABIL PLENO'],
+  ['3113159','ANALISTA CONTÁBIL SÊNIOR'],
+  ['3113272','ANALISTA DE COMPRAS JUNIOR'],
+  ['3113274','ANALISTA DE COMPRAS PLENO'],
+  ['3113187','ANALISTA DE COMPRAS SÊNIOR'],
+  ['3069968','ANALISTA DE DP JUNIOR'],
+  ['2094415','ANALISTA DE DP PLENO'],
+  ['3113166','ANALISTA DE DP SÊNIOR'],
+  ['3113266','ANALISTA FINANCEIRO JUNIOR'],
+  ['3113270','ANALISTA FINANCEIRO PLENO'],
+  ['3113251','ANALISTA FINANCEIRO SÊNIOR'],
+  ['2094414','ANALISTA FISCAL JUNIOR'],
+  ['2094419','ANALISTA FISCAL PLENO'],
+  ['3113182','ANALISTA FISCAL SÊNIOR'],
+  ['2203963','APONTADOR'],
+  ['2350594','ASSISTENTE ADMINISTRATIVO I'],
+  ['2889978','ASSISTENTE ADMINISTRATIVO II'],
+  ['2152170','ASSISTENTE ADMINISTRATIVO III'],
+  ['2398120','AUXILIAR DE MANUTENÇÃO I'],
+  ['3113242','AUXILIAR DE MANUTENÇÃO II'],
+  ['3113244','AUXILIAR DE MANUTENÇÃO III'],
+  ['2094398','COLETOR'],
+  ['2094420','COMPRADOR'],
+  ['2811074','ENCARREGADO OPERACIONAL I'],
+  ['3113256','ENCARREGADO OPERACIONAL II'],
+  ['3113257','ENCARREGADO OPERACIONAL III'],
+  ['3011510','ESTAGIARIO'],
+  ['3113426','GERENTE DE CONTRATOS JUNIOR'],
+  ['3113428','GERENTE DE CONTRATOS PLENO'],
+  ['3113429','GERENTE DE CONTRATOS SÊNIOR'],
+  ['3113237','GERENTE DE ESCRITÓRIO JUNIOR'],
+  ['3113167','GERENTE DE ESCRITÓRIO PLENO'],
+  ['3113236','GERENTE DE ESCRITÓRIO SÊNIOR'],
+  ['3113292','GERENTE GERAL JÚNIOR'],
+  ['3113285','GERENTE GERAL PLENO'],
+  ['3113289','GERENTE GERAL SÊNIOR'],
+  ['3113284','GERENTE OPERACIONAL JUNIOR'],
+  ['3113267','GERENTE OPERACIONAL PLENO'],
+  ['3113288','GERENTE OPERACIONAL SÊNIOR'],
+  ['2094407','MECÂNICO I'],
+  ['3113250','MECÂNICO II'],
+  ['3113252','MECÂNICO III'],
+  ['2116166','MONITOR'],
+  ['2992869','MONITORA ESCOLAR'],
+  ['2128468','MOTORISTA DE CAMINHÃO DE LIXO'],
+  ['2094410','MOTORISTA DE ONIBUS TRANSPORTE URBANO'],
+  ['2449288','TRAINEE'],
+];
+
+function mapaBaseCargosPonto(){
+  const mapa = new Map();
+  BASE_CARGOS_PONTO.forEach(([codigoCargo, cargo]) => {
+    mapa.set(normalizarTexto(cargo), { codigoCargo, localTrabalho: '' });
+  });
+  return mapa;
+}
+
+let tabelasPonto = { cargoPorNome: mapaBaseCargosPonto(), localPorNome: new Map() };
+
+// O Domínio sempre envia "MONITOR". O código e o nome usados no Ponto
+// dependem da empresa da ficha, e não da cidade/unidade escolhida:
+// Quality → MONITOR (2116166); Transportadora Novo Tempo → MONITORA ESCOLAR (2992869).
+function infoCargoPonto(cargoNome, cnpjFormatado){
+  const cargoNormalizado = normalizarTexto(cargoNome);
+  const empresa = nomeFilialPorCNPJ(cnpjFormatado);
+  if(cargoNormalizado === 'MONITOR'){
+    if(empresa === 'QUALITY') return { codigoCargo: '2116166', nomeCargo: 'MONITOR' };
+    if(empresa === 'TRANSPORTADORA NOVO TEMPO LTDA') return { codigoCargo: '2992869', nomeCargo: 'MONITORA ESCOLAR' };
+  }
+  const info = tabelasPonto.cargoPorNome && tabelasPonto.cargoPorNome.get(cargoNormalizado);
+  return info ? { codigoCargo: info.codigoCargo, nomeCargo: cargoNormalizado } : { codigoCargo: '', nomeCargo: cargoNome || '' };
 }
 
 function parseTabelasPonto(bytes){
@@ -1691,25 +1754,33 @@ function parseTabelasPonto(bytes){
         if(nome) localPorNome.set(normalizarTexto(nome), String(codigo).trim());
       }
     }
-    const cargoPorNome = new Map();
+    // A base interna é a fonte principal. A planilha complementa os dados
+    // (sobretudo o Local de Trabalho) sem substituir os códigos oficiais.
+    const cargoPorNome = mapaBaseCargosPonto();
     if(wb.Sheets['CARGOS']){
       const linhas = XLSX.utils.sheet_to_json(wb.Sheets['CARGOS'], { header:1, defval:'' });
       for(let i=1;i<linhas.length;i++){
         const [codigoCargo, cargo, localTrabalho] = linhas[i];
-        if(cargo) cargoPorNome.set(normalizarTexto(cargo), { codigoCargo: String(codigoCargo).trim(), localTrabalho: normalizarTexto(localTrabalho) });
+        if(!cargo) continue;
+        const chave = normalizarTexto(cargo);
+        const local = normalizarTexto(localTrabalho);
+        const existente = cargoPorNome.get(chave);
+        if(existente){
+          if(!existente.localTrabalho && local) existente.localTrabalho = local;
+        }else{
+          cargoPorNome.set(chave, { codigoCargo: String(codigoCargo).trim(), localTrabalho: local });
+        }
       }
     }
     return { cargoPorNome, localPorNome };
   }catch(e){
     console.warn('Não encontrei as abas CARGOS / LOCAL DE TRABALHO no template do Ponto.', e);
-    return { cargoPorNome: new Map(), localPorNome: new Map() };
+    return { cargoPorNome: mapaBaseCargosPonto(), localPorNome: new Map() };
   }
 }
 
-function codigoCargoPorNome(cargoNome){
-  if(!tabelasPonto.cargoPorNome) return '';
-  const info = tabelasPonto.cargoPorNome.get(normalizarTexto(cargoNome));
-  return info ? info.codigoCargo : '';
+function codigoCargoPorNome(cargoNome, cnpjFormatado){
+  return infoCargoPonto(cargoNome, cnpjFormatado).codigoCargo;
 }
 
 function codigoLocalTrabalhoPorCargo(cargoNome){
@@ -1724,7 +1795,7 @@ function codigoLocalTrabalhoPorCargo(cargoNome){
 // o que você já tiver editado manualmente.
 function aplicarTabelasCargos(){
   colaboradores.forEach(c => {
-    if(!c.ponto.codigo_cargo) c.ponto.codigo_cargo = codigoCargoPorNome(c.dados.cargo);
+    if(!c.ponto.codigo_cargo) c.ponto.codigo_cargo = codigoCargoPorNome(c.dados.cargo, c.dados.cnpj);
     if(!c.ponto.codigo_local_trabalho) c.ponto.codigo_local_trabalho = codigoLocalTrabalhoPorCargo(c.dados.cargo);
   });
   render();
@@ -1887,7 +1958,7 @@ function adicionarColaborador(dados, nomeArquivo){
       email_pessoal:'', email_corporativo:'',
       possui_filhos:'Não', tamanho_camisa:'',
       estrangeiro: derivarEstrangeiro(dados.pais_nacionalidade),
-      codigo_cargo: codigoCargoPorNome(dados.cargo), inicio_vigencia: dados.data_admissao,
+      codigo_cargo: codigoCargoPorNome(dados.cargo, dados.cnpj), inicio_vigencia: dados.data_admissao,
       codigo_escala:'', codigo_filial: codigoPorCNPJ(dados.cnpj), codigo_local_trabalho: codigoLocalTrabalhoPorCargo(dados.cargo),
       codigo_externo: dados.codigo_externo_ficha || '', fuso_horario:'São Paulo', tipo_vinculo:'CLT',
     },
@@ -2169,6 +2240,13 @@ function atualizarCampo(id, grupo, chave, valor){
   const colab = colaboradores.find(c => c.id === id);
   if(!colab) return;
   colab[grupo][chave] = valor;
+  // Se o cargo ou a empresa forem corrigidos manualmente na ficha, o código
+  // do Ponto acompanha a alteração e reaplica a regra especial do MONITOR.
+  if(grupo === 'dados' && (chave === 'cargo' || chave === 'cnpj')){
+    colab.ponto.codigo_cargo = codigoCargoPorNome(colab.dados.cargo, colab.dados.cnpj);
+    const local = codigoLocalTrabalhoPorCargo(colab.dados.cargo);
+    if(local) colab.ponto.codigo_local_trabalho = local;
+  }
   render();
 }
 function atualizarBeneficio(id, chave, valor){
@@ -2717,3 +2795,4 @@ verificarConexaoTrelloSalva();
 
 </body>
 </html>
+
